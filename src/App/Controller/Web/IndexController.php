@@ -1,8 +1,8 @@
 <?php
 
-namespace Controller\Web;
+namespace App\Controller\Web;
 
-use Controller\AbstractController;
+use Component\Controller\AbstractController;
 
 class IndexController extends AbstractController
 {

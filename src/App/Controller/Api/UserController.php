@@ -1,8 +1,8 @@
 <?php
 
-namespace Controller\Api;
+namespace App\Controller\Api;
 
-use Controller\AbstractController;
+use Component\Controller\AbstractController;
 
 class UserController extends AbstractController
 {

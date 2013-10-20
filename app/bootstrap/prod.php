@@ -14,7 +14,7 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new DoctrineServiceProvider());
 
 $app->register(new TwigServiceProvider(), array(
-    'twig.path'    => array(__DIR__ . '/../../src/View'),
+    'twig.path'    => array(__DIR__ . '/../../src/App/View'),
     'twig.options' => array(
         'cache' => __DIR__ . '/../../var/cache/twig',
         'auto_reload' => true

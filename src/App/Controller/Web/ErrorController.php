@@ -1,9 +1,9 @@
 <?php
 
-namespace Controller\Web;
+namespace App\Controller\Web;
 
 use Symfony\Component\HttpFoundation\Response;
-use Controller\AbstractController;
+use Component\Controller\AbstractController;
 
 class ErrorController extends AbstractController
 {
