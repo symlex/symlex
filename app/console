@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+define('APP_ENV', 'console');
+
+$app = require __DIR__.'/bootstrap.php';
+
+$app['console']->run();

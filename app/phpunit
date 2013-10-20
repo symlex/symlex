@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+PHPUnit_TextUI_Command::main();

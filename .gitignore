@@ -39,10 +39,10 @@ Thumbs.db
 
 # Framework generated files #
 #############################
-var/cache/*
-var/logs/*
-app/bootstrap.local.php
-app/config.local.php
+app/bootstrap/*.local.php
+app/config/*.local.php
+/vendor/
+composer.lock
 
 # IDE generated files #
 #######################
