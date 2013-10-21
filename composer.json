@@ -1,6 +1,6 @@
 {
-    "name": "lastzero/silex-skeleton",
-    "description": "A pre-configured skeleton for the Silex microframework",
+    "name": "lastzero/silex-boilerplate",
+    "description": "A pre-configured boilerplate for the Silex microframework",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -24,7 +24,7 @@
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
         "phpunit/phpunit": "3.7.*",
-        "lastzero/test-tools": "0.1"
+        "lastzero/test-tools": ">=0.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -33,16 +33,8 @@
     },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "lastzero/test-tools",
-                "version": "0.1",
-                "source": {
-                    "url": "https://github.com/lastzero/test-tools",
-                    "type": "git",
-                    "reference": "tags/v0.1"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/lastzero/test-tools"
         }
     ]
 }
