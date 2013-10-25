@@ -2,6 +2,12 @@
 
 namespace App\Model;
 
-class UserModel {
+use App\Dao\UserDao;
 
+class UserModel {
+    protected $dao;
+
+    public function __construct () {
+        $this->dao = new UserDao();
+    }
 }

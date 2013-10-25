@@ -44,6 +44,11 @@ $webRequestHandler =  function ($controller, Request $request, $action = '') use
         throw new NotFoundException ('Web controller method not found: ' . $actionName);
     }
 
+    $twig = $app['twig'];
+
+    $twig->addGlobal('controller', $controller);
+    $twig->addGlobal('action', $subResources);
+
     $result = call_user_func_array(array($controllerInstance, $actionName), $params);
 
     return $result;

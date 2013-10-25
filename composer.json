@@ -21,20 +21,15 @@
         "symfony/validator": "~2.3",
         "symfony/monolog-bridge": "~2.3",
         "symfony/twig-bridge": "~2.3",
+        "symfony/proxy-manager-bridge": "~2.3",
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
         "phpunit/phpunit": "3.7.*",
-        "lastzero/test-tools": ">=0.2"
+        "lastzero/test-tools": ">=0.6"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-0": { "": "src/" }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/lastzero/test-tools"
-        }
-    ]
+    }
 }

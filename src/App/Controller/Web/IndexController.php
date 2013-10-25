@@ -10,9 +10,4 @@ class IndexController extends AbstractController
     {
         return $this->app['twig']->render('index.twig', array());
     }
-
-    public function exceptionAction()
-    {
-        throw new \InvalidArgumentException('Foo Bar');
-    }
 }
