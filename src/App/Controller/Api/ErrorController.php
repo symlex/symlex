@@ -36,6 +36,6 @@ class ErrorController extends AbstractController
             'trace' => $trace
         );
 
-        return $this->app->json($result, $code);
+        return $this->json($result, $code);
     }
 }

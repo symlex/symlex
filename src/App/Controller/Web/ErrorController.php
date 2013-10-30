@@ -2,14 +2,13 @@
 
 namespace App\Controller\Web;
 
-use Symfony\Component\HttpFoundation\Response;
 use Component\Controller\AbstractController;
 
 class ErrorController extends AbstractController
 {
     public function errorAction($exception, $code)
     {
-        if($code == 404) {
+        if ($code == 404) {
             $template = 'errors/404.twig';
         } else {
             $template = 'errors/default.twig';
@@ -35,15 +34,13 @@ class ErrorController extends AbstractController
             $trace = array();
         }
 
-        $result = $this->app['twig']->render(
-            $template,
-            array(
-                'message' => $message,
-                'code' => $code,
-                'class' => $class,
-                'trace' => $trace
-            ));
+        $result = array(
+            'message' => $message,
+            'code' => $code,
+            'class' => $class,
+            'trace' => $trace
+        );
 
-        return new Response($result, $code);
+        return $this->render($template, $result, $code);
     }
 }

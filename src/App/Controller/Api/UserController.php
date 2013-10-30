@@ -10,6 +10,6 @@ class UserController extends AbstractController
     {
         $result = array('id' => $id);
 
-        return $this->app->json($result);
+        return $this->json($result);
     }
 }
