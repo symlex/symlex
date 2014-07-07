@@ -25,7 +25,7 @@
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
         "phpunit/phpunit": "3.7.*",
-        "lastzero/test-tools": ">=0.6",
+        "lastzero/test-tools": "dev-master",
         "lastzero/sympathy": "dev-master"
     },
     "minimum-stability": "dev",
