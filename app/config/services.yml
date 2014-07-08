@@ -1,0 +1,10 @@
+services:
+    log.handler:
+        class: Monolog\Handler\StreamHandler
+        arguments: ['%app.log_path%/%app.environment%.log']
+
+    log:
+        class: Monolog\Logger
+        arguments: ['main']
+        calls:
+            - [pushHandler, [@log.handler]]

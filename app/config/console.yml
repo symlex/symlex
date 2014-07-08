@@ -1,0 +1,8 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: services.yml }
+
+services:
+    app:
+        class: Symfony\Component\Console\Application
+        arguments: [%app.name%, %app.version%]

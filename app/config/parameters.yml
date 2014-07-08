@@ -1,0 +1,3 @@
+parameters:
+    app.name: 'Silex Boilerplate'
+    app.version: '1.0'
