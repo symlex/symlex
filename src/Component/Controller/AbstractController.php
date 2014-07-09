@@ -4,6 +4,7 @@ namespace Component\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Response;
+use Twig_Environment;
 
 abstract class AbstractController
 {
@@ -12,9 +13,12 @@ abstract class AbstractController
      */
     protected $app;
 
-    public function __construct(Application $app)
+    protected $twig;
+
+    public function __construct(Application $app, Twig_Environment $twig)
     {
         $this->app = $app;
+        $this->twig = $twig;
         $this->init();
     }
 
@@ -25,7 +29,7 @@ abstract class AbstractController
 
     protected function render($template = 'index.twig', array $values = array(), $httpCode = 200)
     {
-        $result = $this->app['twig']->render($template, $values);
+        $result = $this->twig->render($template, $values);
 
         return new Response($result, $httpCode);
     }

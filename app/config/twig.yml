@@ -1,0 +1,17 @@
+parameters:
+    twig.path: '%app.path%/../src/App/View'
+    twig.options:
+        charset: 'UTF-8'
+        debug: false
+        strict_variables: false
+        cache: '%app.cache_path%/twig'
+        auto_reload: true
+
+services:
+    twig.loader:
+        class: Twig_Loader_Filesystem
+        arguments: [ %twig.path% ]
+
+    twig:
+        class: Twig_Environment
+        arguments: [ @twig.loader, %twig.options% ]

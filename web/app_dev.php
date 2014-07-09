@@ -10,8 +10,10 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
 
-define('APP_ENV', 'dev');
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = require_once __DIR__.'/../app/bootstrap.php';
+use App\Http;
+
+$app = new Http (__DIR__ . '/../app', true);
 
 $app->run();

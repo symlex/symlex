@@ -3,9 +3,17 @@
 namespace App\Controller\Web;
 
 use Component\Controller\AbstractController;
+use Silex\Application;
 
 class ErrorController extends AbstractController
 {
+    protected $exceptionMessages;
+
+    public function setExceptionMessages(array $exceptionMessages)
+    {
+        $this->exceptionMessages = $exceptionMessages;
+    }
+
     public function errorAction($exception, $code)
     {
         if ($code == 404) {
@@ -17,15 +25,15 @@ class ErrorController extends AbstractController
         if ($this->app['debug']) {
             $message = $exception->getMessage();
 
-            if (empty($message) && isset($this->app['exception.messages'][$code])) {
-                $message = $this->app['exception.messages'][$code];
+            if (empty($message) && isset($this->exceptionMessages[$code])) {
+                $message = $this->exceptionMessages[$code];
             }
 
             $class = get_class($exception);
             $trace = $exception->getTrace();
         } else {
-            if (isset($this->app['exception.messages'][$code])) {
-                $message = $this->app['exception.messages'][$code];
+            if (isset($this->exceptionMessages[$code])) {
+                $message = $this->exceptionMessages[$code];
             } else {
                 $message = $exception->getMessage();
             }

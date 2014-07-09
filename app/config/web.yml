@@ -1,0 +1,77 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: services.yml }
+    - { resource: twig.yml }
+    
+parameters:
+    exception.codes:
+        InvalidArgumentException: 400
+        Exception\NotFoundException: 404
+        Exception: 500
+
+    exception.messages:
+        400: 'Bad request'
+        401: 'Unauthorized'
+        402: 'Payment Required'
+        403: 'Forbidden'
+        404: 'Not Found'
+        405: 'Method Not Allowed'
+        406: 'Not Acceptable'
+        407: 'Proxy Authentication Required'
+        408: 'Request Timeout'
+        409: 'Conflict'
+        410: 'Gone'
+        500: 'Looks like something went wrong!'
+
+services:
+    provider.urlgenerator:
+        class: Silex\Provider\UrlGeneratorServiceProvider
+
+    provider.validator:
+        class: Silex\Provider\ValidatorServiceProvider
+
+    provider.servicecontroller:
+        class: Silex\Provider\ServiceControllerServiceProvider
+
+    app:
+        class: Silex\Application
+        calls:
+            - [ register, [ @provider.urlgenerator ] ]
+            - [ register, [ @provider.validator ] ]
+            - [ register, [ @provider.servicecontroller ] ]
+
+    controller.web.error:
+        class: App\Controller\Web\ErrorController
+        arguments: [ @app, @twig ]
+        calls:
+            - [ setExceptionMessages, [ %exception.messages% ] ]
+
+    controller.web.index:
+        class: App\Controller\Web\IndexController
+        arguments: [ @app, @twig ]
+
+    controller.rest.error:
+        class: App\Controller\Api\ErrorController
+        arguments: [ @app, @twig ]
+        calls:
+            - [ setExceptionMessages, [ %exception.messages% ] ]
+
+    controller.rest.user:
+        class: App\Controller\Api\UserController
+        arguments: [ @app, @twig ]
+
+    router.rest:
+        class: Sympathy\Silex\Router\Rest
+        arguments: [ @app, @service_container ]
+
+    router.web:
+        class: Sympathy\Silex\Router\Web
+        arguments: [ @app, @service_container ]
+        calls:
+            - [ setTwig, [ @twig ] ]
+
+    router.error:
+        class: Sympathy\Silex\Router\Error
+        arguments: [ @app, @service_container ]
+        calls:
+            - [ setExceptionCodes, [ %exception.codes% ] ]
