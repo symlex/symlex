@@ -15,3 +15,5 @@ services:
     twig:
         class: Twig_Environment
         arguments: [ @twig.loader, %twig.options% ]
+        calls:
+            - [ addGlobal, [ 'debug', %app.debug% ] ]

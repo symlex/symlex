@@ -1,3 +1,7 @@
-<script type="text/javascript" src="/js/app.js"></script>
+{% if debug %}
+<script src="/bower_components/steal/steal.js?app/app.js"></script>
+{% else %}
+<script src="/bower_components/steal/steal.production.js?dist/bundles/app.js"></script>
+{% endif %}
 </body>
 </html>

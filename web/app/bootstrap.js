@@ -21,7 +21,7 @@
             page = 'index';
         }
 
-        $('#main').html(new can.view('/js/views/' + page + '.ejs', {}));
+        $('#main').html(new can.view('/app/views/' + page + '.ejs', {}));
     }
 
     $(window).bind('hashchange', hashchangeCallback);
