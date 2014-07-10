@@ -4,7 +4,7 @@ namespace App;
 
 use Sympathy\Bootstrap\App;
 
-class Console extends App
+class ConsoleApp extends App
 {
     public function __construct($appPath, $debug = false)
     {

@@ -3,8 +3,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Console;
+use App\ConsoleApp;
 
-$app = new Console (__DIR__);
+$app = new ConsoleApp (__DIR__);
 
 $app->run();

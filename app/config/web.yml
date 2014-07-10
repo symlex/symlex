@@ -7,6 +7,7 @@ parameters:
     exception.codes:
         InvalidArgumentException: 400
         Exception\NotFoundException: 404
+        Sympathy\Silex\Router\NotFoundException: 404
         Exception: 500
 
     exception.messages:
@@ -24,54 +25,25 @@ parameters:
         500: 'Looks like something went wrong!'
 
 services:
-    provider.urlgenerator:
-        class: Silex\Provider\UrlGeneratorServiceProvider
-
-    provider.validator:
-        class: Silex\Provider\ValidatorServiceProvider
-
-    provider.servicecontroller:
-        class: Silex\Provider\ServiceControllerServiceProvider
-
     app:
         class: Silex\Application
-        calls:
-            - [ register, [ @provider.urlgenerator ] ]
-            - [ register, [ @provider.validator ] ]
-            - [ register, [ @provider.servicecontroller ] ]
-
-    controller.web.error:
-        class: App\Controller\Web\ErrorController
-        arguments: [ @app, @twig ]
-        calls:
-            - [ setExceptionMessages, [ %exception.messages% ] ]
 
     controller.web.index:
-        class: App\Controller\Web\IndexController
+        class: App\Controller\IndexController
         arguments: [ @app, @twig ]
-
-    controller.rest.error:
-        class: App\Controller\Api\ErrorController
-        arguments: [ @app, @twig ]
-        calls:
-            - [ setExceptionMessages, [ %exception.messages% ] ]
 
     controller.rest.user:
-        class: App\Controller\Api\UserController
+        class: App\Rest\UserController
         arguments: [ @app, @twig ]
 
     router.rest:
-        class: Sympathy\Silex\Router\Rest
+        class: Sympathy\Silex\Router\RestRouter
         arguments: [ @app, @service_container ]
 
-    router.web:
-        class: Sympathy\Silex\Router\Web
-        arguments: [ @app, @service_container ]
-        calls:
-            - [ setTwig, [ @twig ] ]
+    router.twig:
+        class: Sympathy\Silex\Router\TwigRouter
+        arguments: [ @app, @service_container, @twig ]
 
     router.error:
-        class: Sympathy\Silex\Router\Error
-        arguments: [ @app, @service_container ]
-        calls:
-            - [ setExceptionCodes, [ %exception.codes% ] ]
+        class: Sympathy\Silex\Router\ErrorRouter
+        arguments: [ @app, @twig, %exception.codes%, %exception.messages%, %app.debug% ]

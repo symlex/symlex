@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Rest;
 
 use Component\Controller\AbstractController;
 
@@ -10,6 +10,6 @@ class UserController extends AbstractController
     {
         $result = array('id' => $id);
 
-        return $this->json($result);
+        return $result;
     }
 }

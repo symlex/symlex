@@ -4,7 +4,7 @@ namespace App;
 
 use Sympathy\Bootstrap\App;
 
-class Http extends App
+class HttpApp extends App
 {
     public function __construct($appPath, $debug = false)
     {
@@ -20,8 +20,8 @@ class Http extends App
 
         $container = $this->getContainer();
 
-        $container->get('router.web')->route();
-        $container->get('router.rest')->route();
         $container->get('router.error')->route();
+        $container->get('router.rest')->route('/api', 'controller.rest.');
+        $container->get('router.twig')->route('', 'controller.web.');
     }
 }
