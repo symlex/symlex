@@ -30,11 +30,9 @@ services:
 
     controller.web.index:
         class: App\Controller\IndexController
-        arguments: [ @app, @twig ]
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @app, @twig ]
 
     router.rest:
         class: Sympathy\Silex\Router\RestRouter

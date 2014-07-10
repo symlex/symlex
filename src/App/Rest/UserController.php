@@ -2,9 +2,7 @@
 
 namespace App\Rest;
 
-use Component\Controller\AbstractController;
-
-class UserController extends AbstractController
+class UserController
 {
     public function getAction($id)
     {

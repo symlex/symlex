@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use Component\Controller\AbstractController;
-
-class IndexController extends AbstractController
+class IndexController
 {
     public function indexAction()
     {
