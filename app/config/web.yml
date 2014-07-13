@@ -31,6 +31,9 @@ services:
     controller.web.index:
         class: App\Controller\IndexController
 
+    controller.web.session:
+        class: App\Controller\SessionController
+
     controller.rest.user:
         class: App\Rest\UserController
 
