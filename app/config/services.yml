@@ -8,3 +8,17 @@ services:
         arguments: ['main']
         calls:
             - [pushHandler, [@log.handler]]
+
+    db.driver:
+        class: Doctrine\DBAL\Driver\Mysqli\Driver
+
+    db:
+        class: Doctrine\DBAL\Connection
+        arguments:
+            - %db.options%
+            - @db.driver
+
+    model.user:
+        class: App\Model\User
+        scope: prototype
+        arguments: [@db]

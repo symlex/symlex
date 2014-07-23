@@ -1,4 +1,4 @@
-require(
+define(
     ['jquery', 'can'],
     function ($, can) {
 
@@ -12,5 +12,5 @@ require(
             }
         });
 
-        new NavigationController($("#navigation"));
+        return new NavigationController('#navigation');
     });

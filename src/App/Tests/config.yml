@@ -1,0 +1,27 @@
+parameters:
+    db.options:
+        driver: mysqli
+        host: '127.0.0.1'
+        dbname: 'silex'
+        user: 'silex'
+        password: 'silex'
+        port: ~
+        unix_socket: ~
+
+services:
+    db.driver:
+        class: Doctrine\DBAL\Driver\Mysqli\Driver
+
+    db:
+        class: TestTools\Doctrine\DBAL\Connection
+        arguments:
+            - %db.options%
+            - @db.driver
+        calls:
+            - [setFixturePrefix, ['sql']]
+            - [useFixtures, ["%fixture.path%"]]
+
+    model.user:
+        class: App\Model\User
+        scope: prototype
+        arguments: [@db]

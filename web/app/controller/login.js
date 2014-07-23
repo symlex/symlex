@@ -1,13 +1,9 @@
-require(
-    ['jquery', 'can'],
-    function ($, can) {
+define(
+    ['jquery', 'can', 'model/session'],
+    function ($, can, session) {
 
         var LoginController = can.Control.extend({
-            'submit': function (el, ev) {
-                ev.preventDefault();
-                alert('Login :-)');
-            }
         });
 
-        new LoginController($("#login"));
+        return new LoginController('#login');
     });
