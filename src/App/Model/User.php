@@ -32,7 +32,6 @@ class User extends DbModel
         }
 
         $user = $matchedUsers[0];
-
         if (crypt($password, $user->password) != $user->password) {
             throw new InvalidPasswordException ('Invalid password');
         }

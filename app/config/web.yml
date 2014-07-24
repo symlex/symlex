@@ -49,8 +49,10 @@ services:
         arguments: [ @app, @service_container ]
 
     router.twig:
-        class: Sympathy\Silex\Router\TwigRouter
+        class: App\Router\TwigRouter
         arguments: [ @app, @service_container, @twig ]
+        calls:
+            - [ setSession, [ @model.session ] ]
 
     router.error:
         class: Sympathy\Silex\Router\ErrorRouter

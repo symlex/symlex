@@ -5,18 +5,16 @@
     <form class="form-signin" role="form" id="login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         {% if error %}
-            <p class="text-danger">{{ error }}</p>
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
         {% endif %}
         <input type="email" class="form-control" placeholder="Email address" required="" autofocus="" name="email" value="{{ email }}">
         <input type="password" class="form-control" placeholder="Password" required="" name="password" value="{{ password }}">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 
 </div>
 
-{% include 'partials/footer.twig' %}
+</body>
+</html>

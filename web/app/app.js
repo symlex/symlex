@@ -1,11 +1,12 @@
 require.config({
     paths: {
         jquery: 'lib/jquery',
-        can: 'lib/can'
+        can: 'lib/can',
+        bootstrap: 'lib/bootstrap'
     }
 });
 
-require(['jquery', 'can', 'controller/navigation', 'controller/login'],
+require(['jquery', 'can', 'bootstrap', 'controller/navigation'],
     function ($, can) {
         var hashchangeCallback = function() {
             var page = location.hash.substr(1);

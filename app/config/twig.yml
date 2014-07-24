@@ -17,3 +17,5 @@ services:
         arguments: [ @twig.loader, %twig.options% ]
         calls:
             - [ addGlobal, [ 'debug', %app.debug% ] ]
+            - [ addGlobal, [ 'app_name', %app.name% ] ]
+            - [ addGlobal, [ 'app_version', %app.version% ] ]

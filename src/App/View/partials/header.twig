@@ -7,10 +7,19 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <title>Silex Boilerplate</title>
+    <title>{{ app_name }}</title>
 
     <link href="/app/css/bootstrap.css" rel="stylesheet">
     <link href="/app/css/app.css" rel="stylesheet">
+    <script>
+        var appConfig = {
+            csrf_token: "{{ csrf_token }}",
+            user_id: "{{ user_id }}",
+            firstname: "{{ firstname }}",
+            lastname: "{{ lastname }}",
+            admin: {{ is_admin }}
+        }
+    </script>
 </head>
 
 <body>

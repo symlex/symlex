@@ -18,6 +18,12 @@ class SessionController
     {
     }
 
+    public function logoutAction()
+    {
+        $this->session->logout();
+        return '/index/index';
+    }
+
     public function postLoginAction(Request $request)
     {
         $email = $request->get('email');
@@ -29,7 +35,7 @@ class SessionController
             $this->session->login($email, $password);
             return '/index/index';
         } catch (\Exception $e) {
-            $result['error'] = 'Invalid email or password';
+            $result['error'] = $e->getMessage();
         }
 
         return $result;
