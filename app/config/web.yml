@@ -6,7 +6,8 @@ imports:
 parameters:
     exception.codes:
         InvalidArgumentException: 400
-        Sympathy\Silex\Router\NotFoundException: 404
+        Sympathy\Silex\Router\Exception\NotFoundException: 404
+        Sympathy\Silex\Router\Exception\AccessDeniedException: 403
         Exception: 500
 
     exception.messages:
@@ -24,6 +25,9 @@ parameters:
         500: 'Looks like something went wrong!'
 
 services:
+    request:
+        class: Symfony\Component\HttpFoundation\Request
+
     session:
         class: Symfony\Component\HttpFoundation\Session\Session
 
@@ -43,10 +47,13 @@ services:
 
     controller.rest.user:
         class: App\Rest\UserController
+        arguments: [ @model.session, @model.user ]
 
     router.rest:
-        class: Sympathy\Silex\Router\RestRouter
+        class: App\Router\RestRouter
         arguments: [ @app, @service_container ]
+        calls:
+            - [ setSession, [ @model.session ] ]
 
     router.twig:
         class: App\Router\TwigRouter

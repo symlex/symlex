@@ -14,10 +14,11 @@
     <script>
         var appConfig = {
             csrf_token: "{{ csrf_token }}",
-            user_id: "{{ user_id }}",
+            user_id: {{ user_id ? user_id : 'null' }},
             firstname: "{{ firstname }}",
             lastname: "{{ lastname }}",
-            admin: {{ is_admin }}
+            anonymous: {{ is_anonymous ? 'true' : 'false' }},
+            admin: {{ is_admin ? 'true' : 'false' }}
         }
     </script>
 </head>

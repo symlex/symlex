@@ -2,17 +2,21 @@
 
 namespace App\Router;
 
-use App\Model\Session;
 use Sympathy\Silex\Router\TwigRouter as SympathyTwigRouter;
 
 class TwigRouter extends SympathyTwigRouter
 {
-    public function setSession(Session $session)
+    use SessionTrait;
+
+    protected function setTwigVariables($controller, $action)
     {
-        $this->twig->addGlobal('user_id', $session->getUserId());
-        $this->twig->addGlobal('csrf_token', $session->getCsrfToken());
-        $this->twig->addGlobal('firstname', $session->getUserFirstname());
-        $this->twig->addGlobal('lastname', $session->getUserLastname());
-        $this->twig->addGlobal('is_admin', $session->userIsAdmin());
+        parent::setTwigVariables($controller, $action);
+
+        $this->twig->addGlobal('user_id', $this->session->getUserId());
+        $this->twig->addGlobal('csrf_token', $this->session->getCsrfToken());
+        $this->twig->addGlobal('firstname', $this->session->getUserFirstname());
+        $this->twig->addGlobal('lastname', $this->session->getUserLastname());
+        $this->twig->addGlobal('is_admin', $this->session->isAdmin());
+        $this->twig->addGlobal('is_anonymous', $this->session->isAnonymous());
     }
 }

@@ -65,9 +65,18 @@ class Session
         return $result;
     }
 
-    public function userIsAdmin()
+    public function isAnonymous()
     {
-        $result = $this->user->hasId() ? $this->user->admin : 0;
-        return $result;
+        return !$this->user->hasId();
+    }
+
+    public function isUser()
+    {
+        return $this->user->hasId();
+    }
+
+    public function isAdmin()
+    {
+        return ($this->isUser() && $this->user->admin);
     }
 }
