@@ -2,7 +2,7 @@ define(
     ['jquery', 'can'],
     function ($, can) {
 
-        var NavigationController = can.Control.extend({
+        var controller = can.Control.extend({
             'ul a click': function (el, ev) {
                 el.parent().addClass('active').siblings().removeClass('active');
             },
@@ -12,5 +12,5 @@ define(
             }
         });
 
-        return new NavigationController('#navigation');
+        return controller;
     });

@@ -2,8 +2,8 @@ define(
     ['jquery', 'can'],
     function ($, can) {
 
-        var Session = can.Model.extend({
+        var model = can.Model.extend({
         });
 
-        return new Session();
+        return model;
     });

@@ -6,8 +6,8 @@ require.config({
     }
 });
 
-require(['jquery', 'can', 'bootstrap', 'controller/navigation'],
-    function ($, can) {
+require(['jquery', 'can', 'controller/navigation', 'controller/index', 'controller/profile', 'controller/users', 'can/view/ejs', 'bootstrap'],
+    function ($, can, navigation, index, profile, users) {
         var hashchangeCallback = function() {
             var page = location.hash.substr(1);
             var el = $('#main');
@@ -17,11 +17,23 @@ require(['jquery', 'can', 'bootstrap', 'controller/navigation'],
             }
 
             if(el.length) {
-                el.html(new can.view('/app/views/' + page + '.ejs', {}));
+                switch (page) {
+                    case 'index':
+                        new index (el);
+                        break;
+                    case 'profile':
+                        new profile (el);
+                        break;
+                    case 'users':
+                        new users (el);
+                        break;
+                }
             }
         }
 
         $(window).bind('hashchange', hashchangeCallback);
+
+        new navigation('#navigation');
 
         hashchangeCallback();
     }
