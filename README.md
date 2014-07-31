@@ -19,7 +19,7 @@ Setup
 
 Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation (you should consider using it for your own app to keep JS libraries up-to-date).
 
-After successful installation, you can use the email address "admin@example.com" (or user@example.com) and the password "passwd" to log in.
+After successful installation, you can use the email address admin@example.com (or user@example.com) and the password "passwd" to log in.
 
 History
 -------
@@ -33,7 +33,6 @@ A custom kernel is used to bootstrap the application. It's just about 150 lines 
 
 ```
 <?php
-
 namespace Sympathy\Bootstrap;
 
 class App
@@ -56,9 +55,7 @@ The base kernel class is extended by the application to customize it for the spe
 
 ```
 <?php
-
 namespace App;
-
 use Sympathy\Bootstrap\App;
 
 class ConsoleApp extends App
@@ -76,4 +73,16 @@ class ConsoleApp extends App
         parent::boot();
     }
 }
+```
+
+Creating a kernel instance and calling run() is enough to start the app (e.g. `app/console`):
+
+```
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\ConsoleApp;
+$app = new ConsoleApp (__DIR__);
+$app->run();
 ```
