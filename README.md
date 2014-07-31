@@ -31,6 +31,7 @@ Key Features
 ------------
 - Built on top of well documented standard components
 - Contains everything to create full-featured Web applications (Twig template engine, REST routing, dependency injection)
+- Clean configuration and bootstrap
 - Small code footprint
 - High performance
 
