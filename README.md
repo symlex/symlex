@@ -23,7 +23,7 @@ After successful installation, you can use the email address admin@example.com (
 
 History
 -------
-This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, since Symfony 2 felt too heavy for many of my projects, I didn't need bundles (http://symfony.com/doc/current/bundles/index.html) and I was looking for a solution to quickly build REST services with convention over configuration.
+This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because Symfony 2 felt too heavy for many of my projects, I didn't need bundles (http://symfony.com/doc/current/bundles/index.html) and I was looking for a solution to quickly build REST services with convention over configuration.
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
 
