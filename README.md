@@ -30,7 +30,7 @@ The only thing I wasn't happy with is Pimple, the dependency injection container
 Configuration
 -------------
 YAML files located in `app/config/` are used to configure the entire system:
-- `app/config/web.yml` is used to configure Web (HTTP) applications (bootstraped in web/app.php)
+- `app/config/web.yml` is used to configure Web (HTTP) applications (bootstrapped in web/app.php)
 - `app/config/console.yml` is used to configure command line applications (bootstrapped in app/console)
 
 Bootstrapping
