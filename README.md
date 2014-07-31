@@ -27,6 +27,13 @@ This project startet as a simple Silex boilerplate, since Silex itself doesn't c
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
 
+Key Features
+------------
+- Built on top of well documented standard components
+- Contains everything to create full-featured Web applications (Twig template engine, REST routing, dependency injection)
+- Small code footprint
+- High performance
+
 Configuration
 -------------
 YAML files located in `app/config/` are used to configure the entire system:
