@@ -136,6 +136,6 @@ Controllers
 -----------
 Just like with Symfony 2, you can use plain PHP classes to create controllers. REST and Web controller actions get the request instance passed as action parameter. It contains all request parameters and headers (see Symfony documentation).
 
-- **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filenames are matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
+- **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
 
 - **REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
