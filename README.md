@@ -92,3 +92,41 @@ use App\ConsoleApp;
 $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
+
+Routing
+-------
+Matching requests to controller actions is performed on convention instead of configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing):
+- `Sympathy\Silex\Router\RestRouter` for REST requests (JSON)
+- `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects output format)
+- `Sympathy\Silex\Router\TwigRouter` for rendering HTML pages using the Twig template engine
+
+The application's HTTP kernel class must initialize routing and can set optional URL/service name prefixes:
+```
+<?php
+namespace App;
+use Sympathy\Bootstrap\App;
+
+class HttpApp extends App
+{
+    public function __construct($appPath, $debug = false)
+    {
+        parent::__construct('web', $appPath, $debug);
+    }
+
+    public function boot () {
+        parent::boot();
+
+        $container = $this->getContainer();
+        $container->get('router.error')->route();
+        $container->get('router.rest')->route('/api', 'controller.rest.');
+        $container->get('router.twig')->route('', 'controller.web.');
+    }
+}
+```
+
+Examples (based on this routing configuration):
+- `GET /` will be routed to `controller.web.index` service's `indexAction(Request $request)`
+- `POST /session/login` will be routed to `controller.web.session` service's `postLoginAction(Request $request)`
+- `GET /api/user` will be routed to `controller.rest.user` service's `cgetAction(Request $request)`
+- `GET /api/user/123` will be routed to `controller.rest.user` service's `getAction($id, Request $request)`
+- `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
