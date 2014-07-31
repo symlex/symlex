@@ -6,8 +6,17 @@ plus Sympathy Components, which add routing and bootstrapping. Twitter Bootstrap
 
 **The goal of this project is to simplify Web app development by combining the best available components into a working  system.**
 
-After cloning this repository, you have to run composer to fetch external dependencies:
+Setup
+-----
 
-    composer update
+1. After cloning this repository, you have to run composer to fetch external dependencies:
 
-As with all Symfony applications, you have to configure your Web server to use the "web" directory as root path (a .htaccess file for Apache is included). Running "bower", the JavaScript equivalent to composer, is not required to simplify installation (you should consider using it for your own app to keep JS libraries up-to-date).
+        composer update
+
+2. As with all Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
+ 
+3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
+
+Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation (you should consider using it for your own app to keep JS libraries up-to-date).
+
+After successful installation, you can use the email address "admin@example.com" (or user@example.com) and the password "passwd" to log in.
