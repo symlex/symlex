@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" id="navigation" ng-controller="NavigationController">
+<div class="navbar navbar-default navbar-fixed-top" id="navigation" ng-controller="NavigationController">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -12,9 +12,9 @@
             {% if user_id %}
             <ul class="nav navbar-nav">
                 {% if is_admin %}
-                <li><a href="#/users">Users</a></li>
+                <li ng-class="{ active: isActive('/users')}"><a href="#/users">Users</a></li>
                 {% endif %}
-                <li><a href="#/profile/{{ user_id }}">Profile</a></li>
+                <li ng-class="{ active: isActive('/profile')}"><a href="#/profile/{{ user_id }}">Profile</a></li>
             </ul>
             <form id="logout" class="navbar-form login-form navbar-right" method="get" action="/session/logout">
                 <button type="submit" class="btn btn-success">Logout {{ firstname }}</button>

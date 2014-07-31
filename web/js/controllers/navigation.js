@@ -1,6 +1,9 @@
 define(['controllers/module'], function (controllers) {
     'use strict';
-    return controllers.controller('NavigationController', ['$scope', function ($scope) {
-        $scope.hello = function () { alert('Hello World!'); }
+    return controllers.controller('NavigationController', ['$scope', '$location', function ($scope, $location) {
+        $scope.isActive = function (viewLocation) {
+            var path = $location.path();
+            return path.indexOf(viewLocation) === 0;
+        };
     }]);
 });
