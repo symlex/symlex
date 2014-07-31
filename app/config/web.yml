@@ -6,8 +6,12 @@ imports:
 parameters:
     exception.codes:
         InvalidArgumentException: 400
-        Sympathy\Silex\Router\Exception\NotFoundException: 404
+        App\Exception\UnauthorizedException: 401
+        App\Exception\AccessDeniedException: 403
         Sympathy\Silex\Router\Exception\AccessDeniedException: 403
+        Sympathy\Silex\Router\Exception\NotFoundException: 404
+        Sympathy\Silex\Router\Exception\MethodNotAllowedException: 405
+        App\Exception\FormInvalidException: 409
         Exception: 500
 
     exception.messages:
@@ -47,7 +51,7 @@ services:
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @model.session, @model.user ]
+        arguments: [ @model.session, @model.user, @form.user ]
 
     router.rest:
         class: App\Router\RestRouter

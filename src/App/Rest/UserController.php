@@ -3,21 +3,27 @@
 namespace App\Rest;
 
 use App\Exception\AccessDeniedException;
+use App\Exception\FormInvalidException;
+use App\Exception\UnauthorizedException;
+use App\Form\UserForm;
 use App\Model\Session;
 use App\Model\User;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController
 {
     protected $session;
     protected $user;
+    protected $form;
 
-    public function __construct(Session $session, User $user)
+    public function __construct(Session $session, User $user, UserForm $form)
     {
         $this->session = $session;
         $this->user = $user;
+        $this->form = $form;
 
         if (!$this->session->isUser()) {
-            throw new AccessDeniedException ('User API can not be used anonymously');
+            throw new UnauthorizedException ('Please login or signup to continue');
         }
     }
 
@@ -56,5 +62,49 @@ class UserController
         $result = $this->sanitizeUserValues($this->user->getValues());
 
         return $result;
+    }
+
+    public function deleteAction($id)
+    {
+        if (!$this->session->isAdmin()) {
+            throw new AccessDeniedException('Users can not delete users');
+        }
+
+        $this->user->find($id)->delete();
+    }
+
+    public function putAction($id, Request $request)
+    {
+        if (!$this->session->isAdmin() && $id != $this->session->getUserId()) {
+            throw new AccessDeniedException('User ID does not match');
+        }
+
+        $this->user->find($id);
+        $this->form->setDefinedWritableValues($request->request->all())->validate();
+
+        if($this->form->hasErrors()) {
+            throw new FormInvalidException($this->form->getFirstError());
+        } else {
+            $this->user->update($this->form->getValues());
+        }
+
+        return $this->sanitizeUserValues($this->user->getValues());
+    }
+
+    public function postAction(Request $request)
+    {
+        if (!$this->session->isAdmin()) {
+            throw new AccessDeniedException('Users can not create new users');
+        }
+
+        $this->form->setDefinedWritableValues($request->request->all())->validate();
+
+        if($this->form->hasErrors()) {
+            throw new FormInvalidException($this->form->getFirstError());
+        } else {
+            $this->user->create($this->form->getValues());
+        }
+
+        return $this->sanitizeUserValues($this->user->getValues());
     }
 }

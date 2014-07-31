@@ -18,6 +18,35 @@ services:
             - %db.options%
             - @db.driver
 
+    message_selector:
+        class: Symfony\Component\Translation\MessageSelector
+
+    yaml_loader:
+        class: Symfony\Component\Translation\Loader\YamlFileLoader
+
+    array_loader:
+        class: Symfony\Component\Translation\Loader\ArrayLoader
+
+    translator:
+        class: Symfony\Component\Translation\Translator
+        arguments: ['de', @message_selector]
+        calls:
+          - [addLoader, ['yaml', @yaml_loader]]
+          - [addLoader, ['array', @array_loader]]
+          - [addResource, ['yaml', '%app.path%/l10n/de.yml', 'de']]
+          - [addResource, ['yaml', '%app.path%/l10n/en.yml', 'en']]
+
+    validator:
+        class: Sympathy\Form\Validator
+
+    form:
+        class: App\Form\Form
+        arguments: [@translator, @validator]
+
+    form.user:
+        class: App\Form\UserForm
+        arguments: [@translator, @validator]
+
     model.user:
         class: App\Model\User
         scope: prototype

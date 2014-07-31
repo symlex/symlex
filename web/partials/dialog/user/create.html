@@ -1,0 +1,30 @@
+<form role="form" autocomplete="off" name="user_form">
+    <div class="modal-header">
+        <h3 class="modal-title">Create User</h3>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group">
+            <label for="input-firstname">First Name</label>
+            <input type="text" class="form-control" id="input-firstname" ng-minlength="2" placeholder="First Name" ng-model="user.firstname">
+        </div>
+        <div class="form-group">
+            <label for="input-lastname">Last Name</label>
+            <input type="text" class="form-control" id="input-lastname" ng-minlength="2" placeholder="Last Name" ng-model="user.lastname">
+        </div>
+        <div class="form-group">
+            <label for="input-email">Email Address</label>
+            <input type="email" class="form-control" id="input-email" ng-minlength="3" placeholder="E-Mail" ng-model="user.email">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-checked="user.admin == 1" ng-model="user.admin"> Admin
+            </label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="create()" ng-disabled="user_form.$invalid">Create</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+
+</form>

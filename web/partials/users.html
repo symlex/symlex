@@ -1,0 +1,36 @@
+
+
+<div class="container">
+
+    <div class="jumbotron">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>E-Mail</th>
+                <th>Admin</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="user in users">
+                <td>{{user.user_id}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.admin == 1 ? 'Yes' : 'No' }}</td>
+                <td class="text-right">
+                    <button ng-if="user.user_id != 1" type="button" class="btn btn-danger btn-xs" ng-click="remove($index)">Delete</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(user)">Edit</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" ng-click="create()">Create User</button>
+    </div>
+
+</div>

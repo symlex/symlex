@@ -8,9 +8,9 @@ class TwigRouter extends SympathyTwigRouter
 {
     use SessionTrait;
 
-    protected function setTwigVariables($controller, $action)
+    protected function setTwigVariables($controller, $action, $isXmlHttpRequest)
     {
-        parent::setTwigVariables($controller, $action);
+        parent::setTwigVariables($controller, $action, $isXmlHttpRequest);
 
         $this->twig->addGlobal('user_id', $this->session->getUserId());
         $this->twig->addGlobal('csrf_token', $this->session->getCsrfToken());

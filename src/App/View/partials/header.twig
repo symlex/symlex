@@ -9,8 +9,8 @@
 
     <title>{{ app_name }}</title>
 
-    <link href="/app/css/bootstrap.css" rel="stylesheet">
-    <link href="/app/css/app.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+
     <script>
         var appConfig = {
             csrf_token: "{{ csrf_token }}",
@@ -19,8 +19,14 @@
             lastname: "{{ lastname }}",
             anonymous: {{ is_anonymous ? 'true' : 'false' }},
             admin: {{ is_admin ? 'true' : 'false' }}
-        }
+        };
     </script>
 </head>
 
 <body>
+
+{% verbatim %}
+<div id="alerts" ng-controller="AlertsController" class="ng-cloak">
+    <div ng-repeat="alert in alerts" class="alert" role="alert" ng-class="[alert.type]">{{ alert.msg }}</div>
+</div>
+{% endverbatim %}
