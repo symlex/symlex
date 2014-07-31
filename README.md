@@ -27,6 +27,12 @@ This project startet as a simple Silex boilerplate, since Silex itself doesn't c
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
 
+Configuration
+-------------
+YAML files located in `app/config/` are used to configure the entire system:
+- `app/config/web.yml` is used to configure Web (HTTP) applications (bootstraped in web/app.php)
+- `app/config/console.yml` is used to configure command line applications (bootstrapped in app/console)
+
 Bootstrapping
 -------------
 A custom kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
