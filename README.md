@@ -132,6 +132,10 @@ Examples (based on this routing configuration):
 - `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
 - `PUT /api/user/123/item/5` will be routed to `controller.rest.user` service's `putItemAction($id, $itemId, Request $request)`
 
+Difference to FOSRestBundle
+---------------------------
+As many other Symfony developers, I got experience implementing REST services with the FOSRestBundle (the "standard" solution). While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 99% of all projects, the same can be accomplished with 1% of effort. Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code together. You should use FOSRestBundle, if you need flexible response formats and complex routing - but for most projects, it is just a violation of the "Keep it simple, stupid" principle and doesn't make the application more "powerful" or more professional. If you don't trust my code, you can just have a look at it to understand the basics of Silex routing and code your own little class.
+
 Controllers
 -----------
 Just like with Symfony 2, you can use plain PHP classes to create controllers. REST and Web controller actions get the request instance passed as action parameter. It contains all request parameters and headers (see Symfony documentation).
