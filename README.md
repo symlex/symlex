@@ -134,7 +134,9 @@ Examples (based on this routing configuration):
 
 Difference to FOSRestBundle
 ---------------------------
-As many other Symfony developers, I got experience implementing REST services with the FOSRestBundle (the "standard" solution). While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 99% of all projects, the same can be accomplished with 1% of effort. Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code together. You should use FOSRestBundle, if you need flexible response formats and complex routing - but for most projects, it is just a violation of the "Keep it simple, stupid" principle and doesn't make the application more "powerful" or more professional. If you don't trust my code, you can just have a look at it to understand the basics of Silex routing and code your own little class.
+As many other Symfony developers, I got experience implementing REST services with the FOSRestBundle (basically the standard solution). While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 99% of all projects, the same can be accomplished with 1% of effort.
+
+Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You should use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional. If you still don't trust my code, you can have a look at it to understand the basics of Silex routing and code your own little class. It's really simple.
 
 Controllers
 -----------
