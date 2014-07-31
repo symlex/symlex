@@ -140,8 +140,8 @@ Just like with Symfony 2, you can use plain PHP classes to create controllers. R
 
 - **REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
 
-Unit Tests
-----------
+Tests
+-----
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
     app/phpunit
