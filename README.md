@@ -138,6 +138,10 @@ As many other Symfony developers, I got experience implementing REST services wi
 
 Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional. If you still don't trust my code, you can have a look at it to understand the basics of Silex routing and code your own little class. It's really simple.
 
+Performance
+-----------
+I haven't performed any extensive performance measurements yet, but it's obvious that framework performance mainly depends on the lines of code that have to be executed. In my development environment, simple GET requests - that fetch and return a couple of entities from the database - take about 80ms without any further optimization (no caching for depedency injection container). A similar request handled by Zend Framework 2 takes about 175ms. Symfony 2 might be a bit faster than Zend Framework 2.
+
 Controllers
 -----------
 Just like with Symfony 2, you can use plain PHP classes to create controllers. All controllers need to be added as service to `app/config/web.yml`:
