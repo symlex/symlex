@@ -148,6 +148,10 @@ Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/Sessi
 - **REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
+Models
+------
+Symlex isn't designed for any specific database abstraction layer or model library. The boilerplate examples are based on MySQL, Doctrine DBAL and straightforward DAO (data access object)/model classes, that are part of the Sympathy library. They implement the usual CRUD functionality (create, read, update, delete) and separte SQL from model code. I personally prefer this approch for my own projects, since I'm not a huge fan of ORM (object-relational mapping). It also depends on existing code and your performance expectations, which database technology and abstraction layer is right for you.
+
 Error Handling
 --------------
 Exceptions are automatically catched by Silex and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/web.yml`:
