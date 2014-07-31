@@ -7,6 +7,10 @@ body {
     background-color: #eee;
 }
 
+div#main {
+    margin: 20px;
+}
+
 .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
