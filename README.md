@@ -130,3 +130,4 @@ Examples (based on this routing configuration):
 - `GET /api/user` will be routed to `controller.rest.user` service's `cgetAction(Request $request)`
 - `GET /api/user/123` will be routed to `controller.rest.user` service's `getAction($id, Request $request)`
 - `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
+- `PUT /api/user/123/item/5` will be routed to `controller.rest.user` service's `putAddressAction($id, $itemId,  Request $request)`
