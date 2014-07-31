@@ -140,12 +140,22 @@ Both, the REST and Twig router classes used in this boilerplate, are less than 2
 
 Controllers
 -----------
-Just like with Symfony 2, you can use plain PHP classes to create controllers. REST and Web controller actions get the request instance passed as action parameter. It contains all request parameters and headers (see Symfony documentation).
+Just like with Symfony 2, you can use plain PHP classes to create controllers. All controllers need to be added as service to `app/config/web.yml`:
 
-- **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
+```
+    controller.rest.user:
+        class: App\Rest\UserController
+        arguments: [ @model.session, @model.user, @form.user ]
+```
+
+The routers pass on the request instance to each matched controller action as the last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
+
+**Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
+
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/SessionController.php
 
-- **REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
+**REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
+
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
 Models
