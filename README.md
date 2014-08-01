@@ -27,6 +27,14 @@ This project startet as a simple Silex boilerplate, since Silex itself doesn't c
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
 
+Key Features
+------------
+- Built on top of well documented standard components
+- Contains everything to create full-featured Web applications (Twig template engine, REST routing, dependency injection)
+- Clean configuration and bootstrap
+- Small code footprint
+- High performance
+
 Configuration
 -------------
 YAML files located in `app/config/` are used to configure the entire system:
@@ -57,7 +65,7 @@ class App
 }
 ```
 
-The base kernel class is extended by the application to customize it for the specific purpose (e.g. `src/App/ConsoleApp.php`):
+The kernel base class can be extended to customize it for a specific purpose (e.g. command line application):
 
 ```
 <?php
@@ -81,7 +89,7 @@ class ConsoleApp extends App
 }
 ```
 
-Creating a kernel instance and calling run() is enough to start the app (e.g. `app/console`):
+Creating a kernel instance and calling run() is enough to start the application (see `app/console` and `web/app.php`):
 
 ```
 #!/usr/bin/env php
@@ -138,14 +146,28 @@ As many other Symfony developers, I got experience implementing REST services wi
 
 Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional. If you still don't trust my code, you can have a look at it to understand the basics of Silex routing and code your own little class. It's really simple.
 
+Performance
+-----------
+I haven't performed any extensive performance measurements yet, but it's obvious that framework performance mainly depends on the lines of code that have to be executed. In my development environment, simple GET requests - that fetch and return a couple of entities from the database - take about 80ms without any further optimization (no caching for depedency injection container). A similar request handled by Zend Framework 2 takes about 175ms. Symfony 2 might be a bit faster than Zend Framework 2.
+
 Controllers
 -----------
-Just like with Symfony 2, you can use plain PHP classes to create controllers. REST and Web controller actions get the request instance passed as action parameter. It contains all request parameters and headers (see Symfony documentation).
+Just like with Symfony 2, you can use plain PHP classes to create controllers. All controllers need to be added as service to `app/config/web.yml`:
 
-- **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
+```
+    controller.rest.user:
+        class: App\Rest\UserController
+        arguments: [ @model.session, @model.user, @form.user ]
+```
+
+The routers pass on the request instance to each matched controller action as the last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
+
+**Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
+
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/SessionController.php
 
-- **REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
+**REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
+
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
 Models
