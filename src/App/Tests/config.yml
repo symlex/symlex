@@ -21,7 +21,14 @@ services:
             - [setFixturePrefix, ['sql']]
             - [useFixtures, ["%fixture.path%"]]
 
+    session:
+        class: App\Tests\Model\FakeSession
+
     model.user:
         class: App\Model\User
         scope: prototype
         arguments: [@db]
+
+    model.session:
+        class: App\Model\Session
+        arguments: [@session, @model.user]

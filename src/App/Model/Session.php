@@ -2,14 +2,14 @@
 
 namespace App\Model;
 
-use Symfony\Component\HttpFoundation\Session\Session as SessionHandler;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Session
 {
     protected $session;
     protected $user;
 
-    public function __construct(SessionHandler $session, User $user)
+    public function __construct(SessionInterface $session, User $user)
     {
         $this->session = $session;
         $this->user = $user;
