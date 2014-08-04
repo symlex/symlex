@@ -23,7 +23,7 @@
         "symfony/twig-bridge": "~2.3",
         "symfony/proxy-manager-bridge": "~2.3",
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
-        "PHPMailer/PHPMailer": "5.*",
+        "swiftmailer/swiftmailer": "5.*",
         "phpunit/phpunit": "3.7.*",
         "lastzero/test-tools": "dev-master",
         "lastzero/sympathy": "dev-master"
