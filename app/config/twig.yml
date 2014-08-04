@@ -19,3 +19,4 @@ services:
             - [ addGlobal, [ 'debug', %app.debug% ] ]
             - [ addGlobal, [ 'app_name', %app.name% ] ]
             - [ addGlobal, [ 'app_version', %app.version% ] ]
+            - [ addGlobal, [ 'app_url', %app.url% ] ]

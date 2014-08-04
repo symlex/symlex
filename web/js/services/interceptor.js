@@ -28,7 +28,7 @@ define(['services/module', 'services/alert'], function (services) {
                 }
 
                 if (response.status == 401) {
-                    $location.path('/session/login');
+                    $location.path('/auth/login');
                 }
 
                 return $q.reject(response);

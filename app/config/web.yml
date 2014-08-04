@@ -6,6 +6,7 @@ imports:
 parameters:
     exception.codes:
         InvalidArgumentException: 400
+        Sympathy\Db\NotFoundException: 404
         App\Exception\UnauthorizedException: 401
         App\Exception\AccessDeniedException: 403
         Sympathy\Silex\Router\Exception\AccessDeniedException: 403
@@ -45,13 +46,13 @@ services:
     controller.web.index:
         class: App\Controller\IndexController
 
-    controller.web.session:
-        class: App\Controller\SessionController
-        arguments: [@model.session]
+    controller.web.auth:
+        class: App\Controller\AuthController
+        arguments: [ @model.session, @model.user, @model.mail ]
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @model.session, @model.user, @form.user ]
+        arguments: [ @model.session, @model.user, @form.user, @model.mail ]
 
     router.rest:
         class: App\Router\RestRouter

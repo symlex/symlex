@@ -1,0 +1,38 @@
+services:
+  mailer:
+    class: 'Swift_Mailer'
+    arguments: [ @mailer_transport ]
+
+  mailer_transport:
+    class: 'Swift_Transport_EsmtpTransport'
+    arguments: [ @mailer_buffer, [ @mailer_authhandler ], @mailer_eventdispatcher ]
+    calls:
+      - [ setHost, [ %mailer.host% ] ]
+      - [ setPort, [ %mailer.port% ] ]
+      - [ setEncryption, [ %mailer.encryption% ] ]
+      - [ setUsername, [ %mailer.username% ] ]
+      - [ setPassword, [ %mailer.password% ] ]
+      - [ setAuthMode, [ %mailer.auth_mode% ] ]
+
+  mailer_buffer:
+    class: 'Swift_Transport_StreamBuffer'
+    arguments: [ @mailer_streamfilter_factory ]
+
+  mailer_streamfilter_factory:
+    class: 'Swift_StreamFilters_StringReplacementFilterFactory'
+
+  mailer_authhandler:
+    class: 'Swift_Transport_Esmtp_AuthHandler'
+    arguments: [ [ @mailer_auth_cram, @mailer_auth_loginauth, @mailer_auth_plain ] ]
+
+  mailer_auth_cram:
+    class: 'Swift_Transport_Esmtp_Auth_CramMd5Authenticator'
+
+  mailer_auth_loginauth:
+    class: 'Swift_Transport_Esmtp_Auth_LoginAuthenticator'
+
+  mailer_auth_plain:
+    class: 'Swift_Transport_Esmtp_Auth_PlainAuthenticator'
+
+  mailer_eventdispatcher:
+    class: 'Swift_Events_SimpleEventDispatcher'

@@ -4,17 +4,17 @@ define(['controllers/module'], function (controllers) {
         $scope.user = user;
 
         $scope.update = function () {
-            this.user.$update(function () {
+            $scope.user.$update(function () {
                 Alert.success('User successfully updated');
             });
             $modalInstance.close();
         }
 
         $scope.create = function () {
-            this.user.$save(function () {
+            $scope.user.$save(function () {
                 Alert.success('User successfully created');
+                $modalInstance.close($scope.user);
             });
-            $modalInstance.close(this.user);
         }
 
         $scope.cancel = function () {

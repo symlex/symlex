@@ -5,7 +5,9 @@ namespace App\Rest;
 use App\Exception\AccessDeniedException;
 use App\Exception\FormInvalidException;
 use App\Exception\UnauthorizedException;
+use App\Exception\InvalidArgumentException;
 use App\Form\UserForm;
+use App\Model\Mail;
 use App\Model\Session;
 use App\Model\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,12 +17,14 @@ class UserController
     protected $session;
     protected $user;
     protected $form;
+    protected $mail;
 
-    public function __construct(Session $session, User $user, UserForm $form)
+    public function __construct(Session $session, User $user, UserForm $form, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;
         $this->form = $form;
+        $this->mail = $mail;
 
         if (!$this->session->isUser()) {
             throw new UnauthorizedException ('Please login or signup to continue');
@@ -103,8 +107,28 @@ class UserController
             throw new FormInvalidException($this->form->getFirstError());
         } else {
             $this->user->create($this->form->getValues());
+            $this->mail->newUser($this->user);
         }
 
         return $this->sanitizeUserValues($this->user->getValues());
     }
+
+    public function putPasswordAction($id, Request $request)
+    {
+        if ($id != $this->session->getUserId()) {
+            throw new AccessDeniedException('User ID does not match');
+        }
+
+        $this->user->find($id);
+
+        $password = $request->get('password');
+        $new_password = $request->get('new_password');
+
+        if ($this->user->passwordIsValid($this->user->password, $password)) {
+            $this->user->updatePassword($new_password);
+        } else {
+            throw new InvalidArgumentException('Old password is invalid');
+        }
+    }
+
 }

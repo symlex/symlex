@@ -1,8 +1,15 @@
 imports:
     - { resource: parameters.yml }
     - { resource: services.yml }
+    - { resource: twig.yml }
 
 services:
+    command.sendnewpassword:
+        class: App\Command\PasswordResetCommand
+        arguments: [ 'reset-password', @model.mail, @model.user, @twig ]
+
     app:
         class: Symfony\Component\Console\Application
         arguments: [%app.name%, %app.version%]
+        calls:
+            - [ add, [ @command.sendnewpassword ] ]

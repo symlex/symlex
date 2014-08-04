@@ -1,0 +1,28 @@
+{% include 'partials/header.twig' %}
+
+<div class="container">
+    <form id="reset-password" class="form-reset-password" role="form" method="post" action="/auth/reset">
+        <h2 class="form-signin-heading">Reset Password</h2>
+
+        {% if error %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+        {% endif %}
+
+        <p>Please enter the email address for your account. A verification code will be sent to you. Once you have received the verification code, you will be able to choose a new password for your account.</p>
+
+        {% if success %}
+            <div class="alert alert-success" role="alert">Please check your emails</div>
+        {% else %}
+        <div class="form-group">
+            <input type="email" class="form-control input-lg" placeholder="E-Mail" required="required" name="email" value="{{ email }}">
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+        {% endif %}
+    </form>
+</div>
+
+</body>
+</html>

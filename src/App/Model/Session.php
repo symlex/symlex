@@ -25,7 +25,10 @@ class Session
 
     public function login($email, $password)
     {
-        $this->user->findByCredentials($email, $password);
+        $user = $this->user->findByCredentials($email, $password);
+        $user->deletePasswordResetToken();
+
+        $this->user = $user;
 
         $this->session->set('user_id', $this->user->getId());
         $this->session->set('csrf_token', $this->generateToken());

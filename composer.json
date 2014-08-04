@@ -4,7 +4,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "silex/silex": "~1.1",
+        "silex/silex": "~1.2",
         "symfony/browser-kit": "~2.3",
         "symfony/console": "~2.3",
         "symfony/config": "~2.3",
@@ -23,7 +23,7 @@
         "symfony/twig-bridge": "~2.3",
         "symfony/proxy-manager-bridge": "~2.3",
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
-        "swiftmailer/swiftmailer": "5.*",
+        "PHPMailer/PHPMailer": "5.*",
         "phpunit/phpunit": "3.7.*",
         "lastzero/test-tools": "dev-master",
         "lastzero/sympathy": "dev-master"

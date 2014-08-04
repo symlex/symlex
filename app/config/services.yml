@@ -1,13 +1,16 @@
+imports:
+    - { resource: mailer.yml }
+
 services:
     log.handler:
         class: Monolog\Handler\StreamHandler
-        arguments: ['%app.log_path%/%app.environment%.log']
+        arguments: [ '%app.log_path%/%app.environment%.log' ]
 
     log:
         class: Monolog\Logger
-        arguments: ['main']
+        arguments: [ 'main' ]
         calls:
-            - [pushHandler, [@log.handler]]
+            - [ pushHandler, [@log.handler] ]
 
     db.driver:
         class: Doctrine\DBAL\Driver\Mysqli\Driver
@@ -31,23 +34,28 @@ services:
         class: Symfony\Component\Translation\Translator
         arguments: ['de', @message_selector]
         calls:
-          - [addLoader, ['yaml', @yaml_loader]]
-          - [addLoader, ['array', @array_loader]]
-          - [addResource, ['yaml', '%app.path%/l10n/de.yml', 'de']]
-          - [addResource, ['yaml', '%app.path%/l10n/en.yml', 'en']]
+          - [ addLoader, ['yaml', @yaml_loader] ]
+          - [ addLoader, ['array', @array_loader]]
+          - [ addResource, ['yaml', '%app.path%/l10n/de.yml', 'de'] ]
+          - [ addResource, ['yaml', '%app.path%/l10n/en.yml', 'en'] ]
 
     validator:
         class: Sympathy\Form\Validator
 
     form:
         class: App\Form\Form
-        arguments: [@translator, @validator]
+        arguments: [ @translator, @validator ]
 
     form.user:
         class: App\Form\UserForm
-        arguments: [@translator, @validator]
+        arguments: [ @translator, @validator ]
 
     model.user:
         class: App\Model\User
         scope: prototype
-        arguments: [@db]
+        arguments: [ @db ]
+
+    model.mail:
+        class: App\Model\Mail
+        scope: prototype
+        arguments: [ @mailer, @twig, { %app.email%: %app.name%} ]
