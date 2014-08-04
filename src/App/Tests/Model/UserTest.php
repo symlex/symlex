@@ -29,11 +29,11 @@ class UserTest extends UnitTestCase
 
         $this->assertInstanceOf('\App\Model\User', $result);
 
-        $this->assertEquals(1, $this->model->getId());
-        $this->assertEquals(1, $this->model->admin);
-        $this->assertEquals('Admin', $this->model->firstname);
-        $this->assertEquals('Silex', $this->model->lastname);
-        $this->assertEquals('admin@example.com', $this->model->email);
+        $this->assertEquals(1, $result->getId());
+        $this->assertEquals(1, $result->admin);
+        $this->assertEquals('Admin', $result->firstname);
+        $this->assertEquals('Silex', $result->lastname);
+        $this->assertEquals('admin@example.com', $result->email);
     }
 
     /**
@@ -57,23 +57,22 @@ class UserTest extends UnitTestCase
         $this->model->password;
     }
 
-    public function testSetPassword() {
+    /**
+     * @expectedException \App\Exception\InvalidArgumentException
+     */
+    public function testInsecurePassword() {
         $password = 'fooBar';
 
-        $this->model->setPassword($password);
+        $this->model->find(2);
 
-        $this->assertRegExp('/[\/\$a-zA-Z0-9]+/', $this->model->password);
-
-        $this->assertEquals(crypt($password, $this->model->password), $this->model->password);
+        $this->model->updatePassword($password);
     }
 
-    public function testSetEmptyPassword()
+    public function testAdminUser()
     {
-        $this->model->findByCredentials('admin@example.com', 'passwd');
+        $user = $this->model->findByCredentials('admin@example.com', 'passwd');
 
         $expected = '$6$5ygXjBO2gNbW$p1eaS7isBLD1JfN6PaQzrGKJHf9UGmUOBCZiqq3VnhDSPhdbIzOnu3kbKO2mcKEFiD11jFoPE5YSyvA7cYbbK1';
-        $this->assertEquals($expected, $this->model->password);
-        $this->model->setPassword('');
-        $this->assertEquals($expected, $this->model->password);
+        $this->assertEquals($expected, $user->password);
     }
 }
