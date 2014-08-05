@@ -2,9 +2,9 @@
 @import url("angular-motion.css");
 
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #eee;
+    padding: 70px 40px 40px 40px;
+    color: #333;
+    background-color: #fff;
 }
 
 div#main {
