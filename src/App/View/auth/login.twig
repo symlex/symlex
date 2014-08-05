@@ -19,9 +19,9 @@
                 <strong>{{ error }}</strong>
             </div>
         {% endif %}
-        <input type="email" class="form-control" placeholder="Email address" required="required" autofocus="" name="email" value="{{ email }}" ng-model="email">
-        <input type="password" class="form-control" placeholder="Password" required=required"" name="password" ng-model="password">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="login_form.$invalid">Sign in</button>
+        <input type="email" class="form-control" placeholder="Email address" required="required" autofocus="" name="email" value="{{ email }}">
+        <input type="password" class="form-control" placeholder="Password" required=required"" name="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <p class="text-center">
             <a href="/auth/reset">Forgot your Password?</a>
         </p>
