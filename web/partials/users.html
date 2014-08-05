@@ -17,7 +17,7 @@
         <td>{{user.lastname}}</td>
         <td>{{user.email}}</td>
         <td>{{user.admin == 1 ? 'Yes' : 'No' }}</td>
-        <td class="text-right">
+        <td class="text-right action-col">
             <button ng-if="user.user_id != 1" type="button" class="btn btn-danger btn-xs" confirmed-click-action="remove($index)" ng-confirm-click>
                 Delete
             </button>

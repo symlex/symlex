@@ -65,6 +65,14 @@ div#main {
     border-top-right-radius: 0;
 }
 
+table tr .btn-danger {
+    visibility: hidden;
+}
+
+table tr:hover .btn-danger {
+    visibility: visible;
+}
+
 /*!
  * angular-loading-bar v0.5.0
  * https://chieffancypants.github.io/angular-loading-bar
