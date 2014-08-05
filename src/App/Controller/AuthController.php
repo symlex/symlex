@@ -22,6 +22,7 @@ class AuthController
 
     public function loginAction()
     {
+        return array('page_name' => 'Login');
     }
 
     public function postLoginAction(Request $request)
@@ -29,7 +30,7 @@ class AuthController
         $email = $request->get('email');
         $password = $request->get('password');
 
-        $result = array('email' => $email, 'error' => '');
+        $result = array('email' => $email, 'error' => '', 'page_name' => 'Login');
 
         try {
             $this->session->login($email, $password);
@@ -43,7 +44,7 @@ class AuthController
 
     public function resetAction()
     {
-        return array('email' => '', 'error' => false, 'success' => false);
+        return array('email' => '', 'error' => false, 'success' => false, 'page_name' => 'Reset Password');
     }
 
     public function postResetAction(Request $request)
@@ -72,7 +73,7 @@ class AuthController
 
         $this->user->findByPasswordResetToken($token);
 
-        return array('token' => $token);
+        return array('token' => $token, 'page_name' => 'Reset Password');
     }
 
     public function postPasswordAction($token, Request $request)

@@ -12,9 +12,9 @@
             {% if user_id %}
             <ul class="nav navbar-nav">
                 {% if is_admin %}
-                <li ng-class="{ active: isActive('/users')}"><a href="#/users">Users</a></li>
+                <li ng-class="{ active: isActive('/users')}"><a href="{{ app_url }}#/users">Users</a></li>
                 {% endif %}
-                <li ng-class="{ active: isActive('/profile')}"><a href="#/profile/{{ user_id }}">Profile</a></li>
+                <li ng-class="{ active: isActive('/profile')}"><a href="{{ app_url }}#/profile/{{ user_id }}">Profile</a></li>
             </ul>
             <form id="logout" class="navbar-form login-form navbar-right" method="get" action="/auth/logout">
                 <button type="submit" class="btn btn-success">Logout {{ firstname }}</button>
