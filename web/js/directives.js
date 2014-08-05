@@ -1,4 +1,5 @@
 define([
-    'directives/match'
+    'directives/match',
+    'directives/confirm'
 ], function () {
 });

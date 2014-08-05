@@ -10,15 +10,19 @@ define(['controllers/module'], function (controllers) {
             $scope.users.splice(index, 1);
         }
 
-        $scope.edit = function (user) {
-            $modal.open({
+        $scope.edit = function (index) {
+            var modalInstance = $modal.open({
                 templateUrl: '/partials/dialog/user/edit.html',
                 controller: 'UserController',
                 resolve: {
                     user: function () {
-                        return user;
+                        return angular.copy($scope.users[index]);
                     }
                 }
+            });
+
+            modalInstance.result.then(function (editedUser) {
+                $scope.users[index] = editedUser;
             });
         }
 

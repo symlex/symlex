@@ -18,10 +18,10 @@
         <td>{{user.email}}</td>
         <td>{{user.admin == 1 ? 'Yes' : 'No' }}</td>
         <td class="text-right">
-            <button ng-if="user.user_id != 1" type="button" class="btn btn-danger btn-xs" ng-click="remove($index)">
+            <button ng-if="user.user_id != 1" type="button" class="btn btn-danger btn-xs" confirmed-click-action="remove($index)" ng-confirm-click>
                 Delete
             </button>
-            <button type="button" class="btn btn-primary btn-xs" ng-click="edit(user)">Edit</button>
+            <button type="button" class="btn btn-primary btn-xs" ng-click="edit($index)">Edit</button>
         </td>
     </tr>
 
