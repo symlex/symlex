@@ -24,6 +24,23 @@ class AuthController
     {
     }
 
+    public function postLoginAction(Request $request)
+    {
+        $email = $request->get('email');
+        $password = $request->get('password');
+
+        $result = array('email' => $email, 'error' => '');
+
+        try {
+            $this->session->login($email, $password);
+            return '/index/index';
+        } catch (\Exception $e) {
+            $result['error'] = $e->getMessage();
+        }
+
+        return $result;
+    }
+
     public function resetAction()
     {
         return array('email' => '', 'error' => false, 'success' => false);
@@ -88,22 +105,5 @@ class AuthController
     {
         $this->session->logout();
         return '/index/index';
-    }
-
-    public function postLoginAction(Request $request)
-    {
-        $email = $request->get('email');
-        $password = $request->get('password');
-
-        $result = array('email' => $email, 'password' => $password, 'error' => '');
-
-        try {
-            $this->session->login($email, $password);
-            return '/index/index';
-        } catch (\Exception $e) {
-            $result['error'] = $e->getMessage();
-        }
-
-        return $result;
     }
 }

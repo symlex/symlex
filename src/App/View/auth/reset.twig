@@ -1,7 +1,8 @@
 {% include 'partials/header.twig' %}
+{% include 'partials/nav.twig' %}
 
 <div class="container">
-    <form id="reset-password" class="form-reset-password" role="form" method="post" action="/auth/reset">
+    <form id="reset-password" class="form-reset-password" role="form" method="post" name="reset_form" action="/auth/reset">
         <h2 class="form-signin-heading">Reset Password</h2>
 
         {% if error %}
@@ -16,13 +17,12 @@
             <div class="alert alert-success" role="alert">Please check your emails</div>
         {% else %}
         <div class="form-group">
-            <input type="email" class="form-control input-lg" placeholder="E-Mail" required="required" name="email" value="{{ email }}">
+            <input type="email" class="form-control input-lg" placeholder="Email" required="required" name="email" value="{{ email }}" ng-model="email">
         </div>
 
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="reset_form.$invalid">Submit</button>
         {% endif %}
     </form>
 </div>
 
-</body>
-</html>
+{% include 'partials/footer.twig' %}

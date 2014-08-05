@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/home">{{ app_name }}</a>
+            <a class="navbar-brand" href="{{ app_url }}#/home">{{ app_name }}</a>
         </div>
         <div class="navbar-collapse collapse">
             {% if user_id %}
@@ -20,14 +20,14 @@
                 <button type="submit" class="btn btn-success">Logout {{ firstname }}</button>
             </form>
             {% else %}
-            <form id="login" class="navbar-form login-form navbar-right" method="post" action="/auth/login">
+            <form id="login" class="navbar-form login-form navbar-right" method="post" name="header_login_form" action="/auth/login">
                 <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control" name="email" required="">
+                    <input type="text" placeholder="Email" class="form-control" name="email" required="required" ng-model="email">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control" name="password" required="">
+                    <input type="password" placeholder="Password" class="form-control" name="password" required="required" ng-model="password">
                 </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
+                <button type="submit" class="btn btn-success" ng-disabled="header_login_form.$invalid">Sign in</button>
             </form>
             {% endif %}
         </div><!--/.navbar-collapse -->

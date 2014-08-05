@@ -1,4 +1,5 @@
 {% include 'partials/header.twig' %}
+{% include 'partials/nav.twig' %}
 
 <div class="container">
 
@@ -11,16 +12,16 @@
 
     {% else %}
 
-    <form class="form-signin" role="form" id="login" method="post">
+    <form class="form-signin" role="form" id="login" method="post" name="login_form" action="/auth/login">
         <h2 class="form-signin-heading">Please sign in</h2>
         {% if error %}
             <div class="alert alert-danger">
                 <strong>{{ error }}</strong>
             </div>
         {% endif %}
-        <input type="email" class="form-control" placeholder="Email address" required="" autofocus="" name="email" value="{{ email }}">
-        <input type="password" class="form-control" placeholder="Password" required="" name="password" value="{{ password }}">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input type="email" class="form-control" placeholder="Email address" required="required" autofocus="" name="email" value="{{ email }}" ng-model="email">
+        <input type="password" class="form-control" placeholder="Password" required=required"" name="password" ng-model="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="login_form.$invalid">Sign in</button>
         <p class="text-center">
             <a href="/auth/reset">Forgot your Password?</a>
         </p>
@@ -30,5 +31,4 @@
 
 </div>
 
-</body>
-</html>
+{% include 'partials/footer.twig' %}
