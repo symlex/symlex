@@ -17,13 +17,16 @@
             user_id: {{ user_id ? user_id : 'null' }},
             firstname: "{{ firstname }}",
             lastname: "{{ lastname }}",
+            app_name: "{{ app_name }}",
+            app_version: "{{ app_version }}",
+            debug: {{ debug ? 'true' : 'false' }},
             anonymous: {{ is_anonymous ? 'true' : 'false' }},
             admin: {{ is_admin ? 'true' : 'false' }}
         };
     </script>
 </head>
 
-<body>
+<body ng-controller="MainController">
 
 {% verbatim %}
 <div id="alerts" ng-controller="AlertsController" class="ng-cloak">
