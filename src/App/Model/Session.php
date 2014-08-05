@@ -21,6 +21,10 @@ class Session
         if($userId) {
             $this->user->find($userId);
         }
+
+        if(!$this->session->has('csrf_token')) {
+            $this->session->set('csrf_token', $this->generateToken());
+        }
     }
 
     public function login($email, $password)
@@ -31,7 +35,6 @@ class Session
         $this->user = $user;
 
         $this->session->set('user_id', $this->user->getId());
-        $this->session->set('csrf_token', $this->generateToken());
     }
 
     public function logout()

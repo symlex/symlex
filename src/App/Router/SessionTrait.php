@@ -16,10 +16,15 @@ trait SessionTrait
 
         // Automatic CSRF protection for POST/DELETE/PUT requests
         if($method != 'GET') {
-            $actualToken = $request->headers->get('X-CSRF-Token');
+            $receivedToken = $request->headers->get('X-CSRF-Token');
+
+            if(!$receivedToken) {
+                $receivedToken = $request->get('csrf_token');
+            }
+
             $expectedToken = $session->getCsrfToken();
 
-            if($actualToken != $expectedToken) {
+            if($receivedToken != $expectedToken) {
                 $session->logout();
                 return false;
             }
