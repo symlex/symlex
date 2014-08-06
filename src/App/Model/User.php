@@ -26,13 +26,25 @@ class User extends DbModel
         }
 
         $cost = 6500;
-        $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+        $salt = strtr(base64_encode($this->getSalt()), '+', '.');
         $salt = '$6$rounds=' . $cost . '$' . $salt . '$'; // SHA-512 (6500 rounds)
 
         $hash = crypt($password, $salt);
 
         $this->getDao()->password = $hash;
         $this->getDao()->update();
+    }
+
+    protected function getSalt ($size = 16) {
+        if(function_exists('mcrypt_create_iv')) {
+            return mcrypt_create_iv($size, MCRYPT_DEV_URANDOM);
+        }
+
+        if(function_exists('openssl_random_pseudo_bytes')) {
+            return openssl_random_pseudo_bytes($size);
+        }
+
+        throw new EnvironmentException ('mcrypt or openssl extension required');
     }
 
     public function findByPasswordResetToken($token)
