@@ -19,7 +19,7 @@ class SessionTest extends UnitTestCase
     public function testLogin()
     {
         $this->assertNull($this->model->getUserId());
-        $this->assertEquals(0, strlen($this->model->getCsrfToken()));
+        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $this->model->getCsrfToken());
 
         $this->model->login('admin@example.com', 'passwd');
 
