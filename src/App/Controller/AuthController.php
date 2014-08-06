@@ -69,8 +69,6 @@ class AuthController
 
     public function passwordAction($token)
     {
-        $this->session->logout();
-
         $this->user->findByPasswordResetToken($token);
 
         return array('token' => $token, 'page_name' => 'Reset Password');
@@ -79,8 +77,6 @@ class AuthController
     public function postPasswordAction($token, Request $request)
     {
         $error = false;
-
-        $this->session->logout();
 
         try {
             $user = $this->user->findByPasswordResetToken($token);
@@ -91,6 +87,7 @@ class AuthController
             if ($password == $password_confirm) {
                 $user->updatePassword($password);
                 $user->deletePasswordResetToken();
+                $this->session->logout();
                 return '/auth/login';
             } else {
                 $error = 'Passwords do not match';

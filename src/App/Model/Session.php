@@ -22,6 +22,10 @@ class Session
             $this->user->find($userId);
         }
 
+        $this->initCsrfToken();
+    }
+
+    public function initCsrfToken () {
         if(!$this->session->has('csrf_token')) {
             $this->session->set('csrf_token', $this->generateToken());
         }
@@ -41,6 +45,7 @@ class Session
     {
         $this->session->clear();
         $this->user = $this->user->factory();
+        $this->initCsrfToken();
     }
 
     public function generateToken()
