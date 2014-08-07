@@ -26,7 +26,7 @@ class User extends DbModel
         }
 
         $cost = 6500;
-        $salt = strtr(base64_encode($this->getSalt()), '+', '.');
+        $salt = strtr(base64_encode($this->getRandomBytes(16)), '+', '.');
         $salt = '$6$rounds=' . $cost . '$' . $salt . '$'; // SHA-512 (6500 rounds)
 
         $hash = crypt($password, $salt);
@@ -35,7 +35,7 @@ class User extends DbModel
         $this->getDao()->update();
     }
 
-    protected function getSalt ($size = 16) {
+    protected function getRandomBytes ($size) {
         if(function_exists('mcrypt_create_iv')) {
             return mcrypt_create_iv($size, MCRYPT_DEV_URANDOM);
         }
@@ -71,7 +71,7 @@ class User extends DbModel
 
     public function getPasswordResetToken()
     {
-        $token = sha1(openssl_random_pseudo_bytes(32));
+        $token = sha1($this->getRandomBytes(32));
 
         $this->getDao()->password_reset_token = $token;
         $this->getDao()->update();
