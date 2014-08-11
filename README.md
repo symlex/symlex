@@ -111,8 +111,8 @@ Routing
 -------
 Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing):
 - `Sympathy\Silex\Router\RestRouter` for REST requests (JSON)
-- `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects output format)
-- `Sympathy\Silex\Router\TwigRouter` for rendering HTML pages using the Twig template engine
+- `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects response format: HTML or JSON)
+- `Sympathy\Silex\Router\TwigRouter` for rendering Twig templates (HTML)
 
 The application's HTTP kernel class must initialize routing and can set optional URL/service name prefixes:
 ```
