@@ -188,18 +188,18 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
             ..
         
             public function cgetAction()
-            {} // [GET] /users
+            {} // [GET] /user
         
             public function postAction()
-            {} // [POST] /users
+            {} // [POST] /user
 
             public function getAction($id)
-            {} // [GET] /users/{id}
+            {} // [GET] /user/{id}
             
         
             ..
             public function getCommentsAction($id)
-            {} // [GET] /users/{id}/comments
+            {} // [GET] /user/{id}/comments
         
             ..
         }
