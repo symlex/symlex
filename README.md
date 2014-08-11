@@ -4,9 +4,9 @@ Symlex - Symfony 2 blended with Silex
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 
 This ready-to-use boilerplate app is built on Silex, Symfony Components (for dependency injection instead of Pimple)
-plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and simple user management). You can use the back-end with any JavaScript library and REST client or to output static HTML/XML. Symlex also supports command line applications.
+plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and simple user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. Command line applications are supported as well.
 
-**The goal of this project is to simplify Web app development by combining the best available components into a working  system.**
+**The goal of this project is to simplify Web app development by combining Silex and Symfony Components into a working  system that favors convention over configuration.**
 
 Setup
 -----
@@ -25,9 +25,13 @@ After successful installation, you can use the email address admin@example.com (
 
 History
 -------
-This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because Symfony 2 felt too heavy for many of my projects, I didn't need bundles (http://symfony.com/doc/current/bundles/index.html) and I was looking for a solution to quickly build REST services with convention over configuration.
+This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because 
 
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
+- Symfony 2 feels too complex for most of my applications: Most key features are actually contained in Symfony Components and don't depend on the Symfony 2 kernel/bootstrap/routing
+- I avoid using bundles: They wrap bootstrap/container config, which makes the main config less explicit and adds to the complexity of the overall architecture (if the application is getting to big, you might want to split it instead of using bundles and handle every use case with one large app)
+- I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
+
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
 
 Key Features
 ------------
