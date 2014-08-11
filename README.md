@@ -172,7 +172,7 @@ Just like with Symfony 2, you can use plain PHP classes to create controllers. A
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
-Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container instead, which makes testing more difficult and breaks the architecture.
+*Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container instead, which makes testing more difficult and breaks the architecture.*
 
 The routers pass on the request instance to each matched controller action as last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
 
@@ -208,7 +208,7 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
             ..
         }
 
-**REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return null, which automatically sets the HTTP response code to "204 No Content".
+**REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
