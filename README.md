@@ -31,7 +31,7 @@ This project startet as a simple Silex boilerplate, since Silex itself doesn't c
 - Using Symfony bundles usually adds complexity to the overall architecture: They wrap bootstrap/container configuration (less explicit) and encourage to build monolithic applications (splitting large apps simplifies maintenance and refactoring)
 - I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
 
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you might like this mix of Symfony and Silex, which aims to combine the best of both worlds.
 
 Key Features
 ------------
