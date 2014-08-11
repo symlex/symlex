@@ -154,11 +154,11 @@ Both, the REST and Twig router classes used in this boilerplate, are less than 2
 
 Bundles
 -------
-Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configuration (less explicit) and encourage to build bloated, monolithic applications. Supporting Symfony bundles therefore doesn't seem desirable for building focused, lean applications.
+There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean applications.
 
 Performance
 -----------
-I haven't performed any extensive performance measurements yet, but it's obvious that framework performance mainly depends on the lines of code that have to be executed. In my development environment, simple GET requests - that fetch and return a couple of entities from the database - take about 80ms without any further optimization (no caching for depedency injection container). A similar request handled by Zend Framework 2 takes about 175ms. Symfony 2 might be a bit faster than Zend Framework 2.
+It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach. Test results will be added, once they're available.
 
 Controllers
 -----------
@@ -250,6 +250,7 @@ Symlex comes with a pre-configured PHPUnit environment that automatically execut
     PHPUnit 3.7.37 by Sebastian Bergmann.
 
     Configuration read from phpunit.xml.dist
+    
     ............
 
     Time: 195 ms, Memory: 6.25Mb
