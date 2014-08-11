@@ -160,7 +160,7 @@ There is no support for bundles in Symlex currently. Using Symfony bundles often
 
 Performance
 -----------
-It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach. Test results will be added, once they're available.
+It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
 Controllers
 -----------
