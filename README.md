@@ -172,7 +172,9 @@ Just like with Symfony 2, you can use plain PHP classes to create controllers. A
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
-The routers pass on the request instance to each matched controller action as the last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
+Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container instead, which makes testing more difficult and breaks the architecture.
+
+The routers pass on the request instance to each matched controller action as last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
 
 **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
 
