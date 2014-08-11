@@ -27,9 +27,9 @@ History
 -------
 This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because 
 
-- Symfony 2 feels too complex for most of my applications: Many key features are actually contained in Symfony Components and don't depend on the Symfony 2 kernel/bootstrap/routing
-- Using Symfony bundles usually adds complexity to the overall architecture: They wrap bootstrap/container configuration (less explicit) and encourage to build monolithic applications (splitting large apps simplifies maintenance and refactoring)
 - I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
+- Symfony 2 comes with a bootstrap designed to handle even the most bloated architectures and url schemes (good for refactoring legacy applications but bad for developing new, lean applications)
+- Many Symfony features are actually part of Symfony Components and don't depend on the Symfony 2 kernel
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you might like this mix of Symfony and Silex, which aims to combine the best of both worlds.
 
@@ -148,9 +148,13 @@ Examples (based on this routing configuration):
 
 Difference to FOSRestBundle
 ---------------------------
-As many other Symfony developers, I got experience implementing REST services with the FOSRestBundle (basically the standard solution). While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 98% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
+As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 98% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
 
-Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional. If you still don't trust my code, you can have a look at it to understand the basics of Silex routing and code your own little class. It's really simple.
+Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional.
+
+Bundles
+-------
+Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configuration (less explicit) and encourage to build bloated, monolithic applications. Supporting Symfony bundles therefore doesn't seem desirable for building focused, lean applications.
 
 Performance
 -----------
@@ -172,7 +176,35 @@ The routers pass on the request instance to each matched controller action as th
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/SessionController.php
 
-**REST controller actions** always return arrays, which are automatically converted to valid JSON. The action name is derived from the request method and optional sub resources (see routing examples).
+REST
+----
+
+Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit resource name definition". The action name is derived from the request method and optional sub resources:
+
+        <?php
+        
+        class UserController
+        {
+            ..
+        
+            public function cgetAction()
+            {} // [GET] /users
+        
+            public function postAction()
+            {} // [POST] /users
+
+            public function getAction($id)
+            {} // [GET] /users/{id}
+            
+        
+            ..
+            public function getCommentsAction($id)
+            {} // [GET] /users/{id}/comments
+        
+            ..
+        }
+
+**REST controller actions** always return arrays, which are automatically converted to valid JSON.
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
