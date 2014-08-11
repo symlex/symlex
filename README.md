@@ -114,7 +114,7 @@ Matching requests to controller actions is performed based on convention instead
 - `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects response format: HTML or JSON)
 - `Sympathy\Silex\Router\TwigRouter` for rendering Twig templates (HTML)
 
-The application's HTTP kernel class must initialize routing and can set optional URL/service name prefixes:
+The application's HTTP kernel class initializes routing and sets optional URL/service name prefixes:
 ```
 <?php
 namespace App;
