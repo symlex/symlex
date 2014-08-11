@@ -208,7 +208,7 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
             ..
         }
 
-**REST controller actions** always return arrays, which are automatically converted to valid JSON.
+**REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return null, which automatically sets the HTTP response code to "204 No Content".
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
