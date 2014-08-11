@@ -27,8 +27,8 @@ History
 -------
 This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because 
 
-- Symfony 2 feels too complex for most of my applications: Most key features are actually contained in Symfony Components and don't depend on the Symfony 2 kernel/bootstrap/routing
-- I avoid using bundles: They wrap bootstrap/container config, which makes the main config less explicit and adds to the complexity of the overall architecture (if the application is getting to big, you might want to split it instead of using bundles and handle every use case with one large app)
+- Symfony 2 feels too complex for most of my applications: Many key features are actually contained in Symfony Components and don't depend on the Symfony 2 kernel/bootstrap/routing
+- Using Symfony bundles usually adds complexity to the overall architecture: They wrap bootstrap/container configuration (less explicit) and encourage to build monolithic applications (splitting large apps simplifies maintenance and refactorings)
 - I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
 
 The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you will like this mix of Symfony 2 and Silex, which aims to combine the best of both worlds.
