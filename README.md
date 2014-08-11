@@ -4,7 +4,7 @@ Symlex - Symfony 2 blended with Silex
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 
 This ready-to-use boilerplate app is built on Silex, Symfony Components (for dependency injection instead of Pimple)
-plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and simple user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. Command line applications are supported as well.
+plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
 **The goal of this project is to simplify Web app development by combining Silex and Symfony Components into a working  system that favors convention over configuration.**
 
