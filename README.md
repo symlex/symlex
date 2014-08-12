@@ -150,7 +150,7 @@ Examples (based on this routing configuration):
 
 Difference to FOSRestBundle
 ---------------------------
-As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 98% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
+As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
 
 Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the "Keep it simple, stupid" principle and doesn't make the application more powerful or professional.
 
@@ -164,7 +164,7 @@ It's obvious that PHP framework performance mainly depends on the lines of code 
 
 Controllers
 -----------
-Just like with Symfony 2, you can use plain PHP classes to create controllers. All controllers need to be added as service to `app/config/web.yml`:
+Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
 
 ```
     controller.rest.user:
@@ -172,7 +172,7 @@ Just like with Symfony 2, you can use plain PHP classes to create controllers. A
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
-*Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container instead, which makes testing more difficult and breaks the architecture.*
+*Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container, which makes testing more difficult and breaks the architecture.*
 
 The routers pass on the request instance to each matched controller action as last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
 
