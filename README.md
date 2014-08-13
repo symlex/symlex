@@ -1,5 +1,5 @@
-Symlex - Symfony 2 blended with Silex 
-=====================================
+Symlex: A Silex Boilerplate with Symfony DI Container
+=====================================================
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 
