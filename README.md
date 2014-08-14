@@ -49,6 +49,8 @@ YAML files located in `app/config/` are used to configure the entire system via 
 
 Documentation: http://symfony.com/doc/current/components/dependency_injection/introduction.html
 
+*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete the cache after updating the configuration.*
+
 Bootstrapping
 -------------
 A custom kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
