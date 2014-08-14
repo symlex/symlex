@@ -162,6 +162,10 @@ Performance
 -----------
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
+Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
+
+![alt text](https://lastzero.net/wp-content/uploads/2014/08/benchmark.png "PHP frameworks: REST performance benchmark")
+
 Controllers
 -----------
 Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
