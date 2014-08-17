@@ -59,13 +59,13 @@ YAML files located in `app/config/` configure the entire system via dependecy in
 - `app/config/web.yml` is used to configure Web (HTTP) applications (bootstrapped in web/app.php)
 - `app/config/console.yml` is used to configure command-line applications (bootstrapped in app/console)
 
-These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"). This provides a uniform approach for bootstrapping Web and command-line applications using the same kernel.
+These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"). This provides a uniform approach for bootstrapping Web and command-line applications with the same kernel.
 
 *Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete the cache after updating the configuration.*
 
 Bootstrapping
 -------------
-A light-weight kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
+A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app by calling `run()`:
 
 ```
 <?php
