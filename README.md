@@ -49,7 +49,7 @@ As a rule of thumb, **100 ms** is about the limit for having the user feel that 
 
 Bundles
 -------
-There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean and testable application code: Writing unit tests is often not possible, if certain functionality is encoded in framework configuration files only (acceptance tests can be created, but they are slow and not suitable for test driven development).
+There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean and fully testable applications: Writing unit tests is often not possible, if certain functionality is exclusively encoded in framework configuration files or annotations (acceptance tests can be created, but they are slow and not suitable for test driven development).
 
 See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-point
 
