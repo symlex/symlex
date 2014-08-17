@@ -45,7 +45,7 @@ Performance
 -----------
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
-Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
+Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 and Apache 2):
 
 ![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead.png)
 
