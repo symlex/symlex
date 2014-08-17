@@ -6,7 +6,7 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 This ready-to-use boilerplate app is built on Silex, Symfony Components (for dependency injection instead of Pimple)
 plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
-**The goal of this project is to simplify Web app development by combining Silex and Symfony Components into a working  system that favors convention over configuration.**
+**The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
 Setup
 -----
@@ -19,19 +19,15 @@ Setup
  
 3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
 
-Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation (you should consider using it for your own app to keep JS libraries up-to-date).
+*Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation. Yyou should consider using it for your own app to keep JS libraries up-to-date.*
 
 After successful installation, you can use the email address admin@example.com (or user@example.com) and the password "passwd" to log in.
 
 History
 -------
-This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because 
+This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 (with FOSRestBundle) was recommend to me by SensioLabs (the creators of both frameworks) after complaining about serious performance deficiencies - not to mention the unnecessary complexity of certain Symfony bundles or even the bootstrap itself.
 
-- I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
-- Symfony 2 comes with a bootstrap designed to handle even the most bloated architectures and url schemes (good for refactoring legacy applications, but no benefit for developing new, lean applications)
-- Many Symfony features are actually part of Symfony Components and don't depend on the Symfony 2 kernel
-
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you might like this mix of Symfony and Silex, which aims to combine the best of both worlds.
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you might like this mix of Silex and Symfony, which aims to combine the best of both worlds.
 
 Key Features
 ------------
@@ -45,13 +41,11 @@ Performance
 -----------
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
-Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 and Apache 2):
+Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 / Apache 2 / PHP 5.4.28 with APC enabled):
 
-![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead.png)
+![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead_apc.png)
 
-**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead, which still leaves 20 ms for implementing the actual business logic:
-
-![Silex and the 100 ms time limit](https://lastzero.net/wp-content/uploads/2014/08/timeshare.png)
+**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
 
 Configuration
 -------------
