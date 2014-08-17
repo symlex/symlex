@@ -125,7 +125,8 @@ $app->run();
 
 Routing
 -------
-Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing):
+Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing). After routing requests to the appropriate controller actions, the routers also render the return values either as HTML (via Twig) or JSON (REST/AJAX requests) to ease controller testing (action methods never directly return JSON or HTML):
+
 - `Sympathy\Silex\Router\RestRouter` for REST requests (JSON)
 - `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects response format: HTML or JSON)
 - `Sympathy\Silex\Router\TwigRouter` for rendering regular Web pages via Twig (HTML)
@@ -164,9 +165,9 @@ Examples (based on this routing configuration):
 
 Difference to FOSRestBundle
 ---------------------------
-As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
+While implementing REST services using FOSRestBundle works at the end of the day, I don't think it is a particularly beautiful and lean piece of code. For at least 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
 
-Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
+Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON), custom serialization of response objects or complex routing with integrated parameter validation - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
 
 Controllers
 -----------
