@@ -65,7 +65,7 @@ Documentation: http://symfony.com/doc/current/components/dependency_injection/in
 
 Bootstrapping
 -------------
-A custom kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
+A light-weight kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
 
 ```
 <?php
