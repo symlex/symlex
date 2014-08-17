@@ -45,7 +45,13 @@ Here is a benchmark, comparing the framework overhead for REST requests (Symlex 
 
 ![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead_apc.png)
 
-**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
+As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (http://www.nngroup.com/articles/response-times-3-important-limits/). To be more precise, Wikipedia states that the perceptual processor cycle time has a range of 50 to 200 ms for a young adult (http://en.wikipedia.org/wiki/Usability). The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
+
+Bundles
+-------
+There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean and testable application code: Writing unit tests is often not possible, if certain functionality is encoded in framework configuration files only (acceptance tests can be created, but they are slow and not suitable for test driven development).
+
+See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-point
 
 Configuration
 -------------
@@ -161,10 +167,6 @@ Difference to FOSRestBundle
 As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
 
 Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
-
-Bundles
--------
-There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean applications.
 
 Controllers
 -----------
