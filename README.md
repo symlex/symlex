@@ -214,12 +214,6 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
-Difference to FOSRestBundle
----------------------------
-While implementing REST services using FOSRestBundle works at the end of the day, I don't think it is a particularly beautiful and lean piece of code. For at least 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
-
-Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON), custom serialization of response objects or complex routing with integrated parameter validation - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
-
 Models
 ------
 Symlex isn't designed for any specific database abstraction layer or model library. The boilerplate examples are based on MySQL, Doctrine DBAL and straightforward DAO (data access object)/model classes, that are part of the Sympathy library. They implement the usual CRUD functionality (create, read, update, delete) and separate SQL from model code.
