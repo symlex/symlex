@@ -123,15 +123,15 @@ $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
-Routing
--------
-Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the routers also render the response either as HTML (via Twig) or JSON (REST/AJAX requests) to ease controller testing (actions never directly return JSON or HTML):
+Routing and Rendering
+---------------------
+Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
 
 - `Sympathy\Silex\Router\RestRouter` handles REST requests (JSON)
-- `Sympathy\Silex\Router\ErrorRouter` transforms exceptions into error messages (detects response format: HTML or JSON)
+- `Sympathy\Silex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
 - `Sympathy\Silex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
 
-It's easy to create your own custom routing based on the existing examples.
+It's easy to create your own custom routing/rendering based on the existing examples.
 
 The application's HTTP kernel class initializes routing and sets optional URL/service name prefixes:
 ```
