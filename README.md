@@ -49,7 +49,7 @@ Here is a benchmark, comparing the framework overhead for REST requests (Symfony
 
 ![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead.png)
 
-**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead - this means you have 20 ms left to implement your actual business logic:
+**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead, which still leaves 20 ms for implementing the actual business logic:
 
 ![Silex and the 100 ms time limit](https://lastzero.net/wp-content/uploads/2014/08/timeshare.png)
 
