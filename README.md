@@ -55,11 +55,11 @@ See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-
 
 Configuration
 -------------
-YAML files located in `app/config/` are used to configure the entire system via dependecy injection:
+YAML files located in `app/config/` configure the entire system via dependecy injection:
 - `app/config/web.yml` is used to configure Web (HTTP) applications (bootstrapped in web/app.php)
-- `app/config/console.yml` is used to configure command line applications (bootstrapped in app/console)
+- `app/config/console.yml` is used to configure command-line applications (bootstrapped in app/console)
 
-Documentation: http://symfony.com/doc/current/components/dependency_injection/introduction.html
+These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"). This provides a uniform approach for bootstrapping Web and command-line applications using the same kernel.
 
 *Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete the cache after updating the configuration.*
 
