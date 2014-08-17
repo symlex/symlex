@@ -166,7 +166,11 @@ It's obvious that PHP framework performance mainly depends on the lines of code 
 
 Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
 
-![alt text](https://lastzero.net/wp-content/uploads/2014/08/benchmark.png "PHP frameworks: REST performance benchmark")
+![alt text](https://lastzero.net/wp-content/uploads/2014/08/overhead.png "PHP frameworks: REST routing overhead")
+
+As a rule of thumb, 100ms seconds is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result. Note, that the total response time also includes network, browser and database overhead.
+
+http://www.nngroup.com/articles/response-times-3-important-limits/
 
 Controllers
 -----------
