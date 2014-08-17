@@ -165,12 +165,6 @@ Examples (based on this routing configuration):
 - `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
 - `PUT /api/user/123/item/5` will be routed to `controller.rest.user` service's `putItemAction($id, $itemId, Request $request)`
 
-Difference to FOSRestBundle
----------------------------
-While implementing REST services using FOSRestBundle works at the end of the day, I don't think it is a particularly beautiful and lean piece of code. For at least 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
-
-Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON), custom serialization of response objects or complex routing with integrated parameter validation - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
-
 Controllers
 -----------
 Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
@@ -191,7 +185,6 @@ Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/AuthC
 
 REST
 ----
-
 Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit resource name definition". The action name is derived from the request method and optional sub resources:
 
         <?php
@@ -220,6 +213,12 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
 **REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
+
+Difference to FOSRestBundle
+---------------------------
+While implementing REST services using FOSRestBundle works at the end of the day, I don't think it is a particularly beautiful and lean piece of code. For at least 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
+
+Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON), custom serialization of response objects or complex routing with integrated parameter validation - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
 
 Models
 ------
