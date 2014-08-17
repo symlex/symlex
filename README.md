@@ -41,6 +41,18 @@ Key Features
 - Small code footprint
 - High performance
 
+Performance
+-----------
+It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
+
+Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
+
+![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead.png)
+
+**Why is framework overhead important?** As a rule of thumb, 100 ms is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (Source: http://www.nngroup.com/articles/response-times-3-important-limits/). The total response time also includes network (~25 ms), browser (~5 ms) and database (~10 ms) overhead - this means you have 20 ms left to implement your actual business logic:
+
+![Silex and the 100 ms time limit](https://lastzero.net/wp-content/uploads/2014/08/timeshare.png)
+
 Configuration
 -------------
 YAML files located in `app/config/` are used to configure the entire system via dependecy injection:
@@ -159,18 +171,6 @@ Both, the REST and Twig router classes used in this boilerplate, are less than 2
 Bundles
 -------
 There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean applications.
-
-Performance
------------
-It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
-
-Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
-
-![alt text](https://lastzero.net/wp-content/uploads/2014/08/overhead.png "PHP frameworks: REST routing overhead")
-
-As a rule of thumb, 100ms seconds is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result. Note, that the total response time also includes network, browser and database overhead.
-
-http://www.nngroup.com/articles/response-times-3-important-limits/
 
 Controllers
 -----------
