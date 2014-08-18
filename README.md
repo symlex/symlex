@@ -15,7 +15,7 @@ Setup
 
         composer update
 
-2. As with all Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
+2. As with Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
  
 3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
 
@@ -25,9 +25,9 @@ After successful installation, you can use the email address admin@example.com (
 
 History
 -------
-This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 (with FOSRestBundle) was recommend to me by SensioLabs (the creators of both frameworks) after complaining about serious performance deficiencies - not to mention the unnecessary complexity of certain Symfony bundles or the bootstrap.
+This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 was recommend to me by SensioLabs (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance REST services and single-page Web applications.
 
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels primitive for developers coming from Symfony 2 and makes it hard to reuse existing code. If you're sharing the same experience, you might like this mix of Silex and Symfony, which aims to combine the best of both worlds.
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels cumbersome for developers coming from Symfony 2 and makes it hard to reuse existing code. If you're sharing the same experience, you might like this mix of Silex and Symfony, which aims to combine the best of both worlds.
 
 Key Features
 ------------
