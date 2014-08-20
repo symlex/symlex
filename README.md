@@ -15,9 +15,9 @@ Setup
 
         composer create-project lastzero/symlex symlex
 
-2. As with Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
+2. Configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
  
-3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
+3. Import `app/db/schema.sql` to the MySQL database configured in app/config/parameters.yml
 
 *Note: Bower - the JavaScript equivalent to composer - is not required for installation, but you are advised to use it for managing your JavaScript dependencies (if you're building a single-page application).*
 
