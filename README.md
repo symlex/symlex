@@ -11,9 +11,9 @@ plus Sympathy Components, which add routing and bootstrapping (https://github.co
 Setup
 -----
 
-1. After cloning this repository, you have to run composer to fetch external dependencies:
+1. Run composer to create a new project and fetch external dependencies:
 
-        composer update
+        composer create-project lastzero/symlex symlex
 
 2. As with Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
  
