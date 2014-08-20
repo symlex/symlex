@@ -13,8 +13,8 @@ parameters:
         port: ~
         unix_socket: ~
 
-    mailer.host: 'localhost'
-    mailer.port: '25'
+    mailer.host: 'smtp.gmail.com'
+    mailer.port: '587'
     mailer.encryption: 'tls'
     mailer.username: ''
     mailer.password: ''
