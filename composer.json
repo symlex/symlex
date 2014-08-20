@@ -1,6 +1,6 @@
 {
-    "name": "lastzero/silex-boilerplate",
-    "description": "A pre-configured boilerplate for the Silex microframework",
+    "name": "lastzero/symlex",
+    "description": "A Silex Boilerplate with Symfony DI Container",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -22,6 +22,7 @@
         "symfony/monolog-bridge": "~2.3",
         "symfony/twig-bridge": "~2.3",
         "symfony/proxy-manager-bridge": "~2.3",
+        "symfony/class-loader": "~2.3",
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
         "phpunit/phpunit": "3.7.*",

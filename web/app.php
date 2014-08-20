@@ -1,6 +1,14 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use Symfony\Component\ClassLoader\ApcClassLoader;
+
+$loader = require_once __DIR__ . '/../vendor/autoload.php';
+
+if (extension_loaded('apc') && ini_get('apc.enabled') == '1') {
+    $apcLoader = new ApcClassLoader(__DIR__, $loader);
+    $loader->unregister();
+    $apcLoader->register(true);
+}
 
 $debugMode = !isset($_SERVER['HTTP_CLIENT_IP'])
     && !isset($_SERVER['HTTP_X_FORWARDED_FOR'])

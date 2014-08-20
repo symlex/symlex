@@ -1,0 +1,21 @@
+#!/usr/bin/php
+<?php
+
+if($argc != 3) {
+    die('Usage: ' . $argv[0] . " [url] [count]\n");
+}
+
+$url = $argv[1];
+$count = $argv[2];
+
+for($i = 0; $i < $count; $i++) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $time = -microtime(true);
+    curl_exec($ch);
+    $time += microtime(true);
+    curl_close($ch);
+    echo round($time * 1000) . "\n";
+    usleep(50);
+}
