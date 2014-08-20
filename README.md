@@ -43,7 +43,7 @@ It's obvious that PHP framework performance mainly depends on the lines of code 
 
 Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 / Apache 2 / PHP 5.4.28 with APC and autoloader class cache enabled):
 
-![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/rest_overhead.png)
+![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/rest_framework_overhead.png)
 
 **Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (http://www.nngroup.com/articles/response-times-3-important-limits/). To be more precise, Wikipedia states that the perceptual processor cycle time has a range of 50 to 200 ms for a young adult (http://en.wikipedia.org/wiki/Usability). The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
 
