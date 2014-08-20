@@ -1,21 +1,21 @@
 parameters:
-    app.name: 'Symlex'
+    app.name: Symlex
     app.version: '1.0'
     app.url: 'https://symlex.local/'
-    app.email: 'root@localhost'
+    app.email: root@localhost
 
     db.options:
         driver: mysqli
-        host: '127.0.0.1'
-        dbname: 'silex'
-        user: 'silex'
-        password: 'silex'
+        host: 127.0.0.1
+        dbname: silex
+        user: silex
+        password: silex
         port: ~
         unix_socket: ~
 
-    mailer.host: 'smtp.gmail.com'
-    mailer.port: '587'
-    mailer.encryption: 'tls'
+    mailer.host: smtp.gmail.com
+    mailer.port: 587
+    mailer.encryption: tls
     mailer.username: ''
     mailer.password: ''
     mailer.auth_mode: ''
