@@ -6,7 +6,7 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 This ready-to-use boilerplate app is built on Silex, Symfony Components (for dependency injection instead of Pimple)
 plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
-**The goal of this project is to simplify Web app development by combining Silex and Symfony Components into a working  system that favors convention over configuration.**
+**The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
 Setup
 -----
@@ -15,23 +15,19 @@ Setup
 
         composer update
 
-2. As with all Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
+2. As with Symfony applications, you have to configure your Web server to use the "web" directory as root path (a `.htaccess` file for Apache is included).
  
 3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
 
-Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation (you should consider using it for your own app to keep JS libraries up-to-date).
+*Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation. Yyou should consider using it for your own app to keep JS libraries up-to-date.*
 
 After successful installation, you can use the email address admin@example.com (or user@example.com) and the password "passwd" to log in.
 
 History
 -------
-This project startet as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. I've chosen Silex, because 
+This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 was recommend to me by SensioLabs (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance REST services and single-page Web applications.
 
-- I want to be able to quickly build REST services with convention over configuration (no annotation magic/no extensive route configuration)
-- Symfony 2 comes with a bootstrap designed to handle even the most bloated architectures and url schemes (good for refactoring legacy applications but bad for developing new, lean applications)
-- Many Symfony features are actually part of Symfony Components and don't depend on the Symfony 2 kernel
-
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels really shabby for developers coming from Symfony 2 and makes it hard to reuse existing components developed for Symfony 2. If you're sharing the same experience, you might like this mix of Symfony and Silex, which aims to combine the best of both worlds.
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels cumbersome for developers coming from Symfony 2 and makes it hard to reuse existing code. If you're sharing the same experience, you might like this mix of Silex and Symfony, which aims to combine the best of both worlds.
 
 Key Features
 ------------
@@ -41,19 +37,35 @@ Key Features
 - Small code footprint
 - High performance
 
+Performance
+-----------
+It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
+
+Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 / Apache 2 / PHP 5.4.28 with APC enabled):
+
+![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/overhead_apc.png)
+
+**Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (http://www.nngroup.com/articles/response-times-3-important-limits/). To be more precise, Wikipedia states that the perceptual processor cycle time has a range of 50 to 200 ms for a young adult (http://en.wikipedia.org/wiki/Usability). The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
+
+Bundles
+-------
+There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They hide bootstrap/configuration details and encourage to build bloated applications. Symlex is designed to build focused, lean and fully testable applications: Writing meaningful component tests is not possible, if certain functionality is exclusively encoded in framework configuration files or magically generated by bundles (acceptance tests can be created, but they are slow and not suitable for test driven development).
+
+See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-point
+
 Configuration
 -------------
-YAML files located in `app/config/` are used to configure the entire system via dependecy injection:
+YAML files located in `app/config/` configure the entire system via dependecy injection:
 - `app/config/web.yml` is used to configure Web (HTTP) applications (bootstrapped in web/app.php)
-- `app/config/console.yml` is used to configure command line applications (bootstrapped in app/console)
+- `app/config/console.yml` is used to configure command-line applications (bootstrapped in app/console)
 
-Documentation: http://symfony.com/doc/current/components/dependency_injection/introduction.html
+These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"). This provides a uniform approach for bootstrapping Web and command-line applications with the same kernel.
 
 *Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete the cache after updating the configuration.*
 
 Bootstrapping
 -------------
-A custom kernel is used to bootstrap the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app:
+A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app by calling `run()`:
 
 ```
 <?php
@@ -111,12 +123,15 @@ $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
-Routing
--------
-Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing):
-- `Sympathy\Silex\Router\RestRouter` for REST requests (JSON)
-- `Sympathy\Silex\Router\ErrorRouter` for handling exceptions (detects response format: HTML or JSON)
-- `Sympathy\Silex\Router\TwigRouter` for rendering Twig templates (HTML)
+Routing and Rendering
+---------------------
+Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
+
+- `Sympathy\Silex\Router\RestRouter` handles REST requests (JSON)
+- `Sympathy\Silex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
+- `Sympathy\Silex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
+
+It's easy to create your own custom routing/rendering based on the existing examples.
 
 The application's HTTP kernel class initializes routing and sets optional URL/service name prefixes:
 ```
@@ -150,24 +165,6 @@ Examples (based on this routing configuration):
 - `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
 - `PUT /api/user/123/item/5` will be routed to `controller.rest.user` service's `putItemAction($id, $itemId, Request $request)`
 
-Difference to FOSRestBundle
----------------------------
-As many other Symfony developers, I got experience implementing REST services using FOSRestBundle. While this works at the end of the day, I don't think FOSRestBundle is a particularly beautiful and lean piece of code. For 90% of all projects, the same can be accomplished with 5% of effort (measured in lines of code).
-
-Both, the REST and Twig router classes used in this boilerplate, are less than 200 lines of code combined. You might want to use FOSRestBundle, if you need flexible response formats (other than JSON) and/or complex routing - but for most projects, it is a violation of the KISS principle and doesn't make the application more powerful or professional.
-
-Bundles
--------
-There is no support for bundles in Symlex currently. Using Symfony bundles often adds complexity to the overall architecture: They wrap bootstrap/container configurations (less explicit) and encourage to build bloated applications. Symlex is designed to build focused, lean applications.
-
-Performance
------------
-It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
-
-Here is a benchmark, comparing the framework overhead for REST requests (Symfony 2 with FOSRestBundle vs. Symlex):
-
-![alt text](https://lastzero.net/wp-content/uploads/2014/08/benchmark.png "PHP frameworks: REST performance benchmark")
-
 Controllers
 -----------
 Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
@@ -188,7 +185,6 @@ Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/AuthC
 
 REST
 ----
-
 Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit resource name definition". The action name is derived from the request method and optional sub resources:
 
         <?php
@@ -197,18 +193,18 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
         {
             ..
         
-            public function cgetAction()
+            public function cgetAction(Request $request)
             {} // [GET] /user
         
-            public function postAction()
+            public function postAction(Request $request)
             {} // [POST] /user
 
-            public function getAction($id)
+            public function getAction($id, Request $request)
             {} // [GET] /user/{id}
             
         
             ..
-            public function getCommentsAction($id)
+            public function getCommentsAction($id, Request $request)
             {} // [GET] /user/{id}/comments
         
             ..
