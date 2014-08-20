@@ -25,6 +25,7 @@
         "symfony/class-loader": "~2.3",
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
+        "incenteev/composer-parameter-handler": "~2.0",
         "phpunit/phpunit": "3.7.*",
         "lastzero/test-tools": "dev-master",
         "lastzero/sympathy": "dev-master"
@@ -33,5 +34,19 @@
     "prefer-stable": true,
     "autoload": {
         "psr-0": { "": "src/" }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ]
+    },
+    "extra": {
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml",
+            "dist-file": "app/config/parameters.dist.yml"
+        }
     }
 }
