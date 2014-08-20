@@ -19,7 +19,7 @@ Setup
  
 3. You must import `app/db/schema.sql` into your MySQL database and configure the connection in `app/config/parameters.yml`.
 
-*Note: Running "bower", the JavaScript equivalent to composer, is not required to simplify installation. Yyou should consider using it for your own app to keep JS libraries up-to-date.*
+*Note: Bower - the JavaScript equivalent to composer - is not required for installation, but you are advised to use it for managing your JavaScript dependencies (if you're building a single-page application).*
 
 After successful installation, you can use the email address admin@example.com (or user@example.com) and the password "passwd" to log in.
 
