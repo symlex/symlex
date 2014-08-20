@@ -216,7 +216,7 @@ Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserControl
 
 Models
 ------
-Symlex isn't designed for any specific database abstraction layer or model library. The boilerplate examples are based on MySQL, Doctrine DBAL and straightforward DAO (data access object)/model classes, that are part of the Sympathy library. They implement the usual CRUD functionality (create, read, update, delete) and separate SQL from model code.
+Symlex isn't designed for any specific database abstraction layer or model library. The boilerplate examples are based on MySQL, Doctrine DBAL and [straightforward DAO (data access object)/model classes](https://github.com/lastzero/sympathy/tree/master/src/Sympathy/Db), that are part of the Sympathy library. They implement the usual CRUD functionality (create, read, update, delete) and separate SQL from model code.
 
 Error Handling
 --------------
