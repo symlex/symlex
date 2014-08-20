@@ -21,7 +21,7 @@ Setup
 
 *Note: Bower - the JavaScript equivalent to composer - is not required for installation, but you are advised to use it for managing your JavaScript dependencies (if you're building a single-page application).*
 
-After successful installation, open the site and use `admin@example.com` / `passwd` to log in.
+After successful installation, open the site and log in with the credentials `admin@example.com` / `passwd`.
 
 History
 -------
