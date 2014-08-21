@@ -261,3 +261,5 @@ Symlex comes with a pre-configured PHPUnit environment that automatically execut
 
     Time: 195 ms, Memory: 6.25Mb
     OK (12 tests, 42 assertions)
+    
+See also: https://github.com/lastzero/test-tools (self-initializing database fixtures and dependency injection for unit tests)
