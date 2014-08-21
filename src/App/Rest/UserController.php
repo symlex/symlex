@@ -33,9 +33,6 @@ class UserController
 
     protected function sanitizeUserValues($values)
     {
-        // Never return passwords
-        unset($values['password']);
-
         // Only return these fields if user is admin
         if (!$this->session->isAdmin()) {
             unset($values['created']);

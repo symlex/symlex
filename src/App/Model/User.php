@@ -114,4 +114,11 @@ class User extends DbModel
     {
         return (crypt($password, $encryptedPassword) == $encryptedPassword);
     }
+
+    public function getValues()
+    {
+        $result = parent::getValues();
+        unset($result['password']);
+        return $result;
+    }
 }
