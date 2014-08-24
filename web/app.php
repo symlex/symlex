@@ -14,8 +14,8 @@ if (!$debugMode && extension_loaded('apc') && ini_get('apc.enabled') == '1') {
     $apcLoader->register(true);
 }
 
-use App\HttpApp;
+use Symlex\Bootstrap\WebApp;
 
-$app = new HttpApp (__DIR__ . '/../app', $debugMode);
+$app = new WebApp (__DIR__ . '/../app', $debugMode);
 
 $app->run();

@@ -67,5 +67,5 @@ services:
             - [ setSession, [ @model.session ] ]
 
     router.error:
-        class: Sympathy\Silex\Router\ErrorRouter
+        class: Symlex\Router\ErrorRouter
         arguments: [ @app, @twig, %exception.codes%, %exception.messages%, %app.debug% ]

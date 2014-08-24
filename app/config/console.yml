@@ -6,7 +6,7 @@ imports:
 services:
     command.sendnewpassword:
         class: App\Command\PasswordResetCommand
-        arguments: [ 'reset-password', @model.mail, @model.user, @twig ]
+        arguments: [ 'reset-password', @model.mail=, @model.user=, @twig ]
 
     app:
         class: Symfony\Component\Console\Application

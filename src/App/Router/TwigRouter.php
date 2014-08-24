@@ -2,9 +2,9 @@
 
 namespace App\Router;
 
-use Sympathy\Silex\Router\TwigRouter as SympathyTwigRouter;
+use Symlex\Router\TwigRouter as SymlexTwigRouter;
 
-class TwigRouter extends SympathyTwigRouter
+class TwigRouter extends SymlexTwigRouter
 {
     use SessionTrait;
 

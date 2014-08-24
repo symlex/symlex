@@ -2,9 +2,9 @@
 
 namespace App\Router;
 
-use Sympathy\Silex\Router\RestRouter as SympathyRestRouter;
+use Symlex\Router\RestRouter as SymlexRestRouter;
 
-class RestRouter extends SympathyRestRouter
+class RestRouter extends SymlexRestRouter
 {
     use SessionTrait;
 }
