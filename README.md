@@ -3,8 +3,9 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 
-This ready-to-use boilerplate app is built on Silex, Symfony Components (for dependency injection instead of Pimple)
-plus Sympathy Components, which add routing and bootstrapping (https://github.com/lastzero/sympathy). Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use the back-end with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
+This ready-to-use boilerplate app is built on **Silex** and **Symfony Components** for dependency injection instead of Pimple.
+
+Twitter **Bootstrap**, **RequireJS** and **AngularJS** are used for the **example front-end** code (static home page, login form and user management). You can use Symlex with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
@@ -69,7 +70,7 @@ A light-weight kernel bootstraps the application. It's just about 150 lines of c
 
 ```
 <?php
-namespace Sympathy\Bootstrap;
+namespace Symlex\Bootstrap;
 
 class App
 {
@@ -92,7 +93,7 @@ The kernel base class can be extended to customize it for a specific purpose (e.
 ```
 <?php
 namespace App;
-use Sympathy\Bootstrap\App;
+use Symlex\Bootstrap\App;
 
 class ConsoleApp extends App
 {
@@ -118,31 +119,35 @@ Creating a kernel instance and calling run() is enough to start the application 
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\ConsoleApp;
+use Symlex\Bootstrap\ConsoleApp;
 $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
 Routing and Rendering
 ---------------------
-Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the Sympathy library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
+Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the core library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
 
-- `Sympathy\Silex\Router\RestRouter` handles REST requests (JSON)
-- `Sympathy\Silex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
-- `Sympathy\Silex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
+- `Symlex\Router\RestRouter` handles REST requests (JSON)
+- `Symlex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
+- `Symlex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
 
 It's easy to create your own custom routing/rendering based on the existing examples.
 
 The application's HTTP kernel class initializes routing and sets optional URL/service name prefixes:
 ```
 <?php
-namespace App;
-use Sympathy\Bootstrap\App;
 
-class HttpApp extends App
+namespace Symlex\Bootstrap;
+
+class WebApp extends App
 {
     public function __construct($appPath, $debug = false)
     {
+        if($debug) {
+            ini_set('display_errors', 1);
+        }
+
         parent::__construct('web', $appPath, $debug);
     }
 
@@ -150,6 +155,7 @@ class HttpApp extends App
         parent::boot();
 
         $container = $this->getContainer();
+
         $container->get('router.error')->route();
         $container->get('router.rest')->route('/api', 'controller.rest.');
         $container->get('router.twig')->route('', 'controller.web.');
@@ -242,7 +248,7 @@ parameters:
 
 services:
     router.error:
-        class: Sympathy\Silex\Router\ErrorRouter
+        class: Symlex\Router\ErrorRouter
         arguments: [ @app, @twig, %exception.codes%, %exception.messages%, %app.debug% ]
 ```
 
