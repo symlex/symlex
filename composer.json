@@ -9,7 +9,7 @@
         "lastzero/symlex-core": "~0.2",
         "lastzero/test-tools": "~0.7",
         "lastzero/sympathy": "~0.3",
-        "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
+        "doctrine/dbal": "~2.4",
         "swiftmailer/swiftmailer": "5.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "phpunit/phpunit": "3.7.*"
