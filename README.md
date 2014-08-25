@@ -5,6 +5,8 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 
 This ready-to-use boilerplate app is built on Silex and Symfony Components for dependency injection instead of Pimple. Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use Symlex with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
+https://github.com/lastzero/symlex-core contains the kernel and routers as reusable components.
+
 **The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
 Setup
@@ -54,13 +56,19 @@ See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-
 
 Configuration
 -------------
-YAML files located in `app/config/` configure the entire system via dependecy injection:
-- `app/config/web.yml` is used to configure Web (HTTP) applications (bootstrapped in web/app.php)
-- `app/config/console.yml` is used to configure command-line applications (bootstrapped in app/console)
+YAML files located in `app/config/` configure the entire system via dependecy injection. The filename matches the application's environment name:
+- `app/config/web.yml` configures Web (HTTP) applications bootstrapped in `web/app.php`
+- `app/config/console.yml` configures command-line applications bootstrapped in `app/console`
 
-These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"). This provides a uniform approach for bootstrapping Web and command-line applications with the same kernel.
+These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"):
 
-*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete the cache after updating the configuration.*
+    services:
+        app:
+            class: Silex\Application
+
+This provides a uniform approach for bootstrapping Web and command-line applications with the same kernel.
+
+*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete all cache files after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
 Bootstrapping
 -------------
