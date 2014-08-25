@@ -3,9 +3,7 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 
-This ready-to-use boilerplate app is built on **Silex** and **Symfony Components** for dependency injection instead of Pimple.
-
-Twitter **Bootstrap**, **RequireJS** and **AngularJS** are used for the **example front-end** code (static home page, login form and user management). You can use Symlex with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
+This ready-to-use boilerplate app is built on Silex and Symfony Components for dependency injection instead of Pimple. Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use Symlex with any JavaScript library/REST client or to output static HTML. An example for command line applications is included as well.
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
@@ -119,8 +117,11 @@ Creating a kernel instance and calling run() is enough to start the application 
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
 use Symlex\Bootstrap\ConsoleApp;
+
 $app = new ConsoleApp (__DIR__);
+
 $app->run();
 ```
 
