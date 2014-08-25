@@ -9,9 +9,9 @@ parameters:
         Sympathy\Db\NotFoundException: 404
         App\Exception\UnauthorizedException: 401
         App\Exception\AccessDeniedException: 403
-        Sympathy\Silex\Router\Exception\AccessDeniedException: 403
-        Sympathy\Silex\Router\Exception\NotFoundException: 404
-        Sympathy\Silex\Router\Exception\MethodNotAllowedException: 405
+        Symlex\Router\Exception\AccessDeniedException: 403
+        Symlex\Router\Exception\NotFoundException: 404
+        Symlex\Router\Exception\MethodNotAllowedException: 405
         App\Exception\FormInvalidException: 409
         Exception: 500
 
