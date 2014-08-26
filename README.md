@@ -16,7 +16,8 @@ Setup
 
         composer create-project lastzero/symlex symlex
 
-2. Configure your **Web server** to use the `web` directory as root path (`.htaccess` file for Apache exists)
+2. Configure your **Web server** to use the `web` directory as root path, see 
+   also http://silex.sensiolabs.org/doc/web_servers.html (`.htaccess` file for Apache exists)
  
 3. Import `app/db/schema.sql` to the **MySQL database** configured in `app/config/parameters.yml`
 
