@@ -67,7 +67,7 @@ These files are in the same format you know from Symfony 2. In addition to the r
         app:
             class: Silex\Application
 
-This provides a uniform approach for bootstrapping Web and command-line applications with the same kernel.
+This provides a uniform approach for bootstrapping Silex and Symfony Console applications with the same kernel.
 
 *Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete all cache files after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
@@ -81,6 +81,21 @@ namespace Symlex\Bootstrap;
 
 class App
 {
+    protected $environment;
+    protected $debug;
+    protected $appPath;
+
+    public function __construct($environment = 'app', $appPath = '', $debug = false)
+    {
+        $this->environment = $environment;
+        $this->debug = $debug;
+        $this->appPath = $appPath;
+
+        $this->boot();
+    }
+    
+    ...
+    
     public function getApplication()
     {
         return $this->getContainer()->get('app');
@@ -90,8 +105,6 @@ class App
     {
         return $this->getApplication()->run();
     }
-    
-    ...
 }
 ```
 
