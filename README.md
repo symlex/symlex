@@ -5,7 +5,7 @@ Symlex: A Silex Boilerplate with Symfony DI Container
 
 This ready-to-use boilerplate app is built on Silex and Symfony Components for dependency injection instead of Pimple. Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use Symlex with any JavaScript library and REST client or to output static HTML. An example for command line applications is included as well.
 
-*Note: https://github.com/lastzero/symlex-core contains the kernel and routers as reusable components.*
+*Note: https://github.com/lastzero/symlex-core contains the bootstrap and routers as reusable components.*
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
 
