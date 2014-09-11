@@ -6,10 +6,11 @@
     "require": {
         "silex/silex": "~1.2",
         "symfony/symfony": "~2.5",
-        "lastzero/symlex-core": "~0.6",
-        "lastzero/test-tools": "~0.7",
+        "lastzero/symlex-core": "*",
+        "lastzero/test-tools": "*",
         "lastzero/sympathy": "~0.3",
         "doctrine/dbal": "~2.4",
+        "doctrine/migrations": "1.0.*@dev",
         "swiftmailer/swiftmailer": "5.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "phpunit/phpunit": "3.7.*"
