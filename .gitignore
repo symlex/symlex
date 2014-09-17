@@ -40,7 +40,8 @@ Thumbs.db
 #############################
 app/bootstrap/*.local.php
 app/config/*.local.php
-/vendor/
+vendor/
+bin/
 composer.lock
 
 # IDE generated files #
