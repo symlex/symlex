@@ -18,7 +18,7 @@ class SessionTest extends UnitTestCase
 
     public function testLogin()
     {
-        $this->assertNull($this->model->getUserId());
+        $this->assertEquals(1, $this->model->getUserId());
         $this->assertRegExp('/[a-zA-Z0-9]{40}/', $this->model->getCsrfToken());
 
         $this->model->login('admin@example.com', 'passwd');
@@ -45,6 +45,8 @@ class SessionTest extends UnitTestCase
     }
 
     public function testUser () {
+        $this->model->logout();
+
         $this->assertTrue($this->model->isAnonymous());
         $this->assertFalse($this->model->isUser());
         $this->assertFalse($this->model->isAdmin());
@@ -61,6 +63,8 @@ class SessionTest extends UnitTestCase
     }
 
     public function testAdmin () {
+        $this->model->logout();
+
         $this->assertTrue($this->model->isAnonymous());
         $this->assertFalse($this->model->isUser());
         $this->assertFalse($this->model->isAdmin());

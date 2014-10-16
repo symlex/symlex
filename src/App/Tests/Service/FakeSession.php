@@ -11,7 +11,7 @@ class FakeSession implements SessionInterface
     protected $started = false;
     protected $sessionId = 'fake-session-id';
     protected $sessionName = 'fake-session-name';
-    protected $attributes = array();
+    protected $attributes = array('user_id' => 1);
     protected $bags = array();
 
     /**

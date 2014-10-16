@@ -1,12 +1,7 @@
-parameters:
-    db.options:
-        driver: mysqli
-        host: '127.0.0.1'
-        dbname: 'silex'
-        user: 'silex'
-        password: 'silex'
-        port: ~
-        unix_socket: ~
+imports:
+    - { resource: parameters.yml }
+    - { resource: twig.yml }
+    - { resource: mail.yml }
 
 services:
     db.driver:
@@ -21,13 +16,59 @@ services:
             - [ setFixturePrefix, ['sql'] ]
             - [ useFixtures, ["%fixture.path%"] ]
 
+    yaml_loader:
+        class: Symfony\Component\Translation\Loader\YamlFileLoader
+
+    array_loader:
+        class: Symfony\Component\Translation\Loader\ArrayLoader
+
+    message_selector:
+        class: Symfony\Component\Translation\MessageSelector
+
+    translator:
+        class: Symfony\Component\Translation\Translator
+        arguments: ['de', @message_selector]
+        calls:
+          - [ addLoader, ['yaml', @yaml_loader] ]
+          - [ addLoader, ['array', @array_loader]]
+          - [ addResource, ['yaml', '%base.path%/../../app/l10n/de.yml', 'de'] ]
+          - [ addResource, ['yaml', '%base.path%/../../app/l10n/en.yml', 'en'] ]
+
+    validator:
+        class: Sympathy\Form\Validator
+
     session:
         class: App\Tests\Service\FakeSession
 
+    form:
+        class: App\Form\Form
+        arguments: [ @translator, @validator ]
+
+    form.user:
+        class: App\Form\UserForm
+        arguments: [ @translator, @validator ]
+
     model.user:
         class: App\Model\User
+        scope: prototype
         arguments: [ @db ]
 
     service.session:
         class: App\Service\Session
         arguments: [ @session, @model.user ]
+
+    service.mail:
+        class: App\Service\Mail
+        scope: prototype
+        arguments: [ @mailer, @twig, { %app.email%: %app.name%} ]
+
+    controller.web.index:
+        class: App\Controller\IndexController
+
+    controller.web.auth:
+        class: App\Controller\AuthController
+        arguments: [ @service.session, @model.user=, @service.mail= ]
+
+    controller.rest.user:
+        class: App\Rest\UserController
+        arguments: [ @service.session, @model.user=, @form.user, @service.mail= ]
