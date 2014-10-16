@@ -36,9 +36,9 @@ services:
     session:
         class: Symfony\Component\HttpFoundation\Session\Session
 
-    model.session:
-        class: App\Model\Session
-        arguments: [@session, @model.user=]
+    service.session:
+        class: App\Service\Session
+        arguments: [ @session, @model.user= ]
 
     app:
         class: Silex\Application
@@ -48,23 +48,23 @@ services:
 
     controller.web.auth:
         class: App\Controller\AuthController
-        arguments: [ @model.session, @model.user=, @model.mail= ]
+        arguments: [ @service.session, @model.user=, @service.mail= ]
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @model.session, @model.user=, @form.user, @model.mail= ]
+        arguments: [ @service.session, @model.user=, @form.user, @service.mail= ]
 
     router.rest:
         class: App\Router\RestRouter
         arguments: [ @app, @service_container ]
         calls:
-            - [ setSession, [ @model.session ] ]
+            - [ setSession, [ @service.session ] ]
 
     router.twig:
         class: App\Router\TwigRouter
         arguments: [ @app, @service_container, @twig ]
         calls:
-            - [ setSession, [ @model.session ] ]
+            - [ setSession, [ @service.session ] ]
 
     router.error:
         class: Symlex\Router\ErrorRouter

@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Model\Mail;
+use App\Service\Mail;
 use App\Model\User;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;

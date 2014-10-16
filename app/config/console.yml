@@ -6,7 +6,7 @@ imports:
 services:
     command.sendnewpassword:
         class: App\Command\PasswordResetCommand
-        arguments: [ 'reset-password', @model.mail=, @model.user=, @twig ]
+        arguments: [ 'reset-password', @service.mail=, @model.user=, @twig ]
 
     console.helper.db:
         class: Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper

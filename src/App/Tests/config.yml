@@ -18,17 +18,16 @@ services:
             - %db.options%
             - @db.driver
         calls:
-            - [setFixturePrefix, ['sql']]
-            - [useFixtures, ["%fixture.path%"]]
+            - [ setFixturePrefix, ['sql'] ]
+            - [ useFixtures, ["%fixture.path%"] ]
 
     session:
-        class: App\Tests\Model\FakeSession
+        class: App\Tests\Service\FakeSession
 
     model.user:
         class: App\Model\User
-        scope: prototype
-        arguments: [@db]
+        arguments: [ @db ]
 
-    model.session:
-        class: App\Model\Session
-        arguments: [@session, @model.user]
+    service.session:
+        class: App\Service\Session
+        arguments: [ @session, @model.user ]

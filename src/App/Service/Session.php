@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Service;
 
+use App\Model\User;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Session

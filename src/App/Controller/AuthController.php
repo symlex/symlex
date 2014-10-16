@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\Mail;
-use App\Model\Session;
+use App\Service\Mail;
+use App\Service\Session;
 use App\Model\User;
 use App\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;

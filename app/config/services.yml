@@ -55,7 +55,7 @@ services:
         scope: prototype
         arguments: [ @db ]
 
-    model.mail:
-        class: App\Model\Mail
+    service.mail:
+        class: App\Service\Mail
         scope: prototype
         arguments: [ @mailer, @twig, { %app.email%: %app.name%} ]

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Model;
+namespace App\Tests\Service;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;

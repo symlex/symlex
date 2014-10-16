@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-use App\Model\Session;
+use App\Service\Session;
 use Symfony\Component\HttpFoundation\Request;
 
 trait SessionTrait

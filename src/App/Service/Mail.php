@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Service;
 
+use App\Model\User;
 use Swift_Mailer;
 use Swift_Message as Message;
 use Twig_Environment;

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Model;
+namespace App\Tests\Service;
 
 use TestTools\TestCase\UnitTestCase;
 
 class SessionTest extends UnitTestCase
 {
     /**
-     * @var \App\Model\Session
+     * @var \App\Service\Session
      */
     protected $model;
 
     public function setUp()
     {
-        $this->model = $this->get('model.session');
+        $this->model = $this->get('service.session');
     }
 
     public function testLogin()

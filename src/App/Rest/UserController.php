@@ -7,8 +7,8 @@ use App\Exception\FormInvalidException;
 use App\Exception\UnauthorizedException;
 use App\Exception\InvalidArgumentException;
 use App\Form\UserForm;
-use App\Model\Mail;
-use App\Model\Session;
+use App\Service\Mail;
+use App\Service\Session;
 use App\Model\User;
 use Symfony\Component\HttpFoundation\Request;
 
