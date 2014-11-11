@@ -2,7 +2,8 @@ Symlex: A Silex boilerplate with Symfony DI Container
 =====================================================
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
-[![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)  [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
+[![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
+[![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
 This ready-to-use boilerplate app is built on Silex and Symfony Components for dependency injection instead of Pimple. Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). You can use Symlex with any JavaScript library and REST client or to output static HTML. An example for command line applications is included as well.
 
