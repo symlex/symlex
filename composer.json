@@ -8,7 +8,7 @@
         "symfony/symfony": "~2.5",
         "lastzero/symlex-core": "*",
         "lastzero/sympathy": "~0.3",
-        "doctrine/dbal": "~2.4",
+        "doctrine/dbal": "2.4.*",
         "monolog/monolog": "1.*",
         "doctrine/migrations": "1.0.*@dev",
         "swiftmailer/swiftmailer": "5.*",
