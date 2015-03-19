@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "lastzero/test-tools": "*",
-        "phpunit/phpunit": "4.2.*"
+        "phpunit/phpunit": "4.5.*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
