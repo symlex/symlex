@@ -284,13 +284,12 @@ Tests
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
     [lastzero/symlex]# app/phpunit
-    PHPUnit 3.7.37 by Sebastian Bergmann.
-
+    PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
     Configuration read from phpunit.xml.dist
-    
-    ............
 
-    Time: 195 ms, Memory: 6.25Mb
-    OK (12 tests, 42 assertions)
+    .....................
+
+    Time: 105 ms, Memory: 9.25Mb
+    OK (21 tests, 53 assertions)
     
 See also: https://github.com/lastzero/test-tools (self-initializing database fixtures and dependency injection for unit tests)
