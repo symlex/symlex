@@ -11,7 +11,7 @@ require.config({
         angularBootstrapTpl: 'lib/ui-bootstrap-tpls',
         angularMocks: 'lib/angular-mocks',
         angularLoadingBar: 'lib/angular-loading-bar',
-        text: 'lib/requirejs-text'
+        text: 'lib/require-text'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
