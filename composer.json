@@ -7,7 +7,7 @@
         "silex/silex": "~1.2",
         "symfony/symfony": "~2.5",
         "lastzero/symlex-core": "*",
-        "lastzero/sympathy": "~0.5",
+        "lastzero/sympathy": "~1.0",
         "doctrine/dbal": "~2.5",
         "monolog/monolog": "1.*",
         "doctrine/migrations": "1.0.*@dev",
