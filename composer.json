@@ -4,8 +4,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "silex/silex": "~1.2",
-        "symfony/symfony": "~2.5",
+        "silex/silex": "~1.3",
+        "symfony/symfony": "~2.7",
         "lastzero/symlex-core": "*",
         "lastzero/sympathy": "~1.0",
         "doctrine/dbal": "~2.5",
@@ -16,7 +16,8 @@
     },
     "require-dev": {
         "lastzero/test-tools": "*",
-        "phpunit/phpunit": "~4.5"
+        "phpunit/phpunit": "~4.8",
+        "sstalle/php7cc": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
