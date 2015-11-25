@@ -1,5 +1,5 @@
-Symlex: A Silex boilerplate with Symfony DI Container
-=====================================================
+Symlex - Silex with Symfony DI Container
+========================================
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
