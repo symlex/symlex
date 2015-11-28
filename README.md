@@ -71,7 +71,7 @@ These files are in the same format you know from Symfony 2. In addition to the r
 
 This provides a uniform approach for bootstrapping Web (`Silex\Application`) and command-line (`Symfony\Component\Console\Application`) applications with the same kernel.
 
-*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to delete all cache files after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
+*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
 Bootstrapping
 -------------
