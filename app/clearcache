@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+$cachePath = realpath(__DIR__ . '/../var/cache');
+
+if(is_dir($cachePath)) {
+    shell_exec('rm -Rf ' . $cachePath . '/*');
+} else {
+    echo "Cache directory $cachePath could not be found.\n";
+}
+
+echo "Cache in $cachePath successfully deleted.\n";
