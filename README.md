@@ -243,9 +243,11 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
 
 Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
 
-Models & Databases
-------------------
-Symlex isn't designed for any specific database abstraction layer or model library. The boilerplate examples are based on MySQL, Doctrine DBAL and [straightforward DAO (data access object)/model classes](https://github.com/lastzero/sympathy/tree/master/src/Sympathy/Db), that are part of the Sympathy library. They implement the usual CRUD functionality (create, read, update, delete) and separate SQL from model code.
+Models, Forms & Databases
+-------------------------
+Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](http://lastzero.github.io/doctrine-active-record/).
+
+Controllers use the [InputValidation for PHP](http://lastzero.github.io/php-input-validation/) library to securely validate user input data.
 
 **Doctrine Migrations** for versioning your database schema is supported out of the box (`app/console` lists all available commands).
 
@@ -284,12 +286,11 @@ Tests
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
     [lastzero/symlex]# app/phpunit
-    PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
-    Configuration read from phpunit.xml.dist
+    PHPUnit 4.8.18 by Sebastian Bergmann and contributors.
 
     .....................
 
-    Time: 105 ms, Memory: 9.25Mb
+    Time: 147 ms, Memory: 11.25Mb
     OK (21 tests, 53 assertions)
     
-See also: https://github.com/lastzero/test-tools (self-initializing database fixtures and dependency injection for unit tests)
+See also [TestTools for PHPUnit - Easy dependency injection and self-initializing fixtures](http://lastzero.github.io/test-tools/)
