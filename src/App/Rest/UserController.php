@@ -9,7 +9,7 @@ use App\Exception\InvalidArgumentException;
 use App\Form\UserForm;
 use App\Service\Mail;
 use App\Service\Session;
-use App\Model\User;
+use App\Model\UserModel;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController
@@ -19,7 +19,7 @@ class UserController
     protected $form;
     protected $mail;
 
-    public function __construct(Session $session, User $user, UserForm $form, Mail $mail)
+    public function __construct(Session $session, UserModel $user, UserForm $form, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;
@@ -103,8 +103,10 @@ class UserController
         if($this->form->hasErrors()) {
             throw new FormInvalidException($this->form->getFirstError());
         } else {
-            $this->user->create($this->form->getValues());
-            $this->mail->newUser($this->user);
+            $this->user->transactional(function () {
+                $this->user->create($this->form->getValues());
+                $this->mail->newUser($this->user);
+            });
         }
 
         return $this->sanitizeUserValues($this->user->getValues());

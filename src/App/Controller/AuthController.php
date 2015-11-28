@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Service\Mail;
 use App\Service\Session;
-use App\Model\User;
+use App\Model\UserModel;
 use App\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,7 +13,7 @@ class AuthController
     protected $session;
     protected $user;
 
-    public function __construct(Session $session, User $user, Mail $mail)
+    public function __construct(Session $session, UserModel $user, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;

@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Service\Mail;
-use App\Model\User;
+use App\Model\UserModel;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,7 +16,7 @@ class PasswordResetCommand extends Command
     protected $mail;
     protected $user;
 
-    public function __construct($name, Mail $mail, User $user)
+    public function __construct($name, Mail $mail, UserModel $user)
     {
         $this->mail = $mail;
         $this->user = $user;

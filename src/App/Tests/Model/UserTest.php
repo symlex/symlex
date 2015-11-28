@@ -7,7 +7,7 @@ use TestTools\TestCase\UnitTestCase;
 class UserTest extends UnitTestCase
 {
     /**
-     * @var \App\Model\User
+     * @var \App\Model\UserModel
      */
     protected $model;
 
@@ -27,7 +27,7 @@ class UserTest extends UnitTestCase
     public function testFindByCredentials() {
         $result = $this->model->findByCredentials('admin@example.com', 'passwd');
 
-        $this->assertInstanceOf('\App\Model\User', $result);
+        $this->assertInstanceOf('\App\Model\UserModel', $result);
 
         $this->assertEquals(1, $result->getId());
         $this->assertEquals(1, $result->admin);
@@ -51,7 +51,7 @@ class UserTest extends UnitTestCase
     }
 
     /**
-     * @expectedException \Sympathy\Db\Exception
+     * @expectedException \Doctrine\ActiveRecord\Exception\Exception
      */
     public function testGetPasswordException() {
         $this->model->password;

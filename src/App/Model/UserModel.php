@@ -7,7 +7,7 @@ use App\Exception\InvalidArgumentException;
 use App\Exception\InvalidPasswordException;
 use App\Exception\NotFoundException;
 
-class User extends DbModel
+class UserModel extends ModelAbstract
 {
     protected $_daoName = 'User';
 

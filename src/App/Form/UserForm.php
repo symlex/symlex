@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-class UserForm extends Form {
+class UserForm extends FormAbstract {
     protected function init(array $params = array())
     {
         $definition = array(

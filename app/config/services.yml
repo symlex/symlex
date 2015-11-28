@@ -34,26 +34,45 @@ services:
         class: Symfony\Component\Translation\Translator
         arguments: ['de', @message_selector]
         calls:
-          - [ addLoader, ['yaml', @yaml_loader] ]
-          - [ addLoader, ['array', @array_loader]]
-          - [ addResource, ['yaml', '%app.path%/l10n/de.yml', 'de'] ]
-          - [ addResource, ['yaml', '%app.path%/l10n/en.yml', 'en'] ]
+            - [ addLoader, ['yaml', @yaml_loader] ]
+            - [ addLoader, ['array', @array_loader]]
+            - [ addResource, ['yaml', '%app.path%/l10n/de.yml', 'de'] ]
+            - [ addResource, ['yaml', '%app.path%/l10n/en.yml', 'en'] ]
 
     validator:
-        class: Sympathy\Form\Validator
+        class: InputValidation\Validator
 
-    form:
-        class: App\Form\Form
+    form.factory:
+        class: InputValidation\Factory
         arguments: [ @translator, @validator ]
+        calls:
+            - [ setFactoryNamespace, [ 'App\Form' ] ]
+            - [ setFactoryPostfix, [ '' ] ]
 
     form.user:
         class: App\Form\UserForm
         arguments: [ @translator, @validator ]
 
+    dao.factory:
+        class: Doctrine\ActiveRecord\Dao\Factory
+        arguments:
+            - @db
+        calls:
+            - [ setFactoryNamespace, ['App\Dao' ] ]
+            - [ setFactoryPostfix, ['Dao'] ]
+
+    model.factory:
+        class: Doctrine\ActiveRecord\Model\Factory
+        arguments:
+            - @dao.factory
+        calls:
+            - [ setFactoryNamespace, ['App\Model' ] ]
+            - [ setFactoryPostfix, [''] ]
+
     model.user:
-        class: App\Model\User
+        class: App\Model\UserModel
         scope: prototype
-        arguments: [ @db ]
+        arguments: [ @model.factory ]
 
     service.mail:
         class: App\Service\Mail
