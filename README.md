@@ -45,6 +45,8 @@ Performance
 -----------
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
+"The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions." -- [Eric Elliott](https://twitter.com/_ericelliott/status/671970774958272512)
+
 Here is a benchmark, comparing the framework overhead for REST requests (Symlex vs Symfony 2 with FOSRestBundle on a Core i7 1.7 GHz running Ubuntu Linux 12.04 / Apache 2 / PHP 5.4.28 with APC and autoloader class cache enabled):
 
 ![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2014/08/rest_framework_overhead.png)
