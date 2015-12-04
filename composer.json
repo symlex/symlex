@@ -24,7 +24,7 @@
     "symfony/symfony": ">=2.8",
     "doctrine/dbal": "~2.5",
     "monolog/monolog": "1.*",
-    "doctrine/migrations": "~1.0",
+    "doctrine/migrations": "~1.1",
     "swiftmailer/swiftmailer": "5.*",
     "incenteev/composer-parameter-handler": "~2.0",
     "lastzero/symlex-core": "~1.0",

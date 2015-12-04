@@ -13,13 +13,13 @@ services:
         arguments:
             - "@db"
 
-    console.helper.dialog:
-        class: Symfony\Component\Console\Helper\DialogHelper
+    console.helper.question:
+        class: Symfony\Component\Console\Helper\QuestionHelper
 
     console.helpers:
         class: Symfony\Component\Console\Helper\HelperSet
         arguments:
-            - { db: "@console.helper.db", dialog: "@console.helper.dialog" }
+            - { db: "@console.helper.db", question: "@console.helper.question" }
 
     doctrine.migrations.diff:
         class: Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand
