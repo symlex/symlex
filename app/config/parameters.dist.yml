@@ -2,7 +2,7 @@ parameters:
     app.name: Symlex
     app.version: '1.0'
     app.url: 'https://symlex.local/'
-    app.email: root@localhost
+    app.email: 'root@localhost'
 
     db.options:
         driver: mysqli

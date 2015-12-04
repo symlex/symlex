@@ -10,7 +10,7 @@ services:
         class: Monolog\Logger
         arguments: [ 'main' ]
         calls:
-            - [ pushHandler, [@log.handler] ]
+            - [ pushHandler, [ "@log.handler" ] ]
 
     db.driver:
         class: Doctrine\DBAL\Driver\Mysqli\Driver
@@ -19,7 +19,7 @@ services:
         class: Doctrine\DBAL\Connection
         arguments:
             - %db.options%
-            - @db.driver
+            - "@db.driver"
 
     message_selector:
         class: Symfony\Component\Translation\MessageSelector
@@ -32,31 +32,31 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: ['de', @message_selector]
+        arguments: [ 'de', "@message_selector" ]
         calls:
-            - [ addLoader, ['yaml', @yaml_loader] ]
-            - [ addLoader, ['array', @array_loader]]
-            - [ addResource, ['yaml', '%app.path%/l10n/de.yml', 'de'] ]
-            - [ addResource, ['yaml', '%app.path%/l10n/en.yml', 'en'] ]
+            - [ addLoader, [ 'yaml', "@yaml_loader" ] ]
+            - [ addLoader, [ 'array', "@array_loader" ]]
+            - [ addResource, [ 'yaml', '%app.path%/l10n/de.yml', 'de' ] ]
+            - [ addResource, [ 'yaml', '%app.path%/l10n/en.yml', 'en' ] ]
 
     validator:
         class: InputValidation\Validator
 
     form.factory:
         class: InputValidation\Factory
-        arguments: [ @translator, @validator ]
+        arguments: [ "@translator", "@validator" ]
         calls:
             - [ setFactoryNamespace, [ 'App\Form' ] ]
             - [ setFactoryPostfix, [ '' ] ]
 
     form.user:
         class: App\Form\UserForm
-        arguments: [ @translator, @validator ]
+        arguments: [ "@translator", "@validator" ]
 
     dao.factory:
         class: Doctrine\ActiveRecord\Dao\Factory
         arguments:
-            - @db
+            - "@db"
         calls:
             - [ setFactoryNamespace, ['App\Dao' ] ]
             - [ setFactoryPostfix, ['Dao'] ]
@@ -64,7 +64,7 @@ services:
     model.factory:
         class: Doctrine\ActiveRecord\Model\Factory
         arguments:
-            - @dao.factory
+            - "@dao.factory"
         calls:
             - [ setFactoryNamespace, ['App\Model' ] ]
             - [ setFactoryPostfix, [''] ]
@@ -72,9 +72,9 @@ services:
     model.user:
         class: App\Model\UserModel
         scope: prototype
-        arguments: [ @model.factory ]
+        arguments: [ "@model.factory" ]
 
     service.mail:
         class: App\Service\Mail
         scope: prototype
-        arguments: [ @mailer, @twig, { %app.email%: %app.name%} ]
+        arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]

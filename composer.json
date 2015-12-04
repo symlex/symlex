@@ -19,16 +19,17 @@
   ],
   "type": "project",
   "require": {
+    "php": ">=5.5.9",
     "silex/silex": "~1.2",
     "symfony/symfony": ">=2.8",
-    "lastzero/symlex-core": "*",
-    "lastzero/doctrine-active-record": "1.0.*",
-    "lastzero/php-input-validation": "1.0.*",
     "doctrine/dbal": "~2.5",
     "monolog/monolog": "1.*",
-    "doctrine/migrations": "1.0.*@dev",
+    "doctrine/migrations": "~1.0",
     "swiftmailer/swiftmailer": "5.*",
-    "incenteev/composer-parameter-handler": "~2.0"
+    "incenteev/composer-parameter-handler": "~2.0",
+    "lastzero/symlex-core": "~1.0",
+    "lastzero/doctrine-active-record": "~1.0",
+    "lastzero/php-input-validation": "~1.0"
   },
   "require-dev": {
     "lastzero/test-tools": "~2.0",

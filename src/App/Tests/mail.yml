@@ -1,11 +1,11 @@
 services:
     mailer:
         class: 'Swift_Mailer'
-        arguments: [ @mailer_transport ]
+        arguments: [ "@mailer_transport" ]
 
     mailer_transport:
         class: 'Swift_Transport_NullTransport'
-        arguments: [ @mailer_eventdispatcher ]
+        arguments: [ "@mailer_eventdispatcher" ]
 
     mailer_eventdispatcher:
         class: 'Swift_Events_SimpleEventDispatcher'

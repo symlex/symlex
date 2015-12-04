@@ -11,7 +11,7 @@ services:
         class: TestTools\Doctrine\DBAL\Connection
         arguments:
             - %db.options%
-            - @db.driver
+            - "@db.driver"
         calls:
             - [ setFixturePrefix, ['sql'] ]
             - [ useFixtures, ["%fixture.path%"] ]
@@ -27,10 +27,10 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: ['de', @message_selector]
+        arguments: ['de', "@message_selector"]
         calls:
-            - [ addLoader, ['yaml', @yaml_loader] ]
-            - [ addLoader, ['array', @array_loader]]
+            - [ addLoader, ['yaml', "@yaml_loader"] ]
+            - [ addLoader, ['array', "@array_loader"]]
             - [ addResource, ['yaml', '%base.path%/../../app/l10n/de.yml', 'de'] ]
             - [ addResource, ['yaml', '%base.path%/../../app/l10n/en.yml', 'en'] ]
 
@@ -42,19 +42,19 @@ services:
 
     form.factory:
         class: InputValidation\FormFactory
-        arguments: [ @translator, @validator ]
+        arguments: [ "@translator", "@validator" ]
         calls:
             - [ setFactoryNamespace, [ 'App\Form' ] ]
             - [ setFactoryPostfix, [ 'Form' ] ]
 
     form.user:
         class: App\Form\UserForm
-        arguments: [ @translator, @validator ]
+        arguments: [ "@translator", "@validator" ]
 
     dao.factory:
         class: Doctrine\ActiveRecord\Dao\Factory
         arguments:
-            - @db
+            - "@db"
         calls:
             - [ setFactoryNamespace, ['App\Dao' ] ]
             - [ setFactoryPostfix, ['Dao'] ]
@@ -62,7 +62,7 @@ services:
     model.factory:
         class: Doctrine\ActiveRecord\Model\Factory
         arguments:
-            - @dao.factory
+            - "@dao.factory"
         calls:
             - [ setFactoryNamespace, ['App\Model' ] ]
             - [ setFactoryPostfix, [''] ]
@@ -70,24 +70,24 @@ services:
     model.user:
         class: App\Model\UserModel
         scope: prototype
-        arguments: [ @model.factory ]
+        arguments: [ "@model.factory" ]
 
     service.session:
         class: App\Service\Session
-        arguments: [ @session, @model.user ]
+        arguments: [ "@session", "@model.user" ]
 
     service.mail:
         class: App\Service\Mail
         scope: prototype
-        arguments: [ @mailer, @twig, { %app.email%: %app.name%} ]
+        arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
 
     controller.web.index:
         class: App\Controller\IndexController
 
     controller.web.auth:
         class: App\Controller\AuthController
-        arguments: [ @service.session, @model.user=, @service.mail= ]
+        arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @service.session, @model.user=, @form.user, @service.mail= ]
+        arguments: [ "@service.session", "@model.user=", "@form.user", "@service.mail=" ]

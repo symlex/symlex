@@ -40,7 +40,7 @@ services:
 
     service.session:
         class: App\Service\Session
-        arguments: [ @session, @model.user= ]
+        arguments: [ "@session", "@model.user=" ]
 
     app:
         class: Silex\Application
@@ -50,24 +50,24 @@ services:
 
     controller.web.auth:
         class: App\Controller\AuthController
-        arguments: [ @service.session, @model.user=, @service.mail= ]
+        arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ @service.session, @model.user=, @form.user, @service.mail= ]
+        arguments: [ "@service.session", "@model.user=", "@form.user", "@service.mail=" ]
 
     router.rest:
         class: App\Router\RestRouter
-        arguments: [ @app, @service_container ]
+        arguments: [ "@app", "@service_container" ]
         calls:
-            - [ setSession, [ @service.session ] ]
+            - [ setSession, [ "@service.session" ] ]
 
     router.twig:
         class: App\Router\TwigRouter
-        arguments: [ @app, @service_container, @twig ]
+        arguments: [ "@app", "@service_container", "@twig" ]
         calls:
-            - [ setSession, [ @service.session ] ]
+            - [ setSession, [ "@service.session" ] ]
 
     router.error:
         class: Symlex\Router\ErrorRouter
-        arguments: [ @app, @twig, %exception.codes%, %exception.messages%, %app.debug% ]
+        arguments: [ "@app", "@twig", %exception.codes%, %exception.messages%, %app.debug% ]

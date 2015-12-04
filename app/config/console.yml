@@ -6,12 +6,12 @@ imports:
 services:
     command.sendnewpassword:
         class: App\Command\PasswordResetCommand
-        arguments: [ 'reset-password', @service.mail=, @model.user=, @twig ]
+        arguments: [ 'reset-password', "@service.mail=", "@model.user=", "@twig" ]
 
     console.helper.db:
         class: Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper
         arguments:
-            - @db
+            - "@db"
 
     console.helper.dialog:
         class: Symfony\Component\Console\Helper\DialogHelper
@@ -19,7 +19,7 @@ services:
     console.helpers:
         class: Symfony\Component\Console\Helper\HelperSet
         arguments:
-            - { db: @console.helper.db, dialog: @console.helper.dialog }
+            - { db: "@console.helper.db", dialog: "@console.helper.dialog" }
 
     doctrine.migrations.diff:
         class: Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand
@@ -44,11 +44,11 @@ services:
         arguments: [%app.name%, %app.version%]
         calls:
             - [ setCatchExceptions, [ true ] ]
-            - [ setHelperSet, [ @console.helpers ] ]
-            - [ add, [ @doctrine.migrations.diff ] ]
-            - [ add, [ @doctrine.migrations.execute ] ]
-            - [ add, [ @doctrine.migrations.generate ] ]
-            - [ add, [ @doctrine.migrations.migrate ] ]
-            - [ add, [ @doctrine.migrations.status ] ]
-            - [ add, [ @doctrine.migrations.version ] ]
-            - [ add, [ @command.sendnewpassword ] ]
+            - [ setHelperSet, [ "@console.helpers" ] ]
+            - [ add, [ "@doctrine.migrations.diff" ] ]
+            - [ add, [ "@doctrine.migrations.execute" ] ]
+            - [ add, [ "@doctrine.migrations.generate" ] ]
+            - [ add, [ "@doctrine.migrations.migrate" ] ]
+            - [ add, [ "@doctrine.migrations.status" ] ]
+            - [ add, [ "@doctrine.migrations.version" ] ]
+            - [ add, [ "@command.sendnewpassword" ] ]
