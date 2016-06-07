@@ -69,7 +69,7 @@ services:
 
     model.user:
         class: App\Model\UserModel
-        scope: prototype
+        shared: false
         arguments: [ "@model.factory" ]
 
     service.session:
@@ -78,7 +78,7 @@ services:
 
     service.mail:
         class: App\Service\Mail
-        scope: prototype
+        shared: false
         arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
 
     controller.web.index:

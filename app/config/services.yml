@@ -71,10 +71,10 @@ services:
 
     model.user:
         class: App\Model\UserModel
-        scope: prototype
+        shared: false
         arguments: [ "@model.factory" ]
 
     service.mail:
         class: App\Service\Mail
-        scope: prototype
+        shared: false
         arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
