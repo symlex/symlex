@@ -1,12 +1,12 @@
 parameters:
     app.name: Symlex
     app.version: '1.0'
-    app.url: 'https://symlex.local/'
+    app.url: 'http://localhost:8080/'
     app.email: 'root@localhost'
 
     db.options:
-        driver: mysqli
-        host: 127.0.0.1
+        driver: pdo_mysql
+        host: mysql
         dbname: silex
         user: silex
         password: silex

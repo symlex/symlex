@@ -13,7 +13,7 @@ services:
             - [ pushHandler, [ "@log.handler" ] ]
 
     db.driver:
-        class: Doctrine\DBAL\Driver\Mysqli\Driver
+        class: Doctrine\DBAL\Driver\PDOMySql\Driver
 
     db:
         class: Doctrine\DBAL\Connection

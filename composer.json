@@ -42,6 +42,9 @@
       "": "src/"
     }
   },
+  "config": {
+    "bin-dir": "bin/"
+  },
   "scripts": {
     "post-install-cmd": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"

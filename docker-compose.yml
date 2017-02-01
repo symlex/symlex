@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/code
+            - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - code-network
+    php:
+        build: ./docker/php
+        volumes:
+            - ./:/code
+        networks:
+            - code-network
+    mysql:
+        image: mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./:/code
+        environment:
+            MYSQL_ROOT_PASSWORD: silex
+            MYSQL_USER: silex
+            MYSQL_PASSWORD: silex
+            MYSQL_DATABASE: silex
+        networks:
+            - code-network
+
+networks:
+    code-network:
+        driver: bridge
