@@ -15,16 +15,16 @@
         >
 
     <testsuites>
-        <testsuite name="Symlex App">
-            <directory>src/App/Tests</directory>
+        <testsuite>
+            <directory>src/Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>src/App</directory>
+            <directory>src</directory>
             <exclude>
-                <directory>src/App/Tests</directory>
+                <directory>src/Tests</directory>
             </exclude>
         </whitelist>
     </filter>

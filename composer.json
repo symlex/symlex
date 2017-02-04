@@ -19,7 +19,7 @@
   ],
   "type": "project",
   "require": {
-    "php": ">=5.5.9",
+    "php": ">=7.0.0",
     "silex/silex": "~1.2",
     "symfony/symfony": ">=2.8",
     "doctrine/dbal": "~2.5",
@@ -29,17 +29,18 @@
     "incenteev/composer-parameter-handler": "~2.0",
     "lastzero/symlex-core": "~1.0",
     "lastzero/doctrine-active-record": "~1.0",
-    "lastzero/php-input-validation": "~1.0"
+    "lastzero/php-input-validation": "~1.0",
+    "phing/phing": "2.*"
   },
   "require-dev": {
-    "lastzero/test-tools": "~2.0",
-    "phpunit/phpunit": "@stable"
+    "lastzero/test-tools": "~3.0",
+    "phpunit/phpunit": "~6.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
-    "psr-0": {
-      "": "src/"
+    "psr-4": {
+      "App\\": "src/"
     }
   },
   "config": {

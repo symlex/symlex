@@ -31,8 +31,8 @@ services:
         calls:
             - [ addLoader, ['yaml', "@yaml_loader"] ]
             - [ addLoader, ['array', "@array_loader"]]
-            - [ addResource, ['yaml', '%base.path%/../../app/l10n/de.yml', 'de'] ]
-            - [ addResource, ['yaml', '%base.path%/../../app/l10n/en.yml', 'en'] ]
+            - [ addResource, ['yaml', '%base.path%/../app/l10n/de.yml', 'de'] ]
+            - [ addResource, ['yaml', '%base.path%/../app/l10n/en.yml', 'en'] ]
 
     validator:
         class: InputValidation\Validator
