@@ -49,8 +49,11 @@ After installing a custom PHP version, you must add its path to `~/.bash_profile
 export PATH="/usr/local/bin:/usr/local/php5/bin:$PATH"
 ```
 
-Composer is available for download at https://getcomposer.org/download/. I recommend adding `/usr/local/bin` to your path in `~/.bash_profile` 
-and copying composer there: `sudo cp composer.phar /usr/local/bin/composer`
+Composer is available for download at https://getcomposer.org/download/ (follow the instructions). I recommend adding `/usr/local/bin` to your path in `~/.bash_profile` and copying composer there instead of keeping composer.phar in your local project directory:
+
+```
+sudo cp composer.phar /usr/local/bin/composer
+```
 
 Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
 
