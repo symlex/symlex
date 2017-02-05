@@ -14,33 +14,34 @@ This ready-to-use boilerplate app is built on Silex and Symfony Components for d
 Setup
 -----
 
-1. Run **composer** to create a new Symlex project:
+Run **composer** to create a new Symlex project:
 
 ```
 composer create-project lastzero/symlex symlex
 ```
 
-2. Start nginx, PHP 7 and MySQL using Docker:
+Start nginx, PHP 7 and MySQL using Docker:
 
 ```
+cd symlex
 docker-compose up
 ```
 
-3. Initialize the database using Doctrine migrations (you can also use this approach, to execute other CLI commands):
+Initialize the database using Doctrine migrations:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
 app/console migrations:migrate --no-interaction
 ```
 
+*Note: You can also use this approach to execute other CLI commands later.*
+
 After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
 
-How to get the latest Docker, PHP and composer version as Mac OS X user?
-------------------------------------------------------------------------
+How to install PHP, Composer and Docker as Mac OS X user?
+---------------------------------------------------------
 
-Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
-
-In case you're using Mac OS X that is shipped with outdated PHP versions you can download the latest version at https://php-osx.liip.ch/.
+Mac OS X is shipped with outdated PHP versions. You can download the latest version at https://php-osx.liip.ch/.
 
 After installing a custom PHP version, you must add it's path to `~/.bash_profile` like this:
 
@@ -50,6 +51,8 @@ export PATH="/usr/local/bin:/usr/local/php5/bin:$PATH"
 
 Composer is available for download at https://getcomposer.org/download/. I recommend adding `/usr/local/bin` to your path in `~/.bash_profile` 
 and copying composer there: `sudo cp composer.phar /usr/local/bin/composer`
+
+Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
 
 History
 -------
