@@ -43,7 +43,7 @@ How to install PHP, Composer and Docker as Mac OS X user?
 
 Mac OS X is shipped with outdated PHP versions. You can download the latest version at https://php-osx.liip.ch/.
 
-After installing a custom PHP version, you must add it's path to `~/.bash_profile` like this:
+After installing a custom PHP version, you must add its path to `~/.bash_profile`:
 
 ```
 export PATH="/usr/local/bin:/usr/local/php5/bin:$PATH"
