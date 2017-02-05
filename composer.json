@@ -30,9 +30,9 @@
         "swiftmailer/swiftmailer": "5.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "lastzero/symlex-core": "~1.1",
-        "lastzero/doctrine-active-record": "~1.0",
-        "lastzero/php-input-validation": "~1.0",
-        "phing/phing": "2.*"
+        "lastzero/doctrine-active-record": "~2.0",
+        "lastzero/php-input-validation": "~2.0",
+        "phing/phing": "~2.0"
     },
     "require-dev": {
         "lastzero/test-tools": "^3.0",
