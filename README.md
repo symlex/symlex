@@ -14,18 +14,30 @@ This ready-to-use boilerplate app is built on Silex and Symfony Components for d
 Setup
 -----
 
-1. Run **composer** to create a new project and fetch external dependencies:
+Run **composer** to create a new Symlex project and start Docker:
 
+```
         composer create-project lastzero/symlex symlex
+        docker-compose up
+```
 
-2. Configure your **Web server** to use the `web` directory as root path, see 
-   also http://silex.sensiolabs.org/doc/web_servers.html (`.htaccess` file for Apache exists)
- 
-3. Import `app/db/schema.sql` to the **MySQL database** configured in `app/config/parameters.yml`
+After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
 
-*Note: Bower - the JavaScript equivalent to composer - is not required for installation, but you are advised to use it for managing your JavaScript dependencies.*
+How to get the latest Docker, PHP and composer version as Mac OS X user?
+------------------------------------------------------------------------
 
-After successful installation, open the site and log in with the credentials `admin@example.com` / `passwd`.
+Docker - a tools that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
+
+In case you're using Mac OS X that is shipped with outdated PHP versions you can download the latest version at https://php-osx.liip.ch/.
+
+After installing a custom PHP version, you must add it's path to `~/.bash_profile` like this:
+
+```
+export PATH="/usr/local/bin:/usr/local/php5/bin:$PATH"
+```
+
+Composer is available for download at https://getcomposer.org/download/. I recommend adding `/usr/local/bin` to your path in `~/.bash_profile` 
+and copying composer there: `sudo cp composer.phar /usr/local/bin/composer`
 
 History
 -------
@@ -79,7 +91,7 @@ Bootstrapping
 -------------
 A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app by calling `run()`:
 
-```
+```php
 <?php
 namespace Symlex\Bootstrap;
 
@@ -114,7 +126,7 @@ class App
 
 The kernel base class can be extended to customize it for a specific purpose (e.g. command line application):
 
-```
+```php
 <?php
 namespace App;
 use Symlex\Bootstrap\App;
@@ -138,7 +150,7 @@ class ConsoleApp extends App
 
 Creating a kernel instance and calling run() is enough to start the application (see `app/console` and `web/app.php`):
 
-```
+```php
 #!/usr/bin/env php
 <?php
 
@@ -160,7 +172,7 @@ Matching requests to controller actions is performed based on convention instead
 It's easy to create your own custom routing/rendering based on the existing examples.
 
 The application's HTTP kernel class initializes routing and sets optional URL/service name prefixes:
-```
+```php
 <?php
 
 namespace Symlex\Bootstrap;
@@ -200,7 +212,7 @@ Controllers
 -----------
 Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
 
-```
+```yaml
     controller.rest.user:
         class: App\Rest\UserController
         arguments: [ @model.session, @model.user, @form.user ]
@@ -218,28 +230,30 @@ REST
 ----
 Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit resource name definition". The action name is derived from the request method and optional sub resources:
 
-        <?php
-        
-        class UserController
-        {
-            ..
-        
-            public function cgetAction(Request $request)
-            {} // [GET] /user
-        
-            public function postAction(Request $request)
-            {} // [POST] /user
+```php
+<?php
 
-            public function getAction($id, Request $request)
-            {} // [GET] /user/{id}
-            
-        
-            ..
-            public function getCommentsAction($id, Request $request)
-            {} // [GET] /user/{id}/comments
-        
-            ..
-        }
+class UserController
+{
+    ..
+
+    public function cgetAction(Request $request)
+    {} // [GET] /user
+
+    public function postAction(Request $request)
+    {} // [POST] /user
+
+    public function getAction($id, Request $request)
+    {} // [GET] /user/{id}
+    
+
+    ..
+    public function getCommentsAction($id, Request $request)
+    {} // [GET] /user/{id}/comments
+
+    ..
+}
+```
 
 **REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
@@ -257,7 +271,7 @@ Error Handling
 --------------
 Exceptions are automatically catched by Silex and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/web.yml`:
 
-```
+```yaml
 parameters:
     exception.codes:
         InvalidArgumentException: 400

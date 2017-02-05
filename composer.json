@@ -29,7 +29,7 @@
         "doctrine/migrations": "~1.1",
         "swiftmailer/swiftmailer": "5.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "lastzero/symlex-core": "~1.0",
+        "lastzero/symlex-core": "~1.1",
         "lastzero/doctrine-active-record": "~1.0",
         "lastzero/php-input-validation": "~1.0",
         "phing/phing": "2.*"

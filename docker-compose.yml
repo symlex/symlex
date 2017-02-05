@@ -6,30 +6,32 @@ services:
         ports:
             - "8080:80"
         volumes:
-            - ./:/code
+            - ./:/var/www/html
             - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
         networks:
-            - code-network
+            - symlex-network
     php:
         build: ./docker/php
+        depends_on:
+              - mysql
         volumes:
-            - ./:/code
+            - ./:/var/www/html
         networks:
-            - code-network
+            - symlex-network
     mysql:
         image: mysql
         ports:
             - "3306:3306"
         volumes:
-            - ./:/code
+            - ./:/var/www/html
         environment:
             MYSQL_ROOT_PASSWORD: silex
             MYSQL_USER: silex
             MYSQL_PASSWORD: silex
             MYSQL_DATABASE: silex
         networks:
-            - code-network
+            - symlex-network
 
 networks:
-    code-network:
+    symlex-network:
         driver: bridge
