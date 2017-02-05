@@ -11,7 +11,7 @@ services:
             - ./:/var/www/html
             - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
         networks:
-            - symlex-network
+            - default
     php:
         build: ./docker/php
         depends_on:
@@ -19,7 +19,7 @@ services:
         volumes:
             - ./:/var/www/html
         networks:
-            - symlex-network
+            - default
     mysql:
         image: mysql
         ports:
@@ -27,13 +27,13 @@ services:
         volumes:
             - ./:/var/www/html
         environment:
-            MYSQL_ROOT_PASSWORD: silex
-            MYSQL_USER: silex
-            MYSQL_PASSWORD: silex
-            MYSQL_DATABASE: silex
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: web
+            MYSQL_PASSWORD: web
+            MYSQL_DATABASE: web
         networks:
-            - symlex-network
+            - default
 
 networks:
-    symlex-network:
+    default:
         driver: bridge

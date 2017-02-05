@@ -1,14 +1,22 @@
 imports:
     - { resource: mailer.yml }
 
+parameters:
+    db.options:
+        host: "%db.host%"
+        port: "%db.port%"
+        dbname: "%db.name%"
+        user: "%db.user%"
+        password: "%db.password%"
+
 services:
     log.handler:
         class: Monolog\Handler\StreamHandler
-        arguments: [ '%app.log_path%/%app.environment%.log' ]
+        arguments: [ "%app.log_path%/%app.environment%.log" ]
 
     log:
         class: Monolog\Logger
-        arguments: [ 'main' ]
+        arguments: [ "main" ]
         calls:
             - [ pushHandler, [ "@log.handler" ] ]
 
@@ -32,12 +40,12 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: [ 'de', "@message_selector" ]
+        arguments: [ "de", "@message_selector" ]
         calls:
-            - [ addLoader, [ 'yaml', "@yaml_loader" ] ]
-            - [ addLoader, [ 'array', "@array_loader" ]]
-            - [ addResource, [ 'yaml', '%app.path%/l10n/de.yml', 'de' ] ]
-            - [ addResource, [ 'yaml', '%app.path%/l10n/en.yml', 'en' ] ]
+            - [ addLoader, [ "yaml", "@yaml_loader" ] ]
+            - [ addLoader, [ "array", "@array_loader" ]]
+            - [ addResource, [ "yaml", "%app.path%/l10n/de.yml", "de" ] ]
+            - [ addResource, [ "yaml", "%app.path%/l10n/en.yml", "en" ] ]
 
     validator:
         class: InputValidation\Validator
@@ -58,16 +66,16 @@ services:
         arguments:
             - "@db"
         calls:
-            - [ setFactoryNamespace, ['App\Dao' ] ]
-            - [ setFactoryPostfix, ['Dao'] ]
+            - [ setFactoryNamespace, [ 'App\Dao' ] ]
+            - [ setFactoryPostfix, [ 'Dao' ] ]
 
     model.factory:
         class: Doctrine\ActiveRecord\Model\Factory
         arguments:
             - "@dao.factory"
         calls:
-            - [ setFactoryNamespace, ['App\Model' ] ]
-            - [ setFactoryPostfix, [''] ]
+            - [ setFactoryNamespace, [ 'App\Model' ] ]
+            - [ setFactoryPostfix, [ '' ] ]
 
     model.user:
         class: App\Model\UserModel

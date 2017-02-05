@@ -1,18 +1,13 @@
 parameters:
-    app.name: Symlex
+    app.name: 'App'
     app.version: '1.0'
     app.url: 'http://localhost:8080/'
     app.email: 'root@localhost'
-
-    db.options:
-        driver: pdo_mysql
-        host: mysql
-        dbname: silex
-        user: silex
-        password: silex
-        port: ~
-        unix_socket: ~
-
+    db.host: mysql
+    db.port: 3306
+    db.name: web
+    db.user: web
+    db.password: web
     mailer.host: smtp.gmail.com
     mailer.port: 587
     mailer.encryption: tls
