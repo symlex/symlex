@@ -14,11 +14,23 @@ This ready-to-use boilerplate app is built on Silex and Symfony Components for d
 Setup
 -----
 
-Run **composer** to create a new Symlex project and start Docker:
+1. Run **composer** to create a new Symlex project:
 
 ```
-        composer create-project lastzero/symlex symlex
-        docker-compose up
+composer create-project lastzero/symlex symlex
+```
+
+2. Start nginx, PHP 7 and MySQL using Docker:
+
+```
+docker-compose up
+```
+
+3. Initialize the database using Doctrine migrations (you can also use this approach, to execute other CLI commands):
+
+```
+docker exec -it symlex_php_1 /bin/bash
+app/console migrations:migrate --no-interaction
 ```
 
 After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
@@ -26,7 +38,7 @@ After successful installation, open the site at http://localhost:8080/ and log i
 How to get the latest Docker, PHP and composer version as Mac OS X user?
 ------------------------------------------------------------------------
 
-Docker - a tools that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
+Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
 
 In case you're using Mac OS X that is shipped with outdated PHP versions you can download the latest version at https://php-osx.liip.ch/.
 
