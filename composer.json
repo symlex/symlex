@@ -1,5 +1,6 @@
 {
     "name": "lastzero/symlex",
+    "type": "project",
     "description": "Silex with Symfony DI Container: A framework for rapid development of high-performance REST services & apps",
     "keywords": [
         "silex",
@@ -19,11 +20,11 @@
             "role": "Developer"
         }
     ],
-    "type": "project",
     "require": {
         "php": ">=7.0",
         "silex/silex": "~1.2",
         "symfony/symfony": "^2.8|^3.0",
+        "sensiolabs/security-checker": "*",
         "doctrine/dbal": "~2.5",
         "monolog/monolog": "1.*",
         "doctrine/migrations": "~1.1",
@@ -32,11 +33,10 @@
         "lastzero/symlex-core": "~1.1",
         "lastzero/doctrine-active-record": "~2.0",
         "lastzero/php-input-validation": "~2.0",
-        "phing/phing": "~2.0"
+        "phing/phing": "~2.1"
     },
     "require-dev": {
-        "lastzero/test-tools": "^3.0",
-        "phpunit/phpunit": "^6.0"
+        "lastzero/test-tools": "^3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -50,10 +50,14 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "php bin/security-checker security:check --format=simple",
+            "app/clearcache"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "php bin/security-checker security:check --format=simple",
+            "app/clearcache"
         ]
     },
     "extra": {
