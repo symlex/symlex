@@ -1,3 +1,0 @@
-#!/bin/bash
-
-r.js -o web/js/build.js
