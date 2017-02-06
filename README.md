@@ -14,24 +14,24 @@ This ready-to-use boilerplate app is built on Silex and Symfony Components for d
 Setup
 -----
 
-Run **composer** to create a new Symlex project:
+Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
 ```
 composer create-project lastzero/symlex symlex
 ```
 
-Start nginx, PHP 7 and MySQL using Docker:
+Start nginx, PHP 7.1 and MySQL using [Docker](https://www.docker.com/):
 
 ```
 cd symlex
 docker-compose up
 ```
 
-Initialize the database using Doctrine migrations:
+Let [Phing](https://www.phing.info/) initialize the database and build JS/CSS:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
-app/console migrations:migrate --no-interaction
+bin/phing build
 ```
 
 *Note: You can also use this approach to execute other CLI commands later.*

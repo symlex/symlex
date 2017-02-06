@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="App" default="build" basedir="." description="">
+    <target name="build">
+        <phingcall target="update-database"/>
+        <phingcall target="build-javascript"/>
+    </target>
+
+    <target name="test-coverage">
+        <exec command="./bin/phpunit --coverage-html var/coverage" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="update-database">
+        <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
+    </target>
+
+    <target name="build-javascript">
+        <phingcall target="run-bower"/>
+        <phingcall target="minify-javascript"/>
+    </target>
+
+    <target name="run-bower">
+        <exec command="bower install" dir="./web" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="minify-javascript">
+        <exec command="r.js -o web/js/build.js paths.requireLib=lib/require include=requireLib" checkreturn="true" passthru="true"/>
+        <exec command="r.js -o cssIn=web/css/main.css out=web/build/main.css" checkreturn="true" passthru="true"/>
+    </target>
+</project>
