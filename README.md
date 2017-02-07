@@ -32,7 +32,7 @@ cd symlex
 docker-compose up
 ```
 
-Let [Phing](https://www.phing.info/) initialize the database and build JS/CSS:
+Let [Phing](https://www.phing.info/) initialize the database and build the frontend components for you:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
