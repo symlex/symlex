@@ -1,5 +1,5 @@
-@import url("bootstrap.css");
-@import url("angular-motion.css");
+@import url("../bower_components/bootstrap/dist/css/bootstrap.css");
+@import url("../bower_components/angular-motion/dist/angular-motion.css");
 
 body {
     padding: 70px 40px 40px 40px;
