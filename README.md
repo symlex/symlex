@@ -6,6 +6,8 @@ Symlex - Silex with Symfony DI Container
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
 This ready-to-use framework is built on top of **Silex 2** and uses the well known Symfony DI container instead of Pimple.
+It has proven to be well suited for implementing high-performance microservices, CLI and single-page applications.
+
 Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 A working example for command line applications is included as well.
