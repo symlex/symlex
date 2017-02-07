@@ -19,7 +19,7 @@ A working example for command line applications is included as well.
 Setup
 -----
 
-Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_README.md) for Mac OS X users).
+Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_HOWTO.md) for Mac OS X users).
 
 Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
