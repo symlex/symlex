@@ -1,6 +1,6 @@
 define(['controllers/module'], function (controllers) {
     'use strict';
-    return controllers.controller('UsersController', ['$scope', '$modal', 'Api', function ($scope, $modal, api) {
+    return controllers.controller('UsersController', ['$scope', '$uibModal', 'Api', function ($scope, $modal, api) {
         var userResource = api.getUserResource();
 
         $scope.users = userResource.query();

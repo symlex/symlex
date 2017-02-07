@@ -43,6 +43,7 @@ app/config/*.local.php
 vendor/
 bin/
 composer.lock
+web/bower_components/
 
 # IDE generated files #
 #######################

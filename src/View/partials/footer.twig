@@ -1,7 +1,7 @@
 {% if debug %}
-    <script data-main="/js/main" src="/js/lib/require.js"></script>
+    <script data-main="/js/main" src="/bower_components/requirejs/require.js"></script>
 {% else %}
-    <script data-main="/js/main-built" src="/js/lib/require.js"></script>
+    <script src="/build/main.js"></script>
 {% endif %}
 </body>
 </html>

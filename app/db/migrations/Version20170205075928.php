@@ -19,7 +19,7 @@ class Version20170205075928 extends AbstractMigration
         $this->addSql('CREATE TABLE `users` (
               `user_id` int(11) NOT NULL AUTO_INCREMENT,
               `email` varchar(127) NOT NULL,
-              `password` varchar(255) NOT NULL,
+              `password` varchar(255) NOT NULL DEFAULT \'\',
               `password_reset_token` varchar(128) DEFAULT \'\',
               `firstname` varchar(64) NOT NULL DEFAULT \'\',
               `lastname` varchar(64) NOT NULL DEFAULT \'\',

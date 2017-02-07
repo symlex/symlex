@@ -38,7 +38,7 @@ class AuthControllerTest extends UnitTestCase
     public function testLogoutAction () {
         $result = $this->controller->logoutAction();
 
-        $expected = '/index/index';
+        $expected = '/';
 
         $this->assertEquals($expected, $result);
     }

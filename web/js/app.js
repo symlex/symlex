@@ -18,7 +18,7 @@ define([
         'app.directives',
         'app.services',
         'app.controllers',
-        'infinite-scroll',
+        'ui.InfiniteScroll',
         'angular-loading-bar',
         'ui.bootstrap',
         'ui.bootstrap.tpls'
