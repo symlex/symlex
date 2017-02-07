@@ -2,15 +2,14 @@
 
     <div class="jumbotron">
 
-        <h1>Welcome to {{ config.app_name }}!</h1>
+        <h1>Welcome to Symlex!</h1>
 
-        <p>This boilerplate app is built on <strong>Silex</strong> and <strong>Symfony Components</strong> for dependency injection instead of Pimple.
-            Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management).</p>
+        <p>This boilerplate app is built on top of <strong>Silex 2</strong> and uses the well known Symfony DI container instead of Pimple.
+            Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management).
+            You can use Symlex with any JavaScript library and REST client or to output static HTML.
+            A working example for command line applications is included as well.</p>
 
-        <p>Please use the email address &quot;admin@example.com&quot; and the password &quot;passwd&quot; to log in.
-            Note that you must import <em>app/db/schema.sql</em> into your MySQL database and configure the connection
-            in <em>app/config/parameters.yml</em>
-            first.</p>
+        <p>After running "bin/phing build", you can sign in as "admin@example.com" using the password "passwd".</p>
 
         <p><a class="btn btn-primary btn-lg" href="https://github.com/lastzero/silex-boilerplate">Visit this project on
             GitHub &raquo;</a></p>
@@ -48,6 +47,6 @@
     <hr>
 
     <footer>
-        <p>Powered by Silex and Symfony Components</p>
+        <p>{{ config.app_name }} {{ config.app_version }} - powered by Silex 2 and Symfony Components</p>
     </footer>
 </div>
