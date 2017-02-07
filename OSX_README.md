@@ -1,5 +1,5 @@
-How to install PHP, Composer and Docker as Mac OS X user?
-=========================================================
+How to install PHP, Composer and Docker on Mac OS X
+===================================================
 
 Mac OS X is shipped with outdated PHP versions. You can download the latest version from [Liip](https://php-osx.liip.ch/).
 
