@@ -1,6 +1,6 @@
 define(['controllers/module'], function (controllers) {
     'use strict';
-    return controllers.controller('ProfileController', ['$scope', '$routeParams', 'Api', 'Alert', '$modal', function ($scope, $routeParams, Api, Alert, $modal) {
+    return controllers.controller('ProfileController', ['$scope', '$routeParams', 'Api', 'Alert', '$uibModal', function ($scope, $routeParams, Api, Alert, $modal) {
         var userResource = Api.getUserResource();
 
         $scope.user = userResource.get({user_id: $routeParams.userId});

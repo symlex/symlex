@@ -34,7 +34,7 @@ class AuthController
 
         try {
             $this->session->login($email, $password);
-            return '/index/index';
+            return '/';
         } catch (\Exception $e) {
             $result['error'] = $e->getMessage();
         }
@@ -102,6 +102,6 @@ class AuthController
     public function logoutAction()
     {
         $this->session->logout();
-        return '/index/index';
+        return '/';
     }
 }

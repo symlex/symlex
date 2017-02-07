@@ -1,4 +1,10 @@
+
 define(['app', 'angular', 'angularRoute'], function (app) {
+
+    app.config(['$locationProvider', function($locationProvider) {
+        $locationProvider.hashPrefix('');
+    }]);
+
     app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {
             templateUrl: '/partials/home.html',
@@ -11,4 +17,5 @@ define(['app', 'angular', 'angularRoute'], function (app) {
             controller: 'ProfileController'
         }).otherwise({redirectTo: '/home'});
     }]);
+
 });

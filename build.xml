@@ -19,11 +19,11 @@
     </target>
 
     <target name="run-bower">
-        <exec command="bower install" dir="./web" checkreturn="true" passthru="true"/>
+        <exec command="bower install --allow-root" dir="./web" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="minify-javascript">
-        <exec command="r.js -o web/js/build.js paths.requireLib=lib/require include=requireLib" checkreturn="true" passthru="true"/>
+        <exec command="r.js -o web/js/build.js paths.requireLib=../bower_components/requirejs/require include=requireLib" checkreturn="true" passthru="true"/>
         <exec command="r.js -o cssIn=web/css/main.css out=web/build/main.css" checkreturn="true" passthru="true"/>
     </target>
 </project>

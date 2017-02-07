@@ -1,0 +1,32 @@
+{
+  "name": "app",
+  "description": "Symlex example application",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/lastzero/symlex",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-cookies": "^1.6.1",
+    "angular-infinite-scroll": "^0.0.1",
+    "angular-loading-bar": "^0.9.0",
+    "angular-maps": "^0.0.6",
+    "angular-mocks": "^1.6.1",
+    "angular-resource": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-touch": "^1.6.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "requirejs": "^2.3.2",
+    "text": "requirejs-text#^2.0.15",
+    "angular-bootstrap": "^2.5.0"
+  }
+}

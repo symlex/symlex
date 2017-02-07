@@ -1,6 +1,6 @@
 define(['controllers/module'], function (controllers) {
     'use strict';
-    return controllers.controller('UserController', ['$scope', 'Alert', '$modalInstance', 'user', function ($scope, Alert, $modalInstance, user) {
+    return controllers.controller('UserController', ['$scope', 'Alert', '$uibModalInstance', 'user', function ($scope, Alert, $modalInstance, user) {
         $scope.user = user;
 
         $scope.update = function () {
