@@ -57,6 +57,12 @@ sudo cp composer.phar /usr/local/bin/composer
 
 Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
 
+To work with JavaScript, you should also install [NodeJS](https://nodejs.org/en/download/) (includes npm), [Bower](https://bower.io/) and other common tools like RequireJS:
+
+```
+sudo npm install -g bower requirejs
+```
+
 History
 -------
 This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 was recommend to me by SensioLabs (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance REST services and single-page Web applications.
