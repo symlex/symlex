@@ -8,7 +8,7 @@ Symlex - Silex with Symfony DI Container
 This ready-to-use framework is built on top of **Silex 2** and uses the well known Symfony DI container instead of Pimple.
 It has proven to be well suited for implementing high-performance microservices, CLI and single-page applications.
 
-Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). 
+Twitter Bootstrap, RequireJS and AngularJS are used for the example frontend code (static home page, login form and user management). 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 A working example for command line applications is included as well.
 
@@ -18,6 +18,8 @@ A working example for command line applications is included as well.
 
 Setup
 -----
+
+Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_README.md) for Mac OS X users).
 
 Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
@@ -42,31 +44,6 @@ bin/phing build
 *Note: You can also use this approach to execute other CLI commands later.*
 
 After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
-
-How to install PHP, Composer and Docker as Mac OS X user?
----------------------------------------------------------
-
-Mac OS X is shipped with outdated PHP versions. You can download the latest version at https://php-osx.liip.ch/.
-
-After installing a custom PHP version, you must add its path to `~/.bash_profile`:
-
-```
-export PATH="/usr/local/bin:/usr/local/php5/bin:$PATH"
-```
-
-Composer is available for download at https://getcomposer.org/download/ (follow the instructions). I recommend adding `/usr/local/bin` to your path in `~/.bash_profile` and copying composer there instead of keeping composer.phar in your local project directory:
-
-```
-sudo cp composer.phar /usr/local/bin/composer
-```
-
-Docker - a free tool that provides easy-to-use container virtualization - is available for download at https://download.docker.com/mac/stable/Docker.dmg
-
-To work with JavaScript, you should also install [NodeJS](https://nodejs.org/en/download/) (includes npm), [Bower](https://bower.io/) and other common tools like RequireJS:
-
-```
-sudo npm install -g bower requirejs
-```
 
 History
 -------
