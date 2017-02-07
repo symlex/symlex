@@ -1,22 +1,10 @@
 <?php
 
-use Symfony\Component\ClassLoader\ApcClassLoader;
-
-$debugMode = !isset($_SERVER['HTTP_CLIENT_IP'])
-    && !isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-    && (in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1')) ||
-        (ip2long(@$_SERVER['REMOTE_ADDR']) & ((256*256-1) << 16)) == ((192 << 24) | (168 << 16))
-    );
-
-$loader = require_once __DIR__ . '/../vendor/autoload.php';
-
-if (!$debugMode && extension_loaded('apc') && ini_get('apc.enabled') == '1') {
-    $apcLoader = new ApcClassLoader(__DIR__, $loader);
-    $loader->unregister();
-    $apcLoader->register(true);
-}
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Symlex\Bootstrap\WebApp;
+
+$debugMode = strpos($_SERVER['SERVER_NAME'], '-debug') !== false;
 
 $app = new WebApp (__DIR__ . '/../app', $debugMode);
 
