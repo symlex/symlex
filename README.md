@@ -27,12 +27,15 @@ Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 composer create-project lastzero/symlex symlex
 ```
 
-Start nginx, PHP 7.1 and MySQL using [Docker](https://www.docker.com/):
+Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
 
 ```
 cd symlex
 docker-compose up
 ```
+
+*Note: This docker-compose configuration is for testing and development purposes only. On OS X, the current release of 
+Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) in executing PHP from the host's file system.*
 
 Let [Phing](https://www.phing.info/) initialize the database and build the frontend components for you:
 
@@ -41,7 +44,8 @@ docker exec -it symlex_php_1 /bin/bash
 bin/phing build
 ```
 
-*Note: You can also use this approach to execute other CLI commands later.*
+*Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm, bower
+and requirejs locally and link "mysql" to 127.0.0.1 in /etc/hosts to run bin/phing directly on your host.*
 
 After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
 
