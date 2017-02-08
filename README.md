@@ -1,13 +1,13 @@
-Symlex: A ready-to-use framework for building microservices, CLI and single-page apps
-=====================================================================================
+Symlex: A framework for building high-performance microservices, CLI and single-page apps
+=========================================================================================
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
-This ready-to-use framework is built on top of **Silex 2** and uses the well known 
-[Symfony DI container](http://symfony.com/doc/current/service_container.html) instead of Pimple.
-It has proven to be well suited for implementing high-performance microservices, CLI and single-page applications.
+Symlex is a complete and fully testable high-performance framework based on **Silex 2**. Instead of Pimple, it uses the 
+well known [Symfony DI container](http://symfony.com/doc/current/service_container.html). Over the years, 
+it has proven to be well suited for implementing microservices, CLI and single-page applications.
 
 Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
@@ -20,15 +20,17 @@ A working example for command line applications is included as well.
 Setup
 -----
 
-Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_HOWTO.md) for Mac OS X users).
+Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_HOWTO.md) 
+for Mac OS X users). Advanced developers can also clone the repository from GitHub and setup their own runtime environment 
+based on the existing Docker configuration.
 
-Run [Composer](https://getcomposer.org/) to create a new Symlex project:
+Step 1: Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
 ```
 composer create-project lastzero/symlex symlex
 ```
 
-Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
+Step 2: Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
 
 ```
 cd symlex
@@ -38,7 +40,7 @@ docker-compose up
 *Note: This docker-compose configuration is for testing and development purposes only. On OS X, the current release of 
 Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) in executing PHP from the host's file system.*
 
-Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
+Step 3: Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
