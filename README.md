@@ -5,10 +5,10 @@ Symlex - Silex with Symfony DI Container
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
-This ready-to-use framework is built on top of **Silex 2** and uses the well known Symfony DI container instead of Pimple.
+This ready-to-use framework is built on top of **Silex 2** and uses the well known **Symfony DI container** instead of Pimple.
 It has proven to be well suited for implementing high-performance microservices, CLI and single-page applications.
 
-Twitter Bootstrap, RequireJS and AngularJS are used for the example frontend code (static home page, login form and user management). 
+Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 A working example for command line applications is included as well.
 
@@ -37,7 +37,7 @@ docker-compose up
 *Note: This docker-compose configuration is for testing and development purposes only. On OS X, the current release of 
 Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) in executing PHP from the host's file system.*
 
-Let [Phing](https://www.phing.info/) initialize the database and build the frontend components for you:
+Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
