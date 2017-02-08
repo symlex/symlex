@@ -24,13 +24,13 @@ Before you start, make sure you got PHP 7, Composer and Docker installed on your
 for Mac OS X users). Advanced developers can also clone the repository from GitHub and setup their own runtime environment 
 based on the existing Docker configuration.
 
-Step 1: Run [Composer](https://getcomposer.org/) to create a new Symlex project:
+**Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
 ```
 composer create-project lastzero/symlex symlex
 ```
 
-Step 2: Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
+**Step 2:** Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
 
 ```
 cd symlex
@@ -40,7 +40,7 @@ docker-compose up
 *Note: This docker-compose configuration is for testing and development purposes only. On OS X, the current release of 
 Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) in executing PHP from the host's file system.*
 
-Step 3: Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
+**Step 3:** Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
 
 ```
 docker exec -it symlex_php_1 /bin/bash
