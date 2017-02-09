@@ -1,6 +1,6 @@
 {
     "name": "lastzero/symlex",
-    "description": "Silex with Symfony DI Container: A framework for rapid development of high-performance REST services & apps",
+    "description": "A complete and fully testable high-performance framework based on Silex 2 and the Symfony DI container",
     "type": "project",
     "keywords": [
         "silex",
