@@ -5,13 +5,13 @@ Symlex: A framework for building high-performance microservices, CLI and single-
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
-Symlex is a complete and fully testable high-performance framework based on **Silex 2**. Instead of Pimple, it uses the 
+Symlex is a complete and fully testable high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses the 
 well known [Symfony DI container](http://symfony.com/doc/current/service_container.html). Over the years, 
 it has proven to be well suited for implementing microservices, CLI and single-page applications.
 
-Twitter Bootstrap, RequireJS and AngularJS are used for the example front-end code (static home page, login form and user management). 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
-A working example for command line applications is included as well.
+The front-end example is based on Bootstrap, RequireJS and AngularJS. It features a static home page, a login form 
+and a user management. A working example for command line applications is included as well.
 
 *Note: https://github.com/lastzero/symlex-core contains the bootstrap and routers as reusable components.*
 
