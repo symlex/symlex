@@ -22,6 +22,7 @@
     ],
     "require": {
         "php": ">=7.0",
+        "ext-pdo_mysql": "*",
         "lastzero/symlex-core": "^2.0",
         "lastzero/php-input-validation": "^2.0",
         "lastzero/doctrine-active-record": "^2.0",
