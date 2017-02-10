@@ -59,9 +59,16 @@ password `passwd`.
 
 History
 -------
-This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts you on the right track. Using Silex instead of Symfony 2 was recommend to me by SensioLabs (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance REST services and single-page Web applications.
+This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts 
+you on the right track. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
+(the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building 
+high-performance REST services and single-page Web applications.
 
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels cumbersome for developers coming from Symfony 2 and makes it hard to reuse existing code. If you're sharing the same experience, you might like this mix of Silex and Symfony, which aims to combine the best of both worlds.
+The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels 
+cumbersome for developers coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples 
+and applications I found access the service container from all parts of the code (not only the framework itself), 
+which is the opposite of inversion of control and also leads to awkward testability. Symlex therefore promotes
+the strict use of dependency injection and combines the convenience of the Symfony DI container with the speed of Silex.
 
 Key Features
 ------------
@@ -95,7 +102,7 @@ YAML files located in `app/config/` configure the entire system via dependecy in
 - `app/config/web.yml` configures Web (HTTP) applications bootstrapped in `web/app.php`
 - `app/config/console.yml` configures command-line applications bootstrapped in `app/console`
 
-These files are in the same format you know from Symfony 2. In addition to the regular services, they also contain the actual application as a service ("app"):
+These files are in the same format you know from Symfony. In addition to the regular services, they also contain the actual application as a service ("app"):
 
     services:
         app:
@@ -236,7 +243,7 @@ Symlex controllers are plain PHP classes. They have to be added as service to `a
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
-*Note: In Symfony 2, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container, which makes testing more difficult and breaks the architecture.*
+*Note: In Symfony, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container, which makes testing more difficult and breaks the architecture.*
 
 The routers pass on the request instance to each matched controller action as last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
 
