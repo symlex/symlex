@@ -5,17 +5,18 @@ Symlex: A framework for building high-performance microservices, CLI and single-
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
-Symlex is a complete and fully testable high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses the 
-well known [Symfony DI container](http://symfony.com/doc/current/service_container.html). Over the years, 
-it has proven to be well suited for implementing microservices, CLI and single-page applications.
+Symlex is a complete and fully testable high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses 
+the well known [Symfony DI container](http://symfony.com/doc/current/service_container.html).
+Over the years, it has proven to be well suited for implementing microservices, CLI and single-page applications.
 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
-The front-end example is based on Bootstrap, RequireJS and AngularJS. It features a static home page, a login form 
-and a user management. A working example for command line applications is included as well.
-
-*Note: https://github.com/lastzero/symlex-core contains the bootstrap and routers as reusable components.*
+The front-end example is based on AngularJS 1.6, Bootstrap, RequireJS and Bower for package management.
+A working [example](https://github.com/lastzero/symlex/blob/master/src/Command/PasswordResetCommand.php) for command 
+line applications is included as well.
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention over configuration.**
+
+*Note: https://github.com/lastzero/symlex-core contains the bootstrap and routers as reusable components.*
 
 Setup
 -----
@@ -50,7 +51,8 @@ bin/phing build
 *Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm, bower
 and requirejs locally and link "mysql" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
 
-After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the password `passwd`.
+After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the 
+password `passwd`.
 
 History
 -------
