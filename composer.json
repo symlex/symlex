@@ -1,6 +1,6 @@
 {
     "name": "lastzero/symlex",
-    "description": "A complete and fully testable high-performance framework based on Silex 2 and the Symfony DI container",
+    "description": "A complete high-performance framework for building microservices, CLI and single-page apps based on Silex 2 and the Symfony DI container",
     "type": "project",
     "keywords": [
         "silex",
