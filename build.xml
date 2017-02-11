@@ -25,5 +25,6 @@
     <target name="minify-javascript">
         <exec command="r.js -o web/js/build.js paths.requireLib=../bower_components/requirejs/require include=requireLib" checkreturn="true" passthru="true"/>
         <exec command="r.js -o cssIn=web/css/main.css out=web/build/main.css" checkreturn="true" passthru="true"/>
+        <exec command="r.js -o cssIn=web/css/error.css out=web/build/error.css" checkreturn="true" passthru="true"/>
     </target>
 </project>

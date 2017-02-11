@@ -1,0 +1,39 @@
+@import url("../bower_components/bootstrap/dist/css/bootstrap.css");
+@import url("../bower_components/font-awesome/css/font-awesome.css");
+
+/* Error Page Inline Styles */
+body {
+    padding-top: 80px;
+}
+
+code {
+    color: #333 !important;
+    background-color: #fff !important;
+}
+
+/* Layout */
+.jumbotron {
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    color: inherit;
+    padding: 10px 0;
+}
+/* Everything but the jumbotron gets side spacing for mobile-first views */
+.masthead, .body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+/* Colors */
+.green {color:#5cb85c;}
+.orange {color:#f0ad4e;}
+.red {color:#d9534f;}

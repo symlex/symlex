@@ -28,6 +28,7 @@
     "requirejs": "^2.3.2",
     "text": "requirejs-text#^2.0.15",
     "angular-bootstrap": "^2.5.0",
-    "angular-motion": "^0.4.4"
+    "angular-motion": "^0.4.4",
+    "font-awesome": "^4.7.0"
   }
 }
