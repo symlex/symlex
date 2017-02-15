@@ -6,7 +6,7 @@ Symlex: A framework for building high-performance microservices, CLI and single-
 [![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
 
 Symlex is a complete high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses 
-the well known [Symfony DI container](http://symfony.com/doc/current/service_container.html). 
+the well known Symfony [service container](http://symfony.com/doc/current/service_container.html). 
 It promotes the strict use of dependency injection for implementing 
 [inversion of control](https://martinfowler.com/articles/injection.html) and improved testability.
 Over the years, it has proven to be well suited for building microservices, CLI and single-page applications.
@@ -64,7 +64,7 @@ you on the right track. Using Silex instead of Symfony was recommend to me by a 
 (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building 
 high-performance REST services and single-page Web applications.
 
-The only thing I wasn't happy with is Pimple, the dependency injection container that comes with Silex - it feels 
+The only thing I wasn't happy with is Pimple, the service container that comes with Silex - it feels 
 cumbersome for developers coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples 
 and applications I found access the service container from all parts of the code (not only the framework itself), 
 which is the opposite of inversion of control and also leads to awkward testability. Symlex therefore promotes
@@ -73,7 +73,7 @@ the strict use of dependency injection and combines the convenience of the Symfo
 Key Features
 ------------
 - Built on top of well documented standard components
-- Contains everything to create full-featured Web applications (Twig template engine, REST routing, dependency injection)
+- Contains everything to create full-featured Web applications (Twig template engine, REST routing, Symfony service container)
 - Clean configuration and bootstrap
 - Small code footprint
 - High performance
@@ -104,11 +104,11 @@ These files are in the same format you know from Symfony. In addition to the reg
 
 This provides a uniform approach for bootstrapping Web (`Silex\Application`) and command-line (`Symfony\Component\Console\Application`) applications with the same kernel.
 
-*Note: If debug mode is turned off, the dependency injection container is cached in var/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
+*Note: If debug mode is turned off, the service container is cached in var/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
 Bootstrapping
 -------------
-A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony dependency injection container and then starts the app by calling `run()`:
+A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony service container and then starts the app by calling `run()`:
 
 ```php
 <?php
@@ -334,4 +334,4 @@ Symlex comes with a pre-configured PHPUnit environment that automatically execut
     Time: 147 ms, Memory: 11.25Mb
     OK (21 tests, 53 assertions)
     
-See also [TestTools for PHPUnit - Easy dependency injection and self-initializing fixtures](http://lastzero.github.io/test-tools/)
+See also [TestTools - service container and self-initializing fakes for PHPUnit](http://lastzero.github.io/test-tools/)
