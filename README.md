@@ -59,8 +59,8 @@ password `passwd`.
 
 History
 -------
-This project started as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" that puts 
-you on the right track. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
+This project started in 2014 as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" 
+that puts you on the right track. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
 (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building 
 high-performance REST services and single-page Web applications.
 
@@ -70,7 +70,8 @@ and applications I found access the service container from all parts of the code
 which is the opposite of inversion of control and leads to awkward testability. Symlex promotes
 the strict use of dependency injection and combines the convenience of the Symfony DI container with the speed of Silex.
 
-Today, the framework is in use for a number of proprietary applications. It is constantly being improved and any feedback most welcome.
+Today, the framework is in use for a number of proprietary applications. It is constantly being improved and 
+any feedback most welcome.
 
 Key Features
 ------------
