@@ -4,6 +4,9 @@ namespace App\Router;
 
 use Symlex\Router\TwigRouter as SymlexTwigRouter;
 
+/**
+ * @see https://github.com/lastzero/symlex#routing-and-rendering
+ */
 class TwigRouter extends SymlexTwigRouter
 {
     use SessionTrait;

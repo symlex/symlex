@@ -13,7 +13,7 @@ class UserFormTest extends UnitTestCase
 
     public function setUp()
     {
-        $this->form = $this->get('form.user');
+        $this->form = $this->get('form.factory')->get('User');
     }
 
     public function testValidForm()

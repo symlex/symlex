@@ -10,25 +10,34 @@ use App\Form\UserForm;
 use App\Service\Mail;
 use App\Service\Session;
 use App\Model\UserModel;
+use InputValidation\Form\Factory;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @see https://github.com/lastzero/symlex#rest
+ */
 class UserController
 {
     protected $session;
     protected $user;
-    protected $form;
+    protected $formFactory;
     protected $mail;
 
-    public function __construct(Session $session, UserModel $user, UserForm $form, Mail $mail)
+    public function __construct(Session $session, UserModel $user, Factory $formFactory, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;
-        $this->form = $form;
+        $this->formFactory = $formFactory;
         $this->mail = $mail;
 
         if (!$this->session->isUser()) {
-            throw new UnauthorizedException ('Please login or signup to continue');
+            throw new UnauthorizedException ('Please login or sign up to continue');
         }
+    }
+
+    public function getForm(): UserForm
+    {
+        return $this->formFactory->get('User');
     }
 
     protected function sanitizeUserValues($values)
@@ -49,7 +58,7 @@ class UserController
         $users = $this->user->findAll();
         $result = array();
 
-        foreach($users as $user) {
+        foreach ($users as $user) {
             $result[] = $this->sanitizeUserValues($user->getValues());
         }
 
@@ -61,6 +70,21 @@ class UserController
         $this->user->find($id);
 
         $result = $this->sanitizeUserValues($this->user->getValues());
+
+        return $result;
+    }
+
+    public function optionsAction($id, Request $request)
+    {
+        $form = $this->getForm();
+
+        // Only load data for existing users
+        if ($id != 'new') {
+            $this->user->find($id);
+            $form->setDefinedValues($this->user->getValues());
+        }
+
+        $result = $form->getAsArray();
 
         return $result;
     }
@@ -81,12 +105,15 @@ class UserController
         }
 
         $this->user->find($id);
-        $this->form->setDefinedWritableValues($request->request->all())->validate();
 
-        if($this->form->hasErrors()) {
-            throw new FormInvalidException($this->form->getFirstError());
+        $form = $this->getForm();
+
+        $form->setDefinedWritableValues($request->request->all())->validate();
+
+        if ($form->hasErrors()) {
+            throw new FormInvalidException($form->getFirstError());
         } else {
-            $this->user->update($this->form->getValues());
+            $this->user->update($form->getValues());
         }
 
         return $this->sanitizeUserValues($this->user->getValues());
@@ -98,13 +125,15 @@ class UserController
             throw new AccessDeniedException('Users can not create new users');
         }
 
-        $this->form->setDefinedWritableValues($request->request->all())->validate();
+        $form = $this->getForm();
 
-        if($this->form->hasErrors()) {
-            throw new FormInvalidException($this->form->getFirstError());
+        $form->setDefinedWritableValues($request->request->all())->validate();
+
+        if ($form->hasErrors()) {
+            throw new FormInvalidException($form->getFirstError());
         } else {
-            $this->user->transactional(function () {
-                $this->user->create($this->form->getValues());
+            $this->user->transactional(function () use ($form) {
+                $this->user->create($form->getValues());
                 $this->mail->newUser($this->user);
             });
         }

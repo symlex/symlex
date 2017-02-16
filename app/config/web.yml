@@ -54,7 +54,7 @@ services:
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ "@service.session", "@model.user=", "@form.user", "@service.mail=" ]
+        arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]
 
     router.rest:
         class: App\Router\RestRouter

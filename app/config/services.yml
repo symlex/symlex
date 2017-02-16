@@ -12,11 +12,13 @@ parameters:
 services:
     log.handler:
         class: Monolog\Handler\StreamHandler
-        arguments: [ "%app.log_path%/%app.environment%.log" ]
+        arguments:
+            - "%app.log_path%/%app.environment%.log"
 
     log:
         class: Monolog\Logger
-        arguments: [ "main" ]
+        arguments:
+            - "main"
         calls:
             - [ pushHandler, [ "@log.handler" ] ]
 
@@ -47,19 +49,25 @@ services:
             - [ addResource, [ "yaml", "%app.path%/l10n/de.yml", "de" ] ]
             - [ addResource, [ "yaml", "%app.path%/l10n/en.yml", "en" ] ]
 
-    validator:
-        class: InputValidation\Validator
+    form.options:
+        class: InputValidation\Form\Options\JsonOptions
+        arguments:
+            - "@translator"
+        calls:
+            - [ setOptionsPath, [ "%app.path%/options" ] ]
+
+    form.validator:
+        class: InputValidation\Form\Validator
 
     form.factory:
-        class: InputValidation\Factory
-        arguments: [ "@translator", "@validator" ]
+        class: InputValidation\Form\Factory
+        arguments:
+            - "@translator"
+            - "@form.validator"
+            - "@form.options"
         calls:
             - [ setFactoryNamespace, [ 'App\Form' ] ]
-            - [ setFactoryPostfix, [ '' ] ]
-
-    form.user:
-        class: App\Form\UserForm
-        arguments: [ "@translator", "@validator" ]
+            - [ setFactoryPostfix, [ 'Form' ] ]
 
     dao.factory:
         class: Doctrine\ActiveRecord\Dao\Factory
@@ -80,9 +88,13 @@ services:
     model.user:
         class: App\Model\UserModel
         shared: false
-        arguments: [ "@model.factory" ]
+        arguments:
+            - "@model.factory"
 
     service.mail:
         class: App\Service\Mail
         shared: false
-        arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
+        arguments:
+            - "@mailer"
+            - "@twig"
+            - { %app.email%: %app.name%}

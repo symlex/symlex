@@ -8,6 +8,9 @@ use App\Model\UserModel;
 use App\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @see https://github.com/lastzero/symlex#controllers
+ */
 class AuthController
 {
     protected $session;

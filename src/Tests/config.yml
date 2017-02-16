@@ -4,6 +4,9 @@ imports:
     - { resource: mail.yml }
 
 services:
+    session:
+        class: App\Tests\Service\FakeSession
+
     db.driver:
         class: Doctrine\DBAL\Driver\Mysqli\Driver
 
@@ -34,22 +37,25 @@ services:
             - [ addResource, ['yaml', '%base.path%/../app/l10n/de.yml', 'de'] ]
             - [ addResource, ['yaml', '%base.path%/../app/l10n/en.yml', 'en'] ]
 
-    validator:
-        class: InputValidation\Validator
+    form.validator:
+        class: InputValidation\Form\Validator
 
-    session:
-        class: App\Tests\Service\FakeSession
+    form.options:
+        class: InputValidation\Form\Options\JsonOptions
+        arguments:
+            - "@translator"
+        calls:
+            - [ setOptionsPath, [ "%base.path%/../app/options" ] ]
 
     form.factory:
-        class: InputValidation\FormFactory
-        arguments: [ "@translator", "@validator" ]
+        class: InputValidation\Form\Factory
+        arguments:
+            - "@translator"
+            - "@form.validator"
+            - "@form.options"
         calls:
             - [ setFactoryNamespace, [ 'App\Form' ] ]
             - [ setFactoryPostfix, [ 'Form' ] ]
-
-    form.user:
-        class: App\Form\UserForm
-        arguments: [ "@translator", "@validator" ]
 
     dao.factory:
         class: Doctrine\ActiveRecord\Dao\Factory
@@ -90,4 +96,4 @@ services:
 
     controller.rest.user:
         class: App\Rest\UserController
-        arguments: [ "@service.session", "@model.user=", "@form.user", "@service.mail=" ]
+        arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]

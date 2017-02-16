@@ -4,6 +4,9 @@ namespace App\Dao;
 
 use Doctrine\ActiveRecord\Dao\Format;
 
+/**
+ * @see https://github.com/lastzero/doctrine-active-record
+ */
 class UserDao extends DaoAbstract
 {
     protected $_tableName = 'users';

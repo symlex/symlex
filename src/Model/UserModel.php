@@ -7,6 +7,9 @@ use App\Exception\InvalidArgumentException;
 use App\Exception\InvalidPasswordException;
 use App\Exception\NotFoundException;
 
+/**
+ * @see https://github.com/lastzero/doctrine-active-record
+ */
 class UserModel extends ModelAbstract
 {
     protected $_daoName = 'User';
