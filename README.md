@@ -71,8 +71,8 @@ which is the opposite of inversion of control and leads to awkward testability. 
 the strict use of dependency injection and combines the convenience of the Symfony service container 
 with the speed of Silex.
 
-Today, the framework or its parts are in use for a number of applications I worked on for 
-my [clients](https://lastzero.net/about/). It is constantly being improved and any feedback most welcome.
+Today, the framework and its parts are in use for a number of applications I worked on for 
+my [clients](https://lastzero.net/about/). It is constantly being improved and feedback is most welcome.
 
 Key Features
 ------------
