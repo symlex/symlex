@@ -280,11 +280,13 @@ Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserControl
 
 Models, Forms & Databases
 -------------------------
-Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](http://lastzero.github.io/doctrine-active-record/).
+Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](https://github.com/lastzero/doctrine-active-record).
+The use of ORM is discouraged for testability and performance reasons.
 
-Controllers use the [InputValidation for PHP](http://lastzero.github.io/php-input-validation/) library to securely validate user input data.
+The [InputValidation](https://github.com/lastzero/php-input-validation) package provides secure whitelist validation  
+for validating user input data in the controller layer before passing it to models.
 
-**Doctrine Migrations** for versioning your database schema is supported out of the box (`app/console` lists all available commands).
+**Doctrine Migrations** for versioning database schemas is supported out of the box (`app/console` lists all available commands).
 
 Error Handling
 --------------
@@ -334,4 +336,4 @@ Symlex comes with a pre-configured PHPUnit environment that automatically execut
     Time: 147 ms, Memory: 11.25Mb
     OK (21 tests, 53 assertions)
     
-See also [TestTools - service container and self-initializing fakes for PHPUnit](http://lastzero.github.io/test-tools/)
+See also [TestTools - Adds a service container and self-initializing fakes to PHPUnit](https://github.com/lastzero/test-tools)
