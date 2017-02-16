@@ -60,7 +60,7 @@ password `passwd`.
 History
 -------
 This project started in 2014 as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" 
-that puts you on the right track. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
+that points you in the right direction. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
 (the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building 
 high-performance REST services and single-page Web applications.
 
@@ -73,7 +73,7 @@ with the speed of Silex.
 
 Today, the framework is in use for a number of applications I worked on for my [clients](https://lastzero.net/about/).
 Some of them had Symfony before and did the change because they were drowning in complexity and suffered from 
-response times well above 200ms. Symlex brought them back on track.
+response times well above 200ms. Symlex brought them back on track without big changes to their existing code base.
 
 Key Features
 ------------
