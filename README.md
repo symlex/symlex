@@ -67,8 +67,10 @@ high-performance REST services and single-page Web applications.
 The only thing I wasn't happy with is Pimple, the service container that comes with Silex - it feels 
 cumbersome for developers coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples 
 and applications I found access the service container from all parts of the code (not only the framework itself), 
-which is the opposite of inversion of control and also leads to awkward testability. Symlex therefore promotes
+which is the opposite of inversion of control and leads to awkward testability. Symlex promotes
 the strict use of dependency injection and combines the convenience of the Symfony DI container with the speed of Silex.
+
+Today, the framework is in use for a number of proprietary applications. It is constantly being improved and any feedback most welcome.
 
 Key Features
 ------------
