@@ -243,7 +243,7 @@ The routers pass on the request instance to each matched controller action as la
 
 **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
 
-Example: https://github.com/lastzero/symlex/blob/master/src/App/Controller/AuthController.php
+Example: https://github.com/lastzero/symlex/blob/master/src/Controller/AuthController.php
 
 REST
 ----
@@ -276,7 +276,7 @@ class UserController
 
 **REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
-Example: https://github.com/lastzero/symlex/blob/master/src/App/Rest/UserController.php
+Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
 
 Models, Forms & Databases
 -------------------------
