@@ -1,5 +1,5 @@
-Symlex: A framework for building high-performance microservices, CLI and single-page applications
-=================================================================================================
+Symlex: A framework for building microservices, CLI and single-page applications
+================================================================================
 
 [![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
 [![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
