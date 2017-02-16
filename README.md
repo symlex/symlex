@@ -9,7 +9,7 @@ Symlex is a complete high-performance PHP framework based on **Silex 2**. Instea
 the well known Symfony [service container](http://symfony.com/doc/current/service_container.html). 
 It promotes the strict use of dependency injection for implementing 
 [inversion of control](https://martinfowler.com/articles/injection.html) and improved testability.
-Over the years, it has proven to be well suited for building microservices, CLI and single-page applications.
+Since the first release in 2014, it has proven to be well suited for building microservices, CLI and single-page applications.
 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 The front-end example is based on AngularJS 1.6, Bootstrap, RequireJS and Bower for package management.
@@ -73,8 +73,8 @@ the strict use of dependency injection and combines the convenience of the Symfo
 Key Features
 ------------
 - Built on top of well documented standard components
-- Contains everything to create full-featured Web applications (Twig template engine, REST routing, Symfony service container)
-- Clean configuration and bootstrap
+- Contains everything to create full-featured Web applications: Symfony service container, REST routing & Twig template engine
+- Strict use of dependency injection for configuration and bootstrapping
 - Small code footprint
 - High performance
 
