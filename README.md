@@ -89,7 +89,7 @@ It's obvious that PHP framework performance mainly depends on the lines of code 
 
 "The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions." -- [Eric Elliott](https://twitter.com/_ericelliott/status/671970774958272512)
 
-Here is a benchmark, comparing the response times of Symlex and Symfony REST Edition for a simple GET request (Ubuntu 16.04 LTS with PHP 7.1 FPM and nginx; all optimizations on):
+Here is a benchmark, comparing the response time of Symlex and Symfony REST Edition for a simple GET request (Ubuntu 16.04 LTS with PHP 7.1 FPM and nginx; all optimizations on):
 
 ![PHP frameworks: REST routing overhead](https://lastzero.net/wp-content/uploads/2017/02/symlex_vs_symfony_rest_edition.png)
 
