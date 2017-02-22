@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-$cachePath = realpath(__DIR__ . '/../var/cache');
+$cachePath = realpath(__DIR__ . '/../storage/cache');
 
 if(is_dir($cachePath)) {
     shell_exec('rm -Rf ' . $cachePath . '/*');
