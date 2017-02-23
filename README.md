@@ -109,7 +109,7 @@ These files are in the same format you know from Symfony. In addition to the reg
 
 This provides a uniform approach for bootstrapping Web (`Silex\Application`) and command-line (`Symfony\Component\Console\Application`) applications with the same kernel.
 
-*Note: If debug mode is turned off, the service container is cached in var/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
+*Note: If debug mode is turned off, the service container is cached in storage/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
 Bootstrapping
 -------------
