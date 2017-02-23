@@ -6,7 +6,7 @@
     </target>
 
     <target name="test-coverage">
-        <exec command="./bin/phpunit --coverage-html var/coverage" checkreturn="true" passthru="true"/>
+        <exec command="./bin/phpunit --coverage-html ./storage/coverage" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="update-database">
