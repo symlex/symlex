@@ -285,11 +285,9 @@ Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.
 
 Models, Forms & Databases
 -------------------------
-Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](https://github.com/lastzero/doctrine-active-record).
-The use of ORM is discouraged for testability and performance reasons.
+Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](https://github.com/lastzero/doctrine-active-record). It is a lot less complex, faster, and has less overhead than for example Datamapper ORM implementations.
 
-The [InputValidation](https://github.com/lastzero/php-input-validation) package provides secure whitelist validation  
-for validating user input data in the controller layer before passing it to models.
+The [InputValidation](https://github.com/lastzero/php-input-validation) package provides secure whitelist validation for validating user input data in the controller layer before passing it to models.
 
 **Doctrine Migrations** for versioning database schemas is supported out of the box (`app/console` lists all available commands).
 
