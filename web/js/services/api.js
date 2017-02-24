@@ -3,7 +3,7 @@ define(['services/module'], function (services) {
     services.service('Api', ['$resource', function ($resource) {
         function userFactory () {
             return $resource(
-                "/api/user/:user_id",
+                "/api/users/:user_id",
                 {
                     user_id: "@user_id"
                 },

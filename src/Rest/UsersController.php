@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @see https://github.com/lastzero/symlex#rest
  */
-class UserController
+class UsersController
 {
     protected $session;
     protected $user;

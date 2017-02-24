@@ -227,18 +227,22 @@ class WebApp extends App
 Routing examples based on the default configuration in `Symlex\Bootstrap\WebApp`:
 - `GET /` will be routed to `controller.web.index` service's `indexAction(Request $request)`
 - `POST /session/login` will be routed to `controller.web.session` service's `postLoginAction(Request $request)`
-- `GET /api/user` will be routed to `controller.rest.user` service's `cgetAction(Request $request)`
-- `GET /api/user/123` will be routed to `controller.rest.user` service's `getAction($id, Request $request)`
-- `POST /api/user` will be routed to `controller.rest.user` service's `postAction(Request $request)`
-- `PUT /api/user/123/item/5` will be routed to `controller.rest.user` service's `putItemAction($id, $itemId, Request $request)`
+- `GET /api/users` will be routed to `controller.rest.users` service's `cgetAction(Request $request)`
+- `POST /api/users` will be routed to `controller.rest.users` service's `postAction(Request $request)`
+- `OPTIONS /api/users` will be routed to `controller.rest.users` service's `coptionsAction(Request $request)`
+- `GET /api/users/123` will be routed to `controller.rest.users` service's `getAction($id, Request $request)`
+- `OPTIONS /api/users/123` will be routed to `controller.rest.users` service's `optionsAction($id, Request $request)`
+- `GET /api/users/123/comments` will be routed to `controller.rest.users` service's `cgetCommentsAction($id, Request $request)`
+- `GET /api/users/123/comments/5` will be routed to `controller.rest.users` service's `getCommentsAction($id, $commendId, Request $request)`
+- `PUT /api/users/123/comments/5` will be routed to `controller.rest.users` service's `putCommentsAction($id, $commendId, Request $request)`
 
 Controllers
 -----------
 Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
 
 ```yaml
-    controller.rest.user:
-        class: App\Rest\UserController
+    controller.rest.users:
+        class: App\Rest\UsersController
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
@@ -257,23 +261,31 @@ Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit
 ```php
 <?php
 
-class UserController
+class UsersController
 {
     ..
 
     public function cgetAction(Request $request)
-    {} // [GET] /user
+    {} // [GET] /users
 
+    public function coptionsAction(Request $request)
+    {} // [OPTIONS] /users
+    
     public function postAction(Request $request)
-    {} // [POST] /user
+    {} // [POST] /users
 
     public function getAction($id, Request $request)
-    {} // [GET] /user/{id}
+    {} // [GET] /users/{id}
     
+    public function optionsAction($id, Request $request)
+    {} // [OPTIONS] /users/{id}
 
     ..
-    public function getCommentsAction($id, Request $request)
-    {} // [GET] /user/{id}/comments
+    public function cgetCommentsAction($id, Request $request)
+    {} // [GET] /users/{id}/comments
+    
+    public function getCommentsAction($id, $commentId, Request $request)
+    {} // [GET] /users/{id}/comments/{commentId}
 
     ..
 }

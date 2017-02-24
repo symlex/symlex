@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserControllerTest extends UnitTestCase
 {
     /**
-     * @var \App\Rest\UserController
+     * @var \App\Rest\UsersController
      */
     protected $controller;
 
