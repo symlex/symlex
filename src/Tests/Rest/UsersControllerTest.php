@@ -5,7 +5,7 @@ namespace App\Tests\Rest;
 use TestTools\TestCase\UnitTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class UserControllerTest extends UnitTestCase
+class UsersControllerTest extends UnitTestCase
 {
     /**
      * @var \App\Rest\UsersController
@@ -14,7 +14,7 @@ class UserControllerTest extends UnitTestCase
 
     public function setUp()
     {
-        $this->controller = $this->get('controller.rest.user');
+        $this->controller = $this->get('controller.rest.users');
     }
 
     public function testCgetAction()
