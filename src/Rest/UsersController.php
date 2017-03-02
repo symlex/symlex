@@ -35,9 +35,9 @@ class UsersController
         }
     }
 
-    public function getForm(): UserForm
+    public function createForm(): UserForm
     {
-        return $this->formFactory->get('User');
+        return $this->formFactory->create('User');
     }
 
     protected function sanitizeUserValues($values)
@@ -76,7 +76,7 @@ class UsersController
 
     public function optionsAction($id, Request $request)
     {
-        $form = $this->getForm();
+        $form = $this->createForm();
 
         // Only load data for existing users
         if ($id != 'new') {
@@ -106,7 +106,7 @@ class UsersController
 
         $this->user->find($id);
 
-        $form = $this->getForm();
+        $form = $this->createForm();
 
         $form->setDefinedWritableValues($request->request->all())->validate();
 
@@ -125,7 +125,7 @@ class UsersController
             throw new AccessDeniedException('Users can not create new users');
         }
 
-        $form = $this->getForm();
+        $form = $this->createForm();
 
         $form->setDefinedWritableValues($request->request->all())->validate();
 

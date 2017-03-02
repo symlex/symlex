@@ -24,7 +24,7 @@
         "php": ">=7.0",
         "ext-pdo_mysql": "*",
         "lastzero/symlex-core": "^2.1",
-        "lastzero/php-input-validation": "^3.0",
+        "lastzero/php-input-validation": "^3.0.1",
         "lastzero/doctrine-active-record": "^2.0",
         "doctrine/dbal": "^2.5",
         "doctrine/migrations": "^1.1",
