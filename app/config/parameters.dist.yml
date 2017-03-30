@@ -8,9 +8,9 @@ parameters:
     db.name: web
     db.user: web
     db.password: web
-    mailer.host: smtp.gmail.com
-    mailer.port: 587
-    mailer.encryption: tls
+    mailer.host: mailhog
+    mailer.port: 1025
+    mailer.encryption: null
     mailer.username: ''
     mailer.password: ''
     mailer.auth_mode: ''

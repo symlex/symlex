@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
     web:
@@ -31,6 +31,12 @@ services:
             MYSQL_USER: web
             MYSQL_PASSWORD: web
             MYSQL_DATABASE: web
+        networks:
+            - default
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 8025:8025
         networks:
             - default
 
