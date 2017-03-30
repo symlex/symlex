@@ -35,7 +35,7 @@ class UsersController
         }
     }
 
-    public function createForm(): UserForm
+    public function createForm()
     {
         return $this->formFactory->create('User');
     }
@@ -133,7 +133,7 @@ class UsersController
             throw new FormInvalidException($form->getFirstError());
         } else {
             $this->user->transactional(function () use ($form) {
-                $this->user->create($form->getValues());
+                $this->user->save($form->getValues());
                 $this->mail->newUser($this->user);
             });
         }

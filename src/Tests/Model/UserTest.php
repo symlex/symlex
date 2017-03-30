@@ -30,7 +30,7 @@ class UserTest extends UnitTestCase
         $this->assertInstanceOf('\App\Model\UserModel', $result);
 
         $this->assertEquals(1, $result->getId());
-        $this->assertEquals(1, $result->admin);
+        $this->assertEquals(true, $result->admin);
         $this->assertEquals('Admin', $result->firstname);
         $this->assertEquals('Silex', $result->lastname);
         $this->assertEquals('admin@example.com', $result->email);

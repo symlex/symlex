@@ -45,7 +45,7 @@ class Session
     public function logout()
     {
         $this->session->clear();
-        $this->user = $this->user->factory();
+        $this->user = $this->user->createModel();
         $this->initCsrfToken();
     }
 

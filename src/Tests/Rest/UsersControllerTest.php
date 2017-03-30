@@ -29,7 +29,7 @@ class UsersControllerTest extends UnitTestCase
                     'password_reset_token' => '',
                     'firstname' => 'Admin',
                     'lastname' => 'Silex',
-                    'admin' => '1',
+                    'admin' => true,
                     'created' => NULL,
                     'updated' => NULL,
                 ),
@@ -40,7 +40,7 @@ class UsersControllerTest extends UnitTestCase
                     'password_reset_token' => '',
                     'firstname' => 'User',
                     'lastname' => 'Silex',
-                    'admin' => '0',
+                    'admin' => false,
                     'created' => '2014-08-04 06:51:35',
                     'updated' => '2014-08-04 06:51:35',
                 ),
@@ -69,8 +69,6 @@ class UsersControllerTest extends UnitTestCase
 
     public function testDeleteAction()
     {
-        $result = $this->controller->deleteAction(2);
-
-        $this->assertNull($result);
+        $this->assertNull($this->controller->deleteAction(2));
     }
 }
