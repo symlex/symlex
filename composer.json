@@ -47,15 +47,16 @@
       "bin-dir": "bin/"
     },
     "scripts": {
-        "post-install-cmd": [
+        "post-composer-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "app/clearcache",
             "composer dumpautoload -o"
         ],
+        "post-install-cmd": [
+            "@post-composer-scripts"
+        ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "app/clearcache",
-            "composer dumpautoload -o"
+            "@post-composer-scripts"
         ]
     },
     "extra": {
