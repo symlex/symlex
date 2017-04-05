@@ -1,5 +1,5 @@
 {
-    "name": "lastzero/symlex",
+    "name": "symlex/symlex",
     "description": "A complete high-performance framework for building microservices, CLI and single-page apps based on Silex 2 and the Symfony DI container",
     "type": "project",
     "keywords": [
