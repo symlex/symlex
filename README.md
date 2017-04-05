@@ -1,9 +1,9 @@
 Symlex: Silex + Symfony
 =======================
 
-[![Build Status](https://travis-ci.org/lastzero/symlex.png?branch=master)](https://travis-ci.org/lastzero/symlex)
-[![Latest Stable Version](https://poser.pugx.org/lastzero/symlex/v/stable.svg)](https://packagist.org/packages/lastzero/symlex)
-[![License](https://poser.pugx.org/lastzero/symlex/license.svg)](https://packagist.org/packages/lastzero/symlex)
+[![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
+[![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
+[![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 
 Symlex is a complete high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses 
 the well known Symfony [service container](http://symfony.com/doc/current/service_container.html). 
