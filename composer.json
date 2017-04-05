@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.0",
         "ext-pdo_mysql": "*",
-        "lastzero/symlex-core": "^2.1",
+        "symlex/symlex-core": "^2.1",
         "lastzero/php-input-validation": "^4.0",
         "lastzero/doctrine-active-record": "^4.0",
         "doctrine/dbal": "^2.5",
