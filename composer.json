@@ -10,7 +10,7 @@
         "micro-framework",
         "rest"
     ],
-    "homepage": "https://github.com/lastzero/symlex",
+    "homepage": "https://github.com/symlex/symlex",
     "license": "MIT",
     "authors": [
         {
@@ -24,8 +24,8 @@
         "php": ">=7.0",
         "ext-pdo_mysql": "*",
         "symlex/symlex-core": "^2.1",
-        "lastzero/php-input-validation": "^4.0",
-        "lastzero/doctrine-active-record": "^4.0",
+        "symlex/input-validation": "^4.0",
+        "symlex/doctrine-active-record": "^4.0",
         "doctrine/dbal": "^2.5",
         "doctrine/migrations": "^1.1",
         "phing/phing": "^2.15",
