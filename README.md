@@ -13,13 +13,13 @@ Since its first release in 2014, it has proven to be well suited for building mi
 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 The front-end example is based on AngularJS 1.6, Bootstrap, RequireJS and Bower for package management.
-A working [example](https://github.com/lastzero/symlex/blob/master/src/Command/PasswordResetCommand.php) for command 
+A working [example](https://github.com/symlex/symlex/blob/master/src/Command/PasswordResetCommand.php) for command 
 line applications is included as well.
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention 
 over configuration.**
 
-*Note: https://github.com/lastzero/symlex-core contains the bootstrap and routers as reusable components.*
+*Note: https://github.com/symlex/symlex-core contains the bootstrap and routers as reusable components.*
 
 Setup
 -----
@@ -31,7 +31,7 @@ Docker configuration.
 **Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
 ```
-composer create-project lastzero/symlex symlex
+composer create-project symlex/symlex symlex
 ```
 
 **Step 2:** Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
