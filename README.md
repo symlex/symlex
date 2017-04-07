@@ -47,7 +47,7 @@ Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) 
 **Step 3:** Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
 
 ```
-docker exec -it symlex_php_1 /bin/bash
+docker-compose exec php bash
 bin/phing build
 ```
 
