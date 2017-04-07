@@ -13,10 +13,9 @@ parameters:
         cache: '%app.cache_path%'
         auto_reload: true
     db.options:
-        driver: mysqli
-        host: '127.0.0.1'
-        dbname: 'silex'
-        user: 'silex'
-        password: 'silex'
-        port: ~
+        host: db
+        port: 3306
+        name: web
+        user: web
+        password: web
         unix_socket: ~

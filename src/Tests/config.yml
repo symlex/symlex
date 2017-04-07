@@ -8,7 +8,7 @@ services:
         class: App\Tests\Service\FakeSession
 
     db.driver:
-        class: Doctrine\DBAL\Driver\Mysqli\Driver
+        class: Doctrine\DBAL\Driver\PDOMySql\Driver
 
     db:
         class: TestTools\Doctrine\DBAL\Connection

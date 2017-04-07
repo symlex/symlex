@@ -52,12 +52,12 @@ bin/phing build
 ```
 
 *Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm, bower
-and requirejs locally and link "mysql" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
+and requirejs locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
 
-After successful installation, open the site at http://localhost:8080/ and log in as `admin@example.com` using the 
+After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
 password `passwd`.
 
-The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8025/. It can be used
+The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
 
 History

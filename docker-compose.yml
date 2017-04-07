@@ -4,7 +4,7 @@ services:
     web:
         image: nginx:latest
         ports:
-            - "8080:80"
+            - "8081:80"
         depends_on:
             - php
         volumes:
@@ -15,17 +15,14 @@ services:
     php:
         build: ./docker/php
         depends_on:
-            - mysql
+            - db
         volumes:
             - ./:/var/www/html
         networks:
             - default
-    mysql:
-        image: mysql
-        ports:
-            - "3306:3306"
-        volumes:
-            - ./:/var/www/html
+    db:
+        image: mariadb:latest
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: web
@@ -36,7 +33,7 @@ services:
     mailhog:
         image: mailhog/mailhog
         ports:
-            - 8025:8025
+            - 8082:8025
         networks:
             - default
 

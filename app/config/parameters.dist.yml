@@ -3,7 +3,7 @@ parameters:
     app.version: '1.0'
     app.url: 'http://localhost:8080/'
     app.email: 'root@localhost'
-    db.host: mysql
+    db.host: db
     db.port: 3306
     db.name: web
     db.user: web
