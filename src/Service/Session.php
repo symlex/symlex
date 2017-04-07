@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Model\UserModel;
+use App\Model\User;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Session
@@ -10,7 +10,7 @@ class Session
     protected $session;
     protected $user;
 
-    public function __construct(SessionInterface $session, UserModel $user)
+    public function __construct(SessionInterface $session, User $user)
     {
         $this->session = $session;
         $this->user = $user;

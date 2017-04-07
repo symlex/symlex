@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-use App\Exception\EnvironmentException;
 use App\Exception\InvalidArgumentException;
 use App\Exception\InvalidPasswordException;
 use App\Exception\NotFoundException;
@@ -10,7 +9,7 @@ use App\Exception\NotFoundException;
 /**
  * @see https://github.com/lastzero/doctrine-active-record
  */
-class UserModel extends ModelAbstract
+class User extends ModelAbstract
 {
     protected $_daoName = 'User';
 
@@ -24,30 +23,10 @@ class UserModel extends ModelAbstract
             throw new InvalidArgumentException ('Password is not secure');
         }
 
-        if (CRYPT_SHA512 != 1) {
-            throw new EnvironmentException ('SHA512 not supported');
-        }
-
-        $cost = 6500;
-        $salt = strtr(base64_encode($this->getRandomBytes(16)), '+', '.');
-        $salt = '$6$rounds=' . $cost . '$' . $salt . '$'; // SHA-512 (6500 rounds)
-
-        $hash = crypt($password, $salt);
+        $hash = password_hash($password, PASSWORD_DEFAULT);
 
         $this->getDao()->password = $hash;
         $this->getDao()->update();
-    }
-
-    protected function getRandomBytes ($size) {
-        if(function_exists('mcrypt_create_iv')) {
-            return mcrypt_create_iv($size, MCRYPT_DEV_URANDOM);
-        }
-
-        if(function_exists('openssl_random_pseudo_bytes')) {
-            return openssl_random_pseudo_bytes($size);
-        }
-
-        throw new EnvironmentException ('mcrypt or openssl extension required');
     }
 
     public function findByPasswordResetToken($token)
@@ -74,7 +53,7 @@ class UserModel extends ModelAbstract
 
     public function getPasswordResetToken()
     {
-        $token = sha1($this->getRandomBytes(32));
+        $token = sha1(random_bytes(32));
 
         $this->getDao()->password_reset_token = $token;
         $this->getDao()->update();
@@ -115,6 +94,6 @@ class UserModel extends ModelAbstract
 
     public function passwordIsValid($encryptedPassword, $password)
     {
-        return (crypt($password, $encryptedPassword) == $encryptedPassword);
+        return password_verify($password, $encryptedPassword);
     }
 }

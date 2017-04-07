@@ -74,7 +74,7 @@ services:
             - [ setFactoryPostfix, [''] ]
 
     model.user:
-        class: App\Model\UserModel
+        class: App\Model\User
         shared: false
         arguments: [ "@model.factory" ]
 

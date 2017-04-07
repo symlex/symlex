@@ -9,7 +9,7 @@ use App\Exception\InvalidArgumentException;
 use App\Form\UserForm;
 use App\Service\Mail;
 use App\Service\Session;
-use App\Model\UserModel;
+use App\Model\User;
 use InputValidation\Form\Factory;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -23,7 +23,7 @@ class UsersController
     protected $formFactory;
     protected $mail;
 
-    public function __construct(Session $session, UserModel $user, Factory $formFactory, Mail $mail)
+    public function __construct(Session $session, User $user, Factory $formFactory, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;

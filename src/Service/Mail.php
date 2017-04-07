@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Model\UserModel;
+use App\Model\User;
 use Swift_Mailer;
 use Swift_Message as Message;
 use Twig_Environment;
@@ -47,7 +47,7 @@ class Mail
         return implode($pass); //turn the array into a string
     }
 
-    public function passwordReset(UserModel $user)
+    public function passwordReset(User $user)
     {
         $token = $user->getPasswordResetToken();
 
@@ -64,7 +64,7 @@ class Mail
         @$this->mailer->send($message);
     }
 
-    public function newUser(UserModel $user)
+    public function newUser(User $user)
     {
         $token = $user->getPasswordResetToken();
 
