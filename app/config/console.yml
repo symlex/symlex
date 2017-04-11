@@ -38,9 +38,6 @@ services:
         arguments:
             - { db: "@console.helper.db", question: "@console.helper.question" }
 
-    doctrine.migrations.diff:
-        class: Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand
-
     doctrine.migrations.execute:
         class: Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand
 
@@ -62,7 +59,6 @@ services:
         calls:
             - [ setCatchExceptions, [ true ] ]
             - [ setHelperSet, [ "@console.helpers" ] ]
-            - [ add, [ "@doctrine.migrations.diff" ] ]
             - [ add, [ "@doctrine.migrations.execute" ] ]
             - [ add, [ "@doctrine.migrations.generate" ] ]
             - [ add, [ "@doctrine.migrations.migrate" ] ]

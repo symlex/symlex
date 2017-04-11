@@ -310,7 +310,6 @@ Running `app/console` lists all commands available.
 Doctrine Migrations for creating and migrating database tables is supported out of the box:
 
 ```
-migrations:diff           Generate a migration by comparing your current database to your mapping information.
 migrations:execute        Execute a single migration version up or down manually.
 migrations:generate       Generate a blank migration class.
 migrations:migrate        Execute a migration to a specified version or the latest available version.
