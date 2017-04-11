@@ -22,12 +22,11 @@ class UserResetPasswordCommand extends CommandAbstract
         $this->user = $user;
 
         parent::__construct($name);
-
-        $this->setDescription('Sends a link to a user\'s email address for password reset');
     }
 
     protected function configure()
     {
+        $this->setDescription('Sends a link to a user\'s email address for password reset');
         $this->addArgument('email', InputArgument::REQUIRED, 'User E-Mail');
 
         parent::configure();

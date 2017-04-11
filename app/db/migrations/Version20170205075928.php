@@ -18,7 +18,7 @@ class Version20170205075928 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE `users` (
               `user_id` int(11) NOT NULL AUTO_INCREMENT,
-              `email` varchar(127) NOT NULL,
+              `email` varchar(127) UNIQUE NOT NULL,
               `password` varchar(255) NOT NULL DEFAULT \'\',
               `password_reset_token` varchar(128) DEFAULT \'\',
               `firstname` varchar(64) NOT NULL DEFAULT \'\',

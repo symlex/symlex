@@ -18,8 +18,13 @@ class DatabaseCreateCommand extends CommandAbstract
         $this->connection = $connection;
 
         parent::__construct($name);
+    }
 
-        $this->setDescription('Creates a new database with the name configured in app/config/parameters.yml');
+    protected function configure()
+    {
+        $this->setDescription('Creates the database configured in app/config/parameters.yml');
+
+        parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

@@ -11,7 +11,7 @@ services:
 
     command.user.create:
         class: App\Command\UserCreateCommand
-        arguments: [ 'user:create', "@model.user", "@twig" ]
+        arguments: [ 'user:create', "@model.user", "@form.factory" ]
 
     command.database.create:
         class: App\Command\DatabaseCreateCommand

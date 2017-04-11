@@ -18,8 +18,13 @@ class DatabaseDropCommand extends CommandAbstract
         $this->connection = $connection;
 
         parent::__construct($name);
+    }
 
+    protected function configure()
+    {
         $this->setDescription('Drops the database configured in app/config/parameters.yml');
+
+        parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

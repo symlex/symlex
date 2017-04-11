@@ -33,8 +33,13 @@ class DatabaseInsertFixturesCommand extends CommandAbstract
         $this->fixturesDirectory = $fixturesDirectory;
 
         parent::__construct($name);
+    }
 
+    protected function configure()
+    {
         $this->setDescription('Inserts database fixtures for testing (see app/db/fixtures/)');
+
+        parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

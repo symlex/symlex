@@ -303,27 +303,23 @@ class UsersController
 
 Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
 
-Command-line interface (CLI)
-----------------------------
-Running `app/console` lists all commands available.
+Command-line Interface
+----------------------
+Running `app/console` lists all commands available. The following commands including Doctrine Migrations 
+for creating and migrating database tables are supported out of the box:
 
-Doctrine Migrations for creating and migrating database tables is supported out of the box:
-
-```
-migrations:execute        Execute a single migration version up or down manually.
-migrations:generate       Generate a blank migration class.
-migrations:migrate        Execute a migration to a specified version or the latest available version.
-migrations:status         View the status of a set of migrations.
-migrations:version        Manually add and delete migration versions from the version table.
-```
-
-You can use the following commands to easily reset the database and insert fixtures for testing:
-
-```
-database:create           Creates a new database with the name configured in app/config/parameters.yml
-database:drop             Drops the database configured in app/config/parameters.yml
-database:insert-fixtures  Inserts database fixtures for testing (see app/db/fixtures/)
-```
+Command                  | Description
+-------------------------|----------------------------------------------------------------------------
+migrations:execute       | Execute a single migration version up or down manually
+migrations:generate      | Generate a blank migration class
+migrations:migrate       | Execute a migration to a specified version or the latest available version
+migrations:status        | View the status of a set of migrations
+migrations:version       | Manually add and delete migration versions from the version table
+database:create          | Creates the database configured in app/config/parameters.yml
+database:drop            | Drops the database configured in app/config/parameters.yml
+database:insert-fixtures | Inserts database fixtures for testing (see app/db/fixtures/)
+user:create              | Creates a new user
+user:reset-password      | Sends a link to a user's email address for password reset
 
 Models, Forms & Databases
 -------------------------
