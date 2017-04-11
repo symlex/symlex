@@ -1,7 +1,7 @@
 form:
   datetime: "d.m.Y H:i"
   date: "d.m.Y"
-  time: "H:i"
+  time: "H:i:s"
   decimal_point: ","
   value_must_not_be_empty: "%field% darf nicht leer sein"
   value_must_not_be_the_same: "%field% darf nicht mit %other_field% übereinstimmen"
