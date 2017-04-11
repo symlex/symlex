@@ -303,13 +303,94 @@ class UsersController
 
 Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
 
+Command-line interface (CLI)
+----------------------------
+Running `app/console` lists all commands available.
+
+Doctrine Migrations for creating and migrating database tables is supported out of the box:
+
+```
+migrations:diff           Generate a migration by comparing your current database to your mapping information.
+migrations:execute        Execute a single migration version up or down manually.
+migrations:generate       Generate a blank migration class.
+migrations:migrate        Execute a migration to a specified version or the latest available version.
+migrations:status         View the status of a set of migrations.
+migrations:version        Manually add and delete migration versions from the version table.
+```
+
+You can use the following commands to easily reset the database and insert fixtures for testing:
+
+```
+database:create           Creates a new database with the name configured in app/config/parameters.yml
+database:drop             Drops the database configured in app/config/parameters.yml
+database:insert-fixtures  Inserts database fixtures for testing (see app/db/fixtures/)
+```
+
 Models, Forms & Databases
 -------------------------
-Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord - Object-oriented CRUD for Doctrine DBAL](https://github.com/symlex/doctrine-active-record). It is a lot less complex, faster, and has less overhead than for example Datamapper ORM implementations.
+Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord](https://github.com/symlex/doctrine-active-record). It is a lot less complex, faster, and has less overhead than for example Datamapper ORM implementations.
 
 The [InputValidation](https://github.com/symlex/input-validation) package provides secure whitelist validation for validating user input data in the controller layer before passing it to models.
 
-**Doctrine Migrations** for versioning database schemas is supported out of the box (`app/console` lists all available commands).
+The following example shows how to work with those libraries in a REST controller context. Note, how easy it is to avoid deeply nested structures. User model and form are injected as dependencies.
+
+```php
+namespace App\Controller\Rest;
+
+use Symfony\Component\HttpFoundation\Request;
+use App\Exception\FormInvalidException;
+use App\Form\UserForm;
+use App\Model\UserModel;
+
+class UserController
+{
+    protected $user;
+    protected $form;
+
+    public function __construct(UserModel $user, UserForm $form)
+    {
+        $this->user = $user;
+        $this->form = $form;
+    }
+
+    public function getAction($id)
+    {
+        return $this->user->find($id)->getValues();
+    }
+
+    public function deleteAction($id)
+    {
+        return $this->user->find($id)->delete();
+    }
+
+    public function putAction($id, Request $request)
+    {
+        $this->user->find($id);
+        $this->form->setDefinedWritableValues($request->request->all())->validate();
+
+        if($this->form->hasErrors()) {
+            throw new FormInvalidException($this->form->getFirstError());
+        } 
+        
+        $this->user->update($this->form->getValues());
+
+        return $this->user->getValues();
+    }
+
+    public function postAction(Request $request)
+    {
+        $this->form->setDefinedWritableValues($request->request->all())->validate();
+
+        if($this->form->hasErrors()) {
+            throw new FormInvalidException($this->form->getFirstError());
+        }
+        
+        $this->user->save($this->form->getValues());
+
+        return $this->user->getValues();
+    }
+}
+```
 
 Error Handling
 --------------

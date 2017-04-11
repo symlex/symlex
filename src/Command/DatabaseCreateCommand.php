@@ -2,15 +2,14 @@
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\DBAL\Connection;
 
 /**
- * Creates a database
+ * Commands are configured as service in app/config/console.yml
  */
-class DatabaseCreateCommand extends Command
+class DatabaseCreateCommand extends AbstractCommand
 {
     protected $connection;
 
@@ -19,6 +18,8 @@ class DatabaseCreateCommand extends Command
         $this->connection = $connection;
 
         parent::__construct($name);
+
+        $this->setDescription('Creates a new database with the name configured in app/config/parameters.yml');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

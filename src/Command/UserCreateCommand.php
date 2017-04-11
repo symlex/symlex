@@ -3,7 +3,6 @@
 namespace App\Command;
 
 use App\Model\User;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -11,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class UserCreateCommand extends Command
+class UserCreateCommand extends AbstractCommand
 {
     protected $user;
 
@@ -28,6 +27,8 @@ class UserCreateCommand extends Command
         $this->addArgument('password', InputArgument::REQUIRED, 'Password');
 
         parent::configure();
+
+        $this->setDescription('Creates a new user without validation of email or password');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

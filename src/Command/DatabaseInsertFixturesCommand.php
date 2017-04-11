@@ -2,16 +2,15 @@
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\DBAL\Connection;
 use DirectoryIterator;
 
 /**
- * Inserts database fixtures for testing
+ * Commands are configured as service in app/config/console.yml
  */
-class DatabaseInsertFixturesCommand extends Command
+class DatabaseInsertFixturesCommand extends AbstractCommand
 {
     /**
      * @var Connection
@@ -34,6 +33,8 @@ class DatabaseInsertFixturesCommand extends Command
         $this->fixturesDirectory = $fixturesDirectory;
 
         parent::__construct($name);
+
+        $this->setDescription('Inserts database fixtures for testing (see app/db/fixtures/)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

@@ -4,17 +4,14 @@ namespace App\Command;
 
 use App\Service\Mail;
 use App\Model\User;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class UserResetPasswordCommand extends Command
+class UserResetPasswordCommand extends AbstractCommand
 {
     protected $mail;
     protected $user;
@@ -25,6 +22,8 @@ class UserResetPasswordCommand extends Command
         $this->user = $user;
 
         parent::__construct($name);
+
+        $this->setDescription('Sends a link to a user\'s email address for password reset');
     }
 
     protected function configure()
