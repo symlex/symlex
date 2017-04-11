@@ -9,7 +9,7 @@ use Doctrine\DBAL\Connection;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class DatabaseCreateCommand extends AbstractCommand
+class DatabaseCreateCommand extends CommandAbstract
 {
     protected $connection;
 

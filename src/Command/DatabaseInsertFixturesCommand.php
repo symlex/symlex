@@ -10,7 +10,7 @@ use DirectoryIterator;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class DatabaseInsertFixturesCommand extends AbstractCommand
+class DatabaseInsertFixturesCommand extends CommandAbstract
 {
     /**
      * @var Connection

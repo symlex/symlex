@@ -9,7 +9,7 @@ use Doctrine\DBAL\Connection;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class DatabaseDropCommand extends AbstractCommand
+class DatabaseDropCommand extends CommandAbstract
 {
     protected $connection;
 

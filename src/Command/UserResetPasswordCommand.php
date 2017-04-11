@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class UserResetPasswordCommand extends AbstractCommand
+class UserResetPasswordCommand extends CommandAbstract
 {
     protected $mail;
     protected $user;

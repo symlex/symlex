@@ -10,7 +10,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class AbstractCommand extends Command
+class CommandAbstract extends Command
 {
     /**
      * @param string $question

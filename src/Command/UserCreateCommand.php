@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class UserCreateCommand extends AbstractCommand
+class UserCreateCommand extends CommandAbstract
 {
     protected $user;
 
