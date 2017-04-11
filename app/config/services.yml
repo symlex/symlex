@@ -34,7 +34,7 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: [ "de", "@message_selector" ]
+        arguments: [ "en", "@message_selector" ]
         calls:
             - [ addLoader, [ "yaml", "@yaml_loader" ] ]
             - [ addLoader, [ "array", "@array_loader" ]]

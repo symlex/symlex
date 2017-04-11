@@ -27,7 +27,6 @@ parameters:
         406: 'Not Acceptable'
         407: 'Proxy Authentication Required'
         408: 'Request Timeout'
-        409: 'Conflict'
         410: 'Gone'
         500: 'Looks like something went wrong!'
         503: 'Service unavailable - check server configuration'

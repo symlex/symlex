@@ -46,8 +46,11 @@ class UsersController
         if (!$this->session->isAdmin()) {
             unset($values['created']);
             unset($values['updated']);
-            unset($values['email']);
             unset($values['admin']);
+
+            if($this->session->getUserId() != $values['user_id']) {
+                unset($values['email']);
+            }
         }
 
         return $values;
