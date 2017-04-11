@@ -30,7 +30,13 @@ class DatabaseCreateCommand extends CommandAbstract
 
         $connection = new Connection($params, $db->getDriver());
 
-        $connection->exec("CREATE DATABASE `{$db->getDatabase()}`");
+        try {
+            $connection->exec("CREATE DATABASE `{$db->getDatabase()}`");
+        } catch (\Exception $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return 1;
+        }
+
         $output->writeln('<info>Database "' . $db->getDatabase() . '" created</info>');
     }
 }
