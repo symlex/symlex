@@ -1,7 +1,7 @@
 services:
     twig.loader:
         class: Twig_Loader_Filesystem
-        arguments: [ %twig.path% ]
+        arguments: [ [ %twig.path%, '%base.path%/Tests/_files/twig'] ]
 
     twig:
         class: Twig_Environment

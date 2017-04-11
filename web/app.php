@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Symlex\Bootstrap\WebApp;
+use App\Kernel\WebApp;
 
 $debugMode = strpos($_SERVER['HTTP_HOST'], '-debug') !== false;
 

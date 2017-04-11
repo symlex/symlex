@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Web;
 
 /**
  * @see https://github.com/lastzero/symlex#controllers

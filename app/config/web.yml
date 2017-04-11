@@ -47,14 +47,14 @@ services:
         class: Silex\Application
 
     controller.web.index:
-        class: App\Controller\IndexController
+        class: App\Controller\Web\IndexController
 
     controller.web.auth:
-        class: App\Controller\AuthController
+        class: App\Controller\Web\AuthController
         arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
 
     controller.rest.users:
-        class: App\Rest\UsersController
+        class: App\Controller\Rest\UsersController
         arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]
 
     router.rest:

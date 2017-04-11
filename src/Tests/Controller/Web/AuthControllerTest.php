@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\Web;
 
 use TestTools\TestCase\UnitTestCase;
 
 class AuthControllerTest extends UnitTestCase
 {
     /**
-     * @var \App\Controller\AuthController
+     * @var \App\Controller\Web\AuthController
      */
     protected $controller;
 

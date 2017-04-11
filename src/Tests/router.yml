@@ -1,0 +1,32 @@
+services:
+    app.silex:
+        class: Silex\Application
+
+    session:
+        class: App\Tests\Service\FakeSession
+
+    service.session:
+        class: App\Service\Session
+        arguments: [ "@session", "@model.user" ]
+
+    router.rest:
+        class: App\Router\RestRouter
+        arguments: [ "@app.silex", "@service_container" ]
+        calls:
+            - [ setSession, [ "@service.session" ] ]
+
+    router.twig:
+        class: App\Router\TwigRouter
+        arguments: [ "@app.silex", "@service_container", "@twig" ]
+        calls:
+            - [ setSession, [ "@service.session" ] ]
+
+    router.error:
+        class: App\Router\ErrorRouter
+        arguments: [ "@app.silex", "@twig", %exception.codes%, %exception.messages%, %debug% ]
+
+    controller.rest.fake:
+        class: App\Tests\Router\FakeRestController
+
+    controller.web.fake:
+        class: App\Tests\Router\FakeWebController

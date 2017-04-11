@@ -3,6 +3,7 @@ imports:
     - { resource: const.yml }
     - { resource: twig.yml }
     - { resource: mail.yml }
+    - { resource: router.yml }
 
 services:
     session:
@@ -89,12 +90,12 @@ services:
         arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
 
     controller.web.index:
-        class: App\Controller\IndexController
+        class: App\Controller\Web\IndexController
 
     controller.web.auth:
-        class: App\Controller\AuthController
+        class: App\Controller\Web\AuthController
         arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
 
     controller.rest.users:
-        class: App\Rest\UsersController
+        class: App\Controller\Rest\UsersController
         arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]

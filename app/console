@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Symlex\Bootstrap\ConsoleApp;
+use App\Kernel\ConsoleApp;
 
 $app = new ConsoleApp (__DIR__);
 

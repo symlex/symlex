@@ -10,3 +10,4 @@ parameters:
     db.name: web
     db.user: web
     db.password: web
+    debug: true

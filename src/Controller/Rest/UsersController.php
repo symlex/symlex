@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rest;
+namespace App\Controller\Rest;
 
 use App\Exception\AccessDeniedException;
 use App\Exception\FormInvalidException;

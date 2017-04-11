@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Rest;
+namespace App\Tests\Controller\Rest;
 
 use TestTools\TestCase\UnitTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UsersControllerTest extends UnitTestCase
 {
     /**
-     * @var \App\Rest\UsersController
+     * @var \App\Controller\Rest\UsersController
      */
     protected $controller;
 

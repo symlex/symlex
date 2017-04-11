@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\Web;
 
 use TestTools\TestCase\UnitTestCase;
 
 class IndexControllerTest extends UnitTestCase
 {
     /**
-     * @var \App\Controller\IndexController
+     * @var \App\Controller\Web\IndexController
      */
     protected $controller;
 
