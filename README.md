@@ -323,11 +323,15 @@ user:reset-password      | Sends a link to a user's email address for password r
 
 Models, Forms & Databases
 -------------------------
-Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL and [Doctrine ActiveRecord](https://github.com/symlex/doctrine-active-record). It is a lot less complex, faster, and has less overhead than for example Datamapper ORM implementations.
+Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL 
+and [Doctrine ActiveRecord](https://github.com/symlex/doctrine-active-record). It is a lot faster and less complex 
+than Datamapper ORM implementations.
 
-The [InputValidation](https://github.com/symlex/input-validation) package provides secure whitelist validation for validating user input data in the controller layer before passing it to models.
+The [InputValidation](https://github.com/symlex/input-validation) package provides secure whitelist validation 
+for validating user input data in the controller layer before passing it to models.
 
-The following example shows how to work with those libraries in a REST controller context. Note, how easy it is to avoid deeply nested structures. User model and form are injected as dependencies.
+The following example shows how to work with those libraries in a REST controller context. Note, how easy it is 
+to avoid deeply nested structures. User model and form are injected as dependencies.
 
 ```php
 namespace App\Controller\Rest;
