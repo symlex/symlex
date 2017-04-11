@@ -1,0 +1,14 @@
+parameters:
+    twig.path: '%base.path%/View'
+    twig.options:
+        charset: 'UTF-8'
+        debug: false
+        strict_variables: false
+        cache: '%app.cache_path%'
+        auto_reload: true
+    db.options:
+        host: "%db.host%"
+        port: "%db.port%"
+        dbname: "%db.name%"
+        user: "%db.user%"
+        password: "%db.password%"

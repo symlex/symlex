@@ -28,8 +28,6 @@ class Version20170205075928 extends AbstractMigration
               `updated` datetime DEFAULT NULL,
               PRIMARY KEY (`user_id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
-
-        $this->addSql('INSERT INTO `users` VALUES (1,\'admin@example.com\',\'$6$5ygXjBO2gNbW$p1eaS7isBLD1JfN6PaQzrGKJHf9UGmUOBCZiqq3VnhDSPhdbIzOnu3kbKO2mcKEFiD11jFoPE5YSyvA7cYbbK1\',\'\',\'Admin\',\'Silex\',1,NULL,NULL),(2,\'user@example.com\',\'$6$5ygXjBO2gNbW$p1eaS7isBLD1JfN6PaQzrGKJHf9UGmUOBCZiqq3VnhDSPhdbIzOnu3kbKO2mcKEFiD11jFoPE5YSyvA7cYbbK1\',\'\',\'User\',\'Silex\',0,\'2014-08-04 06:51:35\',\'2014-08-04 06:51:35\');');
     }
 
     /**

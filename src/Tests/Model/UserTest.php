@@ -32,7 +32,7 @@ class UserTest extends UnitTestCase
         $this->assertEquals(1, $result->getId());
         $this->assertEquals(true, $result->admin);
         $this->assertEquals('Admin', $result->firstname);
-        $this->assertEquals('Silex', $result->lastname);
+        $this->assertEquals('Example', $result->lastname);
         $this->assertEquals('admin@example.com', $result->email);
     }
 
@@ -74,5 +74,18 @@ class UserTest extends UnitTestCase
 
         $expected = '$6$5ygXjBO2gNbW$p1eaS7isBLD1JfN6PaQzrGKJHf9UGmUOBCZiqq3VnhDSPhdbIzOnu3kbKO2mcKEFiD11jFoPE5YSyvA7cYbbK1';
         $this->assertEquals($expected, $user->password);
+    }
+
+    public function testPasswordIsValid()
+    {
+        $user = $this->model;
+
+        $password = random_bytes(8);
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+        $result = $user->passwordIsValid($passwordHash, $password);
+
+        $this->assertTrue($result);
     }
 }

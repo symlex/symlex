@@ -1,14 +1,6 @@
 imports:
     - { resource: mailer.yml }
 
-parameters:
-    db.options:
-        host: "%db.host%"
-        port: "%db.port%"
-        dbname: "%db.name%"
-        user: "%db.user%"
-        password: "%db.password%"
-
 services:
     log.handler:
         class: Monolog\Handler\StreamHandler

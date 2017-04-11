@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: const.yml }
     - { resource: services.yml }
     - { resource: twig.yml }
     

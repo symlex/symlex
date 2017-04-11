@@ -28,10 +28,10 @@ class UsersControllerTest extends UnitTestCase
                     'email' => 'admin@example.com',
                     'password_reset_token' => '',
                     'firstname' => 'Admin',
-                    'lastname' => 'Silex',
+                    'lastname' => 'Example',
                     'admin' => true,
-                    'created' => NULL,
-                    'updated' => NULL,
+                    'created' => '2014-08-04 06:51:35',
+                    'updated' => '2014-08-04 06:51:35',
                 ),
             1 =>
                 array(
@@ -39,7 +39,7 @@ class UsersControllerTest extends UnitTestCase
                     'email' => 'user@example.com',
                     'password_reset_token' => '',
                     'firstname' => 'User',
-                    'lastname' => 'Silex',
+                    'lastname' => 'Example',
                     'admin' => false,
                     'created' => '2014-08-04 06:51:35',
                     'updated' => '2014-08-04 06:51:35',
@@ -58,10 +58,10 @@ class UsersControllerTest extends UnitTestCase
             'email' => 'admin@example.com',
             'password_reset_token' => '',
             'firstname' => 'Admin',
-            'lastname' => 'Silex',
-            'admin' => '1',
-            'created' => NULL,
-            'updated' => NULL,
+            'lastname' => 'Example',
+            'admin' => true,
+            'created' => '2014-08-04 06:51:35',
+            'updated' => '2014-08-04 06:51:35',
         );
 
         $this->assertEquals($expected, $result);

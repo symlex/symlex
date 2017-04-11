@@ -2,26 +2,21 @@
 
 namespace App\Command;
 
-use App\Service\Mail;
 use App\Model\User;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Commands are configured as service in app/config/console.yml
  */
-class PasswordResetCommand extends Command
+class UserCreateCommand extends Command
 {
-    protected $mail;
     protected $user;
 
-    public function __construct($name, Mail $mail, User $user)
+    public function __construct($name, User $user)
     {
-        $this->mail = $mail;
         $this->user = $user;
 
         parent::__construct($name);
@@ -29,7 +24,8 @@ class PasswordResetCommand extends Command
 
     protected function configure()
     {
-        $this->addArgument('email', InputArgument::REQUIRED, 'User E-Mail');
+        $this->addArgument('email', InputArgument::REQUIRED, 'E-Mail');
+        $this->addArgument('password', InputArgument::REQUIRED, 'Password');
 
         parent::configure();
     }
@@ -37,9 +33,14 @@ class PasswordResetCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $email = $input->getArgument('email');
+        $password = $input->getArgument('password');
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $user = $this->user->findByEmail($email);
+        $this->user->save(array(
+            'email' => $email,
+            'password' => $passwordHash
+        ));
 
-        $this->mail->passwordReset($user);
+        $output->writeln('Created new user with ID ' . $this->user->getId());
     }
 }

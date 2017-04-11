@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="App" default="build" basedir="." description="">
     <target name="build">
-        <phingcall target="update-database"/>
+        <phingcall target="build-database"/>
         <phingcall target="build-javascript"/>
     </target>
 
@@ -9,8 +9,11 @@
         <exec command="./bin/phpunit --coverage-html ./storage/coverage" checkreturn="true" passthru="true"/>
     </target>
 
-    <target name="update-database">
+    <target name="build-database">
+        <exec command="./app/console database:drop" checkreturn="true" passthru="true" />
+        <exec command="./app/console database:create" checkreturn="true" passthru="true" />
         <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
+        <exec command="./app/console database:insert-fixtures" checkreturn="true" passthru="true" />
     </target>
 
     <target name="build-javascript">

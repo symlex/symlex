@@ -5,17 +5,8 @@ parameters:
     app.url: 'http://www.example.com'
     app.email: 'app@example.com'
     app.cache_path: '%base.path%/Tests/_cache'
-    twig.path: '%base.path%/View'
-    twig.options:
-        charset: 'UTF-8'
-        debug: false
-        strict_variables: false
-        cache: '%app.cache_path%'
-        auto_reload: true
-    db.options:
-        host: db
-        port: 3306
-        name: web
-        user: web
-        password: web
-        unix_socket: ~
+    db.host: db
+    db.port: 3306
+    db.name: web
+    db.user: web
+    db.password: web

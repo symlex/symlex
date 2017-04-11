@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: const.yml }
     - { resource: twig.yml }
     - { resource: mail.yml }
 

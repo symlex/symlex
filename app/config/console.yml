@@ -1,12 +1,29 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: const.yml }
     - { resource: services.yml }
     - { resource: twig.yml }
 
 services:
-    command.sendnewpassword:
-        class: App\Command\PasswordResetCommand
-        arguments: [ 'reset-password', "@service.mail=", "@model.user=", "@twig" ]
+    command.user.reset-password:
+        class: App\Command\UserResetPasswordCommand
+        arguments: [ 'user:reset-password', "@service.mail", "@model.user", "@twig" ]
+
+    command.user.create:
+        class: App\Command\UserCreateCommand
+        arguments: [ 'user:create', "@model.user", "@twig" ]
+
+    command.database.create:
+        class: App\Command\DatabaseCreateCommand
+        arguments: [ 'database:create', "@db" ]
+
+    command.database.drop:
+        class: App\Command\DatabaseDropCommand
+        arguments: [ 'database:drop', "@db" ]
+
+    command.database.insert-fixtures:
+        class: App\Command\DatabaseInsertFixturesCommand
+        arguments: [ "database:insert-fixtures", "@db", "%app.path%/db/fixtures" ]
 
     console.helper.db:
         class: Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper
@@ -51,4 +68,8 @@ services:
             - [ add, [ "@doctrine.migrations.migrate" ] ]
             - [ add, [ "@doctrine.migrations.status" ] ]
             - [ add, [ "@doctrine.migrations.version" ] ]
-            - [ add, [ "@command.sendnewpassword" ] ]
+            - [ add, [ "@command.user.reset-password" ] ]
+            - [ add, [ "@command.user.create" ] ]
+            - [ add, [ "@command.database.create" ] ]
+            - [ add, [ "@command.database.drop" ] ]
+            - [ add, [ "@command.database.insert-fixtures" ]]
