@@ -120,9 +120,10 @@ A light-weight kernel bootstraps the application. It's just about 150 lines of c
 
 ```php
 <?php
-namespace Symlex\Bootstrap;
 
-class App
+namespace DIMicroKernel;
+
+class Kernel
 {
     protected $environment;
     protected $debug;
@@ -155,22 +156,22 @@ The kernel base class can be extended to customize it for a specific purpose (e.
 
 ```php
 <?php
-namespace App;
-use Symlex\Bootstrap\App;
+namespace App\Kernel;
 
-class ConsoleApp extends App
+use DIMicroKernel\Kernel;
+
+class ConsoleApp extends Kernel
 {
     public function __construct($appPath, $debug = false)
     {
         parent::__construct('console', $appPath, $debug);
     }
 
-    public function boot()
+    public function setUp()
     {
+        chdir($this->getAppPath());
         set_time_limit(0);
         ini_set('memory_limit', '-1');
-
-        parent::boot();
     }
 }
 ```
@@ -183,7 +184,7 @@ Creating a kernel instance and calling run() is enough to start the application 
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Symlex\Bootstrap\ConsoleApp;
+use App\Kernel\ConsoleApp;
 $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
@@ -202,22 +203,26 @@ The application's HTTP kernel class initializes routing and sets optional URL/se
 ```php
 <?php
 
-namespace Symlex\Bootstrap;
+namespace App\Kernel;
 
-class WebApp extends App
+use DIMicroKernel\Kernel;
+
+class WebApp extends Kernel
 {
     public function __construct($appPath, $debug = false)
     {
-        if($debug) {
-            ini_set('display_errors', 1);
-        }
-
         parent::__construct('web', $appPath, $debug);
     }
 
-    public function boot () {
-        parent::boot();
-
+    public function init()
+    {
+        if ($this->debug) {
+            ini_set('display_errors', 1);
+        }
+    }
+    
+    protected function setUp()
+    {
         $container = $this->getContainer();
 
         $container->get('router.error')->route();
@@ -227,7 +232,7 @@ class WebApp extends App
 }
 ```
 
-Routing examples based on the default configuration in `Symlex\Bootstrap\WebApp`:
+Routing examples based on the default configuration in `App\Kernel\WebApp`:
 - `GET /` will be routed to `controller.web.index` service's `indexAction(Request $request)`
 - `POST /session/login` will be routed to `controller.web.session` service's `postLoginAction(Request $request)`
 - `GET /api/users` will be routed to `controller.rest.users` service's `cgetAction(Request $request)`
