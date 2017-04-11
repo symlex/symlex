@@ -303,9 +303,9 @@ class UsersController
 
 Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
 
-Command-line Interface
+Command-Line Interface
 ----------------------
-Running `app/console` lists all commands available. The following commands including Doctrine Migrations 
+Running `app/console` lists all commands available. The following commands including **Doctrine Migrations** 
 for creating and migrating database tables are supported out of the box:
 
 Command                  | Description
