@@ -40,7 +40,7 @@ services:
 
     service.session:
         class: App\Service\Session
-        arguments: [ "@session", "@model.user=" ]
+        arguments: [ "@session", "@model.user" ]
 
     app:
         class: Silex\Application
@@ -50,11 +50,11 @@ services:
 
     controller.web.auth:
         class: App\Controller\Web\AuthController
-        arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
+        arguments: [ "@service.session", "@model.user", "@service.mail" ]
 
     controller.rest.users:
         class: App\Controller\Rest\UsersController
-        arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]
+        arguments: [ "@service.session", "@model.user", "@form.factory", "@service.mail" ]
 
     router.rest:
         class: App\Router\RestRouter

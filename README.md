@@ -251,7 +251,7 @@ Symlex controllers are plain PHP classes. They have to be added as service to `a
 ```yaml
     controller.rest.users:
         class: App\Controller\Rest\UsersController
-        arguments: [ @model.session, @model.user, @form.user ]
+        arguments: [ "@service.session", "@model.user", "@form.factory", "@service.mail" ]
 ```
 
 *Note: In Symfony, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container, which makes testing more difficult and breaks the architecture.*
