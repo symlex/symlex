@@ -250,7 +250,7 @@ Symlex controllers are plain PHP classes. They have to be added as service to `a
 
 ```yaml
     controller.rest.users:
-        class: App\Rest\UsersController
+        class: App\Controller\Rest\UsersController
         arguments: [ @model.session, @model.user, @form.user ]
 ```
 
@@ -339,17 +339,27 @@ namespace App\Controller\Rest;
 use Symfony\Component\HttpFoundation\Request;
 use App\Exception\FormInvalidException;
 use App\Form\UserForm;
-use App\Model\UserModel;
+use App\Model\User;
 
-class UserController
+class UsersController
 {
     protected $user;
     protected $form;
 
-    public function __construct(UserModel $user, UserForm $form)
+    public function __construct(User $user, UserForm $form)
     {
         $this->user = $user;
         $this->form = $form;
+    }
+    
+    public function cgetAction(Request $request)
+    {
+        $options = array(
+            'count' => $request->query->get('count', 50),
+            'offset' => $request->query->get('offset', 0)
+        );
+
+        return $this->user->search(array(), $options);
     }
 
     public function getAction($id)
@@ -410,7 +420,6 @@ parameters:
         403: 'Forbidden'
         404: 'Not Found'
         405: 'Method Not Allowed'
-        409: 'Conflict'
         500: 'Looks like something went wrong!'
 
 services:

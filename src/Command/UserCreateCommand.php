@@ -56,7 +56,10 @@ class UserCreateCommand extends CommandAbstract
         try {
             $this->user->transactional(function () use ($form, $password) {
                 $this->user->save($form->getValues());
-                $this->user->updatePassword($password);
+
+                if($password) {
+                    $this->user->updatePassword($password);
+                }
             });
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');

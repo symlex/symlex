@@ -50,7 +50,7 @@ services:
             - [ setOptionsPath, [ "%base.path%/../app/options" ] ]
 
     form.factory:
-        class: InputValidation\Form\Factory
+        class: App\Form\FormFactory
         arguments:
             - "@translator"
             - "@form.validator"
@@ -68,7 +68,7 @@ services:
             - [ setFactoryPostfix, ['Dao'] ]
 
     model.factory:
-        class: Doctrine\ActiveRecord\Model\Factory
+        class: App\Model\ModelFactory
         arguments:
             - "@dao.factory"
         calls:

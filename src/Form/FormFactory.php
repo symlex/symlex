@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use InputValidation\Form;
+use InputValidation\Form\Factory;
 
 /**
  * @see https://github.com/symlex/input-validation
  */
-abstract class FormAbstract extends Form
+class FormFactory extends Factory
 {
 }

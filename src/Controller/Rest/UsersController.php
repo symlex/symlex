@@ -6,11 +6,10 @@ use App\Exception\AccessDeniedException;
 use App\Exception\FormInvalidException;
 use App\Exception\UnauthorizedException;
 use App\Exception\InvalidArgumentException;
-use App\Form\UserForm;
 use App\Service\Mail;
 use App\Service\Session;
 use App\Model\User;
-use InputValidation\Form\Factory;
+use App\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -23,7 +22,7 @@ class UsersController
     protected $formFactory;
     protected $mail;
 
-    public function __construct(Session $session, User $user, Factory $formFactory, Mail $mail)
+    public function __construct(Session $session, User $user, FormFactory $formFactory, Mail $mail)
     {
         $this->session = $session;
         $this->user = $user;
@@ -40,39 +39,29 @@ class UsersController
         return $this->formFactory->create('User');
     }
 
-    protected function sanitizeUserValues($values)
+    public function cgetAction(Request $request)
     {
-        // Only return these fields if user is admin
         if (!$this->session->isAdmin()) {
-            unset($values['created']);
-            unset($values['updated']);
-            unset($values['admin']);
-
-            if($this->session->getUserId() != $values['user_id']) {
-                unset($values['email']);
-            }
+            throw new AccessDeniedException('Only admins can query users');
         }
 
-        return $values;
-    }
+        $options = array(
+            'count' => $request->query->get('count', 50),
+            'offset' => $request->query->get('offset', 0)
+        );
 
-    public function cgetAction()
-    {
-        $users = $this->user->findAll();
-        $result = array();
-
-        foreach ($users as $user) {
-            $result[] = $this->sanitizeUserValues($user->getValues());
-        }
+        $result = $this->user->search(array(), $options);
 
         return $result;
     }
 
     public function getAction($id)
     {
-        $this->user->find($id);
+        if (!$this->session->isAdmin() && $id != $this->session->getUserId()) {
+            throw new AccessDeniedException('User ID does not match');
+        }
 
-        $result = $this->sanitizeUserValues($this->user->getValues());
+        $result = $this->user->find($id)->getValues();
 
         return $result;
     }
@@ -119,7 +108,7 @@ class UsersController
             $this->user->update($form->getValues());
         }
 
-        return $this->sanitizeUserValues($this->user->getValues());
+        return $this->user->getValues();
     }
 
     public function postAction(Request $request)
@@ -141,7 +130,7 @@ class UsersController
             });
         }
 
-        return $this->sanitizeUserValues($this->user->getValues());
+        return $this->user->getValues();
     }
 
     public function putPasswordAction($id, Request $request)

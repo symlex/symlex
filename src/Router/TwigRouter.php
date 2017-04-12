@@ -11,7 +11,7 @@ class TwigRouter extends SymlexTwigRouter
 {
     use SessionTrait;
 
-    protected function setTwigVariables($controller, $action, $isXmlHttpRequest)
+    protected function setTwigVariables(string $controller, string $action, bool $isXmlHttpRequest)
     {
         parent::setTwigVariables($controller, $action, $isXmlHttpRequest);
 

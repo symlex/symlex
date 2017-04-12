@@ -19,7 +19,9 @@ class UsersControllerTest extends UnitTestCase
 
     public function testCgetAction()
     {
-        $result = $this->controller->cgetAction();
+        $request = Request::create('http://localhost/users?count=2&offset=0', 'GET');
+
+        $result = $this->controller->cgetAction($request);
 
         $expected = array(
             0 =>
@@ -46,7 +48,7 @@ class UsersControllerTest extends UnitTestCase
                 ),
         );
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($expected, $result->getAllResultsAsArray());
     }
 
     public function testGetAction()

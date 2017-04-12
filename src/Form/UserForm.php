@@ -5,7 +5,8 @@ namespace App\Form;
 /**
  * @see https://github.com/symlex/input-validation
  */
-class UserForm extends FormAbstract {
+class UserForm extends FormAbstract
+{
     protected function init(array $params = array())
     {
         $definition = array(

@@ -9,7 +9,7 @@ trait SessionTrait
 {
     protected $session;
 
-    public function hasPermission(Request $request)
+    public function hasPermission(Request $request): bool
     {
         $method = strtoupper($request->getMethod());
         $session = $this->getSession();
@@ -33,10 +33,7 @@ trait SessionTrait
         return true;
     }
 
-    /**
-     * @return Session
-     */
-    public function getSession()
+    public function getSession(): Session
     {
         return $this->session;
     }
