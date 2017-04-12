@@ -9,10 +9,8 @@
 
     <title>{{ app_name }}{% if page_name %} - {{ page_name }}{% endif %}</title>
 
-    {% if debug %}
-    <link href="/css/main.css" rel="stylesheet">
-    {% else %}
-    <link href="/build/main.css" rel="stylesheet">
+    {% if minified_css %}<link href="/build/main.css?{{ 'web/build/main.css' | md5sum }}" rel="stylesheet">
+    {% else %}<link href="/css/main.css" rel="stylesheet">
     {% endif %}
 
     <script>

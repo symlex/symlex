@@ -13,7 +13,7 @@ services:
         class: Doctrine\DBAL\Driver\PDOMySql\Driver
 
     db:
-        class: TestTools\Doctrine\DBAL\Connection
+        class: App\Tests\Doctrine\DBAL\Connection
         arguments:
             - %db.options%
             - "@db.driver"

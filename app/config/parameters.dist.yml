@@ -3,6 +3,7 @@ parameters:
     app.version: '1.0'
     app.url: 'http://localhost:8080/'
     app.email: 'root@localhost'
+    app.locale: en
     db.host: db
     db.port: 3306
     db.name: web
@@ -14,3 +15,5 @@ parameters:
     mailer.username: ''
     mailer.password: ''
     mailer.auth_mode: ''
+    minified_js: true
+    minified_css: true

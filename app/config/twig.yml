@@ -8,6 +8,14 @@ parameters:
         auto_reload: true
 
 services:
+    twig.trans:
+        class: Symfony\Bridge\Twig\Extension\TranslationExtension
+        arguments: [ "@translator" ]
+
+    twig.md5sum:
+        class: App\Twig\Extension\Md5sum
+        arguments: [ "%app.path%/../" ]
+
     twig.loader:
         class: Twig_Loader_Filesystem
         arguments: [ %twig.path% ]
@@ -20,3 +28,8 @@ services:
             - [ addGlobal, [ 'app_name', %app.name% ] ]
             - [ addGlobal, [ 'app_version', %app.version% ] ]
             - [ addGlobal, [ 'app_url', %app.url% ] ]
+            - [ addGlobal, [ 'minified_js', %minified_js% ] ]
+            - [ addGlobal, [ 'minified_css', %minified_css% ] ]
+            - [ addGlobal, [ 'locale', %app.locale% ] ]
+            - [ addExtension, [ '@twig.md5sum' ] ]
+            - [ addExtension, [ '@twig.trans' ] ]
