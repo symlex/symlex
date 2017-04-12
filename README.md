@@ -339,18 +339,18 @@ namespace App\Controller\Rest;
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Exception\FormInvalidException;
-use App\Form\UserForm;
+use App\Form\FormFactory;
 use App\Model\User;
 
 class UsersController
 {
     protected $user;
-    protected $form;
+    protected $formFactory;
 
-    public function __construct(User $user, UserForm $form)
+    public function __construct(User $user, FormFactory $formFactory)
     {
         $this->user = $user;
-        $this->form = $form;
+        $this->formFactory = $formFactory;
     }
     
     public function cgetAction(Request $request)
@@ -359,7 +359,7 @@ class UsersController
             'count' => $request->query->get('count', 50),
             'offset' => $request->query->get('offset', 0)
         );
-
+        
         return $this->user->search(array(), $options);
     }
 
@@ -376,26 +376,29 @@ class UsersController
     public function putAction($id, Request $request)
     {
         $this->user->find($id);
-        $this->form->setDefinedWritableValues($request->request->all())->validate();
+        
+        $form = $this->formFactory->create('User\Edit');
+        $form->setDefinedWritableValues($request->request->all())->validate();
 
-        if($this->form->hasErrors()) {
-            throw new FormInvalidException($this->form->getFirstError());
+        if($form->hasErrors()) {
+            throw new FormInvalidException($form->getFirstError());
         } 
         
-        $this->user->update($this->form->getValues());
+        $this->user->update($form->getValues());
 
         return $this->user->getValues();
     }
 
     public function postAction(Request $request)
     {
-        $this->form->setDefinedWritableValues($request->request->all())->validate();
+        $form = $this->formFactory->create('User\Create');
+        $form->setDefinedWritableValues($request->request->all())->validate();
 
-        if($this->form->hasErrors()) {
-            throw new FormInvalidException($this->form->getFirstError());
+        if($form->hasErrors()) {
+            throw new FormInvalidException($form->getFirstError());
         }
         
-        $this->user->save($this->form->getValues());
+        $this->user->save($form->getValues());
 
         return $this->user->getValues();
     }

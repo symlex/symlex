@@ -34,9 +34,9 @@ class UsersController
         }
     }
 
-    public function createForm()
+    public function createForm($name)
     {
-        return $this->formFactory->create('User');
+        return $this->formFactory->create($name);
     }
 
     public function cgetAction(Request $request)
@@ -68,17 +68,16 @@ class UsersController
 
     public function optionsAction($id, Request $request)
     {
-        $form = $this->createForm();
-
         // Only load data for existing users
-        if ($id != 'new') {
+        if ($id == 'new') {
+            $form = $this->createForm('User\Create');
+        } else {
+            $form = $this->createForm('User\Edit');
             $this->user->find($id);
             $form->setDefinedValues($this->user->getValues());
         }
 
-        $result = $form->getAsArray();
-
-        return $result;
+        return $form->getAsArray();
     }
 
     public function deleteAction($id)
@@ -98,7 +97,7 @@ class UsersController
 
         $this->user->find($id);
 
-        $form = $this->createForm();
+        $form = $this->createForm('User\Edit');
 
         $form->setDefinedWritableValues($request->request->all())->validate();
 
@@ -117,7 +116,7 @@ class UsersController
             throw new AccessDeniedException('Users can not create new users');
         }
 
-        $form = $this->createForm();
+        $form = $this->createForm('User\Create');
 
         $form->setDefinedWritableValues($request->request->all())->validate();
 

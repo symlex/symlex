@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\User;
+
+use App\Form\FormAbstract;
 
 /**
  * @see https://github.com/symlex/input-validation
  */
-class UserForm extends FormAbstract
-{
+class EditForm extends FormAbstract {
     protected function init(array $params = array())
     {
         $definition = array(

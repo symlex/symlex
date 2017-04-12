@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Form;
+namespace App\Tests\Form\User;
 
 use TestTools\TestCase\UnitTestCase;
 
-class UserFormTest extends UnitTestCase
+class EditFormTest extends UnitTestCase
 {
     /**
-     * @var \App\Form\UserForm
+     * @var \App\Form\User\EditForm
      */
     protected $form;
 
     public function setUp()
     {
-        $this->form = $this->get('form.factory')->create('User');
+        $this->form = $this->get('form.factory')->create('User\Edit');
     }
 
     public function testValidForm()
