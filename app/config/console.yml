@@ -1,10 +1,26 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: const.yml }
     - { resource: services.yml }
-    - { resource: twig.yml }
 
 services:
+    app:
+        class: Symfony\Component\Console\Application
+        arguments: [%app.name%, %app.version%]
+        calls:
+            - [ setCatchExceptions, [ true ] ]
+            - [ setHelperSet, [ "@console.helpers" ] ]
+            - [ add, [ "@doctrine.migrations.execute" ] ]
+            - [ add, [ "@doctrine.migrations.generate" ] ]
+            - [ add, [ "@doctrine.migrations.migrate" ] ]
+            - [ add, [ "@doctrine.migrations.status" ] ]
+            - [ add, [ "@doctrine.migrations.version" ] ]
+            - [ add, [ "@command.user.reset-password" ] ]
+            - [ add, [ "@command.user.create" ] ]
+            - [ add, [ "@command.user.delete" ] ]
+            - [ add, [ "@command.database.create" ] ]
+            - [ add, [ "@command.database.drop" ] ]
+            - [ add, [ "@command.database.insert-fixtures" ]]
+
     command.user.reset-password:
         class: App\Command\UserResetPasswordCommand
         arguments: [ 'user:reset-password', "@service.mail", "@model.user", "@twig" ]
@@ -56,21 +72,3 @@ services:
 
     doctrine.migrations.version:
         class: Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand
-
-    app:
-        class: Symfony\Component\Console\Application
-        arguments: [%app.name%, %app.version%]
-        calls:
-            - [ setCatchExceptions, [ true ] ]
-            - [ setHelperSet, [ "@console.helpers" ] ]
-            - [ add, [ "@doctrine.migrations.execute" ] ]
-            - [ add, [ "@doctrine.migrations.generate" ] ]
-            - [ add, [ "@doctrine.migrations.migrate" ] ]
-            - [ add, [ "@doctrine.migrations.status" ] ]
-            - [ add, [ "@doctrine.migrations.version" ] ]
-            - [ add, [ "@command.user.reset-password" ] ]
-            - [ add, [ "@command.user.create" ] ]
-            - [ add, [ "@command.user.delete" ] ]
-            - [ add, [ "@command.database.create" ] ]
-            - [ add, [ "@command.database.drop" ] ]
-            - [ add, [ "@command.database.insert-fixtures" ]]

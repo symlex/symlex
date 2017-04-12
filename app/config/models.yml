@@ -1,0 +1,14 @@
+services:
+    model.factory:
+        class: App\Model\ModelFactory
+        arguments:
+            - "@dao.factory"
+        calls:
+            - [ setFactoryNamespace, [ 'App\Model' ] ]
+            - [ setFactoryPostfix, [ '' ] ]
+
+    model.user:
+        class: App\Model\User
+        shared: false
+        arguments:
+            - "@model.factory"

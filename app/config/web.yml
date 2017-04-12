@@ -1,37 +1,13 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: const.yml }
     - { resource: services.yml }
-    - { resource: twig.yml }
-    
-parameters:
-    exception.codes:
-        InvalidArgumentException: 400
-        Doctrine\ActiveRecord\Exception\NotFoundException: 404
-        App\Exception\UnauthorizedException: 401
-        App\Exception\AccessDeniedException: 403
-        Symlex\Router\Exception\AccessDeniedException: 403
-        Symlex\Router\Exception\NotFoundException: 404
-        Symlex\Router\Exception\MethodNotAllowedException: 405
-        App\Exception\FormInvalidException: 409
-        Swift_TransportException: 503
-        Exception: 500
-
-    exception.messages:
-        400: 'Bad request'
-        401: 'Unauthorized'
-        402: 'Payment Required'
-        403: 'Forbidden'
-        404: 'Not Found'
-        405: 'Method Not Allowed'
-        406: 'Not Acceptable'
-        407: 'Proxy Authentication Required'
-        408: 'Request Timeout'
-        410: 'Gone'
-        500: 'Looks like something went wrong!'
-        503: 'Service unavailable - check server configuration'
+    - { resource: exceptions.yml }
+    - { resource: controllers.yml }
 
 services:
+    app:
+        class: Silex\Application
+
     request:
         class: Symfony\Component\HttpFoundation\Request
 
@@ -41,20 +17,6 @@ services:
     service.session:
         class: App\Service\Session
         arguments: [ "@session", "@model.user" ]
-
-    app:
-        class: Silex\Application
-
-    controller.web.index:
-        class: App\Controller\Web\IndexController
-
-    controller.web.auth:
-        class: App\Controller\Web\AuthController
-        arguments: [ "@service.session", "@model.user", "@service.mail" ]
-
-    controller.rest.users:
-        class: App\Controller\Rest\UsersController
-        arguments: [ "@service.session", "@model.user", "@form.factory", "@service.mail" ]
 
     router.rest:
         class: App\Router\RestRouter

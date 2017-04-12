@@ -1,5 +1,9 @@
 imports:
+    - { resource: const.yml }
+    - { resource: twig.yml }
     - { resource: mailer.yml }
+    - { resource: forms.yml }
+    - { resource: models.yml }
 
 services:
     log.handler:
@@ -41,26 +45,6 @@ services:
             - [ addResource, [ "yaml", "%app.path%/l10n/de.yml", "de" ] ]
             - [ addResource, [ "yaml", "%app.path%/l10n/en.yml", "en" ] ]
 
-    form.options:
-        class: InputValidation\Form\Options\JsonOptions
-        arguments:
-            - "@translator"
-        calls:
-            - [ setOptionsPath, [ "%app.path%/options" ] ]
-
-    form.validator:
-        class: InputValidation\Form\Validator
-
-    form.factory:
-        class: App\Form\FormFactory
-        arguments:
-            - "@translator"
-            - "@form.validator"
-            - "@form.options"
-        calls:
-            - [ setFactoryNamespace, [ 'App\Form' ] ]
-            - [ setFactoryPostfix, [ 'Form' ] ]
-
     dao.factory:
         class: Doctrine\ActiveRecord\Dao\Factory
         arguments:
@@ -68,20 +52,6 @@ services:
         calls:
             - [ setFactoryNamespace, [ 'App\Dao' ] ]
             - [ setFactoryPostfix, [ 'Dao' ] ]
-
-    model.factory:
-        class: App\Model\ModelFactory
-        arguments:
-            - "@dao.factory"
-        calls:
-            - [ setFactoryNamespace, [ 'App\Model' ] ]
-            - [ setFactoryPostfix, [ '' ] ]
-
-    model.user:
-        class: App\Model\User
-        shared: false
-        arguments:
-            - "@model.factory"
 
     service.mail:
         class: App\Service\Mail
