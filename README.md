@@ -189,6 +189,25 @@ $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
+Command-Line Interface
+----------------------
+Running `app/console` lists all commands available. The following commands including **Doctrine Migrations** 
+for creating and migrating database tables are supported out of the box:
+
+Command                  | Description
+-------------------------|----------------------------------------------------------------------------
+migrations:execute       | Execute a single migration version up or down manually
+migrations:generate      | Generate a blank migration class
+migrations:migrate       | Execute a migration to a specified version or the latest available version
+migrations:status        | View the status of a set of migrations
+migrations:version       | Manually add and delete migration versions from the version table
+database:create          | Create the database configured in app/config/parameters.yml
+database:drop            | Drop the database configured in app/config/parameters.yml
+database:insert-fixtures | Insert database fixtures for testing (see app/db/fixtures/)
+user:create              | Create a new user
+user:delete              | Delete a user
+user:reset-password      | Send password reset email to a user
+
 Routing and Rendering
 ---------------------
 Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the core library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
@@ -246,7 +265,7 @@ Routing examples based on the default configuration in `App\Kernel\WebApp`:
 
 Controllers
 -----------
-Symlex controllers are plain PHP classes. They have to be added as service to `app/config/web.yml`:
+Symlex controllers are plain PHP classes. They have to be added as service to `app/config/controllers.yml`:
 
 ```yaml
     controller.rest.users:
@@ -302,25 +321,6 @@ class UsersController
 **REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
 Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
-
-Command-Line Interface
-----------------------
-Running `app/console` lists all commands available. The following commands including **Doctrine Migrations** 
-for creating and migrating database tables are supported out of the box:
-
-Command                  | Description
--------------------------|----------------------------------------------------------------------------
-migrations:execute       | Execute a single migration version up or down manually
-migrations:generate      | Generate a blank migration class
-migrations:migrate       | Execute a migration to a specified version or the latest available version
-migrations:status        | View the status of a set of migrations
-migrations:version       | Manually add and delete migration versions from the version table
-database:create          | Create the database configured in app/config/parameters.yml
-database:drop            | Drop the database configured in app/config/parameters.yml
-database:insert-fixtures | Insert database fixtures for testing (see app/db/fixtures/)
-user:create              | Create a new user
-user:delete              | Delete a user
-user:reset-password      | Send password reset email to a user
 
 Models, Forms & Databases
 -------------------------
@@ -407,7 +407,7 @@ class UsersController
 
 Error Handling
 --------------
-Exceptions are automatically catched by Silex and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/web.yml`:
+Exceptions are automatically catched by Silex and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/exceptions.yml`:
 
 ```yaml
 parameters:
@@ -444,12 +444,13 @@ Tests
 -----
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
-    [lastzero/symlex]# app/phpunit
-    PHPUnit 4.8.18 by Sebastian Bergmann and contributors.
-
-    .....................
-
-    Time: 147 ms, Memory: 11.25Mb
-    OK (21 tests, 53 assertions)
+    /var/www/html# bin/phpunit
+    PHPUnit 6.1.0 by Sebastian Bergmann and contributors.
+    
+    ..............................                                    30 / 30 (100%)
+    
+    Time: 2.6 seconds, Memory: 10.00MB
+    
+    OK (30 tests, 91 assertions)
     
 See also [TestTools - Adds a service container and self-initializing fakes to PHPUnit](https://github.com/lastzero/test-tools)
