@@ -315,11 +315,12 @@ migrations:generate      | Generate a blank migration class
 migrations:migrate       | Execute a migration to a specified version or the latest available version
 migrations:status        | View the status of a set of migrations
 migrations:version       | Manually add and delete migration versions from the version table
-database:create          | Creates the database configured in app/config/parameters.yml
-database:drop            | Drops the database configured in app/config/parameters.yml
-database:insert-fixtures | Inserts database fixtures for testing (see app/db/fixtures/)
-user:create              | Creates a new user
-user:reset-password      | Sends a link to a user's email address for password reset
+database:create          | Create the database configured in app/config/parameters.yml
+database:drop            | Drop the database configured in app/config/parameters.yml
+database:insert-fixtures | Insert database fixtures for testing (see app/db/fixtures/)
+user:create              | Create a new user
+user:delete              | Delete a user
+user:reset-password      | Send password reset email to a user
 
 Models, Forms & Databases
 -------------------------

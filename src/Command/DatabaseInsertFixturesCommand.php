@@ -37,7 +37,7 @@ class DatabaseInsertFixturesCommand extends CommandAbstract
 
     protected function configure()
     {
-        $this->setDescription('Inserts database fixtures for testing (see app/db/fixtures/)');
+        $this->setDescription('Insert database fixtures for testing (see app/db/fixtures/)');
 
         parent::configure();
     }

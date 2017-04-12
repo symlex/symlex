@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Model\User;
-use InputValidation\Form\Factory;
+use App\Form\FormFactory;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -17,7 +17,7 @@ class UserCreateCommand extends CommandAbstract
     protected $user;
     protected $formFactory;
 
-    public function __construct($name, User $user, Factory $formFactory)
+    public function __construct($name, User $user, FormFactory $formFactory)
     {
         $this->user = $user;
         $this->formFactory = $formFactory;
@@ -27,7 +27,7 @@ class UserCreateCommand extends CommandAbstract
 
     protected function configure()
     {
-        $this->setDescription('Creates a new user');
+        $this->setDescription('Create a new user');
 
         $this->addArgument('email', InputArgument::REQUIRED, 'E-Mail');
         $this->addOption('password', 'p', InputOption::VALUE_REQUIRED, 'Password');

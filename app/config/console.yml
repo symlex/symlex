@@ -13,6 +13,10 @@ services:
         class: App\Command\UserCreateCommand
         arguments: [ 'user:create', "@model.user", "@form.factory" ]
 
+    command.user.delete:
+        class: App\Command\UserDeleteCommand
+        arguments: [ 'user:delete', "@model.user" ]
+
     command.database.create:
         class: App\Command\DatabaseCreateCommand
         arguments: [ 'database:create', "@db" ]
@@ -66,6 +70,7 @@ services:
             - [ add, [ "@doctrine.migrations.version" ] ]
             - [ add, [ "@command.user.reset-password" ] ]
             - [ add, [ "@command.user.create" ] ]
+            - [ add, [ "@command.user.delete" ] ]
             - [ add, [ "@command.database.create" ] ]
             - [ add, [ "@command.database.drop" ] ]
             - [ add, [ "@command.database.insert-fixtures" ]]

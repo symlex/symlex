@@ -22,7 +22,7 @@ class DatabaseDropCommand extends CommandAbstract
 
     protected function configure()
     {
-        $this->setDescription('Drops the database configured in app/config/parameters.yml');
+        $this->setDescription('Drop the database configured in app/config/parameters.yml');
 
         parent::configure();
     }

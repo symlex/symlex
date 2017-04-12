@@ -22,7 +22,7 @@ class DatabaseCreateCommand extends CommandAbstract
 
     protected function configure()
     {
-        $this->setDescription('Creates the database configured in app/config/parameters.yml');
+        $this->setDescription('Create the database configured in app/config/parameters.yml');
 
         parent::configure();
     }

@@ -13,7 +13,7 @@ class User extends ModelAbstract
 {
     protected $_daoName = 'User';
 
-    public function updatePassword($password)
+    public function updatePassword(string $password): User
     {
         if ($password == '') {
             throw new InvalidArgumentException ('Password can not be empty');
@@ -27,9 +27,11 @@ class User extends ModelAbstract
 
         $this->getDao()->password = $hash;
         $this->getDao()->update();
+
+        return $this;
     }
 
-    public function findByPasswordResetToken($token)
+    public function findByPasswordResetToken(string $token)
     {
         $users = $this->findAll(array('password_reset_token' => $token));
 
@@ -40,7 +42,7 @@ class User extends ModelAbstract
         return $users[0];
     }
 
-    public function findByEmail($email)
+    public function findByEmail(string $email): User
     {
         $users = $this->findAll(array('email' => $email));
 
@@ -71,7 +73,7 @@ class User extends ModelAbstract
         return $this;
     }
 
-    public function findByCredentials ($email, $password)
+    public function findByCredentials (string $email, string $password)
     {
         $matchedUsers = $this->findAll(array('email' => $email));
 
@@ -92,7 +94,7 @@ class User extends ModelAbstract
         return $user;
     }
 
-    public function passwordIsValid($encryptedPassword, $password)
+    public function passwordIsValid(string $encryptedPassword, string $password)
     {
         return password_verify($password, $encryptedPassword);
     }
