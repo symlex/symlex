@@ -1,6 +1,6 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: services.yml }
+    - { resource: common.yml }
     - { resource: exceptions.yml }
     - { resource: controllers.yml }
 
