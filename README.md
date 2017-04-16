@@ -334,7 +334,7 @@ The [InputValidation](https://github.com/symlex/input-validation) package provid
 for validating user input data in the controller layer before passing it to models.
 
 The following example shows how to work with those libraries in a REST controller context. Note, how easy it is 
-to avoid deeply nested structures. User model and form are injected as dependencies.
+to avoid deeply nested structures. User model and form factory are injected as dependencies.
 
 ```php
 namespace App\Controller\Rest;
