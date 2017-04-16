@@ -273,7 +273,9 @@ Symlex controllers are plain PHP classes. They have to be added as service to `a
         arguments: [ "@service.session", "@model.user", "@form.factory", "@service.mail" ]
 ```
 
-*Note: In Symfony, controllers aren't services by default. Some Symfony developers give their controllers direct access to the DI container, which makes testing more difficult and breaks the architecture.*
+*Note: In Symfony and many other frameworks, controllers aren't services by default. Some developers are used to give 
+controllers direct access to the service container instead of using dependency injection, which makes testing more 
+difficult and leads to less portable code (framework lock-in).*
 
 The routers pass on the request instance to each matched controller action as last argument. It contains request parameters and headers: http://symfony.com/doc/current/book/http_fundamentals.html#requests-and-responses-in-symfony
 
