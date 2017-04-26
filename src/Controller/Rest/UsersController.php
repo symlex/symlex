@@ -103,9 +103,9 @@ class UsersController
 
         if ($form->hasErrors()) {
             throw new FormInvalidException($form->getFirstError());
-        } else {
-            $this->user->update($form->getValues());
         }
+
+        $this->user->update($form->getValues());
 
         return $this->user->getValues();
     }
@@ -122,12 +122,12 @@ class UsersController
 
         if ($form->hasErrors()) {
             throw new FormInvalidException($form->getFirstError());
-        } else {
-            $this->user->transactional(function () use ($form) {
-                $this->user->save($form->getValues());
-                $this->mail->newUser($this->user);
-            });
         }
+
+        $this->user->transactional(function () use ($form) {
+            $this->user->save($form->getValues());
+            $this->mail->newUser($this->user);
+        });
 
         return $this->user->getValues();
     }
@@ -143,11 +143,11 @@ class UsersController
         $password = $request->get('password');
         $new_password = $request->get('new_password');
 
-        if ($this->user->passwordIsValid($this->user->password, $password)) {
-            $this->user->updatePassword($new_password);
-        } else {
+        if (!$this->user->passwordIsValid($this->user->password, $password)) {
             throw new InvalidArgumentException('Old password is invalid');
         }
+
+        $this->user->updatePassword($new_password);
     }
 
 }
