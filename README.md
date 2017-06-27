@@ -13,7 +13,7 @@ Since its first release in 2014, it has proven to be well suited for building mi
 
 You can use Symlex with any JavaScript library and REST client or to output static HTML. 
 The front-end example is based on AngularJS 1.6, Bootstrap, RequireJS and Bower for package management.
-A working [example](https://github.com/symlex/symlex/blob/master/src/Command/PasswordResetCommand.php) for command 
+A working [example](https://github.com/symlex/symlex/blob/master/src/Command/UserResetPasswordCommand.php) for command 
 line applications is included as well.
 
 **The goal of this project is to simplify Silex development by providing a working system that favors convention 
@@ -281,7 +281,7 @@ The routers pass on the request instance to each matched controller action as la
 
 **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
 
-Example: https://github.com/lastzero/symlex/blob/master/src/Controller/AuthController.php
+Example: https://github.com/symlex/symlex/blob/master/src/Controller/Web/AuthController.php
 
 REST
 ----
