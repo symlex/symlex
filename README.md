@@ -5,7 +5,7 @@ Symlex: Silex + Symfony
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 
-Symlex is a complete high-performance PHP framework based on **Silex 2**. Instead of Pimple, it uses 
+Symlex is a complete high-performance PHP framework based on **Silex** and **Symfony**. Instead of Pimple, it uses 
 the well known Symfony [service container](http://symfony.com/doc/current/service_container.html). 
 It promotes the strict use of dependency injection for implementing 
 [inversion of control](https://martinfowler.com/articles/injection.html) and improved testability.
