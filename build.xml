@@ -1,12 +1,41 @@
 <?xml version="1.0"?>
-<project name="App" default="build" basedir="." description="">
-    <target name="build">
+<project name="App" default="dev" basedir="." description="">
+    <target name="dev">
         <phingcall target="build-database"/>
-        <phingcall target="build-javascript"/>
+        <phingcall target="build-js"/>
+        <phingcall target="build-codeception"/>
+    </target>
+
+    <target name="upgrade">
+        <phingcall target="upgrade-database"/>
+        <phingcall target="build-js"/>
+    </target>
+
+    <target name="test">
+        <phingcall target="test-php"/>
+        <phingcall target="test-javascript"/>
+        <phingcall target="test-acceptance"/>
+    </target>
+
+    <target name="test-php">
+        <exec command="./bin/phpunit" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="test-coverage">
         <exec command="./bin/phpunit --coverage-html ./storage/coverage" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="test-javascript">
+        <exec command="npm run test" dir="./frontend" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="test-acceptance">
+        <phingcall target="build-codeception"/>
+        <exec command="./bin/codecept run" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="build-codeception">
+        <exec command="./bin/codecept build" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="build-database">
@@ -16,18 +45,26 @@
         <exec command="./app/console database:insert-fixtures" checkreturn="true" passthru="true" />
     </target>
 
-    <target name="build-javascript">
-        <phingcall target="run-bower"/>
-        <phingcall target="minify-javascript"/>
+    <target name="upgrade-database">
+        <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
     </target>
 
-    <target name="run-bower">
-        <exec command="bower install --allow-root" dir="./web" checkreturn="true" passthru="true"/>
+    <target name="build-js">
+        <delete>
+            <fileset dir="./web/assets">
+                <include name="*.js" />
+                <include name="*.css" />
+            </fileset>
+        </delete>
+        <phingcall target="run-yarn"/>
+        <phingcall target="run-npm-build"/>
     </target>
 
-    <target name="minify-javascript">
-        <exec command="r.js -o web/js/build.js paths.requireLib=../bower_components/requirejs/require include=requireLib" checkreturn="true" passthru="true"/>
-        <exec command="r.js -o cssIn=web/css/main.css out=web/build/main.css" checkreturn="true" passthru="true"/>
-        <exec command="r.js -o cssIn=web/css/error.css out=web/build/error.css" checkreturn="true" passthru="true"/>
+    <target name="run-yarn">
+        <exec command="yarn install" dir="./frontend" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="run-npm-build">
+        <exec command="npm run build" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 </project>

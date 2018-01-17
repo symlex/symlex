@@ -17,17 +17,56 @@ class Version20170205075928 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE `users` (
-              `user_id` int(11) NOT NULL AUTO_INCREMENT,
-              `email` varchar(127) UNIQUE NOT NULL,
-              `password` varchar(255) NOT NULL DEFAULT \'\',
-              `password_reset_token` varchar(128) DEFAULT \'\',
-              `firstname` varchar(64) NOT NULL DEFAULT \'\',
-              `lastname` varchar(64) NOT NULL DEFAULT \'\',
-              `admin` tinyint(1) NOT NULL DEFAULT \'0\',
+              `userId` BIGINT NOT NULL AUTO_INCREMENT,
+              `userEmail` varchar(127) UNIQUE NOT NULL,
+              `userPassword` varchar(255) NOT NULL DEFAULT \'\',
+              `userPasswordResetToken` varchar(128) DEFAULT NULL,
+              `userVerificationToken` varchar(128) DEFAULT NULL,
+              `userFirstName` varchar(64) NOT NULL DEFAULT \'\',
+              `userLastName` varchar(64) NOT NULL DEFAULT \'\',
+              `userRole` varchar(64) NOT NULL DEFAULT \'user\',
+              `userNewsletter` TINYINT UNSIGNED NOT NULL DEFAULT 0, 
               `created` datetime DEFAULT NULL,
               `updated` datetime DEFAULT NULL,
-              PRIMARY KEY (`user_id`)
+              PRIMARY KEY (`userId`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
+
+        $this->addSql('CREATE TABLE `usersArchive` (
+              `archiveId` BIGINT NOT NULL AUTO_INCREMENT,
+              `userId` BIGINT NOT NULL,
+              `userEmail` varchar(127) NOT NULL,
+              `userPassword` varchar(255) NOT NULL DEFAULT \'\',
+              `userPasswordResetToken` varchar(128) DEFAULT NULL,
+              `userVerificationToken` varchar(128) DEFAULT NULL,
+              `userFirstName` varchar(64) NOT NULL DEFAULT \'\',
+              `userLastName` varchar(64) NOT NULL DEFAULT \'\',
+              `userRole` varchar(64) NOT NULL DEFAULT \'user\',
+              `userNewsletter` TINYINT UNSIGNED NOT NULL DEFAULT 0, 
+              `created` datetime DEFAULT NULL,
+              `updated` datetime DEFAULT NULL,
+              PRIMARY KEY (`archiveId`),
+              INDEX `userId` (`userId` ASC)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
+
+        $this->addSql('
+            CREATE TRIGGER `trigger_users_update` AFTER UPDATE ON `users`
+            FOR EACH ROW
+            BEGIN
+                INSERT INTO `usersArchive` 
+                (userId, userEmail, userPassword, userPasswordResetToken, userVerificationToken, userFirstName, userLastName, userRole, userNewsletter, created, updated) 
+                VALUES
+                (OLD.userId, OLD.userEmail, OLD.userPassword, OLD.userPasswordResetToken, OLD.userVerificationToken, OLD.userFirstName, OLD.userLastName, OLD.userRole, OLD.userNewsletter, OLD.created, OLD.updated);
+            END;');
+
+        $this->addSql('
+            CREATE TRIGGER `trigger_users_delete` AFTER DELETE ON `users`
+            FOR EACH ROW
+            BEGIN
+                INSERT INTO `usersArchive` 
+                (userId, userEmail, userPassword, userPasswordResetToken, userVerificationToken, userFirstName, userLastName, userRole, userNewsletter, created, updated) 
+                VALUES
+                (OLD.userId, OLD.userEmail, OLD.userPassword, OLD.userPasswordResetToken, OLD.userVerificationToken, OLD.userFirstName, OLD.userLastName, OLD.userRole, OLD.userNewsletter, OLD.created, OLD.updated);
+            END;');
     }
 
     /**

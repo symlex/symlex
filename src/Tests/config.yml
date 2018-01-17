@@ -21,6 +21,12 @@ services:
             - [ setFixturePrefix, ['sql'] ]
             - [ useFixtures, ["%fixture.path%"] ]
 
+    request:
+        class: Symfony\Component\HttpFoundation\Request
+
+    cache:
+        class: Symfony\Component\Cache\Simple\ArrayCache
+
     yaml_loader:
         class: Symfony\Component\Translation\Loader\YamlFileLoader
 
@@ -82,20 +88,21 @@ services:
 
     service.session:
         class: App\Service\Session
-        arguments: [ "@session", "@model.user" ]
+        arguments: [ "@cache", "@request", "@model.user" ]
+
+    service.token_generator:
+        class: App\Service\TokenGenerator
+        calls:
+            - [ setDefaultTokenForTest, [ 'dd0183de69c9d7f78a9aa92a92bdc9c613eadec71234567890987654321' ] ]
 
     service.mail:
         class: App\Service\Mail
         shared: false
-        arguments: [ "@mailer", "@twig", { %app.email%: %app.name%} ]
+        arguments: [ "@mailer", "@twig", "@service.token_generator", { %app.email%: %app.name%} ]
 
     controller.web.index:
         class: App\Controller\Web\IndexController
 
-    controller.web.auth:
-        class: App\Controller\Web\AuthController
-        arguments: [ "@service.session", "@model.user=", "@service.mail=" ]
-
-    controller.rest.users:
-        class: App\Controller\Rest\UsersController
-        arguments: [ "@service.session", "@model.user=", "@form.factory", "@service.mail=" ]
+    controller.rest.v1.users:
+        class: App\Controller\Rest\V1\UsersController
+        arguments: [ "@service.session", "@model.factory", "@form.factory", "@service.mail=" ]

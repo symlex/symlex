@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: common.yml }
     - { resource: exceptions.yml }
-    - { resource: controllers.yml }
+    - { resource: rest.yml }
 
 services:
     app:
@@ -10,26 +10,25 @@ services:
 
     request:
         class: Symfony\Component\HttpFoundation\Request
-
-    session:
-        class: Symfony\Component\HttpFoundation\Session\Session
+        factory: [ 'Symfony\Component\HttpFoundation\Request', createFromGlobals ]
 
     service.session:
         class: App\Service\Session
-        arguments: [ "@session", "@model.user" ]
-
-    router.rest:
-        class: App\Router\RestRouter
-        arguments: [ "@app", "@service_container" ]
-        calls:
-            - [ setSession, [ "@service.session" ] ]
-
-    router.twig:
-        class: App\Router\TwigRouter
-        arguments: [ "@app", "@service_container", "@twig" ]
-        calls:
-            - [ setSession, [ "@service.session" ] ]
+        arguments: [ "@cache", "@request", "@model.user" ]
 
     router.error:
-        class: Symlex\Router\ErrorRouter
+        class: App\Router\ErrorRouter
         arguments: [ "@app", "@twig", %exception.codes%, %exception.messages%, %app.debug% ]
+        calls:
+            - [ setLogger, [ "@log" ] ]
+
+    router.twig:
+        class: Symlex\Router\TwigRouter
+        arguments: [ "@app", "@service_container", "@twig" ]
+
+    router.twig_default:
+        class: Symlex\Router\TwigDefaultRouter
+        arguments: [ "@app", "@service_container", "@twig" ]
+
+    controller.web.index:
+        class: App\Controller\Web\IndexController

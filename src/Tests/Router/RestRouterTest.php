@@ -70,8 +70,8 @@ class RestRouterTest extends UnitTestCase
     public function testOptionsCommentRoute()
     {
         $request = Request::create('http://localhost/api/fake/345/comment/1', 'OPTIONS');
-        $csrfToken = $this->session->initCsrfToken()->getCsrfToken();
-        $request->headers->add(array('X-CSRF-Token' => $csrfToken));
+//        $csrfToken = $this->session->initCsrfToken()->getCsrfToken();
+//        $request->headers->add(array('X-CSRF-Token' => $csrfToken));
         $this->router->route('/api', 'controller.rest.');
         $response = $this->app->handle($request);
         $result = json_decode($response->getContent(), true);

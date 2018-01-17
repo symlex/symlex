@@ -7,36 +7,44 @@ use App\Form\FormAbstract;
 /**
  * @see https://github.com/symlex/input-validation
  */
-class EditForm extends FormAbstract {
+class EditForm extends FormAbstract
+{
     protected function init(array $params = array())
     {
-        $definition = array(
-            'firstname' => array(
+        $definition = [
+            'userFirstName' => [
                 'caption' => 'First Name',
                 'type' => 'string',
                 'min' => 2,
                 'max' => 64,
                 'required' => true,
-            ),
-            'lastname' => array(
+            ],
+            'userLastName' => [
                 'caption' => 'Last Name',
                 'type' => 'string',
                 'min' => 2,
                 'max' => 64,
                 'required' => true,
-            ),
-            'email' => array(
-                'caption' => 'E-Mail',
+            ],
+            'userEmail' => [
+                'caption' => 'E-mail',
                 'type' => 'email',
                 'max' => 127,
                 'required' => true,
-            ),
-            'admin' => array(
-                'caption' => 'Admin',
+            ],
+            'userRole' => [
+                'caption' => 'Role',
+                'type' => 'string',
+                'default' => 'user',
+                'required' => true,
+                'options' => $this->options('roles'),
+            ],
+            'userNewsletter' => [
+                'caption' => 'Receive newsletter and other occasional updates',
                 'type' => 'bool',
-                'optional' => true,
-            ),
-        );
+                'required' => false,
+            ]
+       ];
 
         $this->setDefinition($definition);
     }

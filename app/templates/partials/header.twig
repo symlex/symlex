@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <title>{{ app_name }}{% if page_name %} - {{ page_name }}{% endif %}</title>
+
+    <link rel="stylesheet" href="/build/app.css?{{ "web/build/app.css" | md5sum }}" data-type="replaceable">
+
+    <script>
+        window.appConfig = {
+            appName: "{{ app_name }}",
+            appVersion: "{{ app_version }}",
+            debug: {{ debug ? 'true' : 'false' }}
+        };
+    </script>
+</head>
+
+<body>

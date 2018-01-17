@@ -1,0 +1,125 @@
+a:2:{s:6:"result";a:1:{i:0;a:11:{s:6:"userId";s:1:"2";s:9:"userEmail";s:16:"user@example.com";s:12:"userPassword";s:102:"$6$5ygXjBO2gNbW$p1eaS7isBLD1JfN6PaQzrGKJHf9UGmUOBCZiqq3VnhDSPhdbIzOnu3kbKO2mcKEFiD11jFoPE5YSyvA7cYbbK1";s:22:"userPasswordResetToken";s:15:"4wai87E67cuDCe9";s:21:"userVerificationToken";s:15:"tkkqEUTj1P13ucm";s:13:"userFirstName";s:4:"User";s:12:"userLastName";s:7:"Example";s:8:"userRole";s:4:"user";s:14:"userNewsletter";s:1:"0";s:7:"created";s:19:"2014-08-04 06:51:35";s:7:"updated";s:19:"2014-08-04 06:51:35";}}s:4:"args";a:1:{i:0;s:4230:"Argument could not be serialized: Doctrine\DBAL\Query\QueryBuilder Object
+(
+    [connection:Doctrine\DBAL\Query\QueryBuilder:private] => App\Tests\Doctrine\DBAL\Connection Object
+        (
+            [showFixtureWarnings:protected] => 1
+            [_conn:protected] => Doctrine\DBAL\Driver\PDOConnection Object
+                (
+                )
+
+            [_config:protected] => Doctrine\DBAL\Configuration Object
+                (
+                    [_attributes:protected] => Array
+                        (
+                        )
+
+                )
+
+            [_eventManager:protected] => Doctrine\Common\EventManager Object
+                (
+                    [_listeners:Doctrine\Common\EventManager:private] => Array
+                        (
+                        )
+
+                )
+
+            [_expr:protected] => Doctrine\DBAL\Query\Expression\ExpressionBuilder Object
+                (
+                    [connection:Doctrine\DBAL\Query\Expression\ExpressionBuilder:private] => App\Tests\Doctrine\DBAL\Connection Object
+ *RECURSION*
+                )
+
+            [_isConnected:Doctrine\DBAL\Connection:private] => 1
+            [autoCommit:Doctrine\DBAL\Connection:private] => 1
+            [_transactionNestingLevel:Doctrine\DBAL\Connection:private] => 0
+            [_transactionIsolationLevel:Doctrine\DBAL\Connection:private] => 
+            [_nestTransactionsWithSavepoints:Doctrine\DBAL\Connection:private] => 
+            [_params:Doctrine\DBAL\Connection:private] => Array
+                (
+                    [host] => db
+                    [port] => 3306
+                    [dbname] => web
+                    [user] => web
+                    [password] => web
+                )
+
+            [platform:Doctrine\DBAL\Connection:private] => 
+            [_schemaManager:protected] => 
+            [_driver:protected] => Doctrine\DBAL\Driver\PDOMySql\Driver Object
+                (
+                )
+
+            [_isRollbackOnly:Doctrine\DBAL\Connection:private] => 
+            [defaultFetchMode:protected] => 2
+            [_fixturePath:TestTools\Doctrine\DBAL\Connection:private] => /var/www/html/src/Tests/_fixtures/Model/User/
+            [_fixturePrefix:TestTools\Doctrine\DBAL\Connection:private] => sql
+            [_fixtureOfflineMode:TestTools\Doctrine\DBAL\Connection:private] => 
+            [_fixtureInstance:TestTools\Doctrine\DBAL\Connection:private] => parent
+        )
+
+    [sqlParts:Doctrine\DBAL\Query\QueryBuilder:private] => Array
+        (
+            [select] => Array
+                (
+                    [0] => *
+                )
+
+            [from] => Array
+                (
+                    [0] => Array
+                        (
+                            [table] => users
+                            [alias] => u
+                        )
+
+                )
+
+            [join] => Array
+                (
+                )
+
+            [set] => Array
+                (
+                )
+
+            [where] => Doctrine\DBAL\Query\Expression\CompositeExpression Object
+                (
+                    [type:Doctrine\DBAL\Query\Expression\CompositeExpression:private] => AND
+                    [parts:Doctrine\DBAL\Query\Expression\CompositeExpression:private] => Array
+                        (
+                            [0] => `userEmail` = 'user@example.com'
+                        )
+
+                )
+
+            [groupBy] => Array
+                (
+                )
+
+            [having] => 
+            [orderBy] => Array
+                (
+                )
+
+            [values] => Array
+                (
+                )
+
+        )
+
+    [sql:Doctrine\DBAL\Query\QueryBuilder:private] => SELECT * FROM users u WHERE `userEmail` = 'user@example.com'
+    [params:Doctrine\DBAL\Query\QueryBuilder:private] => Array
+        (
+        )
+
+    [paramTypes:Doctrine\DBAL\Query\QueryBuilder:private] => Array
+        (
+        )
+
+    [type:Doctrine\DBAL\Query\QueryBuilder:private] => 0
+    [state:Doctrine\DBAL\Query\QueryBuilder:private] => 1
+    [firstResult:Doctrine\DBAL\Query\QueryBuilder:private] => 
+    [maxResults:Doctrine\DBAL\Query\QueryBuilder:private] => 
+    [boundCounter:Doctrine\DBAL\Query\QueryBuilder:private] => 0
+)
+";}}

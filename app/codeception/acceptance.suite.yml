@@ -1,0 +1,9 @@
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: 'https://symlex_php_1/'
+            host: webdriver
+            port: 4444
+            browser: chrome
+        - \Helper\Acceptance

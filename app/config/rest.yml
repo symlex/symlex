@@ -1,0 +1,16 @@
+services:
+    router.rest:
+        class: App\Router\RestRouter
+        arguments: [ "@app", "@service_container" ]
+        calls:
+            - [ setSession, [ "@service.session" ] ]
+
+    controller.rest.v1.users:
+        class: App\Controller\Rest\V1\UsersController
+        arguments: [ "@service.session", "@model.factory", "@form.factory" ]
+        calls:
+            - [ setMailService, [ "@service.mail" ]]
+
+    controller.rest.v1.session:
+        class: App\Controller\Rest\V1\SessionController
+        arguments: [ "@service.session", "@model.user", %app.version%, %app.debug% ]

@@ -1,0 +1,1 @@
+a:2:{s:6:"result";i:1;s:4:"args";a:3:{i:0;s:77:"UPDATE users SET `userPasswordResetToken` = ?, `updated` = ? WHERE userId = ?";i:1;a:3:{i:0;N;i:1;s:19:"2018-01-17 07:23:20";i:2;s:1:"2";}i:2;a:0:{}}}

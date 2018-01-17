@@ -15,18 +15,9 @@ services:
         calls:
             - [ setSession, [ "@service.session" ] ]
 
-    router.twig:
-        class: App\Router\TwigRouter
-        arguments: [ "@app.silex", "@service_container", "@twig" ]
-        calls:
-            - [ setSession, [ "@service.session" ] ]
-
     router.error:
         class: App\Router\ErrorRouter
         arguments: [ "@app.silex", "@twig", %exception.codes%, %exception.messages%, %debug% ]
 
     controller.rest.fake:
         class: App\Tests\Router\FakeRestController
-
-    controller.web.fake:
-        class: App\Tests\Router\FakeWebController

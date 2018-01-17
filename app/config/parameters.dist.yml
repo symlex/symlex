@@ -1,7 +1,7 @@
 parameters:
     app.name: 'App'
     app.version: '1.0'
-    app.url: 'http://localhost:8080/'
+    app.url: 'http://localhost:8081/'
     app.email: 'root@localhost'
     app.locale: en
     db.host: db
@@ -9,11 +9,11 @@ parameters:
     db.name: web
     db.user: web
     db.password: web
+    redis.host: redis
+    redis.port: 6379
     mailer.host: mailhog
     mailer.port: 1025
     mailer.encryption: null
     mailer.username: ''
     mailer.password: ''
     mailer.auth_mode: ''
-    minified_js: true
-    minified_css: true
