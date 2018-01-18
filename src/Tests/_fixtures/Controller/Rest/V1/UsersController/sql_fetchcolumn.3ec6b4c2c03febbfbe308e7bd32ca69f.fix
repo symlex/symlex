@@ -1,0 +1,1 @@
+a:2:{s:6:"result";s:1:"2";s:4:"args";a:4:{i:0;s:37:"SELECT COUNT(1) AS count FROM users u";i:1;a:0:{}i:2;i:0;i:3;a:0:{}}}

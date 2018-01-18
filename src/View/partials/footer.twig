@@ -1,7 +1,0 @@
-{% if minified_js %}
-    <script src="/build/main.js?{{ 'web/build/main.js' | md5sum }}"></script>
-{% else %}
-    <script data-main="/js/main" src="/bower_components/requirejs/require.js"></script>
-{% endif %}
-</body>
-</html>

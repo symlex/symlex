@@ -19,10 +19,11 @@ class EditFormTest extends UnitTestCase
     public function testValidForm()
     {
         $inputValues = array(
-            'firstname' => 'Jens',
-            'lastname' => 'Mander',
-            'email' => 'test@example.com',
-            'admin' => true
+            'userFirstName' => 'Jens',
+            'userLastName' => 'Mander',
+            'userEmail' => 'test@example.com',
+            'userRole' => 'admin',
+            'userNewsletter' => false
         );
 
         $this->form->setDefinedWritableValues($inputValues);
@@ -36,10 +37,11 @@ class EditFormTest extends UnitTestCase
     public function testInvalidForm()
     {
         $inputValues = array(
-            'firstname' => '',
-            'lastname' => '',
-            'email' => 'testexample.com',
-            'admin' => ''
+            'userFirstName' => '',
+            'userLastName' => '',
+            'userEmail' => 'testexample.com',
+            'userRole' => 'admin',
+            'userNewsletter' => false
         );
 
         $this->form->setDefinedWritableValues($inputValues);

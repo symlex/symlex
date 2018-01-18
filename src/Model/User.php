@@ -3,99 +3,116 @@
 namespace App\Model;
 
 use App\Exception\InvalidArgumentException;
-use App\Exception\InvalidPasswordException;
-use App\Exception\NotFoundException;
+use App\Exception\LogicException;
 
 /**
- * @see https://github.com/symlex/doctrine-active-record
+ * @see https://github.com/lastzero/doctrine-active-record
  */
 class User extends ModelAbstract
 {
     protected $_daoName = 'User';
 
-    public function updatePassword(string $password): User
+    public function updatePassword($password)
     {
-        if ($password == '') {
-            throw new InvalidArgumentException ('Password can not be empty');
-        };
-
-        if (!preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $password)) {
-            throw new InvalidArgumentException ('Password is not secure');
+        if (strlen($password) < 8) {
+            throw new InvalidArgumentException('Password is too short');
         }
 
+        // @codeCoverageIgnoreStart
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->getDao()->password = $hash;
+        $this->getDao()->userPassword = $hash;
+        $this->getDao()->userPasswordResetToken = null;
         $this->getDao()->update();
-
-        return $this;
     }
+
+    // @codeCoverageIgnoreEnd
 
     public function findByPasswordResetToken(string $token)
     {
-        $users = $this->findAll(array('password_reset_token' => $token));
-
-        if (count($users) != 1) {
-            throw new InvalidArgumentException ('Invalid password reset token');
-        }
-
-        return $users[0];
+        return $this->find(array('userPasswordResetToken' => $token));
     }
 
-    public function findByEmail(string $email): User
+    public function findByVerificationToken(string $token)
     {
-        $users = $this->findAll(array('email' => $email));
-
-        if (count($users) != 1) {
-            throw new InvalidArgumentException('User not found: ' . $email);
-        }
-
-        return $users[0];
+        return $this->find(array('userVerificationToken' => $token));
     }
 
-    public function getPasswordResetToken()
+    public function findByEmail(string $email)
     {
-        $token = sha1(random_bytes(32));
-
-        $this->getDao()->password_reset_token = $token;
-        $this->getDao()->update();
-
-        return $token;
+        return $this->find(array('userEmail' => $email));
     }
 
-    public function deletePasswordResetToken()
+    public function verify()
     {
-        if ($this->getDao()->password_reset_token) {
-            $this->getDao()->password_reset_token = '';
+        if ($this->getDao()->userVerificationToken) {
+            $this->getDao()->userVerificationToken = null;
             $this->getDao()->update();
         }
 
         return $this;
     }
 
-    public function findByCredentials (string $email, string $password)
+    public function isVerified()
     {
-        $matchedUsers = $this->findAll(array('email' => $email));
-
-        $count = count($matchedUsers);
-
-        if ($count == 0) {
-            throw new NotFoundException ('User not found');
-        } elseif ($count > 1) {
-            throw new NotFoundException ('More than one user with this email address found');
-        }
-
-        $user = $matchedUsers[0];
-
-        if (!$this->passwordIsValid($user->password, $password)) {
-            throw new InvalidPasswordException ('Invalid password');
-        }
-
-        return $user;
+        return empty($this->userVerificationToken);
     }
 
-    public function passwordIsValid(string $encryptedPassword, string $password)
+    public function setPasswordResetToken(string $token)
     {
-        return password_verify($password, $encryptedPassword);
+        if (strlen($token) < 5) {
+            throw new InvalidArgumentException('Password reset token is too short');
+        }
+
+        $this->getDao()->userPasswordResetToken = $token;
+        $this->getDao()->update();
+
+        return $this;
+    }
+
+    public function getPasswordResetToken(): string
+    {
+        $result = $this->getDao()->userPasswordResetToken;
+
+        if(empty($result)) {
+            throw new LogicException('Password reset token is empty');
+        }
+
+        return $result;
+    }
+
+    public function deletePasswordResetToken()
+    {
+        if ($this->getDao()->userPasswordResetToken) {
+            $this->getDao()->userPasswordResetToken = null;
+            $this->getDao()->update();
+        }
+
+        return $this;
+    }
+
+    public function passwordIsValid($password)
+    {
+        return password_verify($password, $this->userPassword);
+    }
+
+    public function hasRole(string $role)
+    {
+        return $this->userRole === $role;
+    }
+
+    public function getRole(): string
+    {
+        return $this->userRole;
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function isUser()
+    {
+        return $this->hasRole('user');
     }
 }

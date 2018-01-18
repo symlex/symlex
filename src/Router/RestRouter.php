@@ -5,6 +5,7 @@ namespace App\Router;
 use Symfony\Component\HttpFoundation\Response;
 use Symlex\Router\RestRouter as SymlexRestRouter;
 use Doctrine\ActiveRecord\Search\SearchResult;
+use App\Traits\SessionTrait;
 
 /**
  * @see https://github.com/lastzero/symlex#routing-and-rendering

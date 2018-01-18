@@ -34,17 +34,24 @@ class UserCreateCommand extends CommandAbstract
         $this->addOption('firstname', 'f', InputOption::VALUE_REQUIRED, 'First Name', 'New');
         $this->addOption('lastname', 'l', InputOption::VALUE_REQUIRED, 'Last Name', 'User');
         $this->addOption('admin', 'a', InputOption::VALUE_NONE, 'Admin');
+        $this->addOption('newsletter', null, InputOption::VALUE_NONE, 'Newsletter');
 
         parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $form = $this->formFactory->create('User');
+        $form = $this->formFactory->create('User\Create');
 
         $values = $input->getOptions() + array('email' => $input->getArgument('email'));
 
-        $form->setDefinedWritableValues($values)->validate();
+        $form->setDefinedWritableValues(array(
+            'userEmail' => $values['email'],
+            'userFirstName' => $values['firstname'],
+            'userLastName' => $values['lastname'],
+            'userRole' => empty($values['admin']) ? 'user' : 'admin',
+            'userNewsletter' => $values['newsletter']
+        ))->validate();
 
         if ($form->hasErrors()) {
             $output->writeln('<error>' . $form->getErrorsAsText() . '</error>');

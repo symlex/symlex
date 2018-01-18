@@ -1,5 +1,5 @@
 parameters:
-    twig.path: '%base.path%/View'
+    twig.path: '%base.path%/../app/templates'
 
     twig.options:
         charset: 'UTF-8'

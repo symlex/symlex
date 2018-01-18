@@ -2,81 +2,103 @@
 
 namespace App\Tests\Service;
 
+use App\Model\User;
+use Psr\SimpleCache\CacheInterface;
+use Symfony\Component\HttpFoundation\Request;
 use TestTools\TestCase\UnitTestCase;
+use App\Service\Session;
 
 class SessionTest extends UnitTestCase
 {
-    /**
-     * @var \App\Service\Session
-     */
-    protected $model;
+    /** @var Session */
+    protected $session;
+
+    /** @var CacheInterface */
+    protected $cache;
+
+    /** @var Request */
+    protected $request;
+
+    /** @var User */
+    protected $user;
+
+    protected $url;
 
     public function setUp()
     {
-        $this->model = $this->get('service.session');
+        $container = $this->getContainer();
+        $this->cache = $container->get('cache');
+        $this->session = $container->get('service.session');
+        $this->request = Request::create('http://localhost');
+        $this->url = $this->request->getUri();
+        $this->user = $container->get('model.user');
     }
 
     public function testLogin()
     {
-        $this->assertEquals(1, $this->model->getUserId());
-        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $this->model->getCsrfToken());
+        $this->session->generateToken();
+        $this->assertEquals(false, $this->session->hasUserId());
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
 
-        $this->model->login('admin@example.com', 'passwd');
+        $this->session->login('admin@example.com', 'passwd');
 
-        $this->assertEquals(1, $this->model->getUserId());
-        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $this->model->getCsrfToken());
+        $this->assertEquals(1, $this->session->getUserId());
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
     }
 
     public function testLogout()
     {
-        $this->model->login('admin@example.com', 'passwd');
-        $this->assertEquals(1, $this->model->getUserId());
-        $oldToken = $this->model->getCsrfToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $oldToken);
-        $this->model->logout();
-        $newToken = $this->model->getCsrfToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $newToken);
-        $this->assertNull($this->model->getUserId());
+        $this->session->generateToken();
+        $this->session->login('admin@example.com', 'passwd');
+        $this->assertEquals(1, $this->session->getUserId());
+        $oldToken = $this->session->getToken();
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $oldToken);
+        $this->session->logout();
+        $newToken = $this->session->getToken();
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $newToken);
+        $this->assertFalse($this->session->hasUserId());
     }
 
-    public function testGenerateToken () {
-        $token = $this->model->generateToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{40}/', $token);
+    public function testGenerateToken()
+    {
+        $this->session->generateToken();
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
     }
 
-    public function testUser () {
-        $this->model->logout();
+    public function testUser()
+    {
+        $this->session->generateToken();
+        $this->session->logout();
 
-        $this->assertTrue($this->model->isAnonymous());
-        $this->assertFalse($this->model->isUser());
-        $this->assertFalse($this->model->isAdmin());
-        $this->assertEquals('', $this->model->getUserFirstname());
-        $this->assertEquals('', $this->model->getUserLastname());
+        $this->assertTrue($this->session->isAnonymous());
+        $this->assertFalse($this->session->isUser());
+        $this->assertFalse($this->session->isAdmin());
+        $this->assertEquals('', $this->session->getUserFirstName());
+        $this->assertEquals('', $this->session->getUserLastName());
 
-        $this->model->login('user@example.com', 'passwd');
+        $this->session->login('admin@example.com', 'passwd', null);
 
-        $this->assertFalse($this->model->isAnonymous());
-        $this->assertTrue($this->model->isUser());
-        $this->assertFalse($this->model->isAdmin());
-        $this->assertEquals('User', $this->model->getUserFirstname());
-        $this->assertEquals('Silex', $this->model->getUserLastname());
+        $this->assertFalse($this->session->isAnonymous());
+        $this->assertTrue($this->session->isUser());
+        $this->assertTrue($this->session->isAdmin());
+        $this->assertEquals('Admin', $this->session->getUserFirstName());
+        $this->assertEquals('Example', $this->session->getUserLastName());
     }
 
-    public function testAdmin () {
-        $this->model->logout();
+    public function testCreateOneTimeToken()
+    {
+        $this->session->generateToken();
+        $this->session->login('admin@example.com', 'passwd');
+        $oneTimeToken = $this->session->createOneTimeToken();
 
-        $this->assertTrue($this->model->isAnonymous());
-        $this->assertFalse($this->model->isUser());
-        $this->assertFalse($this->model->isAdmin());
-        $this->assertEquals('', $this->model->getUserFirstname());
-        $this->assertEquals('', $this->model->getUserLastname());
+        $request = Request::create('http://localhost/foo?t=' . $oneTimeToken, 'GET');
 
-        $this->model->login('admin@example.com', 'passwd');
+        $oneTimeSession = new Session($this->cache, $request, $this->user);
 
-        $this->assertFalse($this->model->isAnonymous());
-        $this->assertTrue($this->model->isUser());
-        $this->assertTrue($this->model->isAdmin());
-        $this->assertEquals('Admin', $this->model->getUserFirstname());
-        $this->assertEquals('Silex', $this->model->getUserLastname());
+        $this->assertEquals(1, $this->session->getUserId());
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
+        $this->assertEquals(1, $oneTimeSession->getUserId());
+        $this->assertEquals($this->session->getToken(), $oneTimeSession->getToken());
+        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $oneTimeSession->getToken());
     }
 }

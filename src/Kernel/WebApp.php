@@ -38,8 +38,16 @@ class WebApp extends Kernel
     {
         $container = $this->getContainer();
 
+        // The error router is used by Silex to display error pages
         $container->get('router.error')->route();
-        $container->get('router.rest')->route($this->getUrlPrefix('/api'), 'controller.rest.');
-        $container->get('router.twig')->route($this->getUrlPrefix(), 'controller.web.');
+
+        // Routing for REST API calls
+        $container->get('router.rest')->route($this->getUrlPrefix('/api/v1'), 'controller.rest.v1.');
+
+        // All other requests are routed to a default controller action (client-side routing e.g. with Vue.js)
+        $container->get('router.twig_default')->route($this->getUrlPrefix(), 'controller.web.index', 'index');
+
+        // Uncomment the following line to enable server-side routing
+        // $container->get('router.twig')->route($this->getUrlPrefix(), 'controller.web.');
     }
 }

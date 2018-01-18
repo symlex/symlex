@@ -38,12 +38,15 @@ Thumbs.db
 
 # Framework generated files #
 #############################
-app/bootstrap/*.local.php
-app/config/*.local.php
+app/config/*.local.yml
 vendor/
 bin/
 composer.lock
 web/bower_components/
+frontend/node_modules/
+frontend/.eslintcache
+frontend/tests/result.html
+docker-compose.override.yml
 
 # IDE generated files #
 #######################

@@ -7,16 +7,24 @@ imports:
 
 services:
     log.handler:
-        class: Monolog\Handler\StreamHandler
-        arguments:
-            - "%app.log_path%/%app.environment%.log"
+        class: Monolog\Handler\ErrorLogHandler
 
     log:
         class: Monolog\Logger
         arguments:
-            - "main"
+            - "log"
         calls:
             - [ pushHandler, [ "@log.handler" ] ]
+
+    redis:
+        class: Redis
+        calls:
+            - [ 'connect', [ '%redis.host%', '%redis.port%' ] ]
+
+    cache:
+        class: Symfony\Component\Cache\Simple\RedisCache
+        arguments:
+            - "@redis"
 
     db.driver:
         class: Doctrine\DBAL\Driver\PDOMySql\Driver
@@ -53,10 +61,14 @@ services:
             - [ setFactoryNamespace, [ 'App\Dao' ] ]
             - [ setFactoryPostfix, [ 'Dao' ] ]
 
+    service.token_generator:
+        class: App\Service\TokenGenerator
+
     service.mail:
         class: App\Service\Mail
         shared: false
         arguments:
             - "@mailer"
             - "@twig"
+            - "@service.token_generator"
             - { %app.email%: %app.name%}

@@ -1,0 +1,35 @@
+{% include 'partials/header.twig' %}
+{% include 'partials/nav.twig' %}
+
+<div class="container">
+
+    {% if user_id %}
+
+    <form id="logout" class="form-signin" role="form" method="get" action="/auth/logout">
+        <h2 class="form-signin-heading">Logged in as {{ firstname }}</h2>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Logout</button>
+    </form>
+
+    {% else %}
+
+    <form class="form-signin" role="form" id="login" method="post" name="login_form" action="/auth/login">
+        {% include 'partials/csrf_token.twig' %}
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {% if error %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+        {% endif %}
+        <input type="email" class="form-control" placeholder="Email address" required="required" autofocus="" name="email" value="{{ email }}">
+        <input type="password" class="form-control" placeholder="Password" required=required"" name="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="text-center">
+            <a href="/auth/reset">Forgot your Password?</a>
+        </p>
+    </form>
+
+    {% endif %}
+
+</div>
+
+{% include 'partials/footer.twig' %}

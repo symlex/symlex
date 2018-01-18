@@ -1,29 +1,34 @@
-Symlex: Silex + Symfony
-=======================
+Symlex - A complete framework stack for agile Web development based on Symfony and Vue.js
+=========================================================================================
 
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 
-Symlex is a complete high-performance PHP framework based on **Silex** and **Symfony**. Instead of Pimple, it uses 
-the well known Symfony [service container](http://symfony.com/doc/current/service_container.html). 
-It promotes the strict use of dependency injection for implementing 
-[inversion of control](https://martinfowler.com/articles/injection.html) and improved testability.
-Since its first release in 2014, it has proven to be well suited for building microservices, CLI and single-page applications.
+Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead of wasting time on Stack Overflow.
+Since its first release in 2014, it has proven to be well suited for rapidly building microservices, CLI and single-page applications. It comes
+complete with working examples from testing to forms and database abstraction. Simply delete what you don't need.
 
-You can use Symlex with any JavaScript library and REST client or to output static HTML. 
-The front-end example is based on AngularJS 1.6, Bootstrap, RequireJS and Bower for package management.
-A working [example](https://github.com/symlex/symlex/blob/master/src/Command/UserResetPasswordCommand.php) for command 
-line applications is included as well.
+The [kernel](https://github.com/lastzero/di-microkernel) is extremely lean and only creates a Symfony 
+service container for bootstrapping any application within its context.
+Using a single container for configuration and dependency injection reduces complexity and leads to improved 
+performance compared to Symfony standard edition and many other frameworks.
+It also prevents developers from thoughtlessly installing existing bundles without understanding
+them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for agile development.
+            
+Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse.
 
-**The goal of this project is to simplify Silex development by providing a working system that favors convention 
-over configuration.**
+You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
+your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vue.js. 
+A working example for command line applications is included as well.
+
+**The goal of this project is to simplify agile Web development by providing a working system that promotes
+best practices by example.**
 
 *Note: https://github.com/symlex/symlex-core contains the bootstrap and routers as reusable components.*
 
 Setup
 -----
-
 Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_HOWTO.md) 
 for Mac OS X users). Instead of using Docker, you can also setup your own runtime environment based on the existing 
 Docker configuration.
@@ -31,13 +36,13 @@ Docker configuration.
 **Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
 ```
-composer create-project symlex/symlex symlex
+composer create-project symlex/symlex myapp
 ```
 
 **Step 2:** Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
 
 ```
-cd symlex
+cd myapp
 docker-compose up
 ```
 
@@ -47,12 +52,12 @@ Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) 
 **Step 3:** Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
 
 ```
-docker-compose exec php bash
+docker-compose exec php sh
 bin/phing build
 ```
 
-*Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm, bower
-and requirejs locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
+*Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm and
+Yarn locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
 password `passwd`.
@@ -60,28 +65,38 @@ password `passwd`.
 The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
 
+About
+-----
+Symlex is maintained by [Michael Mayer](https://blog.liquidbytes.net/about) and
+aims to simplify agile Web development by providing a working system 
+that promotes best practices by example.
+You can use it for free under the terms of the MIT license.
+Thank you to everyone who has contributed!
+
+Please feel free to send an e-mail if you have any questions, need help or just want to say hello. 
+Contributions are welcome, even if it's just a tiny pull-request or bug report.
+
 History
 -------
-This project started in 2014 as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" 
-that points you in the right direction. Using Silex instead of Symfony was recommend to me by a friend working at SensioLabs 
-(the creators of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building 
-high-performance REST services and single-page Web applications.
+Symlex was started in 2014 as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" 
+that points you in the right direction. Using Silex instead of Symfony was recommend by SensioLabs (the creators 
+of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance 
+REST services and single-page Web applications.
 
-The only thing I wasn't happy with is Pimple, the service container that comes with Silex - it feels 
-cumbersome for developers coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples 
-and applications I found access the service container from all parts of the code (not only the framework itself), 
-which is the opposite of inversion of control and leads to awkward testability. Symlex therefore promotes
-the strict use of dependency injection and combines the convenience of the Symfony service container 
-with the speed of Silex.
+It was soon noticed that Pimple - the service container that comes with Silex - feels cumbersome for developers 
+coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples and applications 
+access the service container from all parts of the code (not only the framework itself), which circumvents inversion 
+of control and leads to awkward testability. Symlex therefore promotes the strict use of dependency 
+injection and combines the convenience of the Symfony service container with the speed of Silex.
 
-Today, the framework is in use for a number of applications I worked on for my [clients](https://lastzero.net/about/).
+Today, the framework has proven to be useful for a large number of different applications.
 Some of them had Symfony before and did the change because they were drowning in complexity and suffered from 
 response times well above 200ms. Symlex brought them back on track without big changes to their existing code base.
 
 Key Features
 ------------
-- Built on top of well documented standard components
-- Contains everything to create full-featured Web applications: Symfony service container, REST routing & Twig template engine
+- Built on top of well documented and tested standard components
+- Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
 - Strict use of dependency injection for configuration and bootstrapping
 - Small code footprint
 - High performance
@@ -100,7 +115,7 @@ Here is a benchmark, comparing the response time of Symlex and Symfony REST Edit
 
 Configuration
 -------------
-YAML files located in `app/config/` configure the entire system via dependecy injection. The filename matches the application's environment name:
+YAML files located in `app/config/` configure the entire system based on parameter and service definitions. The filename matches the application's environment name:
 - `app/config/web.yml` configures Web (HTTP) applications bootstrapped in `web/app.php`
 - `app/config/console.yml` configures command-line applications bootstrapped in `app/console`
 
