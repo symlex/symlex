@@ -26,7 +26,11 @@
                 </md-list-item>
 
                 <md-list-item v-if="$session.isUser()" @click.native="$refs.leftSidenav.toggle()">
-                    <router-link to="/profile">Profile</router-link>
+                    <router-link to="/profile/details">Profile</router-link>
+                </md-list-item>
+
+                <md-list-item v-if="$session.isUser()" @click.native="$refs.leftSidenav.toggle()">
+                    <router-link to="/profile/password">Change Password</router-link>
                 </md-list-item>
             </md-list>
         </md-sidenav>

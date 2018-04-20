@@ -13,7 +13,7 @@ parameters:
     redis.port: 6379
     mailer.host: mailhog
     mailer.port: 1025
-    mailer.encryption: null
+    mailer.encryption: tcp
     mailer.username: ''
     mailer.password: ''
     mailer.auth_mode: ''

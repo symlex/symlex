@@ -15,8 +15,14 @@ class User extends Abstract {
         return Api.options(this.getEntityResource() + '/profile').then(response => Promise.resolve(new Form(response.data)));
     }
 
+    changePassword(oldPassword, newPassword) {
+        return Api.put(this.getEntityResource() + '/password', {
+            password: oldPassword,
+            new_password: newPassword
+        }).then((response) => Promise.resolve(response.data));
+    }
+
     saveProfile() {
-        console.log('saveProfile', this.getValues());
         return Api.post(this.getEntityResource() + '/profile', this.getValues()).then((response) => Promise.resolve(this.setValues(response.data)));
     }
 

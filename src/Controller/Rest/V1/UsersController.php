@@ -86,7 +86,7 @@ class UsersController extends EntityControllerAbstract
         return $result;
     }
 
-    public function putPasswordAction($id, Request $request)
+    public function cputPasswordAction($id, Request $request)
     {
         if ($id != $this->session->getUserId()) {
             throw new AccessDeniedException('User ID does not match');
