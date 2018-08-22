@@ -17,7 +17,7 @@ make it easy to add tons of code to an application with very little work and und
 
 ## Potential reasons to not use Symlex
 
-- Symlex has a small community so far, see [history](../README.md)
+- Symlex has a small community so far, see [history](https://github.com/symlex/symlex#history)
 - Development is mostly driven by the needs of specific applications (development started to have a high-performance 
 replacement for FOSRestBundle)
 - It is not good for developers who are not comfortable reading at least small amounts of framework code as not 
