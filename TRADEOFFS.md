@@ -14,7 +14,9 @@
 make it easy to add tons of code to an application with very little work and understanding for what it does 
 (bundles are nothing else than libraries that come with their own, hidden service container configuration and bootstrap code),
 see [bundles](https://github.com/symlex/symlex#bundles)
-- Even if you choose not use Symlex, you might find lots of inspiration for your own projects
+- Even if you choose not use Symlex, you might find lots of inspiration for your own projects (for example, you
+can build your own framework around the [micro-kernel](https://github.com/symlex/di-microkernel) or learn 
+how to integrate JavaScript with PHP)
 
 ## Potential reasons not to use Symlex
 
