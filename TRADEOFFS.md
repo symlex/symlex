@@ -26,7 +26,7 @@ specific applications (development started to have a high-performance replacemen
 - It is not good for developers who are not comfortable reading at least small amounts of framework code as not 
 everything is documented 100% (you're welcome as ask for help via email or send additional docs as pull request)
 - Symlex is completely not suitable if you would like to or need to work with existing Symfony bundles
-- Symlex is not good if you prefer configuration over coding
+- Symlex is not good if you prefer configuration over coding (annotations are not supported as they are difficult to test)
 - Copy and pasting code from Stack Overflow or the Symfony documentation often won't work without 
 understanding it and adapting it a little e.g. when it comes to service configuration or routing
 - Symlex still uses Silex for routing under the hood; a replacement for Silex is in development
