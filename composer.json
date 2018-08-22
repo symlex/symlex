@@ -24,17 +24,18 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "ext-pdo_mysql": "*",
-        "symlex/symlex-core": "^3.3",
-        "symlex/input-validation": "^4.0",
+        "symlex/symlex-core": "^3.4",
+        "symlex/input-validation": "^4.2",
         "symlex/doctrine-active-record": "^4.0",
         "doctrine/dbal": "^2.5",
         "doctrine/migrations": "^1.1",
         "phing/phing": "^2.15",
         "monolog/monolog": "^1.0",
         "swiftmailer/swiftmailer": "^5.0",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "gregwar/captcha": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0",

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller\Rest\V1;
 
+use App\Controller\Rest\V1\UsersController;
 use TestTools\TestCase\UnitTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use App\Exception\AccessDeniedException;
@@ -15,12 +16,15 @@ class UsersControllerTest extends UnitTestCase
     /** @var Session */
     protected $session;
 
-    public function getController(string $email = 'admin@example.com', string $password ='passwd')
+    public function getController(string $email = 'admin@example.com', string $password ='passwd'): UsersController
     {
         $container = $this->getContainer();
         $this->session = $container->get('service.session');
         $this->session->generateToken()->login($email, $password);
-        return $container->get('controller.rest.v1.users');
+        /** @var UsersController $result */
+        $result = $container->get('controller.rest.v1.users');
+
+        return $result;
     }
 
     public function testCgetAction()
@@ -72,15 +76,14 @@ class UsersControllerTest extends UnitTestCase
         $controller = $this->getController('user@example.com', 'passwd');
 
         $this->expectException(AccessDeniedException::class);
-        $controller->putPasswordAction(1, $request);
+        $controller->cputPasswordAction(1, $request);
     }
 
     public function testCoptionsProfileAction()
     {
-        $request = Request::create('https://localhost/api/v1/users/1/profile');
         $controller = $this->getController();
 
-        $form = $controller->coptionsProfileAction('1', $request);
+        $form = $controller->coptionsProfileAction('1');
         $this->assertArrayHasKey('userFirstName', $form);
         $this->assertArrayHasKey('userLastName', $form);
         $this->assertArrayHasKey('userEmail', $form);

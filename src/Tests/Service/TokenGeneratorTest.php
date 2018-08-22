@@ -37,7 +37,7 @@ class TokenGeneratorTest extends TestCase
         $result = $instance->getMediumToken();
 
         $this->assertInternalType('string', $result);
-        $this->assertEquals(40, strlen($result));
+        $this->assertEquals(32, strlen($result));
     }
 
     public function testGetLargeToken()

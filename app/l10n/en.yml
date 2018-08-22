@@ -33,3 +33,4 @@ form:
   value_type_time: "%field% must be a time"
   value_type_datetime: "%field% must be a date and time"
   value_type_switch: "%field% must be selected"
+  captcha_not_valid: "Captcha is not valid"

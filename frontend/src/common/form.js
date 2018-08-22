@@ -1,6 +1,6 @@
 class Form {
     constructor(definition) {
-        this.definition = definition;
+        this._definition = definition;
     }
 
     setValues(values) {
@@ -13,6 +13,16 @@ class Form {
         }
 
         return this;
+    }
+
+    getValue(name) {
+        const def = this.getDefinition();
+
+        if(def.hasOwnProperty(name)) {
+            return def[name].value;
+        }
+
+        throw "Form field not defined: " + name;
     }
 
     getValues() {
@@ -29,16 +39,16 @@ class Form {
     }
     
     setDefinition(definition) {
-        this.definition = definition;
+        this._definition = definition;
     }
 
     getDefinition() {
-        return this.definition ? this.definition : {};
+        return this._definition ? this._definition : {};
     }
 
     getOptions(fieldName) {
-        if(this.definition && this.definition.hasOwnProperty(fieldName) && this.definition[fieldName].hasOwnProperty('options')) {
-            return this.definition[fieldName].options;
+        if(this._definition && this._definition.hasOwnProperty(fieldName) && this._definition[fieldName].hasOwnProperty('options')) {
+            return this._definition[fieldName].options;
         }
 
         return [{option: '', label: ''}];

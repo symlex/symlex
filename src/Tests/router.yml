@@ -17,7 +17,7 @@ services:
 
     router.error:
         class: App\Router\ErrorRouter
-        arguments: [ "@app.silex", "@twig", %exception.codes%, %exception.messages%, %debug% ]
+        arguments: [ "@app.silex", "@twig", "%exception.codes%", "%exception.messages%", "%debug%" ]
 
     controller.rest.fake:
         class: App\Tests\Router\FakeRestController

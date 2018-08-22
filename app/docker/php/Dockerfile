@@ -16,12 +16,24 @@ RUN apk update \
         nodejs \
         nodejs-npm \
         yarn \
-        zlib
+        zlib\
+        libpng\
+        libpng-dev\
+        libjpeg\
+        libjpeg-turbo-dev\
+        libwebp-dev\
+        freetype\
+        freetype-dev\
+        zlib\
+        zlib-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) \
     intl \
+    gd \
     mbstring \
     pdo_mysql \
     sockets \

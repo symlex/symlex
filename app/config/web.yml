@@ -7,6 +7,7 @@ imports:
 services:
     app:
         class: Silex\Application
+        public: true
 
     request:
         class: Symfony\Component\HttpFoundation\Request
@@ -18,17 +19,21 @@ services:
 
     router.error:
         class: App\Router\ErrorRouter
-        arguments: [ "@app", "@twig", %exception.codes%, %exception.messages%, %app.debug% ]
+        public: true
+        arguments: [ "@app", "@twig", "%exception.codes%", "%exception.messages%", "%app.debug%" ]
         calls:
             - [ setLogger, [ "@log" ] ]
 
     router.twig:
         class: Symlex\Router\TwigRouter
+        public: true
         arguments: [ "@app", "@service_container", "@twig" ]
 
     router.twig_default:
         class: Symlex\Router\TwigDefaultRouter
+        public: true
         arguments: [ "@app", "@service_container", "@twig" ]
 
     controller.web.index:
+        public: true
         class: App\Controller\Web\IndexController

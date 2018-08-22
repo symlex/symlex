@@ -55,7 +55,7 @@ class Mail
     public function newUser(User $user)
     {
         $token = $this->tokenGenerator->getMediumToken();
-        $user->setPasswordResetToken($token);
+        $user->setVerificationToken($token);
 
         $values = array(
             'firstname' => $user->userFirstName,

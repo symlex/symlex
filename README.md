@@ -5,9 +5,11 @@ Symlex - A complete framework stack for agile Web development based on Symfony a
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 
-Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead of wasting time on Stack Overflow.
-Since its first release in 2014, it has proven to be well suited for rapidly building microservices, CLI and single-page applications. It comes
-complete with working examples from testing to forms and database abstraction. Simply delete what you don't need.
+Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
+of wasting time on Stack Overflow.
+Since its first release in 2014, it has proven to be well suited for rapidly building microservices, 
+CLI and single-page applications. It comes complete with working examples from testing to forms and database 
+abstraction. Simply delete what you don't need.
 
 The [kernel](https://github.com/lastzero/di-microkernel) is extremely lean and only creates a Symfony 
 service container for bootstrapping any application within its context.
@@ -16,7 +18,7 @@ performance compared to Symfony standard edition and many other frameworks.
 It also prevents developers from thoughtlessly installing existing bundles without understanding
 them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for agile development.
             
-Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse.
+Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See also [TRADEOFFS.md](TRADEOFFS.md).
 
 You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
 your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vue.js. 
@@ -27,9 +29,11 @@ best practices by example.**
 
 *Note: https://github.com/symlex/symlex-core contains the bootstrap and routers as reusable components.*
 
+![Screenshot](docs/img/screenshot.png)
+
 Setup
 -----
-Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](OSX_HOWTO.md) 
+Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](docs/OSX_HOWTO.md) 
 for Mac OS X users). Instead of using Docker, you can also setup your own runtime environment based on the existing 
 Docker configuration.
 

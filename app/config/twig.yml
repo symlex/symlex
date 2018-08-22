@@ -18,16 +18,16 @@ services:
 
     twig.loader:
         class: Twig_Loader_Filesystem
-        arguments: [ %twig.path% ]
+        arguments: [ "%twig.path%" ]
 
     twig:
         class: Twig_Environment
-        arguments: [ "@twig.loader", %twig.options% ]
+        arguments: [ "@twig.loader", "%twig.options%" ]
         calls:
-            - [ addGlobal, [ 'debug', %app.debug% ] ]
-            - [ addGlobal, [ 'app_name', %app.name% ] ]
-            - [ addGlobal, [ 'app_version', %app.version% ] ]
-            - [ addGlobal, [ 'app_url', %app.url% ] ]
-            - [ addGlobal, [ 'locale', %app.locale% ] ]
+            - [ addGlobal, [ 'debug', "%app.debug%" ] ]
+            - [ addGlobal, [ 'app_name', "%app.name%" ] ]
+            - [ addGlobal, [ 'app_version', "%app.version%" ] ]
+            - [ addGlobal, [ 'app_url', "%app.url%" ] ]
+            - [ addGlobal, [ 'locale', "%app.locale%" ] ]
             - [ addExtension, [ '@twig.md5sum' ] ]
             - [ addExtension, [ '@twig.trans' ] ]

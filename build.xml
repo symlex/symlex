@@ -51,9 +51,11 @@
 
     <target name="build-js">
         <delete>
-            <fileset dir="./web/assets">
+            <fileset dir="./web/build">
                 <include name="*.js" />
                 <include name="*.css" />
+                <include name="*.eot" />
+                <include name="*.ttf" />
             </fileset>
         </delete>
         <phingcall target="run-yarn"/>

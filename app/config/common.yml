@@ -21,6 +21,9 @@ services:
         calls:
             - [ 'connect', [ '%redis.host%', '%redis.port%' ] ]
 
+    captcha.builder:
+        class: Gregwar\Captcha\CaptchaBuilder
+
     cache:
         class: Symfony\Component\Cache\Simple\RedisCache
         arguments:
@@ -32,11 +35,8 @@ services:
     db:
         class: Doctrine\DBAL\Connection
         arguments:
-            - %db.options%
+            - "%db.options%"
             - "@db.driver"
-
-    message_selector:
-        class: Symfony\Component\Translation\MessageSelector
 
     yaml_loader:
         class: Symfony\Component\Translation\Loader\YamlFileLoader
@@ -46,7 +46,7 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: [ "en", "@message_selector" ]
+        arguments: [ "en" ]
         calls:
             - [ addLoader, [ "yaml", "@yaml_loader" ] ]
             - [ addLoader, [ "array", "@array_loader" ]]
@@ -71,4 +71,8 @@ services:
             - "@mailer"
             - "@twig"
             - "@service.token_generator"
-            - { %app.email%: %app.name%}
+            - { "%app.email%": "%app.name%" }
+
+    service.captcha:
+        class: App\Service\Captcha
+        arguments: [ "@cache", "@captcha.builder", "@service.token_generator" ]

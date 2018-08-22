@@ -9,8 +9,8 @@
 
             <span style="flex: 1"></span>
 
-            <md-button v-if="$session.isAnonymous()" @click.native="login()" class="md-raised md-accent">Login
-            </md-button>
+            <md-button v-if="$session.isAnonymous()" @click.native="login()" class="md-raised md-accent">Login</md-button>
+            <md-button v-if="$session.isAnonymous()" @click.native="register()" class="md-raised md-accent">Register</md-button>
             <md-button v-if="$session.isUser()" @click.native="logout()" class="md-raised md-accent">Logout {{ $session.getFirstName() }}</md-button>
         </md-toolbar>
 
@@ -19,6 +19,10 @@
             <md-list>
                 <md-list-item @click.native="$refs.leftSidenav.toggle()">
                     <router-link to="/welcome">Welcome</router-link>
+                </md-list-item>
+
+                <md-list-item v-if="$session.isAnonymous()" @click.native="$refs.leftSidenav.toggle()">
+                    <router-link to="/register">Register</router-link>
                 </md-list-item>
 
                 <md-list-item v-if="$session.isAdmin()" @click.native="$refs.leftSidenav.toggle()">
@@ -48,6 +52,7 @@
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();
             },
+
             open(ref) {
             },
 
@@ -56,6 +61,10 @@
 
             login() {
                 this.$refs.loginDialog.open();
+            },
+
+            register() {
+                this.$router.push({ path: 'register' })
             },
 
             logout() {

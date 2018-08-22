@@ -1,16 +1,24 @@
 services:
     router.rest:
         class: App\Router\RestRouter
+        public: true
         arguments: [ "@app", "@service_container" ]
         calls:
             - [ setSession, [ "@service.session" ] ]
 
     controller.rest.v1.users:
         class: App\Controller\Rest\V1\UsersController
+        public: true
         arguments: [ "@service.session", "@model.factory", "@form.factory" ]
         calls:
             - [ setMailService, [ "@service.mail" ]]
 
     controller.rest.v1.session:
         class: App\Controller\Rest\V1\SessionController
-        arguments: [ "@service.session", "@model.user", %app.version%, %app.debug% ]
+        public: true
+        arguments: [ "@service.session", "@model.user", "%app.version%", "%app.debug%" ]
+
+    controller.rest.v1.registration:
+        class: App\Controller\Rest\V1\RegistrationController
+        public: true
+        arguments: [ "@service.captcha", "@service.mail", "@model.factory", "@form.factory"]

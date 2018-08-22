@@ -20,7 +20,7 @@ class TokenGenerator
 
     public function getMediumToken()
     {
-        return $this->getToken(20);
+        return $this->getToken(16);
     }
 
     public function getLargeToken()
@@ -33,7 +33,7 @@ class TokenGenerator
         return $this->defaultTokenForTest != '';
     }
 
-    public function getToken(int $bytes = 20)
+    public function getToken(int $bytes = 16)
     {
         if ($bytes < 1) {
             throw new InvalidArgumentException('Token must at least contain one byte');

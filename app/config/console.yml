@@ -5,7 +5,8 @@ imports:
 services:
     app:
         class: Symfony\Component\Console\Application
-        arguments: [%app.name%, %app.version%]
+        public: true
+        arguments: [ "%app.name%", "%app.version%" ]
         calls:
             - [ setCatchExceptions, [ true ] ]
             - [ setHelperSet, [ "@console.helpers" ] ]

@@ -7,12 +7,12 @@ services:
         class: 'Swift_Transport_EsmtpTransport'
         arguments: [ "@mailer_buffer", [ "@mailer_authhandler" ], "@mailer_eventdispatcher" ]
         calls:
-            - [ setHost, [ %mailer.host% ] ]
-            - [ setPort, [ %mailer.port% ] ]
-            - [ setEncryption, [ %mailer.encryption% ] ]
-            - [ setUsername, [ %mailer.username% ] ]
-            - [ setPassword, [ %mailer.password% ] ]
-            - [ setAuthMode, [ %mailer.auth_mode% ] ]
+            - [ setHost, [ "%mailer.host%" ] ]
+            - [ setPort, [ "%mailer.port%" ] ]
+            - [ setEncryption, [ "%mailer.encryption%" ] ]
+            - [ setUsername, [ "%mailer.username%" ] ]
+            - [ setPassword, [ "%mailer.password%" ] ]
+            - [ setAuthMode, [ "%mailer.auth_mode%" ] ]
 
     mailer_buffer:
         class: 'Swift_Transport_StreamBuffer'

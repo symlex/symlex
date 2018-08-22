@@ -2,8 +2,10 @@
 
 namespace App\Model;
 
+use App\Exception\DuplicateException;
 use App\Exception\InvalidArgumentException;
 use App\Exception\LogicException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 /**
  * @see https://github.com/lastzero/doctrine-active-record
@@ -23,6 +25,7 @@ class User extends ModelAbstract
 
         $this->getDao()->userPassword = $hash;
         $this->getDao()->userPasswordResetToken = null;
+        $this->getDao()->userVerificationToken = null;
         $this->getDao()->update();
     }
 
@@ -91,6 +94,39 @@ class User extends ModelAbstract
         return $this;
     }
 
+    public function setVerificationToken(string $token)
+    {
+        if (strlen($token) < 5) {
+            throw new InvalidArgumentException('Verification token is too short');
+        }
+
+        $this->getDao()->userVerificationToken = $token;
+        $this->getDao()->update();
+
+        return $this;
+    }
+
+    public function getVerificationToken(): string
+    {
+        $result = $this->getDao()->userVerificationToken;
+
+        if(empty($result)) {
+            throw new LogicException('Verification token is empty');
+        }
+
+        return $result;
+    }
+
+    public function deleteVerificationToken()
+    {
+        if ($this->getDao()->userVerificationToken) {
+            $this->getDao()->userVerificationToken = null;
+            $this->getDao()->update();
+        }
+
+        return $this;
+    }
+
     public function passwordIsValid($password)
     {
         return password_verify($password, $this->userPassword);
@@ -114,5 +150,15 @@ class User extends ModelAbstract
     public function isUser()
     {
         return $this->hasRole('user');
+    }
+
+    public function save(array $values) {
+        try {
+            $result = parent::save($values);
+
+            return $result;
+        } catch (UniqueConstraintViolationException $e) {
+            throw new DuplicateException('User already exists');
+        }
     }
 }

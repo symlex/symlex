@@ -11,6 +11,10 @@ class User extends Abstract {
         return this.userId;
     }
 
+    getRegisterForm() {
+        return Api.options(this.getEntityResource() + '/register').then(response => Promise.resolve(new Form(response.data)));
+    }
+
     getProfileForm() {
         return Api.options(this.getEntityResource() + '/profile').then(response => Promise.resolve(new Form(response.data)));
     }

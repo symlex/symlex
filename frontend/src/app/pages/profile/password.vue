@@ -36,7 +36,6 @@
         },
         methods: {
             save() {
-                console.log(this.model);
                 this.model.changePassword(this.password, this.newPassword).then(response => {
                     this.password = '';
                     this.newPassword = '';
