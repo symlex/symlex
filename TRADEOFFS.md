@@ -16,7 +16,7 @@ make it easy to add tons of code to an application with very little work and und
 see [bundles](https://github.com/symlex/symlex#bundles)
 - Even if you choose not use Symlex, you might find lots of inspiration for your own projects
 
-## Potential reasons to not use Symlex
+## Potential reasons not to use Symlex
 
 - Symlex has a small community so far, see [history](https://github.com/symlex/symlex#history)
 - Development is mostly driven by the needs of specific applications (development started to have a high-performance 
