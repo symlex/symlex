@@ -20,11 +20,11 @@ how to integrate JavaScript with PHP)
 
 ## Potential reasons not to use Symlex
 
-- Symlex has a small community so far, see [history](https://github.com/symlex/symlex#history)
-- Development is mostly driven by the needs of specific applications (development started to have a high-performance 
-replacement for FOSRestBundle)
+- Symlex is not backed by a company and has a small community, see [history](https://github.com/symlex/symlex#history) (you're welcome to join us)
+- Development is mostly driven by a [single developer](https://blog.liquidbytes.net/about/) depending on the needs of 
+specific applications (development started to have a high-performance replacement for FOSRestBundle)
 - It is not good for developers who are not comfortable reading at least small amounts of framework code as not 
-everything is documented 100% (you are welcome as ask for help via email and send additional docs as pull request)
+everything is documented 100% (you're welcome as ask for help via email or send additional docs as pull request)
 - Symlex is completely not suitable if you would like to or need to work with existing Symfony bundles
 - Symlex is not good if you prefer configuration over coding
 - Copy and pasting code from Stack Overflow or the Symfony documentation often won't work without 
