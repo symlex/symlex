@@ -236,6 +236,7 @@ Matching requests to controller actions is performed based on convention instead
 - `Symlex\Router\RestRouter` handles REST requests (JSON)
 - `Symlex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
 - `Symlex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
+- `Symlex\Router\TwigDefaultRouter` is like TwigRouter but sends all requests to a default controller action (required for client-side routing e.g. with Vue.js)
 
 It's easy to create your own custom routing/rendering based on the existing examples.
 
@@ -265,24 +266,38 @@ class WebApp extends Kernel
     {
         $container = $this->getContainer();
 
+        // The error router is used by Silex to display error pages
         $container->get('router.error')->route();
-        $container->get('router.rest')->route('/api', 'controller.rest.');
-        $container->get('router.twig')->route('', 'controller.web.');
+
+        // Routing for REST API calls
+        $container->get('router.rest')->route($this->getUrlPrefix('/api/v1'), 'controller.rest.v1.');
+
+        // All other requests are routed to a default controller action (client-side routing e.g. with Vue.js)
+        $container->get('router.twig_default')->route($this->getUrlPrefix(), 'controller.web.index', 'index');
+
+        // Uncomment the following line to enable server-side routing
+        // $container->get('router.twig')->route($this->getUrlPrefix(), 'controller.web.');
     }
 }
 ```
 
 Routing examples based on the default configuration in `App\Kernel\WebApp`:
+- All request (except those starting with `/api/v1`) will be routed to `controller.web.index` service's `indexAction(Request $request)`
+- `GET /api/v1/users` will be routed to `controller.rest.v1.users` service's `cgetAction(Request $request)`
+- `POST /api/v1/users` will be routed to `controller.rest.v1.users` service's `postAction(Request $request)`
+- `OPTIONS /api/v1/users` will be routed to `controller.rest.v1.users` service's `coptionsAction(Request $request)`
+- `GET /api/v1/users/123` will be routed to `controller.rest.v1.users` service's `getAction($id, Request $request)`
+- `OPTIONS /api/v1/users/123` will be routed to `controller.rest.v1.users` service's `optionsAction($id, Request $request)`
+- `GET /api/v1/users/123/comments` will be routed to `controller.rest.v1.users` service's `cgetCommentsAction($id, Request $request)`
+- `GET /api/v1/users/123/comments/5` will be routed to `controller.rest.v1.users` service's `getCommentsAction($id, $commendId, Request $request)`
+- `PUT /api/v1/users/123/comments/5` will be routed to `controller.rest.v1.users` service's `putCommentsAction($id, $commendId, Request $request)`
+
+If you uncomment the `router.twig` router in exchange for `router.twig_default`, requests (except those starting with `/api/v1`) 
+will be routed to matching web controller actions e.g.:
 - `GET /` will be routed to `controller.web.index` service's `indexAction(Request $request)`
-- `POST /session/login` will be routed to `controller.web.session` service's `postLoginAction(Request $request)`
-- `GET /api/users` will be routed to `controller.rest.users` service's `cgetAction(Request $request)`
-- `POST /api/users` will be routed to `controller.rest.users` service's `postAction(Request $request)`
-- `OPTIONS /api/users` will be routed to `controller.rest.users` service's `coptionsAction(Request $request)`
-- `GET /api/users/123` will be routed to `controller.rest.users` service's `getAction($id, Request $request)`
-- `OPTIONS /api/users/123` will be routed to `controller.rest.users` service's `optionsAction($id, Request $request)`
-- `GET /api/users/123/comments` will be routed to `controller.rest.users` service's `cgetCommentsAction($id, Request $request)`
-- `GET /api/users/123/comments/5` will be routed to `controller.rest.users` service's `getCommentsAction($id, $commendId, Request $request)`
-- `PUT /api/users/123/comments/5` will be routed to `controller.rest.users` service's `putCommentsAction($id, $commendId, Request $request)`
+- `GET /foo` will be routed to `controller.web.foo` service's `indexAction(Request $request)`
+- `GET /foo/bar` will be routed to `controller.web.foo` service's `barAction(Request $request)`
+- `POST /foo/bar` will be routed to `controller.web.foo` service's `postBarAction(Request $request)`
 
 Controllers
 -----------
