@@ -1547,8 +1547,8 @@ colormin@^1.0.5:
     has "^1.0.1"
 
 colors@>=1.0, colors@^1.1.0:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.3.1.tgz#4accdb89cf2cabc7f982771925e9468784f32f3d"
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.3.2.tgz#2df8ff573dfbf255af562f8ce7181d6b971a359b"
 
 colors@~1.1.2:
   version "1.1.2"
@@ -2188,8 +2188,8 @@ ejs@^2.5.7:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.47:
-  version "1.3.59"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.59.tgz#6377db04d8d3991d6286c72ed5c3fde6f4aaf112"
+  version "1.3.61"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.61.tgz#a8ac295b28d0f03d85e37326fd16b6b6b17a1795"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -2803,8 +2803,8 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.0.4"
 
 follow-redirects@^1.0.0, follow-redirects@^1.2.3:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.6.tgz#44eb4fe1981dff25e2bd86b7d4033abcdb81e965"
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.7.tgz#a39e4804dacb90202bca76a9e2ac10433ca6a69a"
   dependencies:
     debug "^3.1.0"
 
@@ -3765,12 +3765,6 @@ karma-verbose-reporter@^0.0.6:
   dependencies:
     colors ">=1.0"
 
-karma-webdriver-launcher@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/karma-webdriver-launcher/-/karma-webdriver-launcher-1.0.5.tgz#b1c3cb347f26e786039c15abf7f19a7791e8ddd7"
-  dependencies:
-    wd "^1.0.0"
-
 karma-webpack@^2.0.3:
   version "2.0.13"
   resolved "https://registry.yarnpkg.com/karma-webpack/-/karma-webpack-2.0.13.tgz#cf56e3056c15b7747a0bb2140fc9a6be41dd9f02"
@@ -4120,7 +4114,7 @@ mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.17, mime-types@~2.1.18:
   dependencies:
     mime-db "~1.35.0"
 
-mime@1.3.x, mime@^1.3.4:
+mime@1.3.x:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.6.tgz#591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0"
 
@@ -4128,7 +4122,7 @@ mime@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
 
-mime@^1.5.0:
+mime@^1.3.4, mime@^1.5.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
 
@@ -6052,8 +6046,8 @@ through@^2.3.6:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 time-stamp@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-2.0.1.tgz#708a89359c1fc50bd5e7b1c8aa750d08c9172232"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-2.1.0.tgz#6c5c0b2bc835a244616abcfddf81ce13a1975c9f"
 
 timers-browserify@^2.0.4:
   version "2.0.10"
@@ -6413,7 +6407,7 @@ watchpack@^1.3.1:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
-wd@^1.0.0, wd@^1.10.3:
+wd@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/wd/-/wd-1.10.3.tgz#395ac7eb58a98e556369f8f8e5f845d91fb152a3"
   dependencies:

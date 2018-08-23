@@ -7,13 +7,13 @@
     <title>404 Not Found</title>
     <link rel="stylesheet" href="/build/error.css">
 </head>
-<body>
+<body class="md-theme-default">
 <div class="container">
     <!-- Jumbotron -->
     <div class="jumbotron">
         <h1><i class="fa fa-frown-o red"></i> {{ code }} {{ error }}</h1>
         <p class="lead">{% if message %}{{ message }}{% else %}The file or page that you're looking for could not be found.{% endif %}</p>
-        <p><a href="/" class="btn btn-default btn-lg text-center"><span class="red">Take Me To The Homepage</span></a>
+        <p><a href="/" class="btn btn-default btn-lg text-center"><button class="md-button md-raised md-accent red">Take Me To The Homepage</button></a>
         </p>
     </div>
 </div>

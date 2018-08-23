@@ -8,13 +8,13 @@
     <title>{{ code }} {{ error }}</title>
     <link rel="stylesheet" href="/build/error.css">
 </head>
-<body>
+<body class="md-theme-default">
 <div class="container">
     <!-- Jumbotron -->
     <div class="jumbotron">
         <h1><span class="glyphicon glyphicon-fire red"></span> {{ code }} {{ error }}</h1>
         <p class="lead">{{ message }}</p>
-        <a href="javascript:document.location.reload(true);" class="btn btn-default btn-lg text-center"><span class="red">Try This Page Again</span></a>
+        <a href="javascript:document.location.reload(true);"><button class="md-button md-raised md-accent red">Try This Page Again</button></a>
     </div>
 </div>
 {% if file %}
