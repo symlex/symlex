@@ -10,6 +10,9 @@ use App\Model\User;
 use App\Service\Mail;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @see https://github.com/symlex/symlex#rest
+ */
 class UsersController extends EntityControllerAbstract
 {
     protected $modelName = 'User';

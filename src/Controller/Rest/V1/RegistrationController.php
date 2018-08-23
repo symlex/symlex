@@ -13,6 +13,9 @@ use App\Service\Captcha;
 use App\Service\Mail;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @see https://github.com/symlex/symlex#rest
+ */
 class RegistrationController
 {
     protected $mail;

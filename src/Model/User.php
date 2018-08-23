@@ -8,7 +8,7 @@ use App\Exception\LogicException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 /**
- * @see https://github.com/lastzero/doctrine-active-record
+ * @see https://github.com/symlex/doctrine-active-record
  */
 class User extends ModelAbstract
 {

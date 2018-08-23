@@ -13,7 +13,7 @@ Since its first release in 2014, it has proven to be well suited for rapidly bui
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
 abstraction. Simply delete what you don't need.
 
-The [kernel](https://github.com/lastzero/di-microkernel) is extremely lean and only creates a Symfony 
+The [kernel](https://github.com/symlex/di-microkernel) is extremely lean and only creates a Symfony 
 service container for bootstrapping any application within its context.
 Using a single container for configuration and dependency injection reduces complexity and leads to improved 
 performance compared to Symfony standard edition and many other frameworks.

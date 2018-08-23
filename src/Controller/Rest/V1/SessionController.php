@@ -7,6 +7,9 @@ use App\Model\User;
 use App\Service\Session;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @see https://github.com/symlex/symlex#rest
+ */
 class SessionController
 {
     /** @var Session */

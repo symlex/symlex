@@ -5,7 +5,7 @@ namespace App\Kernel;
 use DIMicroKernel\Kernel;
 
 /**
- * @author Michael Mayer <michael@lastzero.net>
+ * @author Michael Mayer <michael@liquidbytes.net>
  * @license MIT
  */
 class WebApp extends Kernel
@@ -24,12 +24,12 @@ class WebApp extends Kernel
         }
     }
 
-    public function getUrlPrefix($urlPrefixPostfix = '')
+    public function getUrlPrefix($urlPrefixPostfix = ''): string
     {
         return $this->urlPrefix . $urlPrefixPostfix;
     }
 
-    public function setUrlPrefix($urlPrefix)
+    public function setUrlPrefix(string $urlPrefix)
     {
         $this->urlPrefix = $urlPrefix;
     }
