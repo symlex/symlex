@@ -38,7 +38,7 @@ class WebApp extends Kernel
     {
         $container = $this->getContainer();
 
-        // The error router is used by Silex to display error pages
+        // The error router catches errors and displays them as error pages
         $container->get('router.error')->route();
 
         // Routing for REST API calls
