@@ -455,7 +455,7 @@ services:
         arguments: [ @app, @twig, %exception.codes%, %exception.messages%, %app.debug% ]
 ```
 
-The filename for Twig error templates is `src/App/View/error/[code].twig`. If no template is found, the default template (`default.twig`) is used.
+The filename for Twig error templates is `app/templates/error/[code].twig`. If no template is found, the default template (`default.twig`) is used.
 
 Bundles
 -------
