@@ -286,12 +286,15 @@ Routing examples based on the default configuration in `App\Kernel\WebApp`:
 
 Controllers
 -----------
-Symlex controllers are plain PHP classes. They have to be added as service to `app/config/controllers.yml`:
+Symlex controllers are plain PHP classes by default. They have to be added as service to `app/config/web.yml` (Twig) or `app/config/rest.yml` (REST):
 
 ```yaml
-    controller.rest.users:
-        class: App\Controller\Rest\UsersController
-        arguments: [ "@service.session", "@model.user", "@form.factory", "@service.mail" ]
+controller.rest.v1.users:
+    class: App\Controller\Rest\V1\UsersController
+    public: true
+    arguments: [ "@service.session", "@model.factory", "@form.factory" ]
+    calls:
+        - [ setMailService, [ "@service.mail" ]]
 ```
 
 *Note: In Symfony and many other frameworks, controllers aren't services by default. Some developers are used to give 
@@ -302,7 +305,7 @@ The routers pass on the request instance to each matched controller action as la
 
 **Web controller actions** can either return nothing (the matching Twig template will be rendered), an array (the Twig template can access the values as variables) or a string (redirect URL). Twig's template base directory can be configured in `app/config/twig.yml` (`twig.path`). The template filename is matching the request route: `[twig.path]/[controller]/[action].twig`. If no controller or action name is given, `index` is the default (the response to `/` is therefore rendered using `index/index.twig`).
 
-Example: https://github.com/symlex/symlex/blob/master/src/Controller/Web/AuthController.php
+Example: [IndexController](https://github.com/symlex/symlex/blob/master/src/Controller/Web/IndexController.php)
 
 REST
 ----
@@ -343,7 +346,10 @@ class UsersController
 
 **REST controller actions** always return arrays, which are automatically converted to valid JSON. Delete actions can return *null* ("204 No Content").
 
-Example: https://github.com/lastzero/symlex/blob/master/src/Rest/UserController.php
+Examples: 
+- [UsersController](https://github.com/symlex/symlex/blob/master/src/Controller/Rest/V1/UsersController.php)
+- [SessionController](https://github.com/symlex/symlex/blob/master/src/Controller/Rest/V1/SessionController.php)
+- [RegistrationController](https://github.com/symlex/symlex/blob/master/src/Controller/Rest/V1/RegistrationController.php)
 
 Models, Forms & Databases
 -------------------------
@@ -463,17 +469,35 @@ There is no support for bundles in Symlex currently. Using Symfony bundles often
 
 See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-point
 
-Tests
------
+Unit Tests
+----------
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
     /var/www/html# bin/phpunit
-    PHPUnit 6.1.0 by Sebastian Bergmann and contributors.
+    PHPUnit 6.5.11 by Sebastian Bergmann and contributors.
     
-    ..............................                                    30 / 30 (100%)
+    ...............................................                   47 / 47 (100%)
     
-    Time: 2.6 seconds, Memory: 10.00MB
+    Time: 3.12 seconds, Memory: 12.00MB
     
-    OK (30 tests, 91 assertions)
+    OK (47 tests, 145 assertions)
     
 See also [TestTools - Adds a service container and self-initializing fakes to PHPUnit](https://github.com/lastzero/test-tools)
+
+Acceptance Tests
+----------------
+A ready-to-use [Codeception](https://codeception.com/) test suite for acceptance tests is located in `app/codeception/`:
+
+    /var/www/html# bin/codecept run
+    Codeception PHP Testing Framework v2.4.5
+    Powered by PHPUnit 6.5.11 by Sebastian Bergmann and contributors.
+    
+    Acceptance Tests (1) -------------------
+    ✔ HomeCest: Open homepage (0.36s)
+    ----------------------------------------
+    
+    Time: 6.31 seconds, Memory: 10.00MB
+    
+    OK (1 test, 1 assertion)
+
+Codeception's main config file is `codeception.yml` in the project directory.
