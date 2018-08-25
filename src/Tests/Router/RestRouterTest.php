@@ -3,7 +3,7 @@
 namespace App\Tests\Router;
 
 use App\Service\Session;
-use Silex\Application;
+use Symlex\Application\Web;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use TestTools\TestCase\UnitTestCase;
@@ -14,7 +14,7 @@ class RestRouterTest extends UnitTestCase
     /** @var RestRouter */
     protected $router;
 
-    /** @var Application */
+    /** @var Web */
     protected $app;
 
     /** @var FakeRestController */
@@ -29,7 +29,7 @@ class RestRouterTest extends UnitTestCase
     public function setUp()
     {
         $this->container = $this->getContainer();
-        $this->app = $this->container->get('app.silex');
+        $this->app = $this->container->get('app.web');
         $this->router = $this->container->get('router.rest');
         $this->controller = $this->container->get('controller.rest.fake');
         $this->session = $this->container->get('service.session');

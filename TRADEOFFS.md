@@ -31,4 +31,3 @@ bundles (acceptance tests can be created, but they are slow and not suitable for
 - Symlex is not good if you prefer configuration over coding (annotations are not supported as they are difficult to test)
 - Copy and pasting code from Stack Overflow or the Symfony documentation sometimes won't work without 
 understanding it and adapting it a little e.g. when it comes to service configuration or routing
-- Symlex still uses Silex for routing under the hood; a replacement for Silex is in development

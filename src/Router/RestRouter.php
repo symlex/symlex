@@ -3,7 +3,7 @@
 namespace App\Router;
 
 use Symfony\Component\HttpFoundation\Response;
-use Symlex\Router\RestRouter as SymlexRestRouter;
+use Symlex\Router\Web\RestRouter as SymlexRestRouter;
 use Doctrine\ActiveRecord\Search\SearchResult;
 use App\Traits\SessionTrait;
 

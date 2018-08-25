@@ -95,9 +95,10 @@ access the service container from all parts of the code (not only the framework 
 of control and leads to awkward testability. Symlex therefore promotes the strict use of dependency 
 injection and combines the convenience of the Symfony service container with the speed of Silex.
 
-Today, the framework has proven to be useful for a large number of different applications.
-Some of them had Symfony before and did the change because they were drowning in complexity and suffered from 
-response times well above 200ms. Symlex brought them back on track without big changes to their existing code base.
+Today, Symlex has its own routing component (based on Symfony 4) and does not use Silex anymore. 
+The framework has proven to be useful for a large number of different applications. Some of them were based on the regular
+Symfony kernel before and did the change because they were drowning in complexity and suffered from response times well 
+above 30 seconds in development mode. Symlex brought them back on track without big changes to their existing code base.
 
 Key Features
 ------------
@@ -129,9 +130,10 @@ These files are in the same format you know from Symfony. In addition to the reg
 
     services:
         app:
-            class: Silex\Application
+            class: Symlex\Application\Web
+            public: true
 
-This provides a uniform approach for bootstrapping Web (`Silex\Application`) and command-line (`Symfony\Component\Console\Application`) applications with the same kernel.
+This provides a uniform approach for bootstrapping Web (`Symlex\Application\Web`) and command-line (`Symfony\Component\Console\Application`) applications with the same kernel.
 
 *Note: If debug mode is turned off, the service container is cached in storage/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
@@ -231,12 +233,12 @@ user:reset-password      | Send password reset email to a user
 
 Routing and Rendering
 ---------------------
-Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the core library (they configure Silex to perform the actual routing). After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
+Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the core library. They configure the Symfony router component to perform the actual routing, so you can expect the same high performance. After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
 
-- `Symlex\Router\RestRouter` handles REST requests (JSON)
-- `Symlex\Router\ErrorRouter` renders exceptions as error messages (HTML or JSON)
-- `Symlex\Router\TwigRouter` renders regular Web pages via Twig (HTML)
-- `Symlex\Router\TwigDefaultRouter` is like TwigRouter but sends all requests to a default controller action (required for client-side routing e.g. with Vue.js)
+- `Symlex\Router\Web\RestRouter` handles REST requests (JSON)
+- `Symlex\Router\Web\ErrorRouter` renders exceptions as error messages (HTML or JSON)
+- `Symlex\Router\Web\TwigRouter` renders regular Web pages via Twig (HTML)
+- `Symlex\Router\Web\TwigDefaultRouter` is like TwigRouter but sends all requests to a default controller action (required for client-side routing e.g. with Vue.js)
 
 It's easy to create your own custom routing/rendering based on the existing examples.
 
@@ -451,7 +453,7 @@ class UsersController
 
 Error Handling
 --------------
-Exceptions are automatically catched by Silex and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/exceptions.yml`:
+Exceptions are automatically catched by the application and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/exceptions.yml`:
 
 ```yaml
 parameters:

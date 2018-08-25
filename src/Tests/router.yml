@@ -1,6 +1,6 @@
 services:
-    app.silex:
-        class: Silex\Application
+    app.web:
+        class: Symlex\Application\Web
 
     session:
         class: App\Tests\Service\FakeSession
@@ -11,13 +11,13 @@ services:
 
     router.rest:
         class: App\Router\RestRouter
-        arguments: [ "@app.silex", "@service_container" ]
+        arguments: [ "@app.web", "@service_container" ]
         calls:
             - [ setSession, [ "@service.session" ] ]
 
     router.error:
         class: App\Router\ErrorRouter
-        arguments: [ "@app.silex", "@twig", "%exception.codes%", "%exception.messages%", "%debug%" ]
+        arguments: [ "@app.web", "@twig", "%exception.codes%", "%exception.messages%", "%debug%" ]
 
     controller.rest.fake:
         class: App\Tests\Router\FakeRestController

@@ -6,7 +6,7 @@ imports:
 
 services:
     app:
-        class: Silex\Application
+        class: Symlex\Application\Web
         public: true
 
     request:
@@ -25,12 +25,12 @@ services:
             - [ setLogger, [ "@log" ] ]
 
     router.twig:
-        class: Symlex\Router\TwigRouter
+        class: Symlex\Router\Web\TwigRouter
         public: true
         arguments: [ "@app", "@service_container", "@twig" ]
 
     router.twig_default:
-        class: Symlex\Router\TwigDefaultRouter
+        class: Symlex\Router\Web\TwigDefaultRouter
         public: true
         arguments: [ "@app", "@service_container", "@twig" ]
 

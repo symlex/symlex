@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-use Symlex\Router\ErrorRouter as SymlexErrorRouter;
+use Symlex\Router\Web\ErrorRouter as SymlexErrorRouter;
 use Symfony\Component\HttpFoundation\Response;
 use App\Traits\LoggerTrait;
 

@@ -3,7 +3,6 @@
     "description": "A complete framework stack for agile Web development based on Symfony and Vue.js",
     "type": "project",
     "keywords": [
-        "silex",
         "symfony",
         "framework",
         "vuejs",
@@ -26,7 +25,7 @@
     "require": {
         "php": ">=7.1",
         "ext-pdo_mysql": "*",
-        "symlex/symlex-core": "^3.4",
+        "symlex/symlex-core": "^4.0",
         "symlex/input-validation": "^4.2",
         "symlex/doctrine-active-record": "^4.0",
         "doctrine/dbal": "^2.5",
