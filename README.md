@@ -90,10 +90,10 @@ of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for
 REST services and single-page Web applications.
 
 It was soon noticed that Pimple - the service container that comes with Silex - feels cumbersome for developers 
-coming from Symfony and makes it hard to reuse existing code. In addition, most Silex examples and applications 
-access the service container from all parts of the code (not only the framework itself), which circumvents inversion 
-of control and leads to awkward testability. Symlex therefore promotes the strict use of dependency 
-injection and combines the convenience of the Symfony service container with the speed of Silex.
+coming from Symfony and makes it hard to reuse existing code. In addition, many Silex code examples and even real-world 
+applications accessed the service container from all parts of the code (not only the framework itself), 
+which circumvents inversion of control and leads to awkward testability. Symlex therefore promotes the strict use of dependency 
+injection and combines the convenience of a full-fledged service container with the speed of a micro-framework.
 
 Today, Symlex has its own routing component (based on Symfony 4) and does not use Silex anymore. 
 The framework has proven to be useful for a large number of different applications. Some of them were based on the regular
