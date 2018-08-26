@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.1.1 Improved documentation and tested with symlex/di-microkernel v2.0.2
+
 * 4.1.0 Upgraded to symlex-core 4.0 and removed all references to Silex
     - Router callback parameter order changed slightly (Request is always first)
     - Routers moved to the Symlex\Router\Web namespace

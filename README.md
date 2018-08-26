@@ -141,7 +141,8 @@ This provides a uniform approach for bootstrapping Web (`Symlex\Application\Web`
 
 Bootstrapping
 -------------
-A light-weight kernel bootstraps the application. It's just about 150 lines of code, initializes the Symfony service container and then starts the app by calling `run()`:
+Bootstrapping is performed using a [micro-kernel](https://github.com/symlex/di-microkernel). It's just a few lines to 
+set environment parameters, initialize the Symfony service container and run the app:
 
 ```php
 <?php
@@ -201,7 +202,7 @@ class ConsoleApp extends Kernel
 }
 ```
 
-Creating a kernel instance and calling run() is enough to start the application (see `app/console` and `web/app.php`):
+Creating a kernel instance and calling `run()` is enough to start any application (see `app/console` and `web/app.php`):
 
 ```php
 #!/usr/bin/env php
