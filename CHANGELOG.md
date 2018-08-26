@@ -10,7 +10,7 @@ Release 4
 
 * 4.1.0 Upgraded to symlex-core 4.0 and removed all references to Silex
     - Router callback parameter order changed slightly (Request is always first)
-    - Routers moved to the `Symlex\Router\Web` namespace
+    - Symlex routers moved to the `Symlex\Router\Web` namespace
     - Symlex exceptions moved to the `Symlex\Exception` namespace
     - Web app is `Symlex\Application\Web` now instead of `Silex\Application` (see `app/config/web.yml`)
 
