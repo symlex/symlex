@@ -25,9 +25,9 @@
     "require": {
         "php": ">=7.1",
         "ext-pdo_mysql": "*",
-        "symlex/symlex-core": "^4.0",
+        "symlex/symlex-core": "^4.1",
         "symlex/input-validation": "^4.2",
-        "symlex/doctrine-active-record": "^4.0",
+        "symlex/doctrine-active-record": "^4.3",
         "doctrine/dbal": "^2.5",
         "doctrine/migrations": "^1.1",
         "phing/phing": "^2.15",
