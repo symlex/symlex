@@ -62,11 +62,12 @@ docker-compose exec php sh
 bin/phing dev
 ```
 
-*Note: You can also use this approach to execute other CLI commands later. Alternatively, you can install npm and
-Yarn locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
+*Note: You can also use this approach to execute other CLI commands later (see `build.xml`). Alternatively, you can 
+install npm and Yarn locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
-password `passwd`.
+password `passwd`. If you add `localhost-debug` to your /etc/hosts and access the site with that, it will load in debug
+mode (you'll see a stack trace and other debug information on the error pages).
 
 The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
