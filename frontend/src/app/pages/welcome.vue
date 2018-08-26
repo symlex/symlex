@@ -10,7 +10,7 @@
             complete with working examples from testing to forms and database abstraction. Simply delete what you don't need.
         </p>
         <p>
-            The <a href="https://github.com/lastzero/di-microkernel">kernel</a> is extremely lean and only creates a Symfony
+            The <a href="https://github.com/symlex/di-microkernel">kernel</a> is extremely lean and only creates a Symfony
             service container for bootstrapping any application within its context.
             Using a single container for configuration and dependency injection reduces complexity and leads to improved
             performance compared to Symfony standard edition and many other frameworks.
