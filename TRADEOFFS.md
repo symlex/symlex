@@ -3,7 +3,7 @@
 ## Potential reasons to use Symlex
 
 - Symlex is designed to be simple with few concepts to understand
-- Using Symlex results is more maintainable and testable code that is fundamental for agile development
+- Using Symlex results in more maintainable and testable code that is fundamental for agile development
 - It has proven to be well suited for rapidly building microservices, CLI and single-page applications
 - It comes complete with working examples which are the best form of documentation
 - Built on top of well documented and tested standard components
@@ -12,7 +12,7 @@
 - Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse (other 
 frameworks often try to lock you in with proprietary annotations and specific base classes you have to inherit from)
 - You can use it with Symfony Components and any other PHP library out there (just no support for bundles, see below)
-- Even if you choose not use Symlex, you might find lots of inspiration for your own projects (for example, you
+- Even if you choose not to use Symlex, you might find lots of inspiration for your own projects (for example, you
 can build your own framework around the [micro-kernel](https://github.com/symlex/di-microkernel) or learn 
 how to integrate JavaScript with PHP)
 
