@@ -100,6 +100,8 @@ The framework has proven to be useful for a large number of different applicatio
 Symfony kernel before and did the change because they were drowning in complexity and suffered from response times well 
 above 30 seconds in development mode. Symlex brought them back on track without big changes to their existing code base.
 
+![Micro-Kernel Architecture](docs/img/microkernel.png)
+
 Key Features
 ------------
 - Built on top of well documented and tested standard components
@@ -211,8 +213,6 @@ use App\Kernel\ConsoleApp;
 $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
-
-![Micro-Kernel Architecture](docs/img/microkernel.png)
 
 Command-Line Interface
 ----------------------
