@@ -212,6 +212,8 @@ $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
+![Micro-Kernel Architecture](docs/img/microkernel.png)
+
 Command-Line Interface
 ----------------------
 Running `app/console` lists all commands available. The following commands including **Doctrine Migrations** 
