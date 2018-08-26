@@ -4,7 +4,7 @@ Changelog
 Release 4
 ---------
 
-* 4.1.2 Fixed error handler config (namespace changed)
+* 4.1.2 Fixed error handler config (namespace changed); improved migration notes
 
 * 4.1.1 Improved documentation and tested with symlex/di-microkernel v2.0.2
 
