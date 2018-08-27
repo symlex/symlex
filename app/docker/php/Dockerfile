@@ -16,15 +16,14 @@ RUN apk update \
         nodejs \
         nodejs-npm \
         yarn \
-        zlib\
-        libpng\
-        libpng-dev\
-        libjpeg\
-        libjpeg-turbo-dev\
-        libwebp-dev\
-        freetype\
-        freetype-dev\
-        zlib\
+        libpng \
+        libpng-dev \
+        libjpeg \
+        libjpeg-turbo-dev \
+        libwebp-dev \
+        freetype \
+        freetype-dev \
+        zlib \
         zlib-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer

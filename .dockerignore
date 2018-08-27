@@ -1,0 +1,9 @@
+# Ignoring files when COPY to docker image
+.dockerignore
+.git*
+docker-compose*
+vendor/*
+storage/cache/*
+storage/coverage/*
+storage/log/*
+frontend/node_modules/*
