@@ -62,8 +62,8 @@ docker-compose exec php sh
 bin/phing dev
 ```
 
-*Note: You can also use this approach to execute other CLI commands later (see `build.xml`). Alternatively, you can 
-install npm and Yarn locally and link "db" to 127.0.0.1 in /etc/hosts to run commands directly on your host.*
+*Note: You can also use this approach to execute other commands later (see `build.xml`). Alternatively, you can 
+install npm and Yarn locally and link "db" to 127.0.0.1 in /etc/hosts to run them directly on your host.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
 password `passwd`. If you add `localhost-debug` to your /etc/hosts and access the site with that, it will load in debug
