@@ -1,5 +1,7 @@
 @import url("../node_modules/vue-material/dist/vue-material.css");
 @import url("../node_modules/font-awesome/css/font-awesome.min.css");
+@import url("../node_modules/vuetify/dist/vuetify.min.css");
+@import url("../node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
 @import url("alerts.css");
 
 @font-face {
@@ -67,31 +69,3 @@ main {
     margin: 10px 20px;
 }
 
-nav {
-    background-color: #616161;
-}
-
-nav a:hover {
-    text-decoration: none !important;
-    color: rgba(255, 255, 255, .87) !important;
-}
-
-nav a {
-    font-size: 14px;
-    font-weight: bold !important;
-    text-transform: uppercase;
-    display: inline-block;
-    text-align: center;
-    width: 120px;
-    background: #616161;
-    padding: 10px;
-    text-decoration: none;
-    border-bottom: 3px solid #616161;
-    color: rgba(255, 255, 255, .54) !important;
-}
-
-nav a.router-link-active {
-    font-weight: bold !important;
-    border-bottom: 3px solid #E64A19;
-    color: rgba(255, 255, 255, .87) !important;
-}
