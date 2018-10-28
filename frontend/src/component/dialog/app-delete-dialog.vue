@@ -1,16 +1,18 @@
 <template>
-    <md-dialog ref="dialog">
-        <md-dialog-title>Delete {{ modelName }}</md-dialog-title>
+    <v-dialog v-model="show" max-width="600">
+        <v-card>
+        <v-card-title class="title">Delete {{ modelName }}</v-card-title>
 
-        <md-dialog-content>
+        <v-card-text>
             Are you sure you want to delete "{{ entityName }}"?
-        </md-dialog-content>
+        </v-card-text>
 
-        <md-dialog-actions>
-            <md-button class="md-primary" @click.native="close()">Cancel</md-button>
-            <md-button class="md-primary md-raised" @click.native="confirm()">Delete</md-button>
-        </md-dialog-actions>
-    </md-dialog>
+        <v-card-actions>
+            <v-btn color="secondary" id="cancelDelete" @click.native="close()">Cancel</v-btn>
+            <v-btn color="primary" raised @click.native="confirm()">Delete</v-btn>
+        </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
@@ -22,6 +24,7 @@
                 'modelName': 'Item',
                 'entityName': 'this item',
                 'onConfirm': false,
+                'show': false,
             };
         },
         methods: {
@@ -31,10 +34,10 @@
                 this.entityName = model.getEntityName();
                 this.onConfirm = onConfirm;
 
-                this.$refs.dialog.open();
+                this.show = true;
             },
             close() {
-                this.$refs.dialog.close();
+                this.show = false;
             },
             confirm() {
                 if(this.onConfirm) {

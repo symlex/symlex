@@ -1,18 +1,19 @@
 <template>
-    <md-dialog ref="dialog">
-        <md-dialog-title>Create {{ modelName }}</md-dialog-title>
+    <v-dialog v-model="show" max-width="600">
+         <v-card>
+            <v-card-title class="title">Create {{ modelName }}</v-card-title>
+            <v-card-text>
+                <form>
+                    <app-form-fields :form="form"></app-form-fields>
+                </form>
+            </v-card-text>
 
-        <md-dialog-content>
-            <form>
-                <app-form-fields :form="form"></app-form-fields>
-            </form>
-        </md-dialog-content>
-
-        <md-dialog-actions>
-            <md-button class="md-primary" @click.native="close()">Cancel</md-button>
-            <md-button class="md-primary md-raised" @click.native="save()">Create</md-button>
-        </md-dialog-actions>
-    </md-dialog>
+            <v-card-actions>
+                <v-btn color="secondary" id="cancelCreate" @click.native="close()">Cancel</v-btn>
+                <v-btn color="primary" @click.native="save()">Create</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
@@ -25,7 +26,8 @@
                 'model': false,
                 'modelName': 'Item',
                 'form': new Form(),
-                'onSave': false
+                'onSave': false,
+                'show': false,
             };
         },
         methods: {
@@ -35,7 +37,7 @@
                 this.form = form;
                 this.onSave = onSave;
 
-                this.$refs.dialog.open();
+                this.show = true;
             },
             save() {
                 if (this.onSave) {
@@ -43,7 +45,7 @@
                 }
             },
             close() {
-                this.$refs.dialog.close();
+                this.show = false;
             }
         }
     };
