@@ -1,32 +1,26 @@
 <template>
     <div class="app-form">
         <template v-for="(field, fieldName) in form.getDefinition()">
-            <input v-if="field.hidden" type="hidden" :name="fieldName" :value="field.value" />
-            <div v-else-if="field.image" class="image">
-                <img :src="field.value" />
-            </div>
-            <md-input-container v-else-if="field.password && field.type === 'string'" md-has-password :key="fieldName">
-                <label>{{ field.caption }}</label>
-                <md-input :required="field.required" type="password" v-model="field.value"></md-input>
-            </md-input-container>
-            <md-input-container v-else-if="field.type !== 'bool'" :key="fieldName">
-                <label>{{ field.caption }}</label>
-                <template v-if="field.options">
-                    <label>{{ field.caption }}</label>
-                    <md-select v-if="field.type == 'string' && field.options" :required="field.required"
-                               v-model="field.value" :readonly="field.readonly">
-                        <md-option v-for="status in field.options" :value="status.option" :key="status.option">
-                            {{ status.label }}
-                        </md-option>
-                    </md-select>
-                </template>
-                <template v-else>
-                    <md-input v-if="field.type == 'email' || field.type === 'string'" :required="field.required"
-                              v-model="field.value" :readonly="field.readonly"></md-input>
+            <v-form>
+                <input v-if="field.hidden" type="hidden" :name="fieldName" :value="field.value" />
+                <div v-else-if="field.image" class="image">
+                    <img :src="field.value" />
+                </div>
+                <v-text-field v-else-if="field.password && field.type === 'string'" :key="fieldName" :label="field.caption" :required="field.required" type="password" v-model="field.value">
+                </v-text-field>
+               <template v-else-if="field.type !== 'bool'">
+                    <template v-if="field.options">
+                        <v-select v-if="field.type == 'string' && field.options" :required="field.required" :label="field.caption"
+                                    v-model="field.value" :readonly="field.readonly" :items="field.options" item-text="label" item-value="option">
+                         </v-select>
+                    </template>
+                    <template v-else>
+                        <v-text-field v-if="field.type == 'email' || field.type === 'string'" :required="field.required" v-model="field.value" :readonly="field.readonly" :label="field.caption"></v-text-field>
 
+                    </template>
                 </template>
-            </md-input-container>
-            <md-checkbox v-else-if="field.type === 'bool'" :id="field.uid" v-model="field.value">{{ field.caption }}</md-checkbox>
+                <v-checkbox v-else-if="field.type === 'bool'" :id="field.uid" v-model="field.value" :label="field.caption"></v-checkbox>
+            </v-form>
         </template>
     </div>
 </template>
