@@ -7,7 +7,7 @@
         </div>
         <form v-else>
             <app-form-fields :form="form"></app-form-fields>
-            <md-button class="md-primary md-raised" @click.native="save()">Sign Up</md-button>
+            <v-btn color="primary" @click.native="save()">Sign Up</v-btn>
         </form>
     </div>
 </template>
