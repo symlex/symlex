@@ -1,53 +1,10 @@
-@import url("../node_modules/vue-material/dist/vue-material.css");
-@import url("../node_modules/font-awesome/css/font-awesome.min.css");
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.css");
 @import url("../node_modules/vuetify/dist/vuetify.min.css");
 @import url("../node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
-@import url("alerts.css");
-
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot"); /* For IE6-8 */
-    src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2") format('woff2'),
-    url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff'),
-    url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
-}
 
 #app div.loading {
     text-align: center;
     margin: 50px 20px;
-}
-
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
-    font-feature-settings: 'liga';
-}
-
-.md-table .md-table-cell .md-button {
-    width: auto;
 }
 
 #busy-overlay {
@@ -61,8 +18,10 @@
     background-color: rgba(0,0,0,0.2);
 }
 
-.md-table-card {
-    box-shadow: none;
+body {
+    background: rgb(250, 250, 250);
+    color: #333333;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 main {

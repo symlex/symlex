@@ -1,5 +1,5 @@
 @import url("../node_modules/vue-material/dist/vue-material.css");
-@import url("../node_modules/font-awesome/css/font-awesome.min.css");
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.css");
 
 body {
     padding-top: 80px;
