@@ -14,7 +14,7 @@
             <v-list class="pb-2">
                 <v-list-tile avatar>
                     <v-list-tile-avatar>
-
+                        <v-icon medium>fas fa-dice-d20</v-icon>
                     </v-list-tile-avatar>
 
                     <v-list-tile-content>
@@ -43,7 +43,7 @@
 
           <v-list-tile to="/welcome" @click="">
             <v-list-tile-action>
-                <v-icon>home</v-icon>
+                <v-icon small class="navHome">fa-home</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
                 <v-list-tile-title>Welcome</v-list-tile-title>
@@ -52,7 +52,7 @@
 
           <v-list-tile  v-if="$session.isAnonymous()"  to="loginDialog" @click.native="login()">
             <v-list-tile-action>
-                <v-icon>input</v-icon>
+                <v-icon small class="navLogin">fas fa-sign-in-alt</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -62,7 +62,7 @@
 
           <v-list-tile  v-if="$session.isAnonymous()" to="/register" @click="">
             <v-list-tile-action>
-                <v-icon>create</v-icon>
+                <v-icon small class="navRegister">fa-edit</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -72,7 +72,7 @@
 
           <v-list-tile  v-if="$session.isAdmin()" to="/users" @click="">
             <v-list-tile-action>
-                <v-icon>group</v-icon>
+                <v-icon small class="navUsers">fa-users</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -82,7 +82,7 @@
 
           <v-list-tile  v-if="$session.isAdmin()" to="/profile/details" @click="">
             <v-list-tile-action>
-                <v-icon>face</v-icon>
+                <v-icon small class="navUserEdit">fas fa-user-edit</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -92,7 +92,7 @@
 
           <v-list-tile  v-if="$session.isAdmin()" to="/profile/password" @click="">
             <v-list-tile-action>
-                <v-icon>settings</v-icon>
+                <v-icon small class="navUserPassword">fas fa-user-lock</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -102,7 +102,7 @@
 
           <v-list-tile  v-if="$session.isUser()" to="/" @click.native="logout()">
             <v-list-tile-action>
-                <v-icon>power_settings_new</v-icon>
+                <v-icon small class="navLogout">fas fa-sign-out-alt</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
