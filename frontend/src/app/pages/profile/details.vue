@@ -3,8 +3,7 @@
         <form>
             <app-form-fields :form="form"></app-form-fields>
         </form>
-
-        <md-button class="md-primary md-raised" @click.native="save()">Save</md-button>
+        <v-btn color="primary" @click.native="save()">Save</v-btn>
     </div>
 </template>
 
