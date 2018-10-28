@@ -1,14 +1,15 @@
 import Vue from 'vue';
+import Vuetify from 'vuetify';
 import Router from 'vue-router';
 import '../css/app.css';
 import App from 'app/main.vue';
 import routes from 'app/routes';
 import Api from 'common/api';
-import VueMaterial from 'vue-material';
 import AppComponents from 'component/app-components';
 import Alert from 'common/alert';
 import Session from 'common/session';
 import Event from 'pubsub-js';
+import Moment from 'vue-moment';
 
 const session = new Session(window.localStorage);
 
@@ -18,54 +19,22 @@ Vue.prototype.$session = session;
 Vue.prototype.$api = Api;
 Vue.prototype.$config = window.appConfig;
 
-Vue.use(VueMaterial);
+Vue.use(Vuetify, {
+    theme: {
+        primary: '#0097A7',
+        secondary: '#BDBDBD',
+        accent: '#00838F',
+        error: '#E57373',
+        info: '#00B8D4',
+        success: '#00BFA5',
+        warning: '#E64A19',
+        delete: '#E57373',
+    },
+});
+
+Vue.use(Moment);
 Vue.use(AppComponents);
 Vue.use(Router);
-
-Vue.material.registerTheme('default', {
-    primary: {
-        color: 'cyan',
-        hue: 700,
-    },
-    accent: {
-        color: 'cyan',
-        hue: 800,
-    },
-    warn: {
-        color: 'deep-orange',
-        hue: 700,
-    },
-});
-
-Vue.material.registerTheme('cards', {
-    primary: {
-        color: 'grey',
-        hue: 300,
-    },
-    accent: {
-        color: 'grey',
-        hue: 800,
-    },
-    warn: {
-        color: 'deep-orange',
-        hue: 700,
-    },
-});
-
-Vue.material.registerTheme('navigation', {
-    primary: {
-        color: 'cyan',
-        hue: 700,
-    },
-    accent: {
-        color: 'cyan',
-        hue: 800,
-    },
-    warn: {
-        color: 'deep-orange',
-        hue: 700,
-    },
-});
 
 const router = new Router({
     routes,
