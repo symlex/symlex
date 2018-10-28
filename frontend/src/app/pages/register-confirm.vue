@@ -3,7 +3,7 @@
         <p><strong>Please choose a password to complete your registration (minimum 8 characters):</strong></p>
         <form>
             <app-form-fields :form="form"></app-form-fields>
-            <md-button class="md-primary md-raised" @click.native="save()">Complete Sign Up</md-button>
+            <v-btn color="primary" @click.native="save()">Complete Sign Up</v-btn>
         </form>
     </div>
 </template>
