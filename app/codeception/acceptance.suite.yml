@@ -2,7 +2,7 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: 'https://symlex_php_1/'
+            url: 'http://web/welcome'
             host: webdriver
             port: 4444
             browser: chrome
