@@ -1,23 +1,35 @@
 <template>
     <div class="change-password">
-        <form novalidate @submit.stop.prevent="submit">
-            <md-input-container>
-                <label>Old password</label>
-                <md-input required type="password" id="password" v-model="password" name="password"></md-input>
-            </md-input-container>
-
-            <md-input-container>
-                <label>New password</label>
-                <md-input required type="password" id="new-password" v-model="newPassword" name="newPassword"></md-input>
-            </md-input-container>
-
-            <md-input-container>
-                <label>New password again</label>
-                <md-input required type="password" id="new-password-again" v-model="newPasswordAgain" name="newPasswordAgain"></md-input>
-            </md-input-container>
-        </form>
-
-        <md-button class="md-primary md-raised" @click.native="save()">Change Password</md-button>
+        <v-form v-model="valid">
+            <v-text-field
+              v-model="password"
+              :append-icon="show1 ? 'visibility_off' : 'visibility'"
+              :type="show1 ? 'text' : 'password'"
+              @click:append="show1 = !show1"
+              label="Old password"
+              id="password"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="newPassword"
+              :append-icon="show2 ? 'visibility_off' : 'visibility'"
+              :type="show2 ? 'text' : 'password'"
+              @click:append="show2 = !show2"
+              label="New password"
+              required
+              id="newPassword"
+            ></v-text-field>
+            <v-text-field
+              v-model="newPasswordAgain"
+              :append-icon="show3 ? 'visibility_off' : 'visibility'"
+              :type="show3 ? 'text' : 'password'"
+              @click:append="show3 = !show3"
+              label="New password"
+              required
+              id="newPasswordAgain"
+            ></v-text-field>
+            <v-btn @click.native="save()" color="primary">Change Password</v-btn>
+          </v-form>
     </div>
 </template>
 
@@ -32,6 +44,9 @@
                 'password': '',
                 'newPassword': '',
                 'newPasswordAgain': '',
+                show1: false,
+                show2: false,
+                show3: false,
             };
         },
         methods: {
