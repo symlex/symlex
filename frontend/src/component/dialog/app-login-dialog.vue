@@ -1,28 +1,24 @@
 <template>
-    <md-dialog ref="dialog">
-        <md-dialog-title>Login</md-dialog-title>
+    <v-dialog v-model="show" max-width="600">
+        <v-card>
+            <v-card-title class="title">Login</v-card-title>
 
-        <md-dialog-content>
-            <form novalidate @submit.stop.prevent="submit">
-                <md-input-container>
-                    <label>E-mail</label>
-                    <md-input required type="email" id="email" v-model="email" name="email"></md-input>
-                </md-input-container>
+            <v-card-text>
 
-                <md-input-container md-has-password>
-                    <label>Password</label>
-                    <md-input required type="password" id="password" v-model="password" name="password"></md-input>
-                </md-input-container>
+                <v-form novalidate @submit.stop.prevent="submit">
+                    <v-text-field required type="email" id="email" v-model="email" name="email"
+                                  label="E-Mail"></v-text-field>
+                    <v-text-field required type="password" id="password" v-model="password" name="password"
+                                  label="Password"></v-text-field>
+                </v-form>
+            </v-card-text>
 
-
-            </form>
-        </md-dialog-content>
-
-        <md-dialog-actions>
-            <md-button class="md-primary" @click.native="close()">Cancel</md-button>
-            <md-button class="md-primary md-raised" @click.native="login()">Login</md-button>
-        </md-dialog-actions>
-    </md-dialog>
+            <v-card-actions>
+                <v-btn color="secondary" id="cancelLogin" @click.native="close()">Cancel</v-btn>
+                <v-btn color="primary" id="login" @click.native="login()">Login</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
@@ -39,19 +35,20 @@
                 'form': new Form(),
                 'onLogin': false,
                 'onClose': false,
+                'show': false
             };
         },
         methods: {
             open(onLogin) {
                 this.onLogin = onLogin;
 
-                this.$refs.dialog.open();
+                this.show = true;
             },
 
             login() {
                 this.$session.login(this.email, this.password).then(
                     () => {
-                        if(this.onLogin) {
+                        if (this.onLogin) {
                             this.onLogin(this.model)
                         }
 
@@ -60,11 +57,11 @@
             },
 
             close() {
-                if(this.onClose) {
+                if (this.onClose) {
                     this.onClose(this.model)
                 }
 
-                this.$refs.dialog.close();
+                this.show = false;
             }
         }
     };
