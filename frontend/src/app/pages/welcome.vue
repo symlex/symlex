@@ -34,60 +34,69 @@
             To open a terminal via Docker, run <code>docker-compose exec php sh</code> in the project directory.
         </p>
 
-        <v-layout row-wrap>
-              <v-card dark class="ma-2">
-               <v-card-title primary-title>
-                  <div>
-                    <h3 class="headline mb-0">Contribute</h3>
-                    <br>
-                    <div>Don't hesitate to ask if you're new to GitHub or open-source
-                         development. Any contribution is welcome, even if it's just a tiny pull-request or
-                         bug report.</div>
-                  </div>
+        <v-container grid-list-xs>
+        <v-layout row-wrap v-bind="binding">
+            <v-flex>
+            <v-card dark class="ma-2">
+                <v-card-title primary-title>
+                    <div>
+                        <h3 class="headline mb-0">Contribute</h3>
+                        <br>
+                        <div>Don't hesitate to ask if you're new to GitHub or open-source
+                        development. Any contribution is welcome, even if it's just a tiny pull-request or
+                        bug report.</div>
+                    </div>
                 </v-card-title>
 
                 <v-layout justify-end>
-                <v-card-actions>
-                  <v-btn flat href="https://github.com/symlex">Visit this project on GitHub</v-btn>
-                </v-card-actions>
+                    <v-card-actions>
+                        <v-btn flat href="https://github.com/symlex">Visit this project on GitHub</v-btn>
+                    </v-card-actions>
                 </v-layout>
-              </v-card>
+            </v-card>
+            </v-flex>
 
-                <v-card dark class="ma-2">
-                 <v-card-title primary-title>
+            <v-flex>
+            <v-card dark class="ma-2">
+                <v-card-title primary-title>
                     <div>
-                      <h3 class="headline mb-0">Documentation</h3>
-                      <br>
-                      <div>A complete walk-through is provided in the README file.
-                                                   Please feel free to send an e-mail if you have any questions,
-                                                   need help or just want to say hello.</div>
+                        <h3 class="headline mb-0">Documentation</h3>
+                        <br>
+                        <div>A complete walk-through is provided in the README file.
+                        Please feel free to send an e-mail if you have any questions,
+                        need help or just want to say hello.</div>
                     </div>
-                  </v-card-title>
-                  <v-layout justify-end>
-                  <v-card-actions>
-                    <v-btn flat href="https://github.com/symlex/symlex/blob/master/README.md">Open Documentation</v-btn>
-                  </v-card-actions>
-                  </v-layout>
-                </v-card>
+                </v-card-title>
 
-                <v-card dark class="ma-2">
-                 <v-card-title primary-title>
+                <v-layout justify-end>
+                    <v-card-actions>
+                        <v-btn flat href="https://github.com/symlex/symlex/blob/master/README.md">Open Documentation</v-btn>
+                    </v-card-actions>
+                </v-layout>
+            </v-card>
+            </v-flex>
+
+            <v-flex>
+            <v-card dark class="ma-2">
+                <v-card-title primary-title>
                     <div>
-                      <h3 class="headline mb-0">About</h3>
-                      <br>
-                      <div>Symlex is maintained by <a href="https://blog.liquidbytes.net/about">Michael Mayer</a>.
-                                                   You can use it for free under the terms of the MIT license.
-                                                   Thank you to everyone who has contributed!</div>
+                        <h3 class="headline mb-0">About</h3>
+                        <br>
+                        <div>Symlex is maintained by <a href="https://blog.liquidbytes.net/about">Michael Mayer</a>.
+                        You can use it for free under the terms of the MIT license.
+                        Thank you to everyone who has contributed!</div>
                     </div>
-                  </v-card-title>
+                 </v-card-title>
 
-                  <v-layout justify-end>
-                  <v-card-actions>
-                    <v-btn flat href="https://github.com/symlex/symlex/graphs/contributors">See Contributors</v-btn>
-                  </v-card-actions>
-                  </v-layout>
-                </v-card>
-            </v-layout>
+                <v-layout justify-end>
+                    <v-card-actions>
+                        <v-btn flat href="https://github.com/symlex/symlex/graphs/contributors">See Contributors</v-btn>
+                    </v-card-actions>
+                </v-layout>
+            </v-card>
+            </v-flex>
+        </v-layout>
+        </v-container>
     </div>
 </template>
 
@@ -112,6 +121,15 @@
             logout() {
                 this.$session.logout();
             },
+        },
+        computed: {
+            binding () {
+                const binding = {}
+
+                if (this.$vuetify.breakpoint.smAndDown) binding.column = true
+
+                return binding
+            }
         }
     };
 </script>
