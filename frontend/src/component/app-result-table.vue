@@ -1,37 +1,27 @@
 <template>
     <div class="app-result-table">
-        <md-table @select="onSelect" @sort="onSort" :md-sort="order" :md-sort-type="dir">
-            <md-table-header>
-                <md-table-row>
-                    <md-table-head v-for="(column, colIndex) in columns" :key="colIndex" :md-sort-by="column.name">
-                        {{ column.label }}
-                    </md-table-head>
-                    <md-table-head v-if="actions"></md-table-head>
-                </md-table-row>
-            </md-table-header>
-
-            <md-table-body>
-                <md-table-row v-for="(item, rowIndex) in rows" :key="rowIndex" :md-selection="selectable">
-                    <md-table-cell v-for="(column, colIndex) in columns" :key="colIndex">{{ item[column.name] }}
-                    </md-table-cell>
-                    <md-table-cell v-if="actions" md-numeric>
-                        <md-button class="md-icon-button" v-for="(action, index) in actions" :key="action.name"
-                                   @click.native="performAction(action.name, item)">
-                            <md-icon>{{ action.name }}</md-icon>
-                        </md-button>
-                    </md-table-cell>
-                </md-table-row>
-            </md-table-body>
-        </md-table>
-
-        <app-table-pagination
-                :md-size="resultCount"
-                :md-total="resultTotal"
-                :md-page="page"
-                md-label="Rows"
-                md-separator="of"
-                :md-page-options="pageOptions"
-                @pagination="onPagination"></app-table-pagination>
+        <v-data-table
+                :headers="headers"
+                :items="rows"
+                :total-items="resultTotal"
+                class="elevation-1"
+                :pagination.sync="pagination"
+                item-key="userId"
+        >
+            <template slot="items" slot-scope="props">
+                <td v-for="(column, colIndex) in columns" :key="colIndex">
+                    {{ props.item[column.value] }}
+                </td>
+                <td v-if="actions">
+                    <v-btn flat fab small v-for="action in actions" :key="action.name"
+                           @click.native="performAction(action.name, props.item)">
+                        <v-icon small>
+                            {{ action.name }}
+                        </v-icon>
+                    </v-btn>
+                </td>
+            </template>
+        </v-data-table>
 
         <app-delete-dialog ref="deleteDialog"></app-delete-dialog>
         <app-edit-dialog ref="editDialog"></app-edit-dialog>
@@ -76,19 +66,34 @@
             const resultOffset = resultCount * (resultPage - 1);
             const order = query.hasOwnProperty('order') ? query['order'] : '';
             const dir = query.hasOwnProperty('dir') ? query['dir'] : '';
+            const headers = this.columns.slice(0);
+
+            if (this.actions.length > 0) {
+                headers.push({text: 'Actions', sortable: false, value: 'actions'})
+            }
 
             return {
                 'rows': [],
                 'page': resultPage,
+                'headers': headers,
                 'order': order,
                 'dir': dir,
+                'pagination': {},
                 'pageOptions': [15, 30, 50, 100],
                 'resultCount': resultCount,
                 'resultOffset': resultOffset,
-                'resultTotal': 'Many',
+                'resultTotal': 0,
                 'lastQuery': {},
                 'submitTimeout': false,
-            };
+            }
+        },
+        watch: {
+            pagination: {
+                handler() {
+                    this.onPagination();
+                },
+                deep: true
+            }
         },
         methods: {
             deleteEntity(instance) {
@@ -137,14 +142,12 @@
                         this.$alert.warn('Invalid action: ' + action);
                 }
             },
-            onPagination(pagination) {
-                this.page = parseInt(pagination.page);
-                this.resultCount = parseInt(pagination.size);
-                this.refreshList();
-            },
-            onSort(sort) {
-                this.order = sort.name;
-                this.dir = sort.type;
+            onPagination() {
+                const {sortBy, descending, page, rowsPerPage} = this.pagination;
+                this.page = parseInt(page);
+                this.resultCount = parseInt(rowsPerPage);
+                this.order = sortBy;
+                this.dir = descending ? 'DESC' : 'ASC';
                 this.refreshList();
             },
             onSelect() {
@@ -160,7 +163,7 @@
             refreshList() {
                 // Compose query parameters
                 const params = {
-                    count: this.resultCount,
+                    count: this.resultCount < 0 ? 1000 : this.resultCount,
                     offset: this.resultCount * (this.page - 1),
                     order: this.order !== '' ? this.order + ' ' + this.dir : '',
                 };
