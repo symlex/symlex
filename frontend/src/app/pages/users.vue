@@ -1,20 +1,22 @@
 <template>
     <div class="users">
-        <md-table-card>
-            <md-toolbar>
-                <h1 class="md-title">Users</h1>
-                <md-button class="md-icon-button">
-                    <md-icon @click.native="$refs.list.showCreateDialog()">add</md-icon>
-                </md-button>
-            </md-toolbar>
+        <v-layout>
+            <v-toolbar>
+                <h1>Users</h1>
+                <v-spacer></v-spacer>
+                <v-btn fab small color="primary" @click="$refs.list.showCreateDialog()">
+                    <v-icon class="addUser">add</v-icon>
+                </v-btn>
+            </v-toolbar>
+        </v-layout>
         <app-result-table
                 ref="list"
                 :query="query"
                 :actions="actions"
                 :model="model"
-                :columns="columns">
+                :columns="columns"
+        >
         </app-result-table>
-        </md-table-card>
     </div>
 </template>
 
@@ -28,10 +30,10 @@
                 query: {},
                 model: User,
                 columns: [
-                    {name: "userId", label: "ID"},
-                    {name: "userEmail", label: "E-Mail"},
-                    {name: "userFirstName", label: "First Name"},
-                    {name: "userLastName", label: "Last Name"},
+                    {value: "userId", text: "ID"},
+                    {value: "userEmail", text: "E-Mail"},
+                    {value: "userFirstName", text: "First Name"},
+                    {value: "userLastName", text: "Last Name"},
                 ],
                 actions: [
                     {name: "delete", label: "Delete"},
