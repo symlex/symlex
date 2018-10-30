@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.2.0 Migrated frontend from to VueMaterial to Vuetify
+
 * 4.1.3 Increased version numbers of dependencies in composer.json; improved documentation and welcome template
 
 * 4.1.2 Fixed error handler config (namespace changed); improved migration notes
