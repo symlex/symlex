@@ -2,7 +2,7 @@
     <div class="dashboard">
         <h1 class="display-1">Welcome to Symlex</h1>
         <h2 class="title">
-            A lean framework stack for agile Web development based on Symfony and Vue.js
+            A lean framework stack for agile Web development based on Symfony and Vuetify
         </h2>
         <p class="body-1">
             Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead of wasting time on Stack Overflow.
@@ -23,7 +23,7 @@
         <p>
             You can combine the PHP based backend with any JavaScript library or REST client.
             The front-end boilerplate is there for your convenience and puts you straight on track for building
-            impressive single-page applications with Webpack and Vue.js.
+            impressive single-page applications with Webpack and Vuetify.
             A working example for command line applications is included as well.
         </p>
         <p>

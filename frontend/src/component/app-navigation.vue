@@ -6,11 +6,11 @@
                 :mini-variant="mini"
                 fixed
                 app
-                class="teal lighten-5"
+                class="cyan lighten-5"
                 width="250"
                 permanent
         >
-            <v-toolbar flat dark class="pb-2 teal lighten-2">
+            <v-toolbar flat dark class="pb-2 blue-grey darken-1">
                 <v-list class="pb-2">
                     <v-list-tile avatar>
                         <v-list-tile-avatar>
@@ -76,7 +76,7 @@
                     </v-list-tile-action>
 
                     <v-list-tile-content>
-                        <v-list-tile-title>Users</v-list-tile-title>
+                        <v-list-tile-title>User Management</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
 
@@ -86,7 +86,7 @@
                     </v-list-tile-action>
 
                     <v-list-tile-content>
-                        <v-list-tile-title>Profile</v-list-tile-title>
+                        <v-list-tile-title>Edit Profile</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
 
@@ -96,7 +96,7 @@
                     </v-list-tile-action>
 
                     <v-list-tile-content>
-                        <v-list-tile-title>Password</v-list-tile-title>
+                        <v-list-tile-title>Change Password</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
 
