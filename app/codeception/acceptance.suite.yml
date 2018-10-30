@@ -2,7 +2,7 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: 'http://web/welcome'
+            url: 'http://web/'
             host: webdriver
             port: 4444
             browser: chrome
