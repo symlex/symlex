@@ -1,11 +1,11 @@
-![Logo](docs/img/logo.png)
-
-A complete framework stack for agile Web development based on Symfony and Vue.js
-================================================================================
+Symlex: A lean framework stack for agile Web development based on Symfony and Vue.js
+====================================================================================
 
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
+
+<img src="https://avatars1.githubusercontent.com/u/26813484?s=200&v=4" align="right" />
 
 Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
 of wasting time on Stack Overflow.
