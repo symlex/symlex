@@ -10,7 +10,6 @@ of wasting time on Stack Overflow.
 Since its first release in 2014, it has proven to be well suited for rapidly building microservices, 
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
 abstraction. Simply delete what you don't need.
-<img src="https://avatars1.githubusercontent.com/u/26813484?s=200&v=4" align="right">
 
 The [kernel](https://github.com/symlex/di-microkernel) is extremely lean and only creates a Symfony 
 service container for bootstrapping any application within its context.
