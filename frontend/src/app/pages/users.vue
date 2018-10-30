@@ -2,7 +2,7 @@
     <div class="users">
         <v-layout>
             <v-toolbar>
-                <h1>Users</h1>
+                <h1>User Management</h1>
                 <v-spacer></v-spacer>
                 <v-btn fab small color="primary" @click="$refs.list.showCreateDialog()">
                     <v-icon class="addUser">add</v-icon>

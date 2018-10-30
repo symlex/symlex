@@ -1,10 +1,10 @@
 <template>
     <div class="dashboard">
-        <h1 class="md-display-1">Welcome to Symlex</h1>
-        <p class="md-subheading">
-            A complete framework stack for agile Web development based on Symfony and Vue.js
-        </p>
-        <p>
+        <h1 class="display-1">Welcome to Symlex</h1>
+        <h2 class="title">
+            A lean framework stack for agile Web development based on Symfony and Vue.js
+        </h2>
+        <p class="body-1">
             Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead of wasting time on Stack Overflow.
             Since its first release in 2014, it has proven to be well suited for rapidly building microservices, CLI and single-page applications. It comes
             complete with working examples from testing to forms and database abstraction. Simply delete what you don't need.
@@ -34,10 +34,10 @@
             To open a terminal via Docker, run <code>docker-compose exec php sh</code> in the project directory.
         </p>
 
-        <v-container grid-list-xs>
-        <v-layout row-wrap v-bind="binding">
-            <v-flex>
-            <v-card dark class="ma-2">
+        <v-container fluid grid-list-md class="pt-3 pl-0 pr-0 pb-0">
+        <v-layout row wrap>
+            <v-flex d-flex sm12 md4>
+            <v-card color="grey lighten-2">
                 <v-card-title primary-title>
                     <div>
                         <h3 class="headline mb-0">Contribute</h3>
@@ -56,8 +56,8 @@
             </v-card>
             </v-flex>
 
-            <v-flex>
-            <v-card dark class="ma-2">
+            <v-flex d-flex sm12 md4>
+            <v-card color="grey lighten-2">
                 <v-card-title primary-title>
                     <div>
                         <h3 class="headline mb-0">Documentation</h3>
@@ -76,8 +76,8 @@
             </v-card>
             </v-flex>
 
-            <v-flex>
-            <v-card dark class="ma-2">
+            <v-flex d-flex sm12 md4>
+            <v-card color="grey lighten-2">
                 <v-card-title primary-title>
                     <div>
                         <h3 class="headline mb-0">About</h3>

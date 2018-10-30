@@ -53,7 +53,7 @@ class HomeCest
         $I->amOnPage('/');
         $I->click('Visit this project on GitHub');
         $I->switchToNextTab();
-        $I->see('A complete framework stack for agile Web development based on Symfony and Vue.js');
+        $I->see('framework stack for agile Web development');
         $I->amOnPage('/');
         $I->click('Open Documentation');
         $I->switchToNextTab();

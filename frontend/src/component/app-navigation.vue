@@ -96,7 +96,7 @@
             </v-list-tile-action>
 
             <v-list-tile-content>
-                <v-list-tile-title>Change Password</v-list-tile-title>
+                <v-list-tile-title>Password</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -129,7 +129,7 @@
                     { title: 'Profile', route: 'profile/details'},
                     { title: 'Change Password', route: 'profile/password'},
                  ],
-                mini: true,
+                mini: false,
              };
         },
         methods: {

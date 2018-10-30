@@ -5,8 +5,7 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 
-<img src="https://avatars1.githubusercontent.com/u/26813484?s=200&v=4" align="right" />
-
+<img src="https://avatars1.githubusercontent.com/u/26813484?s=200&v=4" align="right">
 Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
 of wasting time on Stack Overflow.
 Since its first release in 2014, it has proven to be well suited for rapidly building microservices, 
@@ -31,7 +30,7 @@ best practices by example.**
 
 *Note: https://github.com/symlex/symlex-core contains the bootstrap and routers as reusable components.*
 
-![Screenshot](docs/img/screenshot.png)
+![Screenshot](docs/img/screenshot.jpg)
 
 Setup
 -----

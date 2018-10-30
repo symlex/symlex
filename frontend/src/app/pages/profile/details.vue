@@ -1,5 +1,6 @@
 <template>
     <div class="profile">
+        <h1>Edit Profile</h1>
         <form>
             <app-form-fields :form="form"></app-form-fields>
         </form>

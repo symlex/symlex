@@ -1,5 +1,6 @@
 <template>
     <div class="change-password">
+        <h1>Change Password</h1>
         <v-form v-model="valid">
             <v-text-field
               v-model="password"

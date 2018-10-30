@@ -12,8 +12,8 @@
                 <td v-for="(column, colIndex) in columns" :key="colIndex">
                     {{ props.item[column.value] }}
                 </td>
-                <td v-if="actions">
-                    <v-btn flat fab small v-for="action in actions" :key="action.name"
+                <td v-if="actions" class="justify-center layout px-0">
+                    <v-btn fab flat small v-for="action in actions" :key="action.name"
                            @click.native="performAction(action.name, props.item)">
                         <v-icon small>
                             {{ action.name }}
@@ -69,7 +69,7 @@
             const headers = this.columns.slice(0);
 
             if (this.actions.length > 0) {
-                headers.push({text: 'Actions', sortable: false, value: 'actions'})
+                headers.push({text: 'Actions', sortable: false, value: 'actions', align: 'center'})
             }
 
             return {
