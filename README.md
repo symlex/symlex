@@ -1,5 +1,5 @@
-Symlex: A lean framework stack for agile Web development based on Symfony and Vue.js
-====================================================================================
+Symlex: A lean framework stack for agile Web development based on Symfony and Vuetify
+=====================================================================================
 
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
@@ -21,7 +21,7 @@ them. The result is less bloat and simpler, more maintainable and testable code 
 Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See also [TRADEOFFS.md](TRADEOFFS.md).
 
 You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
-your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vue.js. 
+your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vuetify. 
 A working example for command line applications is included as well.
 
 **The goal of this project is to simplify agile Web development by providing a working system that promotes
