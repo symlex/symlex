@@ -5,12 +5,12 @@
                 v-model="drawer"
                 :mini-variant="mini"
                 fixed
-                dark
                 app
-                width="200"
+                class="teal lighten-5"
+                width="250"
                 permanent
         >
-            <v-toolbar flat class="pb-2">
+            <v-toolbar flat dark class="pb-2 teal lighten-2">
                 <v-list class="pb-2">
                     <v-list-tile avatar>
                         <v-list-tile-avatar>
