@@ -1,5 +1,6 @@
 <template>
     <div class="register">
+        <h1>Register</h1>
         <div v-if="success">
             <h2>Thank you for signing up!</h2>
             <p>Please confirm your email address <em>{{ model.userEmail }}</em> by visiting the link your received.</p>

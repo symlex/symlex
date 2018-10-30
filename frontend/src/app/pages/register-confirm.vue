@@ -1,5 +1,6 @@
 <template>
     <div class="profile">
+        <h1>Welcome</h1>
         <p><strong>Please choose a password to complete your registration (minimum 8 characters):</strong></p>
         <form>
             <app-form-fields :form="form"></app-form-fields>
