@@ -4,7 +4,7 @@
         <form>
             <app-form-fields :form="form"></app-form-fields>
         </form>
-        <v-btn color="primary" @click.native="save()">Save</v-btn>
+        <v-btn color="primary ml-0" @click.native="save()">Save</v-btn>
     </div>
 </template>
 

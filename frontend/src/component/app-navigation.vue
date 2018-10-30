@@ -6,7 +6,7 @@
                 :mini-variant="mini"
                 fixed
                 app
-                class="cyan lighten-5"
+                class="blue-grey lighten-5"
                 width="250"
                 permanent
         >

@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.2.1 Changed theme colors to blue-grey
+
 * 4.2.0 Migrated frontend from VueMaterial to Vuetify
 
 * 4.1.3 Increased version numbers of dependencies in composer.json; improved documentation and welcome template

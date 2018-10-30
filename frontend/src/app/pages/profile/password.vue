@@ -29,7 +29,7 @@
               required
               id="newPasswordAgain"
             ></v-text-field>
-            <v-btn @click.native="save()" color="primary">Change Password</v-btn>
+            <v-btn @click.native="save()" color="primary ml-0">Change Password</v-btn>
           </v-form>
     </div>
 </template>
