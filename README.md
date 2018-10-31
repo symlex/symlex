@@ -31,8 +31,8 @@ best practices by example.**
 
 ![Screenshot](docs/img/screenshot.jpg)
 
-Setup
------
+## Setup ##
+
 Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](docs/OSX_HOWTO.md) 
 for Mac OS X users). Instead of using Docker, you can also setup your own runtime environment based on the existing 
 Docker configuration.
@@ -70,8 +70,8 @@ mode (you'll see a stack trace and other debug information on the error pages).
 The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
 
-About
------
+## About ##
+
 Symlex is maintained by [Michael Mayer](https://blog.liquidbytes.net/about) and
 aims to simplify agile Web development by providing a working system 
 that promotes best practices by example.
@@ -81,8 +81,8 @@ Thank you to everyone who has contributed!
 Please feel free to send an e-mail if you have any questions, need help or just want to say hello. 
 Contributions are welcome, even if it's just a tiny pull-request or bug report.
 
-History
--------
+## History ##
+
 Symlex was started in 2014 as a simple Silex boilerplate, since Silex itself doesn't come with a "Standard Edition" 
 that points you in the right direction. Using Silex instead of Symfony was recommend by SensioLabs (the creators 
 of both frameworks) as a light-weight alternative to Symfony + FOSRestBundle for quickly building high-performance 
@@ -99,10 +99,10 @@ The framework has proven to be useful for a large number of different applicatio
 Symfony kernel before and did the change because they were drowning in complexity and suffered from response times well 
 above 30 seconds in development mode. Symlex brought them back on track without big changes to their existing code base.
 
-![Micro-Kernel Architecture](docs/img/microkernel.png)
+![Micro-Kernel Architecture](https://symlex.org/images/symlex-vs-symfony.svg)
 
-Bundles
--------
+## Bundles ##
+
 There is no support for bundles in Symlex. Using Symfony bundles often adds complexity to the overall architecture: 
 They hide bootstrap/configuration details and encourage to build bloated applications. Symlex is designed to build 
 focused, lean and fully testable applications. Writing meaningful component tests is not possible, if certain 
@@ -111,16 +111,16 @@ functionality is exclusively encoded in framework configuration files or magical
 
 See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-point
 
-Key Features
-------------
+## Key Features ##
+
 - Built on top of well documented and tested standard components
 - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
 - Strict use of dependency injection for configuration and bootstrapping
 - Small code footprint
 - High performance
 
-Performance
------------
+## Performance ##
+
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
 
 "The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions." -- [Eric Elliott](https://twitter.com/_ericelliott/status/671970774958272512)
@@ -131,8 +131,8 @@ Here is a benchmark, comparing the response time of Symlex and Symfony REST Edit
 
 **Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (http://www.nngroup.com/articles/response-times-3-important-limits/). To be more precise, Wikipedia states that the perceptual processor cycle time has a range of 50 to 200 ms for a young adult (http://en.wikipedia.org/wiki/Usability). The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
 
-Configuration
--------------
+## Configuration ##
+
 YAML files located in `app/config/` configure the entire system based on parameter and service definitions. The filename matches the application's environment name:
 - `app/config/web.yml` configures Web (HTTP) applications bootstrapped in `web/app.php`
 - `app/config/console.yml` configures command-line applications bootstrapped in `app/console`
@@ -148,8 +148,8 @@ This provides a uniform approach for bootstrapping Web (`Symlex\Application\Web`
 
 *Note: If debug mode is turned off, the service container is cached in storage/cache/. You have to run `app/clearcache` after updating the configuration. To disable caching completely, add `container.cache: false` to  `app/config/parameters.yml`*
 
-Bootstrapping
--------------
+## Bootstrapping ##
+
 Bootstrapping is performed using a [micro-kernel](https://github.com/symlex/di-microkernel). It's just a few lines to 
 set environment parameters, initialize the Symfony service container and run the app:
 
@@ -224,8 +224,8 @@ $app = new ConsoleApp (__DIR__);
 $app->run();
 ```
 
-Command-Line Interface
-----------------------
+## Command-Line Interface ##
+
 Running `app/console` lists all commands available. The following commands including **Doctrine Migrations** 
 for creating and migrating database tables are supported out of the box:
 
@@ -243,8 +243,8 @@ user:create              | Create a new user
 user:delete              | Delete a user
 user:reset-password      | Send password reset email to a user
 
-Routing and Rendering
----------------------
+## Routing and Rendering ##
+
 Matching requests to controller actions is performed based on convention instead of extensive configuration. There are three router classes included in the core library. They configure the Symfony router component to perform the actual routing, so you can expect the same high performance. After routing a request to the appropriate controller action, the router subsequently renders the response to ease controller testing (actions never directly return JSON or HTML):
 
 - `Symlex\Router\Web\RestRouter` handles REST requests (JSON)
@@ -313,8 +313,8 @@ will be routed to matching web controller actions e.g.:
 - `GET /foo/bar` will be routed to `controller.web.foo` service's `barAction(Request $request)`
 - `POST /foo/bar` will be routed to `controller.web.foo` service's `postBarAction(Request $request)`
 
-Controllers
------------
+## Controllers ##
+
 Symlex controllers are plain PHP classes by default. They have to be added as service to `app/config/web.yml` (Twig) or `app/config/rest.yml` (REST):
 
 ```yaml
@@ -336,8 +336,8 @@ The routers pass on the request instance to each matched controller action as la
 
 Example: [IndexController](https://github.com/symlex/symlex/blob/master/src/Controller/Web/IndexController.php)
 
-REST
-----
+## REST ##
+
 Symlex REST controllers use a naming scheme similar to FOSRestBundle's "implicit resource name definition". The action name is derived from the request method and optional sub resources:
 
 ```php
@@ -380,8 +380,8 @@ Examples:
 - [SessionController](https://github.com/symlex/symlex/blob/master/src/Controller/Rest/V1/SessionController.php)
 - [RegistrationController](https://github.com/symlex/symlex/blob/master/src/Controller/Rest/V1/RegistrationController.php)
 
-Models, Forms & Databases
--------------------------
+## Models, Forms & Databases ##
+
 Symlex isn't designed for any specific database abstraction layer or model library. The examples are based on MySQL 
 and [Doctrine ActiveRecord](https://github.com/symlex/doctrine-active-record). It is a lot faster and less complex 
 than Datamapper ORM implementations.
@@ -463,8 +463,8 @@ class UsersController
 }
 ```
 
-Error Handling
---------------
+## Error Handling ##
+
 Exceptions are automatically catched by the application and then passed on to ErrorRouter, which either renders an HTML error page or returns the error details as JSON (depending on the request headers). Exception class names are mapped to error codes in `app/config/exceptions.yml`:
 
 ```yaml
@@ -493,35 +493,42 @@ services:
 
 The filename for Twig error templates is `app/templates/error/[code].twig`. If no template is found, the default template (`default.twig`) is used.
 
-Unit Tests
-----------
+## Unit Tests ##
+
 Symlex comes with a pre-configured PHPUnit environment that automatically executes tests found in `src/`:
 
     /var/www/html# bin/phpunit
-    PHPUnit 6.5.11 by Sebastian Bergmann and contributors.
+    PHPUnit 6.5.12 by Sebastian Bergmann and contributors.
     
     ...............................................                   47 / 47 (100%)
     
-    Time: 3.12 seconds, Memory: 12.00MB
+    Time: 3.43 seconds, Memory: 12.00MB
     
     OK (47 tests, 145 assertions)
     
 See also [TestTools - Adds a service container and self-initializing fakes to PHPUnit](https://github.com/lastzero/test-tools)
 
-Acceptance Tests
-----------------
+## Acceptance Tests ##
+
 A ready-to-use [Codeception](https://codeception.com/) test suite for acceptance tests is located in `app/codeception/`:
 
     /var/www/html# bin/codecept run
     Codeception PHP Testing Framework v2.4.5
-    Powered by PHPUnit 6.5.11 by Sebastian Bergmann and contributors.
+    Powered by PHPUnit 6.5.12 by Sebastian Bergmann and contributors.
     
-    Acceptance Tests (1) -------------------
-    ✔ HomeCest: Open homepage (0.36s)
-    ----------------------------------------
+    Acceptance Tests (8) --------------------------------------------
+    ✔ HomeCest: Open homepage (2.35s)
+    ✔ HomeCest: Login (7.66s)
+    ✔ HomeCest: View register form (2.85s)
+    ✔ HomeCest: Check links on welcome page (14.70s)
+    ✔ UserCest: Logout (7.67s)
+    ✔ UserCest: View users page and forms (12.46s)
+    ✔ UserCest: View edit profile page (7.26s)
+    ✔ UserCest: View change password page (6.45s)
+    -----------------------------------------------------------------
     
-    Time: 6.31 seconds, Memory: 10.00MB
+    Time: 1.1 minutes, Memory: 12.00MB
     
-    OK (1 test, 1 assertion)
+    OK (8 tests, 25 assertions)
 
 Codeception's main config file is `codeception.yml` in the project directory.
