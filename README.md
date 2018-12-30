@@ -29,7 +29,7 @@ best practices by example.**
 
 *Note: https://github.com/symlex/symlex-core contains the bootstrap and routers as reusable components.*
 
-![Screenshot](docs/img/screenshot.jpg)
+![Screenshot](docs/images/screenshot.jpg)
 
 ## Setup ##
 
@@ -116,22 +116,28 @@ See also: http://stackoverflow.com/questions/19064719/fosuserbundle-what-is-the-
 - Built on top of well documented and tested standard components
 - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
 - Strict use of dependency injection for configuration and bootstrapping
-- Small code footprint
+- Small code and memory footprint
 - High performance
 
 ## Performance ##
 
-It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. While Symlex was designed to be simple and lean, a good performance certainly is an important by-product of this approach.
+It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. 
+While Symlex was designed to be simple and lean, a good performance is a very important by-product of this approach.
 
-"The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions." -- [Eric Elliott](https://twitter.com/_ericelliott/status/671970774958272512)
+> The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions. ― Eric Elliott
 
-[phpbenchmarks.com](http://www.phpbenchmarks.com/en/) compared Symlex with other PHP frameworks:
+As published by [phpbenchmarks.com](http://www.phpbenchmarks.com/en/), Symlex currently adds 42% less overhead than the next best PHP framework:
 
-![REST Performance](https://docs.google.com/spreadsheets/d/e/2PACX-1vRuZVLFVJkS-zbXwUDCDcgqJCEe4bFn8Jq4KO-vfhq1zhYhUJYKaxtEw5m3D6ZtbVxHE3NZf_uXpy_d/pubchart?oid=1025582648&format=image)
+![Framework Performance](docs/images/performance.png)
 
-Memory footprint was 811 kb compared to 1200 kb for Symfony 4.2 and 4000 kb for Laravel 5.7.
+Note that these response times were measured in fully optimized production mode on [fast server hardware](http://www.phpbenchmarks.com/en/benchmark-protocol.html) with only 5 concurrent requests. In practice,
+differences might be much larger in terms of absolute time and memory consumption should be considered as well:
 
-**Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result. The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic. On top, you'll also save a lot of money for server infrastucture.
+![Memory Footprint](docs/images/memory.png)
+
+**Why should you care?** First, your users will love it. As a rule of thumb, **100 ms** is about the limit for 
+having them feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result. The total response time also includes network (~25 ms), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
+Second, you'll save a lot of money for server infrastructure and developers are more productive as tests are running faster.
 
 ## Configuration ##
 
