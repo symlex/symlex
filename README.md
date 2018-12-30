@@ -125,11 +125,13 @@ It's obvious that PHP framework performance mainly depends on the lines of code 
 
 "The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions." -- [Eric Elliott](https://twitter.com/_ericelliott/status/671970774958272512)
 
-Here is a benchmark, comparing the response time of Symlex and Symfony REST Edition for a GET request that returns a row from the database (Ubuntu 16.04 LTS with PHP 7.1 FPM, MySQL 5.7 and nginx; all optimizations on):
+[phpbenchmarks.com](http://www.phpbenchmarks.com/en/) compared Symlex with other PHP frameworks:
 
-![PHP frameworks: REST routing overhead](docs/img/symlex_vs_symfony_rest_edition.png)
+![REST Performance](https://docs.google.com/spreadsheets/d/e/2PACX-1vRuZVLFVJkS-zbXwUDCDcgqJCEe4bFn8Jq4KO-vfhq1zhYhUJYKaxtEw5m3D6ZtbVxHE3NZf_uXpy_d/pubchart?oid=1025582648&format=image)
 
-**Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result (http://www.nngroup.com/articles/response-times-3-important-limits/). To be more precise, Wikipedia states that the perceptual processor cycle time has a range of 50 to 200 ms for a young adult (http://en.wikipedia.org/wiki/Usability). The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic.
+Memory footprint was 811 kb compared to 1200 kb for Symfony 4.2 and 4000 kb for Laravel 5.7.
+
+**Why should you care?** As a rule of thumb, **100 ms** is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result. The total response time also includes network (about 25 ms for DSL), browser and other overhead, which only leaves a small fraction of those 100 ms for implementing the actual business logic. On top, you'll also save a lot of money for server infrastucture.
 
 ## Configuration ##
 
