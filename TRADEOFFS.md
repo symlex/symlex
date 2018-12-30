@@ -6,18 +6,18 @@
 - Code and memory footprint is very small
 - Built on top of well documented and tested standard components
 - Designed to be simple with few concepts to understand
+- Easier to learn than many other frameworks
 - Using Symlex results in more maintainable and testable code that is fundamental for agile development
 - It has proven to be well suited for rapidly building microservices, CLI and single-page applications
 - It comes complete with working examples which are the best form of documentation
 - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
-- Lower complexity and improved performance compared to Symfony standard edition and many other frameworks
 - Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse (other 
   frameworks often try to lock you in with proprietary annotations and specific base classes you have to inherit from)
 - You can use it with Symfony Components and any other PHP library out there
 - Even if you choose not to use Symlex, you might find lots of inspiration for your own projects (for example, you
   can build your own framework around the [micro-kernel](https://github.com/symlex/di-microkernel) or learn 
   how to integrate JavaScript with PHP)
-- Easy to adapt to future versions of Symfony
+- Easy to upgrade to new versions of Symfony
 - You are free to create a fork if you want to be in full control and don't trust the community for any reason
 
 ## Potential reasons not to use Symlex
