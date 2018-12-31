@@ -76,7 +76,7 @@ to receive and view mails automatically sent by the system, e.g. when new users 
 - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
 - Strict use of dependency injection for configuration and bootstrapping
 - Small code and memory footprint
-- High performance
+- Extremely fast compared to other PHP frameworks
 
 ## About ##
 
