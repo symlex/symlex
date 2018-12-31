@@ -43,27 +43,4 @@ class HomeCest
         $I->see('Captcha');
         $I->see('SIGN UP');
     }
-
-    public function checkLinksOnWelcomePage(\AcceptanceTester $I)
-    {
-        $I->amOnPage('/');
-        $I->click('kernel');
-        $I->switchToNextTab();
-        $I->see('A micro-kernel based on the Symfony service');
-        $I->amOnPage('/');
-        $I->click('Visit this project on GitHub');
-        $I->switchToNextTab();
-        $I->see('framework stack for agile Web development');
-        $I->amOnPage('/');
-        $I->click('Open Documentation');
-        $I->switchToNextTab();
-        $I->see('Symlex is designed to be simple with few concepts to understand');
-        $I->amOnPage('/');
-        $I->click('See Contributors');
-        $I->switchToNextTab();
-        $I->see('Contributions to master, excluding merge commits');
-        $I->amOnPage('/');
-    }
-
-
 }

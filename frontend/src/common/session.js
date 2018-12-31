@@ -1,7 +1,7 @@
 import Api from 'common/api';
 import User from 'model/user';
 
-class Session {
+export default class Session {
     /**
      * @param {Storage} storage
      */
@@ -104,5 +104,3 @@ class Session {
         );
     }
 }
-
-export default Session;

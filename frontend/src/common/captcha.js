@@ -1,6 +1,6 @@
 import Api from 'common/api';
 
-class Captcha {
+export default class Captcha {
     constructor() {
         this.image = '';
         this.token = '';
@@ -53,5 +53,3 @@ class Captcha {
         );
     }
 }
-
-export default Captcha;

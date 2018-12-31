@@ -1,15 +1,38 @@
-class Form {
+export default class Form {
     constructor(definition) {
-        this._definition = definition;
+        this.definition = definition;
     }
 
     setValues(values) {
         const def = this.getDefinition();
 
-        for(let prop in def) {
-            if(def.hasOwnProperty(prop) && values.hasOwnProperty(prop)) {
-                def[prop].value = values[prop];
+        for (let prop in def) {
+            if (values.hasOwnProperty(prop)) {
+                this.setValue(prop, values[prop]);
             }
+        }
+
+        return this;
+    }
+
+    getValues() {
+        const result = {};
+        const def = this.getDefinition();
+
+        for (let prop in def) {
+            result[prop] = this.getValue(prop);
+        }
+
+        return result;
+    }
+
+    setValue(name, value) {
+        const def = this.getDefinition();
+
+        if (!def.hasOwnProperty(name)) {
+            throw `Property ${name} not found`;
+        } else {
+            def[name].value = value;
         }
 
         return this;
@@ -18,41 +41,30 @@ class Form {
     getValue(name) {
         const def = this.getDefinition();
 
-        if(def.hasOwnProperty(name)) {
+        if (def.hasOwnProperty(name)) {
             return def[name].value;
+        } else {
+            throw `Property ${name} not found`;
         }
-
-        throw "Form field not defined: " + name;
     }
 
-    getValues() {
-        const result = {};
-        const def = this.getDefinition();
-        
-        for(let prop in def) {
-            if(def.hasOwnProperty(prop)) {
-                result[prop] = def[prop].value;
-            }
-        }
-        
-        return result;
-    }
-    
     setDefinition(definition) {
-        this._definition = definition;
+        this.definition = definition;
     }
 
     getDefinition() {
-        return this._definition ? this._definition : {};
+        return this.definition ? this.definition : {};
     }
 
     getOptions(fieldName) {
-        if(this._definition && this._definition.hasOwnProperty(fieldName) && this._definition[fieldName].hasOwnProperty('options')) {
-            return this._definition[fieldName].options;
+        if (
+            this.definition &&
+            this.definition.hasOwnProperty(fieldName) &&
+            this.definition[fieldName].hasOwnProperty('options')
+        ) {
+            return this.definition[fieldName].options;
         }
 
-        return [{option: '', label: ''}];
+        return [{ option: '', label: '' }];
     }
 }
-
-export default Form;
