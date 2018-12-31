@@ -4,7 +4,7 @@ Changelog
 Release 4
 ---------
 
-* 4.2.2 Upgraded Dockerfile to PHP 7.3; upgraded JS dependencies; tested with Symfony 4.2.1
+* 4.2.2 Upgraded Dockerfile to PHP 7.3; upgraded and improved frontend; tested with Symfony 4.2.1
 
 * 4.2.1 Changed theme colors to blue-grey
 
