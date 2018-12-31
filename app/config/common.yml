@@ -46,7 +46,7 @@ services:
 
     translator:
         class: Symfony\Component\Translation\Translator
-        arguments: [ "en" ]
+        arguments: [ "en", null, '%app.cache_path%/translator', "%app.debug%" ]
         calls:
             - [ addLoader, [ "yaml", "@yaml_loader" ] ]
             - [ addLoader, [ "array", "@array_loader" ]]
