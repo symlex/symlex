@@ -81,19 +81,15 @@ to receive and view mails automatically sent by the system, e.g. when new users 
 ## About ##
 
 Symlex is maintained by [Michael Mayer](https://blog.liquidbytes.net/about) and
-aims to simplify agile Web development by providing a working system 
-that promotes best practices by example.
+aims to simplify agile Web development by providing a working system that promotes best practices by example.
 Michael released his [first PHP framework](http://freshmeat.sourceforge.net/projects/awf) in 2001 and 
 has previously worked with major framework vendors.
 Building this would not have been possible without a lot of prior work by other developers.
 Thank you to those and everyone who contributed!
 
-Feel free to [send an e-mail](mailto:michael@liquidbytes.net) if you have any questions, need help or just want to say hello. 
+Feel free to [send an e-mail](mailto:michael@liquidbytes.net) if you have any questions, 
+need [commercial support](https://blog.liquidbytes.net/contact/) or just want to say hello. 
 Contributions are welcome, even if it's just a tiny pull-request or bug report.
-
-While you can get [commercial support](https://blog.liquidbytes.net/contact/), it is not our goal to build a huge business
-or a community with regular conferences around the framework. You will be good with most of the documentation [Symfony](https://symfony.com/doc/current/components/index.html) 
-already provides. See [TRADEOFFS.md](TRADEOFFS.md).
 
 ## Performance ##
 

@@ -48,17 +48,11 @@
             </h2>
             <p>
                 Symlex is maintained by <a href="https://blog.liquidbytes.net/about" target="_blank">Michael Mayer</a> and
-                aims to simplify agile Web development by providing a working system
-                that promotes best practices by example.
+                aims to simplify agile Web development by providing a working system that promotes best practices by example.
                 Michael released his <a href="http://freshmeat.sourceforge.net/projects/awf" target="_blank">first PHP framework</a> in 2001 and
                 has previously worked with major framework vendors.
                 Building this would not have been possible without a lot of prior work by other developers.
                 Thank you to those and everyone who contributed!
-            </p>
-            <p>
-                While you can get <a href="https://blog.liquidbytes.net/contact/" target="_blank">commercial support</a>, it is not our goal to build a huge business
-                or a community with regular conferences around the framework. You will be good with most of the documentation <a href="https://symfony.com/doc/current/components/index.html" target="_blank">Symfony</a>
-                already provides. See <a href="https://github.com/symlex/symlex/blob/master/TRADEOFFS.md" target="_blank">TRADEOFFS.md</a>.
             </p>
 
             <v-container fluid grid-list-md class="pt-3 pl-0 pr-0 pb-0">
