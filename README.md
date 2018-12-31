@@ -14,7 +14,7 @@ abstraction. Simply delete what you don't need.
 The [kernel](https://github.com/symlex/di-microkernel) is extremely lean and only creates a 
 service container for bootstrapping your application within its context.
 Using a single container for configuration and dependency injection reduces complexity and leads to improved 
-performance compared to Symfony standard edition and many other frameworks.
+performance compared to other frameworks.
 It also prevents developers from thoughtlessly installing bundles without understanding
 them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for agile development.
             
