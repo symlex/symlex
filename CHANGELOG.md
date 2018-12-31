@@ -4,7 +4,7 @@ Changelog
 Release 4
 ---------
 
-* 4.2.3 Improved JS unit tests and code clean-up
+* 4.2.3 Improved frontend tests and docker-compose.yml; code clean-up
 
 * 4.2.2 Upgraded Dockerfile to PHP 7.3; upgraded and improved frontend; tested with Symfony 4.2.1
 

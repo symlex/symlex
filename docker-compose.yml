@@ -10,7 +10,7 @@ services:
         depends_on:
             - php
         volumes:
-            - ./:/var/www/html
+            - ./:/var/www/html:cached
             - ./app/docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
 
     php:
@@ -20,8 +20,11 @@ services:
         depends_on:
             - db
             - redis
+            - mailhog
+            - webdriver
         volumes:
-            - ./:/var/www/html
+            - ./:/var/www/html:cached
+            - node-data:/var/www/html/frontend/node_modules
 
     db:
         image: mysql:5.7
@@ -50,6 +53,8 @@ services:
           - /dev/shm:/dev/shm
 
 volumes:
+    node-data:
+        driver: local
     mysql-data:
         driver: local
 
