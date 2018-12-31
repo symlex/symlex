@@ -1,5 +1,6 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.3-fpm-alpine
 
+# Install dev dependencies
 RUN apk update \
     && apk upgrade --available \
     && apk add --virtual build-deps \
@@ -9,7 +10,10 @@ RUN apk update \
         libevent-dev \
         openssl-dev \
         zlib-dev \
-    && apk add \
+        libzip \
+        libzip-dev \
+        zlib \
+        zlib-dev \
         bzip2 \
         git \
         mysql-client \
@@ -23,13 +27,19 @@ RUN apk update \
         libwebp-dev \
         freetype \
         freetype-dev \
-        zlib \
-        zlib-dev
+        curl \
+        wget \
+        bash
 
+# Upgrade NPM & Yarn
+RUN npm install -g npm
+RUN npm install -g yarn
+
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
+# Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) \
     intl \
     gd \
@@ -37,7 +47,6 @@ RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) \
     pdo_mysql \
     sockets \
     zip
-
 RUN pecl channel-update pecl.php.net \
     && pecl install -o -f \
         redis \
@@ -45,14 +54,3 @@ RUN pecl channel-update pecl.php.net \
     && rm -rf /tmp/pear \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
     && echo "extension=event.so" > /usr/local/etc/php/conf.d/event.ini
-
-# COPY ./ /var/www/html
-
-# RUN mkdir -p \
-#        /var/www/html/bin \
-#        /var/www/html/vendor \
-#        /var/www/html/storage
-
-# RUN composer install --no-interaction
-
-# RUN chown -R www-data:www-data /var/www/html/storage

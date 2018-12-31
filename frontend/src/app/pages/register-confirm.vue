@@ -1,11 +1,16 @@
 <template>
     <div class="profile">
-        <h1>Welcome</h1>
-        <p><strong>Please choose a password to complete your registration (minimum 8 characters):</strong></p>
-        <form>
-            <app-form-fields :form="form"></app-form-fields>
-            <v-btn color="primary" @click.native="save()">Complete Sign Up</v-btn>
-        </form>
+        <v-toolbar flat color="blue-grey lighten-4">
+            <v-toolbar-title>Welcome</v-toolbar-title>
+        </v-toolbar>
+
+        <div class="pa-4">
+            <p><strong>Please choose a password to complete your registration (minimum 8 characters):</strong></p>
+            <form>
+                <app-form-fields :form="form"></app-form-fields>
+                <v-btn color="primary" @click.native="save()">Complete Sign Up</v-btn>
+            </form>
+        </div>
     </div>
 </template>
 

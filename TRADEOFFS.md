@@ -22,7 +22,7 @@
 
 ## Potential reasons not to use Symlex
 
-- While you can get [commercial support](https://blog.liquidbytes.net/), Symlex is not backed by a major company and has a small community:
+- While you can get [commercial support](https://blog.liquidbytes.net/contact/), Symlex is not backed by a major company and has a small community:
   Development started to have a high-performance replacement for FOSRestBundle, it was never our goal to build a business
 - It is not good for developers who are not comfortable reading at least small amounts of framework code as not 
   everything is documented 100% (you're welcome to ask for help via email or send additional docs as pull request)

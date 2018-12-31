@@ -10,22 +10,17 @@
                 width="250"
                 permanent
         >
-            <v-toolbar flat dark class="pb-2 blue-grey darken-1">
-                <v-list class="pb-2">
-                    <v-list-tile avatar>
+            <v-toolbar flat dark class="grey darken-1">
+                <v-list>
+                    <v-list-tile>
                         <v-list-tile-avatar>
-                            <v-icon medium>fas fa-dice-d20</v-icon>
+                            <img src="/img/logo.png">
                         </v-list-tile-avatar>
-
                         <v-list-tile-content>
                             <v-list-tile-title class="title">{{ $config.appName }}</v-list-tile-title>
                         </v-list-tile-content>
-
-                        <v-list-tile-action>
-                            <v-btn
-                                    icon
-                                    @click.stop="mini = !mini"
-                            >
+                        <v-list-tile-action class="hidden-md-and-down">
+                            <v-btn icon @click.stop="mini = !mini">
                                 <v-icon>chevron_left</v-icon>
                             </v-btn>
                         </v-list-tile-action>
@@ -33,8 +28,7 @@
                 </v-list>
             </v-toolbar>
 
-            <v-list>
-
+            <v-list class="pt-3">
                 <v-list-tile v-if="mini" @click.stop="mini = !mini">
                     <v-list-tile-action>
                         <v-icon>chevron_right</v-icon>
@@ -46,7 +40,7 @@
                         <v-icon small class="navHome">fa-home</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Welcome</v-list-tile-title>
+                        <v-list-tile-title>This is Symlex</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
 

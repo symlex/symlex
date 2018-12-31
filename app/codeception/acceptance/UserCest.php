@@ -26,7 +26,6 @@ class UserCest
         $I->amOnPage('/');
         $I->click('.navLogout');
         $I->waitForElement('.navLogin', 5);
-
     }
 
     public function viewUsersPageAndForms(\AcceptanceTester $I)
@@ -41,7 +40,7 @@ class UserCest
         $I->seeElement('input[aria-label="Role"]');
         $I->see('Create User');
         $I->click('#cancelCreate');
-        $I->click('#app > div.application--wrap > main > div > div > div.app-result-table > div.elevation-1 > div.v-table__overflow > table > tbody > tr:nth-child(1) > td:nth-child(5) > button:nth-child(2)');
+        $I->click('#app main table tbody tr td.layout button:nth-child(2)');
         $I->waitForElementNotVisible('#busy-overlay', 30);
         $I->seeElement('input[aria-label="First Name"]');
         $I->seeElement('input[aria-label="Last Name"]');
@@ -49,7 +48,7 @@ class UserCest
         $I->seeElement('input[aria-label="Role"]');
         $I->see('Edit User');
         $I->click('#cancelEdit');
-        $I->click('#app > div.application--wrap > main > div > div > div.app-result-table > div.elevation-1 > div.v-table__overflow > table > tbody > tr:nth-child(1) > td:nth-child(5) > button:nth-child(1)');
+        $I->click('#app main table tbody tr td.layout button:nth-child(1)');
         $I->waitForElementNotVisible('#busy-overlay', 30);
         $I->see('Delete user');
         $I->click('#cancelDelete');
@@ -58,8 +57,7 @@ class UserCest
 
     public function viewEditProfilePage(\AcceptanceTester $I)
     {
-        $I->amOnPage('/');
-        $I->click('.navUserEdit');
+        $I->click('a[href="/profile/details"]');
         $I->waitForElementNotVisible('#busy-overlay', 30);
         $I->seeElement('input[aria-label="First Name"]');
         $I->seeElement('input[aria-label="Last Name"]');
@@ -69,8 +67,7 @@ class UserCest
 
     public function viewChangePasswordPage(\AcceptanceTester $I)
     {
-        $I->amOnPage('/');
-        $I->click('.navUserPassword');
+        $I->click('a[href="/profile/password"]');
         $I->waitForElementNotVisible('#busy-overlay', 30);
         $I->seeElement('#password');
         $I->seeElement('#newPassword');

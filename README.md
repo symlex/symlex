@@ -18,7 +18,7 @@ performance compared to Symfony standard edition and many other frameworks.
 It also prevents developers from thoughtlessly installing bundles without understanding
 them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for agile development.
             
-Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See also [TRADEOFFS.md](TRADEOFFS.md).
+Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See [TRADEOFFS.md](TRADEOFFS.md).
 
 You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
 your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vuetify. 
@@ -33,9 +33,9 @@ best practices by example.**
 
 ## Setup ##
 
-Before you start, make sure you got PHP 7, Composer and Docker installed on your system (short [howto](docs/OSX_HOWTO.md) 
+Before you start, make sure you have PHP 7, Composer and Docker installed on your system (short [howto](docs/OSX_HOWTO.md) 
 for Mac OS X users). Instead of using Docker, you can also setup your own runtime environment based on the existing 
-Docker configuration.
+[Docker configuration](app/docker/php/Dockerfile).
 
 **Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
@@ -75,11 +75,17 @@ to receive and view mails automatically sent by the system, e.g. when new users 
 Symlex is maintained by [Michael Mayer](https://blog.liquidbytes.net/about) and
 aims to simplify agile Web development by providing a working system 
 that promotes best practices by example.
-You can use it for free under the terms of the MIT license.
-Thank you to everyone who has contributed!
+Michael released his [first PHP framework](http://freshmeat.sourceforge.net/projects/awf) in 2001 and 
+has previously worked with major framework vendors.
+Building this would not have been possible without a lot of prior work by other people.
+Thank you to those and everyone who contributed!
 
-Please feel free to send an e-mail if you have any questions, need help or just want to say hello. 
+Feel free to [send an e-mail](mailto:michael@liquidbytes.net) if you have any questions, need help or just want to say hello. 
 Contributions are welcome, even if it's just a tiny pull-request or bug report.
+
+While you can get [commercial support](https://blog.liquidbytes.net/contact/), it is not our goal to build a business
+or a huge community with conferences and books around the framework. You will be good with most of the
+documentation Symfony already provides. See [TRADEOFFS.md](TRADEOFFS.md).
 
 ## History ##
 

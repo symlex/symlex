@@ -1,15 +1,24 @@
 <template>
     <div class="register">
-        <h1>Register</h1>
-        <div v-if="success">
-            <h2>Thank you for signing up!</h2>
-            <p>Please confirm your email address <em>{{ model.userEmail }}</em> by visiting the link your received.</p>
-            <p>Note: When running this app with docker-compose, you can see all outgoing mails at <a href="http://localhost:8082/" target="_blank">http://localhost:8082/</a> (for development and testing only).</p>
+        <v-toolbar flat color="blue-grey lighten-4">
+            <v-toolbar-title>Register</v-toolbar-title>
+        </v-toolbar>
+
+        <div class="pa-4">
+            <div v-if="success">
+                <h2>Thank you for signing up!</h2>
+                <p>Please confirm your email address <em>{{ model.userEmail }}</em> by visiting the link your received.
+                </p>
+                <p>Note: When running this app with docker-compose, you can see all outgoing mails at <a
+                        href="http://localhost:8082/" target="_blank">http://localhost:8082/</a> (for development and
+                    testing only).</p>
+            </div>
+            <form v-else>
+                <app-form-fields :form="form"></app-form-fields>
+
+                <v-btn color="primary" @click.native="save()" class="ml-0">Sign Up</v-btn>
+            </form>
         </div>
-        <form v-else>
-            <app-form-fields :form="form"></app-form-fields>
-            <v-btn color="primary" @click.native="save()">Sign Up</v-btn>
-        </form>
     </div>
 </template>
 

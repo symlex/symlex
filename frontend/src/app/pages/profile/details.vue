@@ -1,10 +1,15 @@
 <template>
     <div class="profile">
-        <h1>Edit Profile</h1>
-        <form>
-            <app-form-fields :form="form"></app-form-fields>
-        </form>
-        <v-btn color="primary ml-0" @click.native="save()">Save</v-btn>
+        <v-toolbar flat color="blue-grey lighten-4">
+            <v-toolbar-title>Edit Profile</v-toolbar-title>
+        </v-toolbar>
+
+        <div class="pa-4">
+            <form>
+                <app-form-fields :form="form"></app-form-fields>
+            </form>
+            <v-btn color="primary ml-0" @click.native="save()">Save</v-btn>
+        </div>
     </div>
 </template>
 

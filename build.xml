@@ -63,7 +63,7 @@
     </target>
 
     <target name="run-yarn">
-        <exec command="yarn install" dir="./frontend" checkreturn="true" passthru="true"/>
+        <exec command="yarn install --frozen-lockfile --prod" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="run-npm-build">
