@@ -17,12 +17,10 @@
                 don't need.
             </p>
             <p>
-                The <a href="https://github.com/symlex/di-microkernel">kernel</a> is extremely lean and only creates a
-                Symfony
-                service container for bootstrapping any application within its context.
+                The <a href="https://github.com/symlex/di-microkernel" target="_blank">kernel</a> is extremely lean and only creates a
+                service container for bootstrapping your application within its context.
                 Using a single container for configuration and dependency injection reduces complexity and leads to
-                improved
-                performance compared to Symfony standard edition and many other frameworks.
+                improved performance compared to Symfony standard edition and many other frameworks.
                 It also prevents developers from thoughtlessly installing bundles without understanding
                 them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for
                 agile development.
@@ -39,31 +37,28 @@
             </p>
             <p>
                 After executing <code>bin/phing dev</code> in a terminal, you can sign in as &quot;admin@example.com&quot;
-                using the password
-                &quot;passwd&quot; to access the
-                <router-link to="/users">user management</router-link>
-                . See <code>build.xml</code> for more commands.
+                using the password &quot;passwd&quot; to access the <router-link to="/users">user management</router-link>.
+                See <code>build.xml</code> for more commands.
                 Running <code>composer update</code> will get you the latest updates, clears the cache and automatically
-                rebuilds the
-                composer autoloader classmap.
+                rebuilds the composer autoloader classmap.
                 To open a terminal via Docker, run <code>docker-compose exec php sh</code> in the project directory.
             </p>
             <h2 class="title pt-2">
-                About the maintainer
+                About
             </h2>
             <p>
-                Symlex is maintained by <a href="https://blog.liquidbytes.net/about">Michael Mayer</a> and
+                Symlex is maintained by <a href="https://blog.liquidbytes.net/about" target="_blank">Michael Mayer</a> and
                 aims to simplify agile Web development by providing a working system
                 that promotes best practices by example.
-                Michael released his <a href="http://freshmeat.sourceforge.net/projects/awf">first PHP framework</a> in 2001 and
+                Michael released his <a href="http://freshmeat.sourceforge.net/projects/awf" target="_blank">first PHP framework</a> in 2001 and
                 has previously worked with major framework vendors.
-                Building this would not have been possible without a lot of prior work by other people.
+                Building this would not have been possible without a lot of prior work by other developers.
                 Thank you to those and everyone who contributed!
             </p>
             <p>
-                While you can get <a href="https://blog.liquidbytes.net/contact/">commercial support</a>, it is not our goal to build a business
-                or a huge community with conferences and books around the framework. You will be good with most of the
-                documentation Symfony already provides. See <a href="https://github.com/symlex/symlex/blob/master/TRADEOFFS.md">TRADEOFFS.md</a>.
+                While you can get <a href="https://blog.liquidbytes.net/contact/" target="_blank">commercial support</a>, it is not our goal to build a huge business
+                or a community with regular conferences around the framework. You will be good with most of the documentation <a href="https://symfony.com/doc/current/components/index.html" target="_blank">Symfony</a>
+                already provides. See <a href="https://github.com/symlex/symlex/blob/master/TRADEOFFS.md" target="_blank">TRADEOFFS.md</a>.
             </p>
 
             <v-container fluid grid-list-md class="pt-3 pl-0 pr-0 pb-0">
