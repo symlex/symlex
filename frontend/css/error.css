@@ -1,5 +1,5 @@
+@import url("../node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
 @import url("../node_modules/vue-material/dist/vue-material.css");
-@import url("../node_modules/@fortawesome/fontawesome-free/css/all.css");
 
 body {
     padding-top: 80px;
@@ -42,4 +42,29 @@ code {
 
 .red {
     color: #d9534f;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1em;  /* Preferred icon size */
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    vertical-align: -0.15em;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }

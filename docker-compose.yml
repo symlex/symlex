@@ -10,7 +10,7 @@ services:
         depends_on:
             - php
         volumes:
-            - ./:/var/www/html:cached
+            - ./:/var/www/html
             - ./app/docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
 
     php:
@@ -23,7 +23,7 @@ services:
             - mailhog
             - webdriver
         volumes:
-            - ./:/var/www/html:cached
+            - ./:/var/www/html
             - node-data:/var/www/html/frontend/node_modules
 
     db:
