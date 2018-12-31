@@ -2,17 +2,13 @@
     <div class="users">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>User Management</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn fab small color="primary" @click="$refs.list.showCreateDialog()">
+                <v-icon class="addUser">add</v-icon>
+            </v-btn>
         </v-toolbar>
 
         <div class="pa-4">
-            <v-layout>
-                <v-toolbar>
-                    <v-spacer></v-spacer>
-                    <v-btn fab small color="primary" @click="$refs.list.showCreateDialog()">
-                        <v-icon class="addUser">add</v-icon>
-                    </v-btn>
-                </v-toolbar>
-            </v-layout>
             <app-result-table
                     ref="list"
                     :query="query"

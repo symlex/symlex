@@ -40,6 +40,7 @@ Api.interceptors.response.use(function (response) {
     Event.publish('alert.error', errorMessage);
 
     if(code === 401) {
+        window.localStorage.clear();
         window.location = '/';
     }
 
