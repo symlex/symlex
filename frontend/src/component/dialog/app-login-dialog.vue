@@ -14,6 +14,7 @@
             </v-card-text>
 
             <v-card-actions>
+                <v-spacer></v-spacer>
                 <v-btn color="secondary" id="cancelLogin" @click.native="close()">Cancel</v-btn>
                 <v-btn color="primary" id="login" @click.native="login()">Login</v-btn>
             </v-card-actions>

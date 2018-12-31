@@ -9,6 +9,7 @@
             </v-card-text>
 
             <v-card-actions>
+                <v-spacer></v-spacer>
                 <v-btn color="secondary" id="cancelCreate" @click.native="close()">Cancel</v-btn>
                 <v-btn color="primary" @click.native="save()">Create</v-btn>
             </v-card-actions>
