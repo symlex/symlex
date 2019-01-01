@@ -8,7 +8,11 @@ php:
   - 7.3
 
 before_script:
-  - composer install --no-interaction
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --dev
 
 script:
-  - bin/phpunit
+  - bin/phpunit --coverage-clover=coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
