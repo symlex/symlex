@@ -27,10 +27,6 @@ A working example for command line applications is included as well.
 **The goal of this project is to simplify agile Web development by providing a working system that promotes
 best practices by example.**
 
-> Choice is the enemy of productivity. Put another way, if your solution does everything, 
-> and has no opinions about anything, then it solves nothing.<br>
-> ― *Asim Aslam*
-
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
 
 ![Screenshot](docs/images/screenshot.jpg)
@@ -90,6 +86,9 @@ Michael released his [first PHP framework](http://freshmeat.sourceforge.net/proj
 has previously worked with major framework vendors.
 Building this would not have been possible without a lot of prior work by other developers.
 Thank you to those and everyone who contributed!
+
+> Choice is the enemy of productivity. Put another way, if your solution does everything, 
+> and has no opinions about anything, then it solves nothing. ― *Asim Aslam*
 
 Feel free to send an e-mail to [hello@symlex.org](mailto:hello@symlex.org) if you have any questions, 
 need [commercial support](https://blog.liquidbytes.net/contact/) or just want to say hello. 
