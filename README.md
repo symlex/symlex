@@ -1,13 +1,14 @@
 Symlex: A lean framework stack for agile Web development based on Symfony and Vuetify
 =====================================================================================
 
-[![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
+[![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
+[![Documentation](https://readthedocs.org/projects/symlex-docs/badge/?version=latest&style=flat)](https://docs.symlex.org/en/latest/)
 
 Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
 of wasting time on Stack Overflow.
-Since its first release in 2014, it has proven to be well suited for rapidly building microservices, 
+Since its initial release in 2014, it has proven to be well suited for rapidly building microservices, 
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
 abstraction. Simply delete what you don't need.
 
@@ -24,8 +25,7 @@ You can combine the PHP based backend with any JavaScript library or REST client
 your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vuetify. 
 A working example for command line applications is included as well.
 
-**The goal of this project is to simplify agile Web development by providing a working system that promotes
-best practices by example.**
+**Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example.**
 
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
 

@@ -1,6 +1,8 @@
-# Tradeoffs
+# Should I use Symlex?
 
-## Potential reasons to use Symlex
+Give it a try if you already like Symfony and would like to work in a leaner, more agile way.
+
+## Pros ##
 
 - By far the fastest PHP framework according to [phpbenchmarks.com](http://www.phpbenchmarks.com/en/)
 - Code and memory footprint is very small
@@ -20,7 +22,7 @@
 - Easy to upgrade to new versions of Symfony
 - You are free to create a fork if you want to be in full control and don't trust the community for any reason
 
-## Potential reasons not to use Symlex
+## Cons ##
 
 - While you can get [commercial support](https://blog.liquidbytes.net/contact/), Symlex is not backed by a major company and has a small community:
   Development started to have a high-performance replacement for FOSRestBundle, it was never our goal to build a business
