@@ -6,12 +6,12 @@ import Register from 'app/pages/register.vue';
 import RegisterConfirm from 'app/pages/register-confirm.vue';
 
 export default [
-    { path: '/', redirect: '/welcome' },
-    { path: '/welcome', component: Welcome },
-    { path: '/profile/details', component: ProfileDetails },
-    { path: '/profile/password', component: ProfilePassword },
-    { path: '/users', component: Users },
-    { path: '/register', component: Register },
-    { path: '/register/confirm/:token', component: RegisterConfirm },
+    { name: 'Home', path: '/', redirect: '/welcome' },
+    { name: 'Home', path: '/welcome', component: Welcome },
+    { name: 'Settings', path: '/profile/details', component: ProfileDetails },
+    { name: 'Settings', path: '/profile/password', component: ProfilePassword },
+    { name: 'Admin', path: '/users', component: Users },
+    { name: 'Register', path: '/register', component: Register },
+    { name: 'Register', path: '/register/confirm/:token', component: RegisterConfirm },
     { path: '*', redirect: '/welcome' },
 ];

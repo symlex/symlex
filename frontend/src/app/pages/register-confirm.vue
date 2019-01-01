@@ -1,7 +1,7 @@
 <template>
     <div class="register-confirm">
         <v-toolbar flat color="blue-grey lighten-4">
-            <v-toolbar-title>Welcome</v-toolbar-title>
+            <v-toolbar-title>Set a password</v-toolbar-title>
         </v-toolbar>
 
         <div class="pa-4">

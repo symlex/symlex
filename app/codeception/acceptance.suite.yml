@@ -6,4 +6,5 @@ modules:
             host: webdriver
             port: 4444
             browser: chrome
+            window_size: 1300x900
         - \Helper\Acceptance

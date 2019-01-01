@@ -1,14 +1,19 @@
 <template>
     <div class="app-navigation">
+        <v-toolbar dark color="blue-grey darken-3" class="hidden-lg-and-up" @click.stop="showNavigation()">
+            <v-toolbar-side-icon></v-toolbar-side-icon>
 
+            <v-toolbar-title>{{ $router.currentRoute.name }}</v-toolbar-title>
+
+            <v-spacer></v-spacer>
+        </v-toolbar>
         <v-navigation-drawer
                 v-model="drawer"
                 :mini-variant="mini"
                 fixed
                 app
                 class="blue-grey lighten-5"
-                width="250"
-                permanent
+                width="270"
         >
             <v-toolbar flat dark class="grey darken-1">
                 <v-list>
@@ -115,7 +120,7 @@
     export default {
         data() {
             return {
-                drawer: true,
+                drawer: null,
                 items: [
                     {title: 'Welcome', route: 'welcome', icon: 'dashboard'},
                     {title: 'Register', route: 'register'},
@@ -127,6 +132,11 @@
             };
         },
         methods: {
+            showNavigation: function () {
+                this.drawer = true;
+                this.mini = false;
+            },
+
             toggleLeftSidenav() {
                 this.$refs.leftSidenav.toggle();
             },

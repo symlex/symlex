@@ -1,7 +1,7 @@
 <template>
     <div class="register">
         <v-toolbar flat color="blue-grey lighten-4">
-            <v-toolbar-title>Register</v-toolbar-title>
+            <v-toolbar-title>Create new account</v-toolbar-title>
         </v-toolbar>
 
         <div class="pa-4">

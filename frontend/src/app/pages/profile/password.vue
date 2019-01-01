@@ -1,7 +1,7 @@
 <template>
     <div class="change-password">
         <v-toolbar flat color="blue-grey lighten-4">
-            <v-toolbar-title>Change Password</v-toolbar-title>
+            <v-toolbar-title>Change your password</v-toolbar-title>
         </v-toolbar>
 
         <div class="pa-4">
