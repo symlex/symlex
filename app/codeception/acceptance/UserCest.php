@@ -69,9 +69,9 @@ class UserCest
     {
         $I->click('a[href="/profile/password"]');
         $I->waitForElementNotVisible('#busy-overlay', 30);
-        $I->seeElement('#password');
-        $I->seeElement('#newPassword');
-        $I->seeElement('#newPasswordAgain');
+        $I->seeElement('div.change-password .old-password');
+        $I->seeElement('div.change-password .new-password');
+        $I->seeElement('div.change-password .new-password-again');
         $I->click('.navLogout');
     }
 }

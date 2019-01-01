@@ -1,6 +1,7 @@
 parameters:
     exception.codes:
         InvalidArgumentException: 400
+        App\Exception\InvalidArgumentException: 400
         Doctrine\ActiveRecord\Exception\NotFoundException: 404
         App\Exception\UnauthorizedException: 401
         App\Exception\AccessDeniedException: 403
@@ -12,7 +13,6 @@ parameters:
         Exception: 500
 
     exception.messages:
-        400: 'Bad request'
         401: 'Unauthorized'
         402: 'Payment Required'
         403: 'Forbidden'

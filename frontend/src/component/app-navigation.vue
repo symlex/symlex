@@ -3,7 +3,7 @@
         <v-toolbar dark color="blue-grey darken-3" class="hidden-lg-and-up" @click.stop="showNavigation()">
             <v-toolbar-side-icon></v-toolbar-side-icon>
 
-            <v-toolbar-title>{{ $router.currentRoute.name }}</v-toolbar-title>
+            <v-toolbar-title>{{ $router.currentRoute.meta.area }}</v-toolbar-title>
 
             <v-spacer></v-spacer>
         </v-toolbar>
@@ -135,6 +135,7 @@
             showNavigation: function () {
                 this.drawer = true;
                 this.mini = false;
+                console.log(this.$router.currentRoute);
             },
 
             toggleLeftSidenav() {

@@ -6,12 +6,48 @@ import Register from 'app/pages/register.vue';
 import RegisterConfirm from 'app/pages/register-confirm.vue';
 
 export default [
-    { name: 'Home', path: '/', redirect: '/welcome' },
-    { name: 'Home', path: '/welcome', component: Welcome },
-    { name: 'Settings', path: '/profile/details', component: ProfileDetails },
-    { name: 'Settings', path: '/profile/password', component: ProfilePassword },
-    { name: 'Admin', path: '/users', component: Users },
-    { name: 'Register', path: '/register', component: Register },
-    { name: 'Register', path: '/register/confirm/:token', component: RegisterConfirm },
-    { path: '*', redirect: '/welcome' },
+    {
+        path: '/',
+        redirect: '/welcome',
+    },
+    {
+        name: 'welcome',
+        path: '/welcome',
+        component: Welcome,
+        meta: {area: 'Home'},
+    },
+    {
+        name: 'profile_details',
+        path: '/profile/details',
+        component: ProfileDetails,
+        meta: {area: 'Settings'},
+    },
+    {
+        name: 'profile_password',
+        path: '/profile/password',
+        component: ProfilePassword,
+        meta: {area: 'Settings'},
+    },
+    {
+        name: 'users',
+        path: '/users',
+        component: Users,
+        meta: {area: 'Admin'},
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register,
+        meta: {area: 'Register'},
+    },
+    {
+        name: 'register_confirm',
+        path: '/register/confirm/:token',
+        component: RegisterConfirm,
+        meta: {area: 'Register'},
+    },
+    {
+        path: '*',
+        redirect: '/welcome'
+    },
 ];

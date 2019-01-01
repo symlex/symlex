@@ -4,9 +4,11 @@ Changelog
 Release 4
 ---------
 
-* 4.2.5 Enabled caching for Symfony\Component\Translation\Translator
+* 4.2.6 Improved change password form, navigation, and support for small screens (full responsive)
 
-* 4.2.4 Changed icons in main navigation; removed Font Awesome from frontend and error pages
+* 4.2.5 Enabled caching for Symfony\Component\Translation\Translator (improved performance)
+
+* 4.2.4 Changed icons in main navigation; removed Font Awesome from frontend and error pages (smaller builds)
 
 * 4.2.3 Improved frontend tests and docker-compose.yml; code clean-up
 
