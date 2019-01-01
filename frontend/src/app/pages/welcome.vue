@@ -47,7 +47,7 @@
                 About
             </h2>
             <p>
-                Symlex is maintained by <a href="https://blog.liquidbytes.net/about" target="_blank">Michael Mayer</a> and
+                Symlex is maintained by <a href="https://blog.liquidbytes.net/about/" target="_blank">Michael Mayer</a> and
                 aims to simplify agile Web development by providing a working system that promotes best practices by example.
                 Michael released his <a href="http://freshmeat.sourceforge.net/projects/awf" target="_blank">first PHP framework</a> in 2001 and
                 has previously worked with major framework vendors.
@@ -65,8 +65,7 @@
                                     <br>
                                     <div>Don't hesitate to ask if you're new to GitHub or open-source
                                         development. Any contribution is welcome, even if it's just a tiny pull-request
-                                        or
-                                        bug report.
+                                        or bug report.
                                     </div>
                                 </div>
                             </v-card-title>
@@ -85,9 +84,9 @@
                                 <div>
                                     <h3 class="headline mb-0">Documentation</h3>
                                     <br>
-                                    <div>A complete walk-through is provided in the README file.
-                                        Please feel free to send an e-mail if you have any questions,
-                                        need help or just want to say hello.
+                                    <div>A complete walk-through is provided in our README file.
+                                        Feel free to send an e-mail to <a href="mailto:hello@symlex.org">hello@symlex.org</a> if you have any questions
+                                        or just want to say hello.
                                     </div>
                                 </div>
                             </v-card-title>
@@ -109,8 +108,8 @@
                                     <h3 class="headline mb-0">License</h3>
                                     <br>
                                     <div>
-                                        You can use and share Symlex for free under the terms of the MIT license. Thank you to everyone who contributed!
-                                        Support is available <a href="https://blog.liquidbytes.net/contact/">on request</a>.
+                                        You can use and share Symlex for free under the terms of the MIT license.
+                                        <a href="https://blog.liquidbytes.net/contact/">Commercial support</a> is available on request.
                                     </div>
                                 </div>
                             </v-card-title>

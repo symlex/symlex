@@ -1,5 +1,5 @@
 <template>
-    <div class="profile">
+    <div class="register-confirm">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Welcome</v-toolbar-title>
         </v-toolbar>

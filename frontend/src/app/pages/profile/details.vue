@@ -1,7 +1,7 @@
 <template>
     <div class="profile">
         <v-toolbar flat color="blue-grey lighten-4">
-            <v-toolbar-title>Edit Profile</v-toolbar-title>
+            <v-toolbar-title>My Profile</v-toolbar-title>
         </v-toolbar>
 
         <div class="pa-4">

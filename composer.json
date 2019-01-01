@@ -1,6 +1,6 @@
 {
     "name": "symlex/symlex",
-    "description": "A complete framework stack for agile Web development based on Symfony and Vue.js",
+    "description": "A lean framework stack for agile Web development based on Symfony and Vuetify",
     "type": "project",
     "keywords": [
         "symfony",
@@ -12,7 +12,7 @@
         "micro-framework",
         "rest"
     ],
-    "homepage": "https://github.com/symlex/symlex",
+    "homepage": "https://symlex.org/",
     "license": "MIT",
     "authors": [
         {
