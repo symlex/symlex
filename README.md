@@ -99,7 +99,8 @@ We welcome contributions of any kind. If you have a bug or an idea, read our
 It's obvious that PHP framework performance mainly depends on the lines of code that have to be executed for each request. 
 While Symlex was designed to be simple and lean, a good performance is a very important by-product of this approach.
 
-> The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. The best refactors are deletions. ― Eric Elliott
+> The best code is no code. Where there is no code, there are no bugs. No API to learn. No awkward UI. 
+> The best refactors are deletions. ― *Eric Elliott*
 
 As published by [phpbenchmarks.com](http://www.phpbenchmarks.com/en/benchmark/apache-bench/php-7.3/symlex-4.1.html), 
 Symlex currently adds 42% less overhead to REST requests than the next best PHP framework:
