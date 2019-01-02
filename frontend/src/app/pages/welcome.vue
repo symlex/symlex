@@ -50,7 +50,7 @@
                 Symlex is maintained by <a href="https://blog.liquidbytes.net/about/" target="_blank">Michael Mayer</a> and
                 aims to simplify agile Web development by providing a working system that promotes best practices by example.
                 Michael released his <a href="http://freshmeat.sourceforge.net/projects/awf" target="_blank">first PHP framework</a> in 2001 and
-                has previously worked with major framework vendors.
+                has worked with various major framework vendors in the past.
                 Building this would not have been possible without a lot of prior work by other developers.
                 Thank you to those and everyone who contributed!
             </p>
