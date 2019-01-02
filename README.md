@@ -35,7 +35,7 @@ A working example for command line applications is included as well.
 
 Before you start, make sure you have PHP 7, Composer and Docker installed on your system (short [howto](docs/OSX_HOWTO.md) 
 for Mac OS X users). Instead of using Docker, you can also setup your own runtime environment based on the existing 
-[Docker configuration](app/docker/php/Dockerfile).
+[Docker configuration](https://github.com/symlex/symlex/tree/master/app/docker).
 
 **Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
@@ -83,7 +83,7 @@ to receive and view mails automatically sent by the system, e.g. when new users 
 Symlex is maintained by [Michael Mayer](https://blog.liquidbytes.net/about) and
 aims to simplify agile Web development by providing a working system that promotes best practices by example.
 Michael released his [first PHP framework](http://freshmeat.sourceforge.net/projects/awf) in 2001 and 
-has previously worked with major framework vendors.
+has worked with various major framework vendors in the past.
 Building this would not have been possible without a lot of prior work by other developers.
 Thank you to those and everyone who contributed!
 
