@@ -14,8 +14,6 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
   - Small code and memory footprint
   - Extremely fast compared to other PHP frameworks
 
-Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
-of wasting time on Stack Overflow.
 Since its initial release in 2014, it has proven to be well suited for rapidly building microservices, 
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
 abstraction. Simply delete what you don't need.
