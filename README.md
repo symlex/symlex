@@ -6,6 +6,14 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Documentation](https://readthedocs.org/projects/symlex-docs/badge/?version=latest&style=flat)](https://docs.symlex.org/en/latest/)
 
+**Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example:**
+
+  - Built on top of well documented and tested standard components
+  - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
+  - Strict use of dependency injection for configuration and bootstrapping
+  - Small code and memory footprint
+  - Extremely fast compared to other PHP frameworks
+
 Symlex is designed to be simple with few concepts to understand - so that you can start implementing instead 
 of wasting time on Stack Overflow.
 Since its initial release in 2014, it has proven to be well suited for rapidly building microservices, 
@@ -29,16 +37,6 @@ A working example for command line applications is included as well.
 Our complete framework documentation can be found on [docs.symlex.org](https://docs.symlex.org/en/latest/).
 
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
-
-## Key Features ##
-
-**Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example.**
-
-- Built on top of well documented and tested standard components
-- Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
-- Strict use of dependency injection for configuration and bootstrapping
-- Small code and memory footprint
-- Extremely fast compared to other PHP frameworks
 
 ## Setup ##
 
