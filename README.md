@@ -22,16 +22,17 @@ them. The result is less bloat and simpler, more maintainable and testable code 
 Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See [TRADEOFFS.md](TRADEOFFS.md).
 
 You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
-your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vuetify. 
+your convenience and puts you straight on track for building impressive single-page applications with Webpack and Vuetify,
+see [demo.symlex.org](https://demo.symlex.org). 
 A working example for command line applications is included as well.
 
 Our complete framework documentation can be found on [docs.symlex.org](https://docs.symlex.org/en/latest/).
 
-**Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example.**
-
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
 
 ## Key Features ##
+
+**Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example.**
 
 - Built on top of well documented and tested standard components
 - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
