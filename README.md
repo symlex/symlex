@@ -31,7 +31,13 @@ Our complete framework documentation can be found on [docs.symlex.org](https://d
 
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
 
-![Screenshot](https://docs.symlex.org/en/latest/img/screenshot.jpg)
+## Key Features ##
+
+- Built on top of well documented and tested standard components
+- Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
+- Strict use of dependency injection for configuration and bootstrapping
+- Small code and memory footprint
+- Extremely fast compared to other PHP frameworks
 
 ## Setup ##
 
@@ -69,13 +75,7 @@ to receive and view mails automatically sent by the system, e.g. when new users 
 
 See also: https://docs.symlex.org/en/latest/framework/
 
-## Key Features ##
-
-- Built on top of well documented and tested standard components
-- Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
-- Strict use of dependency injection for configuration and bootstrapping
-- Small code and memory footprint
-- Extremely fast compared to other PHP frameworks
+![Login Screen](https://docs.symlex.org/en/latest/framework/img/login.jpg)
 
 ## About ##
 
