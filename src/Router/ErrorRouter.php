@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Traits\LoggerTrait;
 
 /**
- * @see https://github.com/symlex/symlex#routing-and-rendering
+ * @see http://docs.symlex.org/en/latest/framework/routing/
  */
 class ErrorRouter extends SymlexErrorRouter
 {

@@ -5,7 +5,7 @@ namespace App\Dao;
 use Doctrine\ActiveRecord\Dao\EntityDao;
 
 /**
- * @see https://github.com/symlex/doctrine-active-record
+ * @see http://docs.symlex.org/en/latest/doctrine-active-record/
  */
 abstract class DaoAbstract extends EntityDao
 {

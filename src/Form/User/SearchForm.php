@@ -5,7 +5,7 @@ namespace App\Form\User;
 use App\Form\FormAbstract;
 
 /**
- * @see https://github.com/symlex/input-validation
+ * @see http://docs.symlex.org/en/latest/input-validation/
  */
 class SearchForm extends FormAbstract {
     protected function init(array $params = [])

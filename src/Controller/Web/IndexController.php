@@ -3,7 +3,7 @@
 namespace App\Controller\Web;
 
 /**
- * @see https://github.com/symlex/symlex#controllers
+ * @see https://docs.symlex.org/en/latest/framework/web/
  */
 class IndexController
 {

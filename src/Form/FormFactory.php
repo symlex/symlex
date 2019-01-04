@@ -5,7 +5,7 @@ namespace App\Form;
 use InputValidation\Form\Factory;
 
 /**
- * @see https://github.com/symlex/input-validation
+ * @see http://docs.symlex.org/en/latest/input-validation/
  */
 class FormFactory extends Factory
 {

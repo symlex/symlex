@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.2.7 Documentation clean-up
+
 * 4.2.6 Improved change password form, navigation, and support for small screens (full responsive)
 
 * 4.2.5 Enabled caching for Symfony\Component\Translation\Translator (improved performance)

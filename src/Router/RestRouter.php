@@ -8,7 +8,7 @@ use Doctrine\ActiveRecord\Search\SearchResult;
 use App\Traits\SessionTrait;
 
 /**
- * @see https://github.com/symlex/symlex#routing-and-rendering
+ * @see http://docs.symlex.org/en/latest/framework/routing/
  */
 class RestRouter extends SymlexRestRouter
 {

@@ -6,7 +6,7 @@ use App\Form\FormAbstract;
 use App\Service\Captcha;
 
 /**
- * @see https://github.com/symlex/input-validation
+ * @see http://docs.symlex.org/en/latest/input-validation/
  */
 class RegisterForm extends FormAbstract
 {

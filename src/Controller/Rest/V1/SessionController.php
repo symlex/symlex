@@ -8,7 +8,7 @@ use App\Service\Session;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @see https://github.com/symlex/symlex#rest
+ * @see https://docs.symlex.org/en/latest/framework/rest/
  */
 class SessionController
 {

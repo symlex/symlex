@@ -39,9 +39,9 @@ Our complete framework documentation can be found on [docs.symlex.org](https://d
 ## Setup ##
 
 Before you start, make sure you have PHP 7, Composer and Docker installed on your system 
-(short [howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X users). 
+([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). 
 Instead of using Docker, you can also setup your own runtime environment based on the existing 
-[Docker configuration](https://github.com/symlex/symlex/tree/master/app/docker).
+[Dockerfiles](https://github.com/symlex/symlex/tree/master/app/docker) (not recommended).
 
 **Step 1:** Run [Composer](https://getcomposer.org/) to create a new Symlex project:
 
@@ -49,7 +49,7 @@ Instead of using Docker, you can also setup your own runtime environment based o
 composer create-project symlex/symlex myapp
 ```
 
-**Step 2:** Start nginx, PHP and MySQL using [Docker](https://www.docker.com/):
+**Step 2:** Start nginx, PHP and MySQL using the [docker-compose](https://www.docker.com/) command:
 
 ```
 cd myapp
