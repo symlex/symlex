@@ -70,7 +70,12 @@ mode (you'll see a stack trace and other debug information on the error pages).
 The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
 
-See also: https://docs.symlex.org/en/latest/framework/
+If you want to build a more light-weight app, have a look at our other examples:
+
+ - https://github.com/symlex/rest-api
+ - https://github.com/symlex/stream-sampler
+
+Full documentation: https://docs.symlex.org/en/latest/framework/
 
 ![Login Screen](https://docs.symlex.org/en/latest/framework/img/login.jpg)
 
