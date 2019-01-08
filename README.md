@@ -40,8 +40,12 @@ Our complete framework documentation can be found on [docs.symlex.org](https://d
 
 Before you start, make sure you have PHP 7.1+, [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/) installed on your system 
 ([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). 
-Instead of using Docker, you can also setup your own runtime environment based on the existing 
-[Dockerfiles](https://github.com/symlex/symlex/tree/master/app/docker) (not recommended).
+Instead of using Docker, you can set up your own runtime environment based on the existing 
+[Dockerfiles](https://github.com/symlex/symlex/tree/master/app/docker).
+We recommend using [Nginx](https://www.nginx.com/) with [PHP-FPM](http://php.net/manual/en/install.fpm.php)
+and URL [rewrite rules](https://github.com/symlex/symlex/blob/master/app/docker/nginx/site.conf) similar to Symfony.
+In addition, you will need a [database](https://dev.mysql.com/downloads/mysql/) plus
+[nodejs](https://nodejs.org/en/), [npm](https://www.npmjs.com/) and [yarn](https://yarnpkg.com/) to build the frontend.
 
 **Step 1:** Run `composer` to create a new Symlex project:
 
