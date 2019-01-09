@@ -5,6 +5,7 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
 [![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Documentation](https://readthedocs.org/projects/symlex-docs/badge/?version=latest&style=flat)](https://docs.symlex.org/en/latest/)
+[![Community Chat](https://badges.gitter.im/symlex/community.png)](https://gitter.im/symlex/community)
 
 **Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example:**
 
