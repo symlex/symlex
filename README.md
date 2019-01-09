@@ -77,7 +77,12 @@ bin/phing dev
 ```
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
-password `passwd`. If you add `localhost-debug` to your /etc/hosts and access the site with that, it will load in debug
+password `passwd`.
+
+YAML files located in `app/config` configure the app based on parameters and services.
+The main config files are `app/config/web.yml` and `app/config/console.yml`.
+
+If you add `localhost-debug` to your `/etc/hosts` and access the site with that, it will load in debug
 mode (you'll see a stack trace and other debug information on the error pages).
 
 The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
