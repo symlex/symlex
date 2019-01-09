@@ -18,7 +18,7 @@ Since its initial release in 2014, it has proven to be well suited for rapidly b
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
 abstraction. Simply delete what you don't need.
 
-The [kernel](https://github.com/symlex/di-microkernel) is extremely lean and only creates a 
+The [kernel](https://github.com/symlex/di-microkernel) is tiny and only creates a 
 service container for bootstrapping your application within its context.
 Using a single container for configuration and dependency injection reduces complexity and leads to improved 
 performance compared to other frameworks.
