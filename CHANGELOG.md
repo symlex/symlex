@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.2.9 Upgraded to Symlex Core 4.2
+
 * 4.2.8 Improved install instructions
 
 * 4.2.7 Documentation clean-up

@@ -23,9 +23,9 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": "^7.2",
         "ext-pdo_mysql": "*",
-        "symlex/symlex-core": "^4.1",
+        "symlex/symlex-core": "^4.2",
         "symlex/input-validation": "^4.2",
         "symlex/doctrine-active-record": "^4.3",
         "doctrine/dbal": "^2.8",
@@ -37,9 +37,8 @@
         "gregwar/captcha": "1.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0",
         "lastzero/test-tools": "^4.0",
-        "codeception/codeception": "^2.3"
+        "codeception/codeception": "^2.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

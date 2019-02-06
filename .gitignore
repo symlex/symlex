@@ -46,6 +46,7 @@ composer.lock
 /frontend/.eslintcache
 /frontend/tests/result.html
 docker-compose.override.yml
+.phpunit.result.cache
 
 # IDE generated files #
 #######################
