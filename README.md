@@ -34,6 +34,7 @@ see [demo.symlex.org](https://demo.symlex.org).
 A working example for command line applications is included as well.
 
 Our complete framework documentation can be found on [docs.symlex.org](https://docs.symlex.org/en/latest/).
+[Tuzi Liu](https://github.com/tuzimoe) maintains a [Chinese translation](https://docs.symlex.org/zh/latest/) for us.
 
 *Note: https://github.com/symlex/symlex-core contains the kernel and routers as reusable components.*
 
@@ -124,7 +125,7 @@ While Symlex was designed to be simple and lean, a good performance is a very im
 > The best refactors are deletions. ― *Eric Elliott*
 
 As published by [phpbenchmarks.com](http://www.phpbenchmarks.com/en/benchmark/apache-bench/php-7.3/symlex-4.1.html), 
-Symlex currently adds 42% less overhead to REST requests than the next best PHP framework:
+Symlex adds significantly less overhead to REST requests than other common PHP frameworks:
 
 <img src="https://symlex.org/images/performance-large.svg" alt="Response times of popular PHP frameworks" width="100%">
 
