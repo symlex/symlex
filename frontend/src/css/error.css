@@ -1,5 +1,5 @@
-@import url("../node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
-@import url("../node_modules/vue-material/dist/vue-material.css");
+@import url("../../node_modules/material-design-icons-iconfont/dist/material-design-icons.css");
+@import url("../../node_modules/vue-material/dist/vue-material.css");
 
 body {
     padding-top: 80px;

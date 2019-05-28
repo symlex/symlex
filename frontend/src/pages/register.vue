@@ -1,5 +1,5 @@
 <template>
-    <div class="register">
+    <div class="page-register">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Create new account</v-toolbar-title>
         </v-toolbar>
@@ -27,7 +27,7 @@
     import Form from 'common/form';
 
     export default {
-        name: 'register',
+        name: 'page-register',
         data() {
             return {
                 'model': new Registration(),

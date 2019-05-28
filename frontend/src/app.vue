@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app-container">
         <app-loading-bar ref="loadingBar" height="4"></app-loading-bar>
         <app-alert></app-alert>
 
@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        name: 'app',
+        name: 'main',
         computed: {},
         methods: {
             login() {
@@ -28,7 +28,3 @@
         },
     };
 </script>
-
-<style lang="css">
-
-</style>

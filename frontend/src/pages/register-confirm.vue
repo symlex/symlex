@@ -1,5 +1,5 @@
 <template>
-    <div class="register-confirm">
+    <div class="page-register-confirm">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Set a password</v-toolbar-title>
         </v-toolbar>
@@ -19,7 +19,7 @@
     import Form from 'common/form';
 
     export default {
-        name: 'register-confirm',
+        name: 'page-register-confirm',
         data() {
             return {
                 'model': new Registration(),

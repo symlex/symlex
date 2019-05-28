@@ -43,8 +43,9 @@ Thumbs.db
 /bin/
 composer.lock
 /frontend/node_modules/
+/frontend/tests/*.html
+/frontend/tests/*.log
 /frontend/.eslintcache
-/frontend/tests/result.html
 docker-compose.override.yml
 .phpunit.result.cache
 

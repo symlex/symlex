@@ -1,9 +1,9 @@
-import Welcome from 'app/pages/welcome.vue';
-import Users from 'app/pages/users.vue';
-import ProfileDetails from 'app/pages/profile/details.vue';
-import ProfilePassword from 'app/pages/profile/password.vue';
-import Register from 'app/pages/register.vue';
-import RegisterConfirm from 'app/pages/register-confirm.vue';
+import Welcome from 'pages/welcome.vue';
+import Users from 'pages/users.vue';
+import ProfileDetails from 'pages/profile/details.vue';
+import ProfilePassword from 'pages/profile/password.vue';
+import Register from 'pages/register.vue';
+import RegisterConfirm from 'pages/register-confirm.vue';
 
 export default [
     {

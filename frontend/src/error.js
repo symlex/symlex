@@ -1,1 +1,1 @@
-import '../css/error.css';
+import './css/error.css';

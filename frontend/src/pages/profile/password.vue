@@ -1,5 +1,5 @@
 <template>
-    <div class="change-password">
+    <div class="page-profile-password">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Change your password</v-toolbar-title>
         </v-toolbar>
@@ -43,7 +43,7 @@
 
 <script>
     export default {
-        name: 'change-password',
+        name: 'page-profile-password',
         data() {
             return {
                 'model': this.$session.getUser(),

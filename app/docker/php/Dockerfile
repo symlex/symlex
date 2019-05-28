@@ -29,11 +29,13 @@ RUN apk update \
         freetype-dev \
         curl \
         wget \
-        bash
+        bash \
+        chromium
 
-# Upgrade NPM & Yarn
+# Install and configure NodeJS Package Manager (npm)
+ENV NODE_ENV production
 RUN npm install -g npm
-RUN npm install -g yarn
+RUN npm config set cache ~/.cache/npm
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer

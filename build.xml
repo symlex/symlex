@@ -13,7 +13,7 @@
 
     <target name="test">
         <phingcall target="test-php"/>
-        <phingcall target="test-javascript"/>
+        <phingcall target="test-js"/>
         <phingcall target="test-acceptance"/>
     </target>
 
@@ -23,10 +23,6 @@
 
     <target name="test-coverage">
         <exec command="./bin/phpunit --coverage-html ./storage/coverage" checkreturn="true" passthru="true"/>
-    </target>
-
-    <target name="test-javascript">
-        <exec command="npm run test" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="test-acceptance">
@@ -54,19 +50,39 @@
             <fileset dir="./web/build">
                 <include name="*.js" />
                 <include name="*.css" />
-                <include name="*.eot" />
-                <include name="*.ttf" />
+                <include name="fonts" />
+                <include name="img" />
             </fileset>
         </delete>
-        <phingcall target="run-yarn"/>
+        <phingcall target="run-npm-install"/>
         <phingcall target="run-npm-build"/>
     </target>
 
-    <target name="run-yarn">
-        <exec command="yarn install --frozen-lockfile --prod" dir="./frontend" checkreturn="true" passthru="true"/>
+    <target name="watch-js">
+        <delete>
+            <fileset dir="./web/build">
+                <include name="*.js" />
+                <include name="*.css" />
+                <include name="fonts" />
+                <include name="img" />
+            </fileset>
+        </delete>
+        <phingcall target="run-npm-dev"/>
+    </target>
+
+    <target name="test-js">
+        <exec command="npm run test" dir="./frontend" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="run-npm-install">
+        <exec command="npm install" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="run-npm-build">
         <exec command="npm run build" dir="./frontend" checkreturn="true" passthru="true"/>
+    </target>
+
+    <target name="run-npm-dev">
+        <exec command="env NODE_ENV=development npm run dev" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 </project>

@@ -1,5 +1,5 @@
 <template>
-    <div class="profile">
+    <div class="page-profile-details">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Change your personal details</v-toolbar-title>
         </v-toolbar>
@@ -18,7 +18,7 @@
     import Form from 'common/form';
 
     export default {
-        name: 'profile',
+        name: 'page-profile-details',
         data() {
             return {
                 'model': this.$session.getUser(),

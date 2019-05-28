@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard">
+    <div class="page-welcome">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>Welcome to Symlex</v-toolbar-title>
         </v-toolbar>
@@ -61,7 +61,7 @@
                         <v-card color="blue-grey lighten-5">
                             <v-card-title primary-title>
                                 <div>
-                                    <h3 class="headline mb-0">Contribute</h3>
+                                    <h3 class="title mb-0">Contribute</h3>
                                     <br>
                                     <div>Don't hesitate to ask if you're new to GitHub or open-source
                                         development. Any contribution is welcome, even if it's just a tiny pull-request
@@ -82,7 +82,7 @@
                         <v-card color="blue-grey lighten-5">
                             <v-card-title primary-title>
                                 <div>
-                                    <h3 class="headline mb-0">Documentation</h3>
+                                    <h3 class="title mb-0">Documentation</h3>
                                     <br>
                                     <div>A complete walk-through is provided in our README file.
                                         Feel free to send an e-mail to <a href="mailto:hello@symlex.org">hello@symlex.org</a> if you have any questions
@@ -105,7 +105,7 @@
                         <v-card color="blue-grey lighten-5">
                             <v-card-title primary-title>
                                 <div>
-                                    <h3 class="headline mb-0">License</h3>
+                                    <h3 class="title mb-0">License</h3>
                                     <br>
                                     <div>
                                         You can use and share Symlex for free under the terms of the MIT license.
@@ -131,7 +131,7 @@
 
 <script>
     export default {
-        name: 'dashboard',
+        name: 'page-welcome',
         data() {
             return {
                 msg: 'Welcome to Symlex',

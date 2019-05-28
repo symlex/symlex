@@ -200,9 +200,3 @@
         },
     };
 </script>
-
-<style scoped>
-    h1 {
-        font-weight: bold;
-    }
-</style>

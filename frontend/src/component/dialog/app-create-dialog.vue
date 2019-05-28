@@ -51,10 +51,3 @@
         }
     };
 </script>
-
-
-<style scoped>
-    form {
-        min-width: 400px;
-    }
-</style>

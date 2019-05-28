@@ -4,7 +4,7 @@
             <v-form>
                 <input v-if="field.hidden" type="hidden" :name="fieldName" :value="field.value" />
                 <div v-else-if="field.image" class="image">
-                    <img :src="field.value" />
+                    <img class="mt-1" :src="field.value" />
                 </div>
                 <v-text-field v-else-if="field.password && field.type === 'string'" :key="fieldName" :label="field.caption" :required="field.required" type="password" v-model="field.value">
                 </v-text-field>
@@ -35,8 +35,3 @@
         },
     };
 </script>
-<style scoped>
-    div.image {
-        margin: 10px 0 0 0;
-    }
-</style>

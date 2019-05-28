@@ -47,7 +47,7 @@ Instead of using Docker, you can set up your own runtime environment based on th
 We recommend using [Nginx](https://www.nginx.com/) with [PHP-FPM](http://php.net/manual/en/install.fpm.php)
 and URL [rewrite rules](https://github.com/symlex/symlex/blob/master/app/docker/nginx/site.conf) similar to Symfony.
 In addition, you will need a [database](https://dev.mysql.com/downloads/mysql/) plus
-[nodejs](https://nodejs.org/en/), [npm](https://www.npmjs.com/) and [yarn](https://yarnpkg.com/) to build the frontend.
+[nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) to build the frontend.
 
 **Step 1:** Run `composer` to create a new Symlex project:
 

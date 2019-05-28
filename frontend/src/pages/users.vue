@@ -1,5 +1,5 @@
 <template>
-    <div class="users">
+    <div class="page-users">
         <v-toolbar flat color="blue-grey lighten-4">
             <v-toolbar-title>User Management</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -25,7 +25,7 @@
     import User from 'model/user';
 
     export default {
-        name: 'users',
+        name: 'page-users',
         data() {
             return {
                 query: {},

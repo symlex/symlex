@@ -1,24 +1,30 @@
+// JavaScript
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import Router from 'vue-router';
-import '../css/app.css';
-import App from 'app/main.vue';
-import routes from 'app/routes';
+import App from 'app.vue';
+import routes from 'routes';
 import Api from 'common/api';
-import AppComponents from 'component/app-components';
+import Components from 'component/components';
 import Alert from 'common/alert';
 import Session from 'common/session';
 import Event from 'pubsub-js';
 import Moment from 'vue-moment';
 
+// CSS
+import "./css/app.css";
+
+// Initialize helpers
 const session = new Session(window.localStorage);
 
+// Assign helpers to VueJS prototype
 Vue.prototype.$event = Event;
 Vue.prototype.$alert = Alert;
 Vue.prototype.$session = session;
 Vue.prototype.$api = Api;
 Vue.prototype.$config = window.appConfig;
 
+// Register Vuetify
 Vue.use(Vuetify, {
     theme: {
         primary: '#0097A7',
@@ -32,19 +38,22 @@ Vue.use(Vuetify, {
     },
 });
 
+// Register other VueJS plugins
 Vue.use(Moment);
-Vue.use(AppComponents);
+Vue.use(Components);
 Vue.use(Router);
 
+// Configure client-side routing
 const router = new Router({
     routes,
     mode: 'history',
     saveScrollPosition: true,
 });
 
+// Run app
 /* eslint-disable no-unused-vars */
 const app = new Vue({
-    el: '#app',
+    el: '#app-container',
     router,
     render: h => h(App),
 });

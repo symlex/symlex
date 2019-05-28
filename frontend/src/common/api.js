@@ -1,6 +1,6 @@
-import axios from 'axios';
-import Event from 'pubsub-js';
-import 'babel-polyfill';
+import axios from "axios";
+import Event from "pubsub-js";
+import "@babel/polyfill";
 
 const Api = axios.create({
     baseURL: '/api/v1',

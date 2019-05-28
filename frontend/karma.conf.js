@@ -1,60 +1,64 @@
-const path = require('path');
+const path = require("path");
+const findChrome = require("chrome-finder");
 
-// See https://github.com/webpack/loader-utils/issues/56
-process.noDeprecation = true;
-
-process.env.CHROME_BIN = require('puppeteer').executablePath();
+process.env.CHROME_BIN = findChrome();
 
 module.exports = (config) => {
-    const tests = 'tests/*/*.test.js';
-
     config.set({
-        frameworks: ['mocha'],
+        frameworks: ["mocha"],
 
-        phantomjsLauncher: {
-            // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-            exitOnResourceError: true
+        browsers: ["LocalChrome"],
+
+        customLaunchers: {
+            LocalChrome: {
+                base: "ChromeHeadless",
+                flags: ["--disable-translate", "--disable-extensions", "--no-sandbox", "--disable-web-security", "--disable-dev-shm-usage"],
+            },
         },
 
-        browsers: ['ChromeHeadless'],
-
         files: [
-            {pattern: 'tests/**/*_test.js', watched: false}
+            {pattern: "tests/unit/**/*_test.js", watched: false},
         ],
 
         // Preprocess through webpack
         preprocessors: {
-            'tests/**/*_test.js': ['webpack']
+            "tests/unit/**/*_test.js": ["webpack"],
         },
 
-        reporters: ['progress', 'html'],
+        reporters: ["progress", "html"],
 
         htmlReporter: {
-            outputFile: 'tests/result.html'
+            outputFile: "tests/unit.html",
         },
 
         webpack: {
+            mode: "development",
+
             resolve: {
                 modules: [
-                    path.join(__dirname, 'src'),
-                    path.join(__dirname, 'node_modules'),
-                    path.join(__dirname, 'tests'),
+                    path.join(__dirname, "src"),
+                    path.join(__dirname, "node_modules"),
+                    path.join(__dirname, "tests/unit"),
                 ],
                 alias: {
-                    vue: 'vue/dist/vue.js'
-                }
+                    vue: "vue/dist/vue.js",
+                },
             },
             module: {
                 rules: [
                     {
                         test: /\.js$/,
-                        loader: 'babel-loader',
+                        loader: "babel-loader",
+                        exclude: file => (
+                            /node_modules/.test(file)
+                        ),
                         query: {
-                            presets: ['es2015']
+                            presets: ["@babel/preset-env"],
+                            compact: false,
                         },
                     },
-                ]
-            }
+                ],
+            },
         },
 
         singleRun: true,
