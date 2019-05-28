@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        name: 'main',
+        name: 'app-container',
         computed: {},
         methods: {
             login() {
