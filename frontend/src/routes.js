@@ -48,6 +48,6 @@ export default [
     },
     {
         path: '*',
-        redirect: '/welcome'
+        redirect: '/welcome',
     },
 ];

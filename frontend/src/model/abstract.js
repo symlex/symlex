@@ -1,6 +1,5 @@
 import Api from 'common/api';
 import Form from 'common/form';
-import _ from 'lodash/object';
 
 class Abstract {
     constructor(values) {
@@ -15,7 +14,7 @@ class Abstract {
         if(!values) return;
 
         for(let key in values) {
-            if(values.hasOwnProperty(key) && key !== '__originalValues') {
+            if(values.hasOwnProperty(key) && key !== "__originalValues") {
                 this[key] = values[key];
                 this.__originalValues[key] = values[key];
             }
@@ -28,7 +27,7 @@ class Abstract {
         const result = {};
 
         for(let key in this.__originalValues) {
-            if(this.__originalValues.hasOwnProperty(key) && key !== '__originalValues') {
+            if(this.__originalValues.hasOwnProperty(key) && key !== "__originalValues") {
                 result[key] = this[key];
             }
         }

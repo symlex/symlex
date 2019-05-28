@@ -88,7 +88,7 @@ export default class Session {
             (result) => {
                 this.setToken(result.data.token);
                 this.setUser(new User(result.data.user));
-           }
+            }
         );
     }
 

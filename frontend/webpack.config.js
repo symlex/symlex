@@ -7,9 +7,9 @@ const webpack = require("webpack");
 const isDev = process.env.NODE_ENV !== "production";
 
 if(isDev) {
-    console.log("Building frontend in DEVELOPMENT mode. Please wait.")
+    console.log("Building frontend in DEVELOPMENT mode. Please wait.");
 } else {
-    console.log("Building frontend in PRODUCTION mode. Please wait.")
+    console.log("Building frontend in PRODUCTION mode. Please wait.");
 }
 
 const PATHS = {
@@ -24,7 +24,7 @@ const config = {
     devtool: isDev ? "inline-source-map" : false,
     entry: {
         app: PATHS.app,
-        error: PATHS.error
+        error: PATHS.error,
     },
     output: {
         path: PATHS.build,
