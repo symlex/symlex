@@ -34,7 +34,8 @@
         "monolog/monolog": "^1.0",
         "swiftmailer/swiftmailer": "^5.0",
         "incenteev/composer-parameter-handler": "^2.0",
-        "gregwar/captcha": "1.*"
+        "gregwar/captcha": "^1.0",
+        "psr/simple-cache": "^1.0"
     },
     "require-dev": {
         "lastzero/test-tools": "^4.0",
