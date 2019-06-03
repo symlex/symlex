@@ -4,9 +4,11 @@ Changelog
 Release 4
 ---------
 
+* 4.2.12 Upgraded frontend dependencies
+
 * 4.2.11 Frontend code clean-up
 
-* 4.2.10 Upgrade frontend dependencies and project structure
+* 4.2.10 Upgraded frontend dependencies and project structure
 
 * 4.2.9 Upgraded to Symlex Core 4.2
 
