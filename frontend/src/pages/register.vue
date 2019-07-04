@@ -1,6 +1,6 @@
 <template>
     <div class="page-register">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>Create new account</v-toolbar-title>
         </v-toolbar>
 

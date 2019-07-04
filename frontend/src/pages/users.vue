@@ -1,9 +1,9 @@
 <template>
     <div class="page-users">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>User Management</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn fab small color="accent" @click="$refs.list.showCreateDialog()">
+            <v-btn fab flat @click="$refs.list.showCreateDialog()">
                 <v-icon class="addUser">add</v-icon>
             </v-btn>
         </v-toolbar>

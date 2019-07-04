@@ -1,6 +1,6 @@
 <template>
     <div class="page-welcome">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>Welcome to Symlex</v-toolbar-title>
         </v-toolbar>
 

@@ -1,19 +1,19 @@
 <template>
     <v-dialog v-model="show" max-width="600">
-        <v-card>
-        <v-card-title class="title">Edit {{ modelName }}</v-card-title>
+        <v-card class="pa-1">
+            <v-card-title class="title">Edit {{ modelName }}</v-card-title>
 
-        <v-card-text>
-            <v-form>
-                <app-form-fields :form="form"></app-form-fields>
-            </v-form>
-        </v-card-text>
+            <v-card-text>
+                <v-form>
+                    <app-form-fields :form="form"></app-form-fields>
+                </v-form>
+            </v-card-text>
 
-        <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="secondary" id="cancelEdit" @click.native="close()">Cancel</v-btn>
-            <v-btn color="primary" raised @click.native="save()">Save</v-btn>
-        </v-card-actions>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn depressed color="secondary" class="black--text" id="cancelEdit" @click.native="close()">Cancel</v-btn>
+                <v-btn depressed color="primary" raised @click.native="save()">Save</v-btn>
+            </v-card-actions>
         </v-card>
     </v-dialog>
 </template>
@@ -30,7 +30,7 @@
                 'entityName': 'this item',
                 'form': new Form(),
                 'onSave': false,
-                'show' : false,
+                'show': false,
             };
         },
         methods: {
@@ -44,7 +44,7 @@
                 this.show = true;
             },
             save() {
-                if(this.onSave) {
+                if (this.onSave) {
                     this.onSave(this.form)
                 }
             },

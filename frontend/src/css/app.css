@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #app-container div.loading {
     text-align: center;
-    margin: 50px 20px;
+    margin: 80px;
 }
 
 #app .page-welcome h1,
@@ -72,4 +72,8 @@ h1, h2, h3, h4, h5, h6 {
 #app .page-welcome li {
     display: inline-block;
     margin: 0 10px;
+}
+
+#app .v-datatable {
+    border-radius: 10px;
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="page-profile-details">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>Change your personal details</v-toolbar-title>
         </v-toolbar>
 
@@ -8,7 +8,7 @@
             <form>
                 <app-form-fields :form="form"></app-form-fields>
             </form>
-            <v-btn color="primary ml-0" @click.native="save()">Save</v-btn>
+            <v-btn depressed color="primary ml-0" @click.native="save()">Save</v-btn>
         </div>
     </div>
 </template>

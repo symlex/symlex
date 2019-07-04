@@ -1,6 +1,6 @@
 <template>
     <v-dialog v-model="show" max-width="600">
-        <v-card>
+        <v-card class="pa-1">
             <v-card-title class="title">Login</v-card-title>
 
             <v-card-text>
@@ -15,8 +15,8 @@
 
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="secondary" id="cancelLogin" @click.native="close()">Cancel</v-btn>
-                <v-btn color="primary" id="login" @click.native="login()">Login</v-btn>
+                <v-btn depressed color="secondary" class="black--text" id="cancelLogin" @click.native="close()">Cancel</v-btn>
+                <v-btn depressed color="primary" id="login" @click.native="login()">Login</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

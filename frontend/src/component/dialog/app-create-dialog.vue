@@ -1,6 +1,6 @@
 <template>
     <v-dialog v-model="show" max-width="600">
-         <v-card>
+        <v-card class="pa-1">
             <v-card-title class="title">Create {{ modelName }}</v-card-title>
             <v-card-text>
                 <form>
@@ -10,8 +10,8 @@
 
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="secondary" id="cancelCreate" @click.native="close()">Cancel</v-btn>
-                <v-btn color="primary" @click.native="save()">Create</v-btn>
+                <v-btn depressed color="secondary" class="black--text" id="cancelCreate" @click.native="close()">Cancel</v-btn>
+                <v-btn depressed color="primary" @click.native="save()">Create</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

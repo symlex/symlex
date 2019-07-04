@@ -1,6 +1,6 @@
 <template>
     <div class="page-register-confirm">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>Set a password</v-toolbar-title>
         </v-toolbar>
 

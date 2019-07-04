@@ -1,6 +1,6 @@
 <template>
     <div class="page-profile-password">
-        <v-toolbar flat color="blue-grey lighten-4">
+        <v-toolbar dark flat color="grey">
             <v-toolbar-title>Change your password</v-toolbar-title>
         </v-toolbar>
 
@@ -35,7 +35,7 @@
                         counter="8"
                         required
                 ></v-text-field>
-                <v-btn @click.native="save()" color="primary ml-0">Change Password</v-btn>
+                <v-btn depressed @click.native="save()" color="primary ml-0">Change Password</v-btn>
             </v-form>
         </div>
     </div>

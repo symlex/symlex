@@ -1,9 +1,9 @@
 <template>
     <div class="app-navigation">
-        <v-toolbar dark color="blue-grey darken-3" class="hidden-lg-and-up" @click.stop="showNavigation()">
+        <v-toolbar dark color="grey darken-2" class="hidden-lg-and-up" @click.stop="showNavigation()">
             <v-toolbar-side-icon></v-toolbar-side-icon>
 
-            <v-toolbar-title>{{ $router.currentRoute.meta.area }}</v-toolbar-title>
+            <v-toolbar-title>Symlex</v-toolbar-title>
 
             <v-spacer></v-spacer>
         </v-toolbar>
