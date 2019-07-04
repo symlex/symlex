@@ -4,7 +4,7 @@ Changelog
 Release 4
 ---------
 
-* 4.3.0 Roadrunner PHP application server included as an alternative to nginx; improved UI
+* 4.3.0 RoadRunner PHP application server included as an alternative to nginx; improved UI
 
 * 4.2.12 Upgraded frontend dependencies
 

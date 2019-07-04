@@ -13,7 +13,7 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
   - Contains everything to create full-featured Web applications: Service container, REST routing & Twig template engine
   - Strict use of dependency injection for configuration and bootstrapping
   - Small code and memory footprint
-  - Extremely fast compared to other PHP frameworks
+  - Extremely fast compared to other PHP frameworks, especially in combination with [RoadRunner](https://roadrunner.dev/)
 
 Since its initial release in 2014, it has proven to be well suited for rapidly building microservices, 
 CLI and single-page applications. It comes complete with working examples from testing to forms and database 
@@ -98,6 +98,22 @@ If you want to build a more light-weight app, have a look at our other examples:
 Full documentation: https://docs.symlex.org/en/latest/framework/
 
 ![Login Screen](https://docs.symlex.org/en/latest/framework/img/login.jpg)
+
+## RoadRunner ##
+
+The latest release of Symlex includes [RoadRunner](https://roadrunner.dev/) - 
+a high-performance PHP application server - as an alternative to nginx:
+
+```
+bin/phing roadrunner
+```
+
+This command will automatically download the latest `rr` binary for your operating system
+and start the server on port `8083`.
+
+Note that developing with RoadRunner might be inconvenient: It reuses PHP workers to improve performance, so you would
+have to set `maxJobs: 1` in `.rr.yml` or restart the server every time you change a PHP file. That makes it slower
+than nginx, so it's typically a good idea to keep nginx and php-fpm for development.
 
 ## About ##
 
