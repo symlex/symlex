@@ -26,7 +26,9 @@ Using a single container for configuration and dependency injection reduces comp
 performance compared to other frameworks.
 It also prevents developers from thoughtlessly installing bundles without understanding
 them. The result is less bloat and simpler, more maintainable and testable code that is fundamental for agile development.
-            
+
+<img align="right" width="622" height="367" src="https://docs.symlex.org/en/latest/img/screenshot.jpg">
+
 Plain classes are used wherever possible to avoid vendor lock-in and enable framework independent code reuse. See [TRADEOFFS.md](TRADEOFFS.md).
 
 You can combine the PHP based backend with any JavaScript library or REST client. The front-end boilerplate is there for 
