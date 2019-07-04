@@ -13,10 +13,10 @@ if(isDev) {
 }
 
 const PATHS = {
-    app: path.join(__dirname, 'src/app.js'),
-    error: path.join(__dirname, 'src/error.js'),
+    app: path.join(__dirname, "src/app.js"),
+    error: path.join(__dirname, "src/error.js"),
     css: path.join(__dirname, "src/css"),
-    build: path.join(__dirname, '../web/build'),
+    build: path.join(__dirname, "../web/build"),
 };
 
 const config = {
@@ -28,12 +28,12 @@ const config = {
     },
     output: {
         path: PATHS.build,
-        filename: '[name].js',
+        filename: "[name].js",
     },
     resolve: {
         modules: [
-            path.join(__dirname, 'src'),
-            path.join(__dirname, 'node_modules'),
+            path.join(__dirname, "src"),
+            path.join(__dirname, "node_modules"),
         ],
         alias: {
             vue: isDev ? "vue/dist/vue.js" : "vue/dist/vue.min.js",
@@ -45,7 +45,7 @@ const config = {
         }),
     ],
     node: {
-        fs: 'empty',
+        fs: "empty",
     },
     performance: {
         hints: isDev ? false : "error",
@@ -58,8 +58,8 @@ const config = {
                 test: /\.js$/,
                 include: PATHS.app,
                 exclude: /node_modules/,
-                enforce: 'pre',
-                loader: 'eslint-loader',
+                enforce: "pre",
+                loader: "eslint-loader",
                 options: {
                     formatter: require("eslint-formatter-pretty"),
                 },

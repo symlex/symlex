@@ -33,7 +33,7 @@ RUN apk update \
         chromium
 
 # Install and configure NodeJS Package Manager (npm)
-ENV NODE_ENV production
+ENV NODE_ENV development
 RUN npm install -g npm
 RUN npm config set cache ~/.cache/npm
 
@@ -56,3 +56,8 @@ RUN pecl channel-update pecl.php.net \
     && rm -rf /tmp/pear \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
     && echo "extension=event.so" > /usr/local/etc/php/conf.d/event.ini
+
+WORKDIR /var/www/html
+
+# Expose port for Roadrunner PHP application server (optional)
+EXPOSE 8083

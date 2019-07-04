@@ -1,15 +1,15 @@
 // JavaScript
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import Router from 'vue-router';
-import App from 'app.vue';
-import routes from 'routes';
-import Api from 'common/api';
-import Components from 'component/components';
-import Alert from 'common/alert';
-import Session from 'common/session';
-import Event from 'pubsub-js';
-import Moment from 'vue-moment';
+import Vue from "vue";
+import Vuetify from "vuetify";
+import Router from "vue-router";
+import App from "app.vue";
+import routes from "routes";
+import Api from "common/api";
+import Components from "component/components";
+import Alert from "common/alert";
+import Session from "common/session";
+import Event from "pubsub-js";
+import Moment from "vue-moment";
 
 // CSS
 import "./css/app.css";
@@ -27,14 +27,14 @@ Vue.prototype.$config = window.appConfig;
 // Register Vuetify
 Vue.use(Vuetify, {
     theme: {
-        primary: '#0097A7',
-        secondary: '#757575',
-        accent: '#546E7A',
-        error: '#E57373',
-        info: '#00B8D4',
-        success: '#00BFA5',
-        warning: '#E64A19',
-        delete: '#E57373',
+        primary: "#0097A7",
+        secondary: "#757575",
+        accent: "#546E7A",
+        error: "#E57373",
+        info: "#00B8D4",
+        success: "#00BFA5",
+        warning: "#E64A19",
+        delete: "#E57373",
     },
 });
 
@@ -46,14 +46,14 @@ Vue.use(Router);
 // Configure client-side routing
 const router = new Router({
     routes,
-    mode: 'history',
+    mode: "history",
     saveScrollPosition: true,
 });
 
 // Run app
 /* eslint-disable no-unused-vars */
 const app = new Vue({
-    el: '#app-container',
+    el: "#app-container",
     router,
     render: h => h(App),
 });

@@ -7,3 +7,4 @@ storage/cache/*
 storage/coverage/*
 storage/log/*
 frontend/node_modules/*
+/rr*

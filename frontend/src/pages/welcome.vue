@@ -36,7 +36,7 @@
                 A working example for command line applications is included as well.
             </p>
             <p>
-                After executing <code>bin/phing dev</code> in a terminal, you can sign in as &quot;admin@example.com&quot;
+                After executing <code>bin/phing build</code> in a terminal, you can sign in as &quot;admin@example.com&quot;
                 using the password &quot;passwd&quot; to access the <router-link to="/users">user management</router-link>.
                 See <code>build.xml</code> for more commands.
                 Running <code>composer update</code> will get you the latest updates, clears the cache and automatically

@@ -75,7 +75,7 @@ in executing PHP from the host's file system.*
 
 ```
 docker-compose exec php sh
-bin/phing dev
+bin/phing build
 ```
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 

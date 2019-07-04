@@ -60,11 +60,11 @@ export default class Form {
         if (
             this.definition &&
             this.definition.hasOwnProperty(fieldName) &&
-            this.definition[fieldName].hasOwnProperty('options')
+            this.definition[fieldName].hasOwnProperty("options")
         ) {
             return this.definition[fieldName].options;
         }
 
-        return [{ option: '', label: '' }];
+        return [{ option: "", label: "" }];
     }
 }

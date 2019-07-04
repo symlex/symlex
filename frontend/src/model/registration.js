@@ -1,10 +1,10 @@
-import Abstract from 'model/abstract';
-import Form from 'common/form';
-import Api from 'common/api';
+import Abstract from "model/abstract";
+import Form from "common/form";
+import Api from "common/api";
 
 class Registration extends Abstract {
     getEntityName() {
-        return this.userFirstName + ' ' + this.userLastName;
+        return this.userFirstName + " " + this.userLastName;
     }
 
     getId() {
@@ -20,11 +20,11 @@ class Registration extends Abstract {
     }
 
     static getCollectionResource() {
-        return 'registration';
+        return "registration";
     }
 
     static getModelName() {
-        return 'Registration';
+        return "Registration";
     }
 }
 

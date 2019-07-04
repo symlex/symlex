@@ -1,9 +1,54 @@
 <?xml version="1.0"?>
-<project name="App" default="dev" basedir="." description="">
-    <target name="dev">
+<project name="App" default="build" basedir="." description="">
+    <target name="roadrunner">
+        <if>
+            <available file="rr"/>
+            <then>
+                <echo message="Roadrunner already installed"/>
+            </then>
+            <else>
+                <exec command="./bin/rr get" checkreturn="true" passthru="true"/>
+            </else>
+        </if>
+        <available file="rr" property="rr_exists" type="file" />
+        <if>
+            <equals arg1="${rr_exists}" arg2="false" />
+            <then>
+                <exec command="./bin/rr get" checkreturn="true" passthru="true"/>
+            </then>
+        </if>
+        <echo message="Starting Roadrunner PHP application server on port 8083..."/>
+        <exec command="./rr serve -d" checkreturn="false" passthru="true"/>
+    </target>
+
+    <target name="build">
         <phingcall target="build-database"/>
         <phingcall target="build-js"/>
         <phingcall target="build-codeception"/>
+    </target>
+
+    <target name="build-database">
+        <exec command="./app/console database:drop" checkreturn="true" passthru="true" />
+        <exec command="./app/console database:create" checkreturn="true" passthru="true" />
+        <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
+        <exec command="./app/console database:insert-fixtures" checkreturn="true" passthru="true" />
+    </target>
+
+    <target name="build-js">
+        <delete>
+            <fileset dir="./web/build">
+                <include name="*.js" />
+                <include name="*.css" />
+                <include name="fonts" />
+                <include name="img" />
+            </fileset>
+        </delete>
+        <phingcall target="run-npm-install"/>
+        <phingcall target="run-npm-build"/>
+    </target>
+
+    <target name="build-codeception">
+        <exec command="./bin/codecept build" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="upgrade">
@@ -30,32 +75,8 @@
         <exec command="./bin/codecept run" checkreturn="true" passthru="true"/>
     </target>
 
-    <target name="build-codeception">
-        <exec command="./bin/codecept build" checkreturn="true" passthru="true"/>
-    </target>
-
-    <target name="build-database">
-        <exec command="./app/console database:drop" checkreturn="true" passthru="true" />
-        <exec command="./app/console database:create" checkreturn="true" passthru="true" />
-        <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
-        <exec command="./app/console database:insert-fixtures" checkreturn="true" passthru="true" />
-    </target>
-
     <target name="upgrade-database">
         <exec command="./app/console migrations:migrate -n" checkreturn="true" passthru="true" />
-    </target>
-
-    <target name="build-js">
-        <delete>
-            <fileset dir="./web/build">
-                <include name="*.js" />
-                <include name="*.css" />
-                <include name="fonts" />
-                <include name="img" />
-            </fileset>
-        </delete>
-        <phingcall target="run-npm-install"/>
-        <phingcall target="run-npm-build"/>
     </target>
 
     <target name="watch-js">
@@ -67,7 +88,7 @@
                 <include name="img" />
             </fileset>
         </delete>
-        <phingcall target="run-npm-dev"/>
+        <phingcall target="run-npm-watch"/>
     </target>
 
     <target name="test-js">
@@ -79,10 +100,10 @@
     </target>
 
     <target name="run-npm-build">
-        <exec command="npm run build" dir="./frontend" checkreturn="true" passthru="true"/>
+        <exec command="env NODE_ENV=production npm run build" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 
-    <target name="run-npm-dev">
-        <exec command="env NODE_ENV=development npm run dev" dir="./frontend" checkreturn="true" passthru="true"/>
+    <target name="run-npm-watch">
+        <exec command="env NODE_ENV=development npm run watch" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 </project>

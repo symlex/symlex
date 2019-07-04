@@ -5,7 +5,7 @@
   "author": "Michael Mayer",
   "private": true,
   "scripts": {
-    "dev": "webpack --watch",
+    "watch": "webpack --watch",
     "build": "webpack --optimize-minimize",
     "lint": "eslint --cache src/ *.js",
     "fmt": "eslint --cache --fix src/ *.js",

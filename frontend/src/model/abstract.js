@@ -1,5 +1,5 @@
-import Api from 'common/api';
-import Form from 'common/form';
+import Api from "common/api";
+import Form from "common/form";
 
 class Abstract {
     constructor(values) {
@@ -72,19 +72,19 @@ class Abstract {
             id = this.getId();
         }
 
-        return this.constructor.getCollectionResource() + '/' + id;
+        return this.constructor.getCollectionResource() + "/" + id;
     }
 
     getEntityName() {
-        return this.constructor.getModelName() + ' ' + this.getId();
+        return this.constructor.getModelName() + " " + this.getId();
     }
 
     static getCollectionResource() {
-        throw new Error('getCollectionResource() needs to be implemented');
+        throw new Error("getCollectionResource() needs to be implemented");
     }
 
     static getCreateResource() {
-        return this.getCollectionResource() + '/new';
+        return this.getCollectionResource() + "/new";
     }
 
     static getCreateForm() {
@@ -92,7 +92,7 @@ class Abstract {
     }
 
     static getModelName() {
-        return 'Item';
+        return "Item";
     }
 
     static getSearchForm() {
