@@ -1,11 +1,11 @@
 Symlex: A lean framework stack for agile Web development based on Symfony and Vuetify
 =====================================================================================
 
-[![Latest Stable Version](https://poser.pugx.org/symlex/symlex/v/stable.svg)](https://packagist.org/packages/symlex/symlex)
-[![License](https://poser.pugx.org/symlex/symlex/license.svg)](https://packagist.org/packages/symlex/symlex)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/symlex/symlex/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/symlex/symlex.png?branch=master)](https://travis-ci.org/symlex/symlex)
 [![Documentation](https://readthedocs.org/projects/symlex-docs/badge/?version=latest&style=flat)](https://docs.symlex.org/en/latest/)
-[![Community Chat](https://badges.gitter.im/symlex/community.png)](https://gitter.im/symlex/community)
+[![GitHub contributors](https://img.shields.io/github/contributors/symlex/symlex.svg)](https://github.com/symlex/symlex/graphs/contributors/)
+[![Community Chat](https://img.shields.io/badge/chat-on%20gitter-4aa087.svg)](https://gitter.im/symlex/community)
 
 **Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example:**
 
