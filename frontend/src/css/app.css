@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #busy-overlay {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
