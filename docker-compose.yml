@@ -23,7 +23,6 @@ services:
             - db
             - redis
             - mailhog
-            - webdriver
         volumes:
             - ./:/var/www/html
             - node-data:/var/www/html/frontend/node_modules
@@ -49,11 +48,6 @@ services:
         image: mailhog/mailhog
         ports:
             - "8082:8025"
-
-    webdriver:
-        image: selenium/standalone-chrome
-        volumes:
-          - /dev/shm:/dev/shm
 
 volumes:
     node-data:
