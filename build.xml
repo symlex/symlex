@@ -24,7 +24,6 @@
     <target name="build">
         <phingcall target="build-database"/>
         <phingcall target="build-js"/>
-        <phingcall target="build-codeception"/>
     </target>
 
     <target name="build-database">
@@ -47,10 +46,6 @@
         <phingcall target="run-npm-build"/>
     </target>
 
-    <target name="build-codeception">
-        <exec command="./bin/codecept build" checkreturn="true" passthru="true"/>
-    </target>
-
     <target name="upgrade">
         <phingcall target="upgrade-database"/>
         <phingcall target="build-js"/>
@@ -71,8 +66,7 @@
     </target>
 
     <target name="test-acceptance">
-        <phingcall target="build-codeception"/>
-        <exec command="./bin/codecept run" checkreturn="true" passthru="true"/>
+        <exec command="npm run test-chromium" dir="./frontend" checkreturn="true" passthru="true"/>
     </target>
 
     <target name="upgrade-database">
