@@ -1,5 +1,7 @@
 FROM php:7.3-fpm-alpine
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install dev dependencies
 RUN apk update \
     && apk upgrade --available \
@@ -30,7 +32,8 @@ RUN apk update \
         curl \
         wget \
         bash \
-        chromium
+        chromium \
+        firefox-esr
 
 # Install and configure NodeJS Package Manager (npm)
 ENV NODE_ENV development
