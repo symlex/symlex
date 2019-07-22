@@ -27,6 +27,7 @@ services:
         volumes:
             - ./:/var/www/html
             - node-data:/var/www/html/frontend/node_modules
+            - /dev/shm:/dev/shm
 
     db:
         image: mysql:5.7
