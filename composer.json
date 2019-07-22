@@ -42,7 +42,7 @@
     },
     "require-dev": {
         "lastzero/test-tools": "^4.0",
-        "codeception/codeception": "^2.5"
+        "phpunit/phpunit": " 7.5.14"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
