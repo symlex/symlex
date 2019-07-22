@@ -45,6 +45,7 @@ composer.lock
 /frontend/node_modules/
 /frontend/tests/*.html
 /frontend/tests/*.log
+/frontend/tests/acceptance/screenshots/
 /frontend/.eslintcache
 docker-compose.override.yml
 .phpunit.result.cache
@@ -59,3 +60,4 @@ docker-compose.override.yml
 .settings
 .swp
 .tmp
+
