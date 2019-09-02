@@ -10,8 +10,8 @@
     "lint": "eslint --cache src/ *.js",
     "fmt": "eslint --cache --fix src/ *.js",
     "test": "karma start",
-    "test-chromium": "testcafe \"chromium:headless --disable-dev-shm-usage\" --skip-js-errors --selector-timeout 5000 -S -s tests/acceptance/screenshots tests/acceptance",
-    "test-firefox": "testcafe firefox:headless --skip-js-errors --selector-timeout 5000 -S -s tests/acceptance/screenshots tests/acceptance"
+    "test-chromium": "testcafe \"chromium:headless --disable-dev-shm-usage\" --skip-js-errors --selector-timeout 5000 -S -s tests/acceptance/screenshots tests/acceptance --reporter spec,html:tests/acceptance/html-report.html",
+    "test-firefox": "testcafe firefox:headless --skip-js-errors --selector-timeout 5000 -S -s tests/acceptance/screenshots tests/acceptance --reporter spec,html:tests/acceptance/html-report.html"
   },
   "babel": {
     "presets": [
@@ -87,6 +87,7 @@
     "svg-url-loader": "^2.3.2",
     "tar": "^4.4.8",
     "testcafe": "^1.3.2",
+    "testcafe-reporter-html": "^1.4.4",
     "url-loader": "^1.1.2",
     "vue": "^2.6.10",
     "vue-fullscreen": "^2.1.5",
