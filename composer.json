@@ -41,8 +41,7 @@
         "nyholm/psr7": "^1.1"
     },
     "require-dev": {
-        "lastzero/test-tools": "^5.0",
-        "phpunit/phpunit": "^8"
+        "lastzero/test-tools": "^5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
