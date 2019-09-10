@@ -4,6 +4,7 @@ namespace App\Tests\Controller\Rest\V1;
 
 use App\Controller\Rest\V1\RegistrationController;
 use App\Dao\DaoAbstract;
+use App\Exception\DuplicateException;
 use App\Service\Captcha;
 use TestTools\TestCase\UnitTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,9 +38,6 @@ class RegistrationControllerTest extends UnitTestCase
         $this->assertArrayHasKey('userEmail', $form);
     }
 
-    /**
-     * @expectedException \App\Exception\DuplicateException
-     */
     public function testPostAction()
     {
         DaoAbstract::setDateTimeClassName('\TestTools\Util\FixedDateTime');
@@ -58,7 +56,7 @@ class RegistrationControllerTest extends UnitTestCase
         );
 
         $request = Request::create('https://localhost/api/v1/registration', 'POST', $params);
-
+        $this->expectException(DuplicateException::class);
         $controller->postAction($request);
     }
 }

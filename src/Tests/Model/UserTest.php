@@ -3,7 +3,10 @@
 namespace App\Tests\Model;
 
 use App\Dao\DaoAbstract;
+use App\Exception\InvalidArgumentException;
 use App\Model\User;
+use Doctrine\ActiveRecord\Exception\Exception;
+use Doctrine\ActiveRecord\Exception\NotFoundException;
 use TestTools\TestCase\UnitTestCase;
 
 class UserTest extends UnitTestCase
@@ -39,34 +42,28 @@ class UserTest extends UnitTestCase
         $this->assertEquals(2, $user->userId);
     }
 
-    /**
-     * @expectedException \Doctrine\ActiveRecord\Exception\Exception
-     */
     public function testGetPasswordException()
     {
+        $this->expectException(Exception::class);
         $this->model->userPassword;
     }
 
-    /**
-     * @expectedException \App\Exception\InvalidArgumentException
-     */
     public function testInsecurePassword()
     {
         $password = 'fooBar';
 
         $this->model->find(2);
+        $this->expectException(InvalidArgumentException::class);
 
         $this->model->updatePassword($password);
     }
 
-    /**
-     * @expectedException \App\Exception\InvalidArgumentException
-     */
     public function testEmptyPassword()
     {
         $password = '';
 
         $this->model->find(2);
+        $this->expectException(InvalidArgumentException::class);
         $this->model->updatePassword($password);
     }
 
@@ -77,11 +74,9 @@ class UserTest extends UnitTestCase
         $this->assertEquals(2, $user->getId());
     }
 
-    /**
-     * @expectedException \Doctrine\ActiveRecord\Exception\NotFoundException
-     */
     public function testFindByPasswordResetTokenWithInvalidToken()
     {
+        $this->expectException(NotFoundException::class);
         $this->model->findByPasswordResetToken('XXX');
     }
 
@@ -92,11 +87,9 @@ class UserTest extends UnitTestCase
         $this->assertEquals(2, $user->getId());
     }
 
-    /**
-     * @expectedException \Doctrine\ActiveRecord\Exception\NotFoundException
-     */
     public function testFindByVerificationTokenWithInvalidToken()
     {
+        $this->expectException(NotFoundException::class);
         $this->model->findByVerificationToken('XXX');
     }
 
@@ -107,11 +100,9 @@ class UserTest extends UnitTestCase
         $this->assertEquals(1, $user->getId());
     }
 
-    /**
-     * @expectedException \Doctrine\ActiveRecord\Exception\NotFoundException
-     */
     public function testFindByEmailError()
     {
+        $this->expectException(NotFoundException::class);
         $this->model->findByEmail('admin@XXX.com');
     }
 
@@ -139,18 +130,16 @@ class UserTest extends UnitTestCase
         $user = $this->model->find(1);
         $token = '123456789';
         $user->setPasswordResetToken($token);
-        $this->assertInternalType('string', $user->userPasswordResetToken);
+        $this->assertIsString($user->userPasswordResetToken);
         $this->assertGreaterThan(5, strlen($user->userPasswordResetToken));
     }
 
-    /**
-     * @expectedException \App\Exception\InvalidArgumentException
-     */
     public function testSetPasswordResetTokenError()
     {
         /** @var User $user */
         $user = $this->model->find(1);
         $token = '1234';
+        $this->expectException(InvalidArgumentException::class);
         $user->setPasswordResetToken($token);
     }
 
@@ -159,7 +148,7 @@ class UserTest extends UnitTestCase
         /** @var User $user */
         $user = $this->model->find(1);
         $user->setPasswordResetToken('123456789');
-        $this->assertInternalType('string', $user->userPasswordResetToken);
+        $this->assertIsString($user->userPasswordResetToken);
         $this->assertGreaterThan(5, strlen($user->userPasswordResetToken));
         $user->deletePasswordResetToken();
         $this->assertEmpty($user->userPasswordResetToken);
