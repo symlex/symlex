@@ -31,7 +31,7 @@ class CaptchaTest extends UnitTestCase
 
         $phrase = $this->captcha->getPhrase();
 
-        $this->assertInternalType('string', $phrase);
+        $this->assertIsString($phrase);
         $this->assertGreaterThanOrEqual(2, strlen($phrase));
 
         $valid = $this->captcha->isValid($token, $phrase);

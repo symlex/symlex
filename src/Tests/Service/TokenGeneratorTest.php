@@ -15,8 +15,8 @@ class TokenGeneratorTest extends TestCase
         $randomToken1 = $instance->getToken(12);
         $randomToken2 = $instance->getToken(12);
 
-        $this->assertInternalType('string', $randomToken1);
-        $this->assertInternalType('string', $randomToken2);
+        $this->assertIsString($randomToken1);
+        $this->assertIsString($randomToken2);
         $this->assertEquals(24, strlen($randomToken1));
         $this->assertEquals(24, strlen($randomToken2));
         $this->assertNotEquals($randomToken1, $randomToken2);
@@ -27,7 +27,7 @@ class TokenGeneratorTest extends TestCase
         $instance = new TokenGenerator();
         $result = $instance->getSmallToken();
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertEquals(16, strlen($result));
     }
 
@@ -36,7 +36,7 @@ class TokenGeneratorTest extends TestCase
         $instance = new TokenGenerator();
         $result = $instance->getMediumToken();
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertEquals(32, strlen($result));
     }
 
@@ -45,7 +45,7 @@ class TokenGeneratorTest extends TestCase
         $instance = new TokenGenerator();
         $result = $instance->getLargeToken();
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertEquals(64, strlen($result));
     }
 
@@ -57,8 +57,8 @@ class TokenGeneratorTest extends TestCase
         $randomToken1 = $instance->getToken(12);
         $randomToken2 = $instance->getToken(12);
 
-        $this->assertInternalType('string', $randomToken1);
-        $this->assertInternalType('string', $randomToken2);
+        $this->assertIsString($randomToken1);
+        $this->assertIsString($randomToken2);
         $this->assertEquals(24, strlen($randomToken1));
         $this->assertEquals(24, strlen($randomToken2));
         $this->assertEquals($randomToken1, $randomToken2);
@@ -66,7 +66,7 @@ class TokenGeneratorTest extends TestCase
         $instance->setDefaultTokenForTest('42');
 
         $randomToken3 = $instance->getToken(6);
-        $this->assertInternalType('string', $randomToken3);
+        $this->assertIsString($randomToken3);
         $this->assertEquals(12, strlen($randomToken3));
         $this->assertEquals('424242424242', $randomToken3);
     }
