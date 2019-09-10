@@ -9,7 +9,7 @@ class CreateFormTest extends EditFormTest
      */
     protected $form;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->form = $this->get('form.factory')->create('User\Create');
     }

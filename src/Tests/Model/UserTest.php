@@ -13,7 +13,7 @@ class UserTest extends UnitTestCase
      */
     protected $model;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->model = $this->get('model.user');
     }

@@ -11,7 +11,7 @@ class IndexControllerTest extends UnitTestCase
      */
     protected $controller;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->controller = $this->get('controller.web.index');
     }

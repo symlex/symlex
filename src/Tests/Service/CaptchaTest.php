@@ -14,7 +14,7 @@ class CaptchaTest extends UnitTestCase
     /** @var CacheInterface */
     protected $cache;
 
-    public function setUp()
+    public function setUp(): void
     {
         $container = $this->getContainer();
         $this->cache = $container->get('cache');

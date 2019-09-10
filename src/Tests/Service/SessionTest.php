@@ -24,7 +24,7 @@ class SessionTest extends UnitTestCase
 
     protected $url;
 
-    public function setUp()
+    public function setUp(): void
     {
         $container = $this->getContainer();
         $this->cache = $container->get('cache');

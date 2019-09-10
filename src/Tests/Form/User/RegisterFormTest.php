@@ -14,7 +14,7 @@ class RegisterFormTest extends UnitTestCase
     /** @var Captcha */
     protected $captcha;
 
-    public function setUp()
+    public function setUp(): void
     {
         $container = $this->getContainer();
 

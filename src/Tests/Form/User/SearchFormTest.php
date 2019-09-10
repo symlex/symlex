@@ -11,7 +11,7 @@ class SearchFormTest extends UnitTestCase
      */
     protected $form;
 
-    public function setUp()
+    public function setUp(): void
     {
         $container = $this->getContainer();
         $session = $container->get('service.session');
