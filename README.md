@@ -47,8 +47,6 @@ Before you start, make sure you have PHP 7.2+, [Composer](https://getcomposer.or
 ([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). 
 Instead of using Docker, you can set up your own runtime environment based on the existing 
 [Dockerfiles](https://github.com/symlex/symlex/tree/master/app/docker).
-We recommend using [Nginx](https://www.nginx.com/) with [PHP-FPM](http://php.net/manual/en/install.fpm.php)
-and URL [rewrite rules](https://github.com/symlex/symlex/blob/master/app/docker/nginx/site.conf) similar to Symfony.
 In addition, you will need a [database](https://dev.mysql.com/downloads/mysql/) plus
 [nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) to build the frontend.
 
@@ -94,7 +92,7 @@ The main config files are `app/config/web.yml` and `app/config/console.yml`.
 If you add `localhost-debug` to your `/etc/hosts` and access the site with that, it will load in debug
 mode (you'll see a stack trace and other debug information on the error pages).
 
-The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8082/. It can be used
+The [mailhog](https://github.com/ian-kent/MailHog) user interface is available at http://localhost:8025/. It can be used
 to receive and view mails automatically sent by the system, e.g. when new users are created.
 
 If you want to build a more light-weight app, have a look at our other examples:

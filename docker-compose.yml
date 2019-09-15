@@ -55,7 +55,7 @@ services:
         restart: unless-stopped
         image: mailhog/mailhog
         ports:
-            - "8082:8025"
+            - "8025:8025"
         environment:
             - VIRTUAL_HOST=mailhog.local
             - VIRTUAL_PORT=8025
