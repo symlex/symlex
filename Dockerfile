@@ -72,8 +72,8 @@ COPY --chown=www-data:www-data . .
 # Build
 RUN make
 
-# Expose port for Roadrunner PHP application server (optional)
-EXPOSE 8083
+# Expose port for Roadrunner PHP application server (replaces nginx in Symlex 4.4+)
+EXPOSE 8081
 
 # Run server
 CMD rr serve
