@@ -46,7 +46,7 @@ Our complete framework documentation can be found on [docs.symlex.org](https://d
 Before you start, make sure you have PHP 7.2+, [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/) installed on your system 
 ([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). 
 Instead of using Docker, you can set up your own runtime environment based on the existing 
-[Dockerfiles](https://github.com/symlex/symlex/tree/master/app/docker).
+[Dockerfile](https://github.com/symlex/symlex/tree/master/Dockerfile).
 In addition, you will need a [database](https://dev.mysql.com/downloads/mysql/) plus
 [nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) to build the frontend.
 
