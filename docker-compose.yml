@@ -1,24 +1,13 @@
 version: '3'
 
 services:
-    web:
-        build:
-            context: ./
-            dockerfile: ./app/docker/nginx/Dockerfile
+    app:
+        restart: unless-stopped
+        build: .
+        image: symlex/symlex:develop
+        command: rr serve -d --override http.workers.pool.maxJobs=1 # no caching - only for development!
         ports:
-            - "8081:80"
-        depends_on:
-            - php
-        volumes:
-            - ./:/var/www/html
-            - ./app/docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
-
-    php:
-        build:
-            context: ./
-            dockerfile: ./app/docker/php/Dockerfile
-        ports:
-            - "8083:8083" # Roadrunner PHP application server (optional)
+            - "8081:8081" # Roadrunner PHP application server
         depends_on:
             - db
             - redis
@@ -27,14 +16,31 @@ services:
             - ./:/var/www/html
             - node-data:/var/www/html/frontend/node_modules
             - /dev/shm:/dev/shm
+        environment: # Can be set dynamically when deploying with Kubernetes
+            - APP_URL=http://localhost:8081/
+            - APP_EMAIL=info@example.com
+            - MAILER_HOST=mailhog
+            - MAILER_PORT=1025
+            - MAILER_ENCRYPTION=tcp
+            - MAILER_USERNAME=
+            - MAILER_PASSWORD=
+            - MAILER_AUTH_MODE=
+            - MYSQL_HOST=db
+            - MYSQL_NAME=web
+            - MYSQL_USER=web
+            - MYSQL_PASSWORD=web
+            - REDIS_HOST=redis
+            - VIRTUAL_HOST=symlex.local
+            - VIRTUAL_PORT=8081
 
     db:
-        image: mysql:5.7
+        restart: unless-stopped
+        image: mariadb:10
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512
         ports:
             - "3306:3306"
         volumes:
-            - mysql-data:/var/lib/mysql
+            - db-data:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: web
@@ -42,17 +48,22 @@ services:
             MYSQL_DATABASE: web
 
     redis:
+        restart: unless-stopped
         image: redis:3-alpine
 
     mailhog:
+        restart: unless-stopped
         image: mailhog/mailhog
         ports:
             - "8082:8025"
+        environment:
+            - VIRTUAL_HOST=mailhog.local
+            - VIRTUAL_PORT=8025
 
 volumes:
     node-data:
         driver: local
-    mysql-data:
+    db-data:
         driver: local
 
 networks:

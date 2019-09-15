@@ -1,19 +1,19 @@
 parameters:
-    app.name: 'App'
-    app.version: '0.0.0'
-    app.url: 'http://localhost:8081/'
-    app.email: 'root@localhost'
-    app.locale: en
-    db.host: db
+    app.name: 'Symlex App'
+    app.version: '1.0'
+    app.url: '%env(APP_URL)%'
+    app.email: '%env(APP_EMAIL)%'
+    app.locale: 'en'
+    mailer.host: '%env(MAILER_HOST)%'
+    mailer.port: '%env(MAILER_PORT)%'
+    mailer.encryption: '%env(MAILER_ENCRYPTION)%'
+    mailer.username: '%env(MAILER_USERNAME)%'
+    mailer.password: '%env(MAILER_PASSWORD)%'
+    mailer.auth_mode: '%env(MAILER_AUTH_MODE)%'
+    db.host: '%env(MYSQL_HOST)%'
     db.port: 3306
-    db.name: web
-    db.user: web
-    db.password: web
-    redis.host: redis
+    db.name: '%env(MYSQL_NAME)%'
+    db.user: '%env(MYSQL_USER)%'
+    db.password: '%env(MYSQL_PASSWORD)%'
+    redis.host: '%env(REDIS_HOST)%'
     redis.port: 6379
-    mailer.host: mailhog
-    mailer.port: 1025
-    mailer.encryption: tcp
-    mailer.username: ''
-    mailer.password: ''
-    mailer.auth_mode: ''

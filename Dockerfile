@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:7.3-cli-alpine
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -37,8 +37,11 @@ RUN apk update \
 
 # Install and configure NodeJS Package Manager (npm)
 ENV NODE_ENV development
-RUN npm install -g npm
+RUN npm install -g npm testcafe
 RUN npm config set cache ~/.cache/npm
+
+# Install RoadRunner application server (see https://roadrunner.dev/)
+RUN wget -qO- https://github.com/spiral/roadrunner/releases/download/v1.4.8/roadrunner-1.4.8-linux-amd64.tar.gz | tar xvz --strip-components 1 -C /usr/local/bin roadrunner-1.4.8-linux-amd64/rr
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
@@ -48,6 +51,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) \
     intl \
     gd \
+    iconv \
     mbstring \
     pdo_mysql \
     sockets \
@@ -62,5 +66,14 @@ RUN pecl channel-update pecl.php.net \
 
 WORKDIR /var/www/html
 
+# Copy files
+COPY --chown=www-data:www-data . .
+
+# Build
+RUN make
+
 # Expose port for Roadrunner PHP application server (optional)
 EXPOSE 8083
+
+# Run server
+CMD rr serve

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Exception\InvalidArgumentException;
 use App\Exception\InvalidPasswordException;
 use App\Exception\NotFoundException;
 use App\Exception\SessionException;
@@ -33,11 +34,24 @@ class Session
 
     private $sessionTokenTTL = 604800; // 7 days
 
-    public function __construct(CacheInterface $cache, Request $request, User $user)
+    public function __construct(CacheInterface $cache, User $user)
     {
         $this->cache = $cache;
         $this->user = $user;
+    }
+
+    public function setRequest(Request $request)
+    {
         $this->request = $request;
+    }
+
+    public function getRequest(): Request
+    {
+        if(!$this->request) {
+            throw new InvalidArgumentException('Request not set');
+        }
+
+        return $this->request;
     }
 
     public function login(string $email, string $password)
@@ -121,11 +135,6 @@ class Session
         }
 
         return $this->user;
-    }
-
-    protected function getRequest(): Request
-    {
-        return $this->request;
     }
 
     protected function getHttpHeaderName(): string

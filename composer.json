@@ -30,7 +30,6 @@
         "symlex/doctrine-active-record": "^4.3",
         "doctrine/dbal": "^2.8",
         "doctrine/migrations": "^1.1",
-        "phing/phing": "^2.15",
         "monolog/monolog": "^1.0",
         "swiftmailer/swiftmailer": "^5.0",
         "incenteev/composer-parameter-handler": "^2.0",

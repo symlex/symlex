@@ -74,12 +74,16 @@ You might need to tweak it if you run Docker with a different user for security 
 On OS X, the current release of Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) 
 in executing PHP from the host's file system.*
     
-**Step 3:** Let [Phing](https://www.phing.info/) initialize the database and build the front-end components for you:
+**Step 3:** Let [Make](https://www.gnu.org/software/make/) initialize the database and build the front-end components for you:
 
 ```
-docker-compose exec php sh
-bin/phing build
+make terminal
+make all database
 ```
+
+*Note: You can also use this approach to execute other CLI commands later. Make should be pre-installed in 
+typical Unix development environments - otherwise you might have to get it first e.g. by installing Xcode 
+incl. Command Line Tools on OS X or by adding the `build-base` or `build-essential` package on Linux.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
 password `passwd`.
@@ -104,19 +108,8 @@ Full documentation: https://docs.symlex.org/en/latest/framework/
 
 ## RoadRunner ##
 
-Symlex 4.3 includes [RoadRunner](https://roadrunner.dev/) - 
-a high-performance PHP application server - as an alternative to nginx:
-
-```
-bin/phing roadrunner
-```
-
-This command will automatically download the latest `rr` binary for your operating system
-and start the server on port `8083`.
-
-*Note: Developing with RoadRunner might be inconvenient. It reuses PHP workers to improve performance, so you would
-have to set `maxJobs: 1` in `.rr.yml` or restart the server every time you change a PHP file. That makes it slower
-than nginx, so it's typically a good idea to keep nginx and php-fpm for development.*
+Symlex now includes [RoadRunner](https://roadrunner.dev/) - a high-performance PHP application server - as an 
+alternative to nginx. It will be automatically downloaded when you build the Docker image.
 
 ## About ##
 

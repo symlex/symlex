@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.4.0 Removed nginx and refactored example configuration to be cloud-ready (use env variables)
+
 * 4.3.0 RoadRunner PHP application server included as an alternative to nginx; improved UI
 
 * 4.2.12 Upgraded frontend dependencies

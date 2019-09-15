@@ -23,7 +23,8 @@ use Zend\Diactoros\UploadedFileFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$debugMode = strpos($_SERVER['HTTP_HOST'], '-debug') !== false;
+// Set to true to enable debug mode (more detailed errors incl stack trace)
+$debugMode = false;
 
 if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false) {
     Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);

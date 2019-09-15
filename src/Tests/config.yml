@@ -21,9 +21,6 @@ services:
             - [ setFixturePrefix, ['sql'] ]
             - [ useFixtures, ["%fixture.path%"] ]
 
-    request:
-        class: Symfony\Component\HttpFoundation\Request
-
     cache:
         class: Symfony\Component\Cache\Simple\ArrayCache
 
@@ -88,7 +85,7 @@ services:
 
     service.session:
         class: App\Service\Session
-        arguments: [ "@cache", "@request", "@model.user" ]
+        arguments: [ "@cache", "@model.user" ]
 
     service.captcha:
         class: App\Service\Captcha

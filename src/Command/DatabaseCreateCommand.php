@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use Doctrine\DBAL\Exception\DriverException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Doctrine\DBAL\Connection;
@@ -37,6 +38,9 @@ class DatabaseCreateCommand extends CommandAbstract
 
         try {
             $connection->exec("CREATE DATABASE `{$db->getDatabase()}`");
+        } catch (DriverException $e) {
+            $output->writeln("<info>Database already exists: {$db->getDatabase()}</info>");
+            return 0;
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             return 1;

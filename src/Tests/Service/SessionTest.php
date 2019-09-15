@@ -30,6 +30,7 @@ class SessionTest extends UnitTestCase
         $this->cache = $container->get('cache');
         $this->session = $container->get('service.session');
         $this->request = Request::create('http://localhost');
+        $this->session->setRequest($this->request);
         $this->url = $this->request->getUri();
         $this->user = $container->get('model.user');
     }
@@ -93,7 +94,8 @@ class SessionTest extends UnitTestCase
 
         $request = Request::create('http://localhost/foo?t=' . $oneTimeToken, 'GET');
 
-        $oneTimeSession = new Session($this->cache, $request, $this->user);
+        $oneTimeSession = new Session($this->cache, $this->user);
+        $oneTimeSession->setRequest($request);
 
         $this->assertEquals(1, $this->session->getUserId());
         $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());

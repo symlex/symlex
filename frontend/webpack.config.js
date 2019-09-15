@@ -16,7 +16,7 @@ const PATHS = {
     app: path.join(__dirname, "src/app.js"),
     error: path.join(__dirname, "src/error.js"),
     css: path.join(__dirname, "src/css"),
-    build: path.join(__dirname, "../web/build"),
+    build: path.join(__dirname, "static/build"),
 };
 
 const config = {

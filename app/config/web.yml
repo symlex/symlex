@@ -9,13 +9,9 @@ services:
         class: Symlex\Application\Web
         public: true
 
-    request:
-        class: Symfony\Component\HttpFoundation\Request
-        factory: [ 'Symfony\Component\HttpFoundation\Request', createFromGlobals ]
-
     service.session:
         class: App\Service\Session
-        arguments: [ "@cache", "@request", "@model.user" ]
+        arguments: [ "@cache", "@model.user" ]
 
     router.error:
         class: App\Router\ErrorRouter
