@@ -7,6 +7,7 @@ Symlex: A lean framework stack for agile Web development based on Symfony and Vu
 [![GitHub contributors](https://img.shields.io/github/contributors/symlex/symlex.svg)](https://github.com/symlex/symlex/graphs/contributors/)
 [![Community Chat](https://img.shields.io/badge/chat-on%20gitter-4aa087.svg)](https://gitter.im/symlex/community)
 [![Twitter](https://img.shields.io/badge/follow-@symlexphp-00acee.svg)](https://twitter.com/symlexphp)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsymlex%2Fsymlex.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsymlex%2Fsymlex?ref=badge_shield)
 
 **Symlex aims to simplify agile Web development by providing a working system that promotes best practices by example:**
 
@@ -172,3 +173,7 @@ above 30 seconds in development mode. Symlex brought them back on track without 
 
 Please leave a star if you like this project, it provides enough motivation to keep going.
 Thank you very much! <3
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsymlex%2Fsymlex.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsymlex%2Fsymlex?ref=badge_large)
