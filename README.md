@@ -60,7 +60,7 @@ Composer will ask for config values to generate `app/config/parameters.yml` for 
 
 Make sure `storage/cache` is writable so that cache files can be created by the app.
 
-**Step 2:** Start nginx, PHP and MySQL using `docker-compose`:
+**Step 2:** Start RoadRunner and MySQL using `docker-compose`:
 
 ```
 cd myapp
