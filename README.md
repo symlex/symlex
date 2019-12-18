@@ -67,6 +67,9 @@ cd myapp
 docker-compose up
 ```
 
+You can also run Docker in the background with `docker-compose up -d`, but you won't 
+see helpful log messages in this case.
+
 *Note: This docker-compose configuration is for testing and development purposes only. 
 You might need to tweak it if you run Docker with a different user for security reasons.
 On OS X, the current release of Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) 
@@ -79,9 +82,12 @@ make terminal
 make all database
 ```
 
+To verify everything is working, run `make test`.
+
 *Note: You can also use this approach to execute other CLI commands later. Make should be pre-installed in 
 typical Unix development environments - otherwise you might have to get it first e.g. by installing Xcode 
-incl. Command Line Tools on OS X or by adding the `build-base` or `build-essential` package on Linux.*
+incl. Command Line Tools on OS X or by adding the `build-base` or `build-essential` package on Linux.
+The `Makefile` contains a list of all targets.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
 password `passwd`.
