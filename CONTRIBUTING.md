@@ -34,5 +34,8 @@ When reporting an issue, please provide the version in use and information about
 
 ## Donations
 
-Please leave a star on [GitHub](https://github.com/symlex/symlex) if you like this project, it provides enough motivation to keep going.
-Thank you very much! <3
+Symlex is a non-profit project run entirely by volunteers. You're most welcome to support us 
+via [GitHub Sponsors](https://github.com/sponsors/lastzero), especially if you need support.
+They will match every donation in the first year.
+
+Please leave a star if you like this project, it provides enough motivation to keep going. Thank you very much! <3
