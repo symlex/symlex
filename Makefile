@@ -61,6 +61,8 @@ upgrade-frontend:
 	(cd frontend &&	npm update --depth 1)
 upgrade-backend:
 	composer update
+clearcache:
+	app/clearcache
 clean:
 	rm -f *.cache
 	rm -f *.log
