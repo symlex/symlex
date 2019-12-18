@@ -67,13 +67,11 @@ cd myapp
 docker-compose up
 ```
 
-You can also run Docker in the background with `docker-compose up -d`, but you won't 
-see helpful log messages in this case.
-
 *Note: This docker-compose configuration is for testing and development purposes only. 
 You might need to tweak it if you run Docker with a different user for security reasons.
 On OS X, the current release of Docker is [really slow](https://twitter.com/lastzero/status/829191426391027712) 
-in executing PHP from the host's file system.*
+in executing PHP from the host's file system.
+`docker-compose up -d` runs Docker in the background, but you won't see helpful log messages in this case.*
     
 **Step 3:** Let [Make](https://www.gnu.org/software/make/) initialize the database and build the front-end components for you:
 
@@ -113,7 +111,14 @@ Full documentation: https://docs.symlex.org/en/latest/framework/
 ## RoadRunner ##
 
 Symlex now includes [RoadRunner](https://roadrunner.dev/) - a high-performance PHP application server - as an 
-alternative to nginx. It will be automatically downloaded when you build the Docker image.
+alternative to [NGINX](https://en.wikipedia.org/wiki/Nginx). 
+It will be automatically downloaded when you build the Docker image.
+
+Our installation instructions for Symlex >= 4.4.0 won't work for previous releases as 
+they still use NGINX and PHP-FPM. Instead of `web` and `php`, there is now a single `app` 
+service powered by RoadRunner. If you prefer NGINX, you can use an older 
+[release](https://github.com/symlex/symlex/releases) or copy the previous config to the new release.
+Our public demo still uses NGINX and also some examples.
 
 ## About ##
 
