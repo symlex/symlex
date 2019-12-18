@@ -1,13 +1,15 @@
 version: '3'
 
 services:
+    # Symlex App powered by RoadRunner PHP application server
     app:
         restart: unless-stopped
         build: .
         image: symlex/symlex:develop
-        command: rr serve -d --override http.workers.pool.maxJobs=1 # no caching - only for development!
+        # Remove next line for production/staging: maxJobs=1 means no caching!
+        command: rr serve -d --override http.workers.pool.maxJobs=1
         ports:
-            - "8081:8081" # Roadrunner PHP application server
+            - "8081:8081"
         depends_on:
             - db
             - redis
@@ -33,10 +35,12 @@ services:
             - VIRTUAL_HOST=symlex.local
             - VIRTUAL_PORT=8081
 
+    # MariaDB is a MySQL compatible database server
     db:
         restart: unless-stopped
         image: mariadb:10
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512
+        # Expose port to run database scripts locally - only for development!
         # ports:
         #    - "3306:3306"
         volumes:
@@ -47,10 +51,12 @@ services:
             MYSQL_PASSWORD: web
             MYSQL_DATABASE: web
 
+    # Redis is an in-memory key-value database used for storing sessions
     redis:
         restart: unless-stopped
         image: redis:3-alpine
 
+    # Web and API based SMTP testing - only for development!
     mailhog:
         restart: unless-stopped
         image: mailhog/mailhog

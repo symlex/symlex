@@ -30,7 +30,7 @@ stop:
 migrate:
 	app/console migrations:migrate
 dep-frontend:
-	(cd frontend &&	npm install)
+	(cd frontend &&	npm install --silent)
 dep-backend:
 	env COMPOSER_MEMORY_LIMIT=-1 composer update --no-interaction
 build-frontend:
@@ -64,7 +64,7 @@ lint-frontend:
 fmt-frontend:
 	(cd frontend &&	npm run fmt)
 upgrade-frontend:
-	(cd frontend &&	npm update --depth 1)
+	(cd frontend &&	npm --depth 2 update)
 upgrade-backend:
 	composer update
 clearcache:

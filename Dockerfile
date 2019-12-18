@@ -1,4 +1,4 @@
-FROM php:7.3-cli-alpine
+FROM php:7.4-cli-alpine
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -27,6 +27,7 @@ RUN apk update \
         libjpeg \
         libjpeg-turbo-dev \
         libwebp-dev \
+        oniguruma-dev \
         freetype \
         freetype-dev \
         curl \
@@ -35,23 +36,11 @@ RUN apk update \
         chromium \
         firefox-esr
 
-# Install and configure NodeJS Package Manager (npm)
-ENV NODE_ENV development
-RUN npm install -g npm testcafe
-RUN npm config set cache ~/.cache/npm
-
-# Install RoadRunner application server (see https://roadrunner.dev/)
-RUN wget -qO- https://github.com/spiral/roadrunner/releases/download/v1.4.8/roadrunner-1.4.8-linux-amd64.tar.gz | tar xvz --strip-components 1 -C /usr/local/bin roadrunner-1.4.8-linux-amd64/rr
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
-
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) \
     intl \
     gd \
-    iconv \
     mbstring \
     pdo_mysql \
     sockets \
@@ -63,6 +52,18 @@ RUN pecl channel-update pecl.php.net \
     && rm -rf /tmp/pear \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
     && echo "extension=event.so" > /usr/local/etc/php/conf.d/event.ini
+
+# Install RoadRunner application server (see https://roadrunner.dev/)
+RUN wget -qO- https://github.com/spiral/roadrunner/releases/download/v1.5.2/roadrunner-1.5.2-linux-amd64.tar.gz \
+    | tar xvz --strip-components 1 -C /usr/local/bin roadrunner-1.5.2-linux-amd64/rr
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+
+# Install and configure NodeJS Package Manager (npm)
+ENV NODE_ENV development
+RUN npm install -g npm testcafe
+RUN npm config set cache ~/.cache/npm
 
 WORKDIR /var/www/html
 
