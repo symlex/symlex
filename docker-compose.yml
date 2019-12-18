@@ -37,8 +37,8 @@ services:
         restart: unless-stopped
         image: mariadb:10
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512
-        ports:
-            - "3306:3306"
+        # ports:
+        #    - "3306:3306"
         volumes:
             - db-data:/var/lib/mysql
         environment:
