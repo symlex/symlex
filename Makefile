@@ -12,8 +12,14 @@ build: build-frontend
 test: build init-database test-acceptance test-frontend test-backend
 fmt: fmt-frontend
 upgrade: upgrade-frontend upgrade-backend
-run-docker:
-	docker-compose up
+phpunit: test-backend
+testcafe: test-acceptance
+docker-run:
+	docker-compose up -d
+docker-stop:
+	docker-compose stop
+docker-down:
+	docker-compose down
 terminal:
 	docker-compose exec app sh
 start:
