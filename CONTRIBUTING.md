@@ -34,8 +34,8 @@ When reporting an issue, please provide the version in use and information about
 
 ## Donations
 
-Symlex is a non-profit project run entirely by volunteers. You're most welcome to support us 
-via [GitHub Sponsors](https://github.com/sponsors/lastzero), especially if you need support.
+Symlex is a non-profit project run entirely by volunteers. You're most welcome to support us via 
+[GitHub Sponsors](https://github.com/sponsors/lastzero), especially if you need help with using our software.
 They will match every donation in the first year.
 
 Please leave a star if you like this project, it provides enough motivation to keep going. Thank you very much! <3
