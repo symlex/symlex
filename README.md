@@ -119,7 +119,7 @@ Our installation instructions for Symlex >= 4.4.0 won't work for previous releas
 they still use NGINX and PHP-FPM. Instead of `web` and `php`, there is now a single `app` 
 service powered by RoadRunner. If you prefer NGINX, you can use an older 
 [release](https://github.com/symlex/symlex/releases) or copy the previous config to the new release.
-Some of our example apps still use NGINX.
+Some of our example apps use NGINX as well.
 
 ## About ##
 
