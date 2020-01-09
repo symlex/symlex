@@ -186,4 +186,4 @@ Symlex is a non-profit project run entirely by volunteers. You're most welcome t
 [GitHub Sponsors](https://github.com/sponsors/lastzero), especially if you need help with using our software.
 They will match every donation in the first year.
 
-Please leave a star if you like this project, it provides enough motivation to keep going. Thank you very much! <3
+Please leave a star if you like this project, it provides additional motivation to keep going. Thank you very much! <3
