@@ -84,8 +84,8 @@ make all database
 To verify everything is working, run `make test`.
 
 *Note: You can also use this approach to execute other CLI commands later. Make should be pre-installed in 
-typical Unix development environments - otherwise you might have to get it first e.g. by installing Xcode 
-incl. Command Line Tools on OS X or by adding the `build-base` or `build-essential` package on Linux.
+typical Unix development environments - otherwise you might have to get it first e.g. by installing the Xcode 
+Command Line Tools on OS X via `xcode-select --install` or by adding the `build-base` or `build-essential` package on Linux.
 The `Makefile` contains a list of all targets.*
 
 After successful installation, open the site at http://localhost:8081/ and log in as `admin@example.com` using the 
