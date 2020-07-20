@@ -39,12 +39,12 @@ class SessionTest extends UnitTestCase
     {
         $this->session->generateToken();
         $this->assertEquals(false, $this->session->hasUserId());
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $this->session->getToken());
 
         $this->session->login('admin@example.com', 'passwd');
 
         $this->assertEquals(1, $this->session->getUserId());
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $this->session->getToken());
     }
 
     public function testLogout()
@@ -53,17 +53,17 @@ class SessionTest extends UnitTestCase
         $this->session->login('admin@example.com', 'passwd');
         $this->assertEquals(1, $this->session->getUserId());
         $oldToken = $this->session->getToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $oldToken);
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $oldToken);
         $this->session->logout();
         $newToken = $this->session->getToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $newToken);
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $newToken);
         $this->assertFalse($this->session->hasUserId());
     }
 
     public function testGenerateToken()
     {
         $this->session->generateToken();
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $this->session->getToken());
     }
 
     public function testUser()
@@ -98,9 +98,9 @@ class SessionTest extends UnitTestCase
         $oneTimeSession->setRequest($request);
 
         $this->assertEquals(1, $this->session->getUserId());
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $this->session->getToken());
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $this->session->getToken());
         $this->assertEquals(1, $oneTimeSession->getUserId());
         $this->assertEquals($this->session->getToken(), $oneTimeSession->getToken());
-        $this->assertRegExp('/[a-zA-Z0-9]{64}/', $oneTimeSession->getToken());
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{64}/', $oneTimeSession->getToken());
     }
 }

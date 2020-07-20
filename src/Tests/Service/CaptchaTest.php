@@ -27,7 +27,7 @@ class CaptchaTest extends UnitTestCase
 
         $token = $this->captcha->getToken();
 
-        $this->assertRegExp('/[a-zA-Z0-9]{16}/', $token);
+        $this->assertMatchesRegularExpression('/[a-zA-Z0-9]{16}/', $token);
 
         $phrase = $this->captcha->getPhrase();
 
