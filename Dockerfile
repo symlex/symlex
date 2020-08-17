@@ -54,11 +54,8 @@ RUN pecl channel-update pecl.php.net \
     && echo "extension=event.so" > /usr/local/etc/php/conf.d/event.ini
 
 # Install RoadRunner application server (see https://roadrunner.dev/)
-RUN wget -qO- https://github.com/spiral/roadrunner/releases/download/v1.5.2/roadrunner-1.5.2-linux-amd64.tar.gz \
-    | tar xvz --strip-components 1 -C /usr/local/bin roadrunner-1.5.2-linux-amd64/rr
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+RUN wget -qO- https://github.com/spiral/roadrunner/releases/download/v1.8.2/roadrunner-1.8.2-linux-amd64.tar.gz \
+    | tar xvz --strip-components 1 -C /usr/local/bin roadrunner-1.8.2-linux-amd64/rr
 
 # Install and configure NodeJS Package Manager (npm)
 ENV NODE_ENV development
@@ -70,8 +67,11 @@ WORKDIR /var/www/html
 # Copy files
 COPY --chown=www-data:www-data . .
 
+# Install Composer
+RUN ./get-composer.sh
+
 # Build
-RUN make
+RUN make all
 
 # Expose port for Roadrunner PHP application server (replaces nginx in Symlex 4.4+)
 EXPOSE 8081

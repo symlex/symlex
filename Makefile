@@ -3,7 +3,6 @@
 .ONESHELL: ;             # recipes execute in same shell
 .NOTPARALLEL: ;          # wait for this target to finish
 .EXPORT_ALL_VARIABLES: ; # send all vars to shell
-Makefile: ;              # skip prerequisite discovery
 
 all: dep build
 database: init-database
@@ -30,7 +29,7 @@ stop:
 migrate:
 	app/console migrations:migrate
 dep-frontend:
-	(cd frontend &&	npm install --silent)
+	(cd frontend &&	npm install --silent && npm audit fix)
 dep-backend:
 	env COMPOSER_MEMORY_LIMIT=-1 composer update --no-interaction
 build-frontend:
