@@ -43,8 +43,8 @@ Our complete framework documentation can be found on [docs.symlex.org](https://d
 
 ## Setup ##
 
-Before you start, make sure you have PHP 7.2+, [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/) installed on your system 
-([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). 
+Before you start, make sure you have PHP 7.3+, [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/) installed on your system 
+([howto](https://docs.symlex.org/en/latest/osx/) for Mac OS X). Run `get-composer.sh` to install `composer` locally on Linux.
 Instead of using Docker, you can set up your own runtime environment based on the existing 
 [Dockerfile](https://github.com/symlex/symlex/tree/master/Dockerfile).
 In addition, you will need a [database](https://downloads.mariadb.org/) plus
