@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.4.4 Upgrade Symlex Core from 4.2 to 4.4
+
 * 4.4.3 Upgrade to RoadRunner 1.8.2 and updated frontend dependencies
 
 * 4.4.2 Updated frontend dependencies and fixed webpack source maps
