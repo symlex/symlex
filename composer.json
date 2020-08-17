@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "ext-pdo_mysql": "*",
         "symlex/symlex-core": "^4.2",
         "symlex/input-validation": "^4.2",
