@@ -3,10 +3,11 @@
 .git*
 docker-compose*
 composer.lock
-vendor/*
-storage/cache/*
-storage/coverage/*
-storage/log/*
+/bin/*
+/vendor/*
+/storage/cache/*
+/storage/coverage/*
+/storage/log/*
 /frontend/node_modules/
 /frontend/tests/*.html
 /frontend/tests/*.log
