@@ -25,7 +25,7 @@
     "require": {
         "php": "^7.3",
         "ext-pdo_mysql": "*",
-        "symlex/symlex-core": "^4.2",
+        "symlex/symlex-core": "^4.4",
         "symlex/input-validation": "^4.2",
         "symlex/doctrine-active-record": "^4.3",
         "doctrine/dbal": "^2.8",
