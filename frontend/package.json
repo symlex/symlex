@@ -37,7 +37,7 @@
     "chart.js": "^2.9.3",
     "chrome-finder": "^1.0.7",
     "connect-history-api-fallback": "^1.6.0",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.0.3",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
