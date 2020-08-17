@@ -4,6 +4,8 @@ Changelog
 Release 4
 ---------
 
+* 4.4.3 Upgrade to RoadRunner 1.8.2 and updated frontend dependencies
+
 * 4.4.2 Updated frontend dependencies and fixed webpack source maps
 
 * 4.4.1 Upgrade to RoadRunner 1.5.2, Symfony 4.4.1 and PHP 7.4
