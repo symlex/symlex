@@ -38,8 +38,8 @@ services:
     # MariaDB is a MySQL compatible database server
     db:
         restart: unless-stopped
-        image: mariadb:10
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512
+        image: mariadb:10.5
+        command: mysqld --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
         # Expose port to run database scripts locally - only for development!
         # ports:
         #    - "3306:3306"
