@@ -1,77 +1,77 @@
-version: '3'
+version: '3.3'
 
 services:
-    # Symlex App powered by RoadRunner PHP application server
-    app:
-        restart: unless-stopped
-        build: .
-        image: symlex/symlex:develop
-        # Remove next line for production/staging: maxJobs=1 means no caching!
-        command: rr serve -d --override http.workers.pool.maxJobs=1
-        ports:
-            - "8081:8081"
-        depends_on:
-            - db
-            - redis
-            - mailhog
-        volumes:
-            - ./:/var/www/html
-            - node-data:/var/www/html/frontend/node_modules
-            - /dev/shm:/dev/shm
-        environment: # Can be set dynamically when deploying with Kubernetes
-            - APP_URL=http://localhost:8081/
-            - APP_EMAIL=info@example.com
-            - MAILER_HOST=mailhog
-            - MAILER_PORT=1025
-            - MAILER_ENCRYPTION=tcp
-            - MAILER_USERNAME=
-            - MAILER_PASSWORD=
-            - MAILER_AUTH_MODE=
-            - MYSQL_HOST=db
-            - MYSQL_NAME=web
-            - MYSQL_USER=web
-            - MYSQL_PASSWORD=web
-            - REDIS_HOST=redis
-            - VIRTUAL_HOST=symlex.local
-            - VIRTUAL_PORT=8081
+  # Symlex App powered by RoadRunner PHP application server.
+  app:
+    restart: unless-stopped
+    build: .
+    image: symlex/symlex:develop
+    # Remove next line for production/staging: maxJobs=1 means no caching!
+    command: rr serve -d --override http.workers.pool.maxJobs=1
+    shm_size: "2gb"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+      - redis
+      - mailhog
+    volumes:
+      - "./:/var/www/html"
+      - "node-data:/var/www/html/frontend/node_modules"
+    environment: # Can be set dynamically when deploying with Kubernetes.
+      APP_URL: http://localhost:8081/
+      APP_EMAIL: info@example.com
+      MAILER_HOST: mailhog
+      MAILER_PORT: 1025
+      MAILER_ENCRYPTION: tcp
+      MAILER_USERNAME: ""
+      MAILER_PASSWORD: ""
+      MAILER_AUTH_MODE: ""
+      MYSQL_HOST: db
+      MYSQL_NAME: web
+      MYSQL_USER: web
+      MYSQL_PASSWORD: web
+      REDIS_HOST: redis
+      VIRTUAL_HOST: symlex.local
+      VIRTUAL_PORT: 8081
 
-    # MariaDB is a MySQL compatible database server
-    db:
-        restart: unless-stopped
-        image: mariadb:10.5
-        command: mysqld --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
-        # Expose port to run database scripts locally - only for development!
-        # ports:
-        #    - "3306:3306"
-        volumes:
-            - db-data:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: web
-            MYSQL_PASSWORD: web
-            MYSQL_DATABASE: web
+  # MariaDB is a MySQL compatible database server.
+  db:
+    restart: unless-stopped
+    image: mariadb:10.5
+    command: mysqld --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
+    # Expose port to run database scripts locally - only for development!
+    # ports:
+    #    - "3306:3306"
+    volumes:
+      - "db-data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: web
+      MYSQL_PASSWORD: web
+      MYSQL_DATABASE: web
 
-    # Redis is an in-memory key-value database used for storing sessions
-    redis:
-        restart: unless-stopped
-        image: redis:3-alpine
+  # Redis is an in-memory key-value database used for storing sessions.
+  redis:
+    restart: unless-stopped
+    image: redis:6-alpine
 
-    # Web and API based SMTP testing - only for development!
-    mailhog:
-        restart: unless-stopped
-        image: mailhog/mailhog
-        ports:
-            - "8025:8025"
-        environment:
-            - VIRTUAL_HOST=mailhog.local
-            - VIRTUAL_PORT=8025
+  # Web and API based SMTP testing - only for development!
+  mailhog:
+    restart: unless-stopped
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+    environment:
+      VIRTUAL_HOST: mailhog.local
+      VIRTUAL_PORT: 8025
 
 volumes:
-    node-data:
-        driver: local
-    db-data:
-        driver: local
+  node-data:
+    driver: local
+  db-data:
+    driver: local
 
 networks:
-    default:
-        driver: bridge
+  default:
+    driver: bridge
