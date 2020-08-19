@@ -65,15 +65,15 @@ export default class Session {
     }
 
     isUser() {
-        return this.user.hasId();
+        return this.user && this.user.hasId();
     }
 
     isAdmin() {
-        return this.user.hasId() && this.user.userRole === "admin";
+        return this.user && this.user.hasId() && this.user.userRole === "admin";
     }
 
     isAnonymous() {
-        return !this.user.hasId();
+        return !this.user || !this.user.hasId();
     }
 
     deleteUser() {
