@@ -6,11 +6,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FakeRestController
 {
-    public $actionName;
+    public string $actionName;
     public $request;
 
     public function cgetAction(Request $request)
-    {
+    : array {
         $this->actionName = 'cgetAction';
         $this->request = $request;
 
@@ -18,7 +18,7 @@ class FakeRestController
     }
 
     public function getAction($id, Request $request)
-    {
+    : array {
         $this->actionName = 'getAction';
         $this->request = $request;
 
@@ -26,7 +26,7 @@ class FakeRestController
     }
 
     public function optionsCommentAction($id, $commentId, Request $request)
-    {
+    : array {
         $this->actionName = 'optionsCommentAction';
         $this->request = $request;
 

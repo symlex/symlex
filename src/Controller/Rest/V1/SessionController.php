@@ -31,7 +31,7 @@ class SessionController
     }
 
     public function oneTimeTokenAction()
-    {
+    : array {
         $result = $this->session->createOneTimeToken();
 
         return array('token' => $result);
@@ -43,7 +43,7 @@ class SessionController
     }
 
     public function postAction(Request $request)
-    {
+    : array {
         if($this->session->hasToken()) {
             $this->session->invalidate();
         }

@@ -22,17 +22,17 @@ class Session
     private $request;
 
     /** @var string */
-    private $httpHeaderName = 'X-Session-Token';
+    private string $httpHeaderName = 'X-Session-Token';
 
     /** @var string */
-    private $token = '';
+    private string $token = '';
 
     /** @var string */
-    private $hashAlgorithm = 'sha256';
+    private string $hashAlgorithm = 'sha256';
 
-    private $oneTimeTokenTTL = 60; // 1 minute
+    private int $oneTimeTokenTTL = 60; // 1 minute
 
-    private $sessionTokenTTL = 604800; // 7 days
+    private int $sessionTokenTTL = 604800; // 7 days
 
     public function __construct(CacheInterface $cache, User $user)
     {
@@ -55,7 +55,7 @@ class Session
     }
 
     public function login(string $email, string $password)
-    {
+    : self {
         $results = $this->user->findAll(['userEmail' => $email]);
 
         if (count($results) === 0) {
@@ -80,7 +80,7 @@ class Session
     }
 
     public function logout()
-    {
+    : self {
         $this->cache->set($this->getToken(), '', $this->sessionTokenTTL);
         $this->user = $this->user->createModel();
 
@@ -143,7 +143,7 @@ class Session
     }
 
     public function setToken(string $token)
-    {
+    : self {
         if (empty($token)) {
             throw new SessionException('Token is empty');
         }
@@ -158,7 +158,7 @@ class Session
     }
 
     public function invalidate()
-    {
+    : self {
         $this->cache->delete($this->getToken());
         $this->token = '';
         $this->user = $this->user->createModel();

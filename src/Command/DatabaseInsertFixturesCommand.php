@@ -20,7 +20,7 @@ class DatabaseInsertFixturesCommand extends CommandAbstract
     /**
      * @var string
      */
-    protected $fixturesDirectory;
+    protected string $fixturesDirectory;
 
     /**
      * @param null|string $name

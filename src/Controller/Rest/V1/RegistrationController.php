@@ -92,7 +92,7 @@ class RegistrationController
     }
 
     public function postAction(Request $request)
-    {
+    : array {
         $form = $this->createRegisterForm();
         $model = $this->createModel();
 
@@ -117,7 +117,7 @@ class RegistrationController
     }
 
     public function putAction($token, Request $request)
-    {
+    : array {
         $model = $this->createModel()->findByVerificationToken($token);
 
         $form = $this->createRegisterCompleteForm();

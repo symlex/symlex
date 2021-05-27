@@ -29,7 +29,7 @@ class DatabaseCreateCommand extends CommandAbstract
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    : int {
         $db = $this->connection;
         $params = $db->getParams();
         unset($params['dbname']);

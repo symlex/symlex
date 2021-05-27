@@ -15,10 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class EntityControllerAbstract
 {
-    protected $modelName = '';
-    protected $searchFormName = '';
-    protected $createFormName = '';
-    protected $editFormName = '';
+    protected string $modelName = '';
+    protected string $searchFormName = '';
+    protected string $createFormName = '';
+    protected string $editFormName = '';
 
     protected $session;
     protected $modelFactory;

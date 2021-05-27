@@ -31,7 +31,7 @@ class UserDeleteCommand extends CommandAbstract
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    : int {
         $email = $input->getArgument('email');
 
         try {

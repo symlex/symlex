@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 
 class FakeSession implements SessionInterface
 {
-    protected $started = false;
-    protected $sessionId = 'fake-session-id';
-    protected $sessionName = 'fake-session-name';
-    protected $attributes = array('user_id' => 1);
-    protected $bags = array();
+    protected bool $started = false;
+    protected string $sessionId = 'fake-session-id';
+    protected string $sessionName = 'fake-session-name';
+    protected array $attributes = array('user_id' => 1);
+    protected array $bags = array();
 
     /**
      * Starts the session storage.
@@ -110,7 +110,7 @@ class FakeSession implements SessionInterface
      *
      * @api
      */
-    public function migrate($destroy = false, $lifetime = null)
+    public function migrate(bool $destroy = false, $lifetime = null)
     {
 
     }
@@ -137,7 +137,7 @@ class FakeSession implements SessionInterface
      * @api
      */
     public function has($name)
-    {
+    : bool {
         return array_key_exists($name, $this->attributes);
     }
 

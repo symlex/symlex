@@ -23,7 +23,7 @@ class RestRouter extends RouterAbstract
     {
         $app = $this->app;
 
-        $handler = function (Request $request, $path) use ($servicePrefix, $servicePostfix) {
+        $handler = function (Request $request, string $path) use ($servicePrefix, $servicePostfix) {
             $this->getSession()->setRequest($request);
 
             if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {

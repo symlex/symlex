@@ -6,7 +6,7 @@ use App\Exception\InvalidArgumentException;
 
 class TokenGenerator
 {
-    private $defaultTokenForTest = '';
+    private string $defaultTokenForTest = '';
 
     public function setDefaultTokenForTest(string $token)
     {
@@ -29,12 +29,12 @@ class TokenGenerator
     }
 
     protected function hasDefaultTokenForTest()
-    {
+    : bool {
         return $this->defaultTokenForTest != '';
     }
 
     public function getToken(int $bytes = 16)
-    {
+    : string {
         if ($bytes < 1) {
             throw new InvalidArgumentException('Token must at least contain one byte');
         }

@@ -22,7 +22,7 @@ class Mail
         $this->from = $from;
     }
 
-    public function createNewMessage($subject, array $recipients, $templateName, array $values = array())
+    public function createNewMessage($subject, array $recipients, string $templateName, array $values = array())
     {
         $body = $this->twig->render('email/' . $templateName . '.twig', $values);
 

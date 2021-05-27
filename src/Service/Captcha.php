@@ -17,9 +17,9 @@ class Captcha
     /** @var TokenGenerator */
     private $tokenGenerator;
 
-    private $token = '';
+    private string $token = '';
 
-    private $tokenTTL = 1200; // 20 minutes
+    private int $tokenTTL = 1200; // 20 minutes
 
     public function __construct(CacheInterface $cache, CaptchaBuilder $captchaBuilder, TokenGenerator $tokenGenerator)
     {
@@ -29,7 +29,7 @@ class Captcha
     }
 
     public function build()
-    {
+    : self {
         $this->captchaBuilder->build();
         $this->token = $this->tokenGenerator->getMediumToken();
         $this->cache->set($this->token, $this->captchaBuilder->getPhrase(), $this->tokenTTL);

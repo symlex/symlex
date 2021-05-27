@@ -12,9 +12,9 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
  */
 class User extends ModelAbstract
 {
-    protected $_daoName = 'User';
+    protected string $_daoName = 'User';
 
-    public function updatePassword($password)
+    public function updatePassword(string $password)
     {
         if (strlen($password) < 8) {
             throw new InvalidArgumentException('Password is too short');
@@ -47,7 +47,7 @@ class User extends ModelAbstract
     }
 
     public function verify()
-    {
+    : self {
         if ($this->getDao()->userVerificationToken) {
             $this->getDao()->userVerificationToken = null;
             $this->getDao()->update();
@@ -62,7 +62,7 @@ class User extends ModelAbstract
     }
 
     public function setPasswordResetToken(string $token)
-    {
+    : self {
         if (strlen($token) < 5) {
             throw new InvalidArgumentException('Password reset token is too short');
         }
@@ -85,7 +85,7 @@ class User extends ModelAbstract
     }
 
     public function deletePasswordResetToken()
-    {
+    : self {
         if ($this->getDao()->userPasswordResetToken) {
             $this->getDao()->userPasswordResetToken = null;
             $this->getDao()->update();
@@ -95,7 +95,7 @@ class User extends ModelAbstract
     }
 
     public function setVerificationToken(string $token)
-    {
+    : self {
         if (strlen($token) < 5) {
             throw new InvalidArgumentException('Verification token is too short');
         }
@@ -118,7 +118,7 @@ class User extends ModelAbstract
     }
 
     public function deleteVerificationToken()
-    {
+    : self {
         if ($this->getDao()->userVerificationToken) {
             $this->getDao()->userVerificationToken = null;
             $this->getDao()->update();
@@ -127,13 +127,13 @@ class User extends ModelAbstract
         return $this;
     }
 
-    public function passwordIsValid($password)
-    {
+    public function passwordIsValid(string $password)
+    : bool {
         return password_verify($password, $this->userPassword);
     }
 
     public function hasRole(string $role)
-    {
+    : bool {
         return $this->userRole === $role;
     }
 

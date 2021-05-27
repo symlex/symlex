@@ -4,17 +4,17 @@ namespace App\Dao;
 
 class UserDao extends DaoAbstract
 {
-    protected $_tableName = 'users';
-    protected $_primaryKey = 'userId';
-    protected $_timestampEnabled = true;
+    protected string $_tableName = 'users';
+    protected string $_primaryKey = 'userId';
+    protected bool $_timestampEnabled = true;
 
-    protected $_formatMap = [
+    protected array $_formatMap = [
         'userId' => Format::INT,
         'userRole' => Format::STRING,
         'userNewsletter' => Format::BOOL,
     ];
 
-    protected $_hiddenFields = [
+    protected array $_hiddenFields = [
         'userPassword',
         'userPasswordResetToken',
         'userVerificationToken',

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class WebApp extends Kernel
 {
-    protected $urlPrefix = '';
+    protected string $urlPrefix = '';
 
     public function __construct($appPath, $debug = false)
     {
@@ -48,7 +48,7 @@ class WebApp extends Kernel
         $this->appInitialized = false;
     }
 
-    public function getUrlPrefix($urlPrefixPostfix = ''): string
+    public function getUrlPrefix(string $urlPrefixPostfix = ''): string
     {
         return $this->urlPrefix . $urlPrefixPostfix;
     }

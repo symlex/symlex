@@ -28,7 +28,7 @@ class DatabaseDropCommand extends CommandAbstract
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    : int {
         $db = $this->connection;
 
         $question = 'Are you sure you wish to drop the database "' . $db->getDatabase() . '"? (y/n)';

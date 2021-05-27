@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class TokenGeneratorTest extends TestCase
 {
-    protected $testToken = '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12';
+    protected string $testToken = '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12';
 
     public function testGetToken()
     {

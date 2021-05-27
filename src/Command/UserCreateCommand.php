@@ -40,7 +40,7 @@ class UserCreateCommand extends CommandAbstract
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    : int {
         $form = $this->formFactory->create('User\Create');
 
         $values = $input->getOptions() + array('email' => $input->getArgument('email'));
